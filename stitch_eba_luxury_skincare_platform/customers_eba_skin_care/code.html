@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error-container": "#ffdad6", "on-tertiary-fixed": "#241a00", "secondary": "#725b38", "on-error": "#ffffff", "on-primary-container": "#898281", "surface-container-high": "#ebe8e3", "on-primary-fixed": "#1f1b1a", "primary-container": "#1f1b1a", "secondary-fixed": "#fedeb2", "outline-variant": "#d1c4c1", "surface-bright": "#fdf9f4", "surface-container-highest": "#e6e2dd", "tertiary": "#735c00", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#e9c349", "background": "#fdf9f4", "outline": "#7f7572", "tertiary-fixed": "#ffe088", "on-primary-fixed-variant": "#4b4644", "on-secondary-container": "#78603e", "inverse-on-surface": "#f4f0eb", "on-tertiary-container": "#4f3d00", "primary-fixed-dim": "#cdc5c3", "surface": "#fdf9f4", "on-background": "#1c1c19", "surface-container-low": "#f7f3ee", "on-tertiary-fixed-variant": "#574500", "surface-container": "#f1ede8", "on-secondary-fixed": "#281800", "tertiary-container": "#cca730", "on-surface-variant": "#4e4543", "on-error-container": "#93000a", "on-primary": "#ffffff", "secondary-container": "#fedeb2", "inverse-primary": "#cdc5c3", "on-surface": "#1c1c19", "surface-variant": "#e6e2dd", "primary": "#000000", "primary-fixed": "#eae0de", "surface-container-lowest": "#ffffff", "inverse-surface": "#31302d", "error": "#ba1a1a", "surface-dim": "#ddd9d5", "on-secondary-fixed-variant": "#584323", "surface-tint": "#635d5b", "secondary-fixed-dim": "#e0c298", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-mobile": "1rem", "gutter": "1.5rem", "margin": "3rem", "margin-mobile": "1.25rem", "space-xl": "2.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-md": "1rem" }, "fontFamily": { "headline-lg": [ "Playfair Display" ], "headline-lg-mobile": [ "Playfair Display" ], "label-uppercase": [ "Inter" ], "display-brand": [ "Playfair Display" ], "body-sm": [ "Inter" ], "display-lg": [ "Playfair Display" ], "display-lg-mobile": [ "Playfair Display" ], "body-md": [ "Inter" ], "label-ui": [ "Inter" ], "price-md": [ "Inter" ], "body-lg": [ "Inter" ], "headline-sm": [ "Playfair Display" ], "headline-md": [ "Playfair Display" ], "price-lg": [ "Inter" ] }, "fontSize": { "headline-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "500" } ], "label-uppercase": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "display-brand": [ "30px", { "lineHeight": "36px", "letterSpacing": "0.15em", "fontWeight": "600" } ], "body-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "display-lg-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-ui": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "price-md": [ "16px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-md": [ "26px", { "lineHeight": "34px", "letterSpacing": "0em", "fontWeight": "500" } ], "price-lg": [ "20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col h-full overflow-hidden"><div class="p-space-lg flex flex-col gap-space-xs"><div class="font-display-brand text-headline-sm uppercase text-on-surface tracking-[0.18em]">EBA SKIN CARE</div><div class="font-label-uppercase text-label-uppercase text-secondary tracking-widest">ADMIN CONSOLE • STUDIO</div></div><nav class="flex-1 px-space-md py-space-xs space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary rounded-lg font-semibold shadow-[0_2px_8px_rgba(26,22,21,0.08)]"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">space_dashboard</span><span class="font-label-ui text-label-ui">Dashboard</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="orders" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">shopping_bag</span><span class="font-label-ui text-label-ui">Orders</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-semibold">12 NEW</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="products" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">spa</span><span class="font-label-ui text-label-ui">Products</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="categories" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">category</span><span class="font-label-ui text-label-ui">Categories</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="shipment-logistics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">local_shipping</span><span class="font-label-ui text-label-ui">Shipment Logistics</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="coupons-and-offers" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">confirmation_number</span><span class="font-label-ui text-label-ui">Coupons &amp; Offers</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="payment-gateways" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">account_balance_wallet</span><span class="font-label-ui text-label-ui">Payment Gateways</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="homepage-control" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">storefront</span><span class="font-label-ui text-label-ui">Homepage Control</span></div></a><a aria-current="page" class="flex items-center justify-between px-space-md py-space-sm transition-all bg-primary-container text-on-primary rounded-lg font-semibold shadow-[0_2px_8px_rgba(26,22,21,0.08)]" data-path="customers" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">group</span><span class="font-label-ui text-label-ui">Customers</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="reviews" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">grade</span><span class="font-label-ui text-label-ui">Reviews</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">4</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="inventory" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">inventory_2</span><span class="font-label-ui text-label-ui">Inventory</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="notifications" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">notifications</span><span class="font-label-ui text-label-ui">Notifications</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-semibold">3</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="staff-and-roles" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">admin_panel_settings</span><span class="font-label-ui text-label-ui">Staff &amp; Roles</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">tune</span><span class="font-label-ui text-label-ui">Settings</span></div></a></nav><div class="p-space-md bg-surface-container/60 m-space-sm rounded-xl flex flex-col gap-space-sm"><a class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface transition-colors" href="#"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[18px] text-secondary">visibility</span><span class="font-label-ui text-label-ui">View Live Storefront</span></div><span class="material-symbols-outlined text-[16px] text-on-surface-variant">north_east</span></a><div class="flex items-center justify-between pt-space-xs"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col"><span class="font-label-ui text-label-ui font-semibold text-on-surface">Fatima Khan</span><span class="font-label-uppercase text-[10px] text-secondary">Owner &amp; Formulator</span></div></div><button class="p-1 text-on-surface-variant hover:text-on-surface rounded" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></div></aside><div class="pl-72 min-h-screen flex flex-col"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-8"><div class="flex items-center gap-space-md w-96"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full bg-surface-container-low pl-10 pr-4 py-2 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search orders, formulation SKUs, patrons..." type="search"/></div></div><div class="flex items-center gap-space-lg"><div class="hidden lg:flex items-center gap-space-md text-on-surface-variant"><div class="flex items-center gap-space-xs font-label-ui text-label-ui"><span class="material-symbols-outlined text-[16px] text-secondary">calendar_today</span><span>Tuesday, 24 Oct 2024</span></div><span class="w-1 h-1 rounded-full bg-outline-variant"></span><div class="flex items-center gap-space-xs font-label-ui text-label-ui"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span>Pakistan Hub (PKR)</span></div></div><div class="flex items-center gap-space-sm"><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span></button><button class="hidden sm:flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-label-ui" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Create Order</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface px-8 py-space-lg flex-1"><div class="flex flex-col w-full gap-space-lg">
+<!-- Header & Actions -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest uppercase">Clientele Intelligence</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant">South Asia Territory</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Patrons &amp; Customer Profiles</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+        Manage registered client profiles, order history, VIP Privilege tiers, and direct consultation communication channels.
+      </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors font-label-ui text-label-ui shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">file_download</span>
+<span>Export Customer CSV</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-primary text-on-primary hover:bg-on-surface-variant transition-all font-label-ui text-label-ui shadow-md hover:shadow-lg" type="button">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>+ Add New Customer</span>
+</button>
+</div>
+</div>
+<!-- KPI Metrics Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant tracking-wider">Total Registered Patrons</span>
+<span class="p-2 rounded-lg bg-surface-container-low text-secondary">
+<span class="material-symbols-outlined text-[20px]">groups_3</span>
+</span>
+</div>
+<div class="mt-4 flex items-baseline justify-between">
+<div class="font-headline-md text-headline-md text-on-surface">1,428</div>
+<div class="flex items-center gap-0.5 text-secondary font-label-ui text-label-ui font-semibold bg-secondary-container/40 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>+14%</span>
+</div>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">
+        168 new patron onboardings this calendar month
+      </div>
+<div class="absolute bottom-0 left-0 right-0 h-1 bg-secondary/20 group-hover:bg-secondary transition-all"></div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant tracking-wider">VIP Privilege Members</span>
+<span class="p-2 rounded-lg bg-secondary-container/50 text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">workspace_premium</span>
+</span>
+</div>
+<div class="mt-4 flex items-baseline justify-between">
+<div class="font-headline-md text-headline-md text-on-surface">380</div>
+<span class="font-label-uppercase text-label-uppercase text-secondary bg-surface-container-high px-2 py-0.5 rounded-full">Gold &amp; Platinum</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">
+        Represents 26.6% of client base &amp; 64% total revenue
+      </div>
+<div class="absolute bottom-0 left-0 right-0 h-1 bg-tertiary-container/40 group-hover:bg-tertiary-container transition-all"></div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant tracking-wider">Repeat Purchase Rate</span>
+<span class="p-2 rounded-lg bg-surface-container-low text-secondary">
+<span class="material-symbols-outlined text-[20px]">autorenew</span>
+</span>
+</div>
+<div class="mt-4 flex items-baseline justify-between">
+<div class="font-headline-md text-headline-md text-on-surface">42.6%</div>
+<div class="flex items-center gap-1">
+<svg class="w-12 h-4 text-secondary" fill="none" viewbox="0 0 60 20">
+<path d="M2 16 L15 11 L28 14 L42 6 L58 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</div>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">
+        Benchmark: 28% for regional cosmetics studios
+      </div>
+<div class="absolute bottom-0 left-0 right-0 h-1 bg-secondary/20 group-hover:bg-secondary transition-all"></div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant tracking-wider">Average Lifetime Value (LTV)</span>
+<span class="p-2 rounded-lg bg-surface-container-low text-secondary">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</span>
+</div>
+<div class="mt-4 flex items-baseline justify-between">
+<div class="font-headline-md text-headline-md text-on-surface">Rs. 16,850</div>
+<span class="font-label-uppercase text-[10px] text-on-surface-variant font-medium">PKR Net</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">
+        +Rs. 2,140 compared to Q2 fiscal formulation cycle
+      </div>
+<div class="absolute bottom-0 left-0 right-0 h-1 bg-secondary/20 group-hover:bg-secondary transition-all"></div>
+</div>
+</div>
+<!-- Main Work Area: Filter + Table + Drawer Preview -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Table & Controls Section (XL: 8 or 9 cols depending on detail) -->
+<div class="xl:col-span-8 flex flex-col gap-space-md">
+<!-- Filter Bar -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col md:flex-row gap-space-sm items-stretch md:items-center justify-between">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-surface-container-low pl-10 pr-4 py-2.5 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant outline-none focus:bg-surface-container-high transition-colors" placeholder="Search by patron name, phone (+92), email, or city..." type="text"/>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- City Dropdown Filter -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low pl-3 pr-8 py-2.5 rounded-lg font-label-ui text-label-ui text-on-surface outline-none cursor-pointer hover:bg-surface-container-high transition-colors">
+<option value="">All Cities (Karachi, Lahore, ISB...)</option>
+<option value="karachi">Karachi (Sindh)</option>
+<option value="lahore">Lahore (Punjab)</option>
+<option value="islamabad">Islamabad (ICT)</option>
+<option value="rawalpindi">Rawalpindi</option>
+<option value="faisalabad">Faisalabad</option>
+<option value="multan">Multan</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[18px]">expand_more</span>
+</div>
+<!-- Tier Dropdown Filter -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low pl-3 pr-8 py-2.5 rounded-lg font-label-ui text-label-ui text-on-surface outline-none cursor-pointer hover:bg-surface-container-high transition-colors">
+<option value="">All Tiers (Standard to VIP)</option>
+<option value="platinum">Platinum VIP</option>
+<option value="gold">Gold Privilege</option>
+<option value="silver">Silver Atelier</option>
+<option value="standard">Standard Member</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[18px]">expand_more</span>
+</div>
+<!-- Sort Dropdown -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low pl-3 pr-8 py-2.5 rounded-lg font-label-ui text-label-ui text-on-surface outline-none cursor-pointer hover:bg-surface-container-high transition-colors">
+<option value="spend">Sort: Highest Spend</option>
+<option value="orders">Sort: Most Orders</option>
+<option value="recent">Sort: Recently Active</option>
+<option value="name">Sort: Alphabetical (A-Z)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[18px]">swap_vert</span>
+</div>
+</div>
+</div>
+<!-- Customer Records Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left text-on-surface border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-uppercase text-label-uppercase text-on-surface-variant tracking-wider">
+<th class="py-3.5 px-4 font-semibold">Patron Details</th>
+<th class="py-3.5 px-4 font-semibold">Location</th>
+<th class="py-3.5 px-4 font-semibold">Privilege Tier</th>
+<th class="py-3.5 px-4 font-semibold text-center">Orders</th>
+<th class="py-3.5 px-4 font-semibold">Spend (PKR)</th>
+<th class="py-3.5 px-4 font-semibold">Activity</th>
+<th class="py-3.5 px-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y-0">
+<!-- Row 1 (Active Selected) -->
+<tr class="bg-secondary-container/15 hover:bg-secondary-container/25 transition-colors cursor-pointer group" onclick="selectPatron('mahnoor')">
+<td class="py-4 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-high flex items-center justify-center font-display-brand text-secondary font-semibold text-sm">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of a young elegant Pakistani woman with glowing natural skin and traditional aesthetic minimalism" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1LDN8R-wp1CraAliBKvrG4ggmBbYR4LY4-cXfqGqH1w5L5-MWwYc1xbAJBqxw8fz5XI6NfmlZjgErg3_9Wqd_2Mkw4LrAByxZo5YAe7BYGpvmAg3MfWA0T-WOFht0aLWBQzJSNYIINx_Vwsl8CCTZFwFy20ItGDH-wLsLzimOc5JmjH7DUb0bBibp1IsCauXUTAEpiq6hGB38vyhXj63FaViZzOvj-ZGvUoahA46KbLoBoHXjJMXyuw"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-on-surface truncate">Mahnoor Tariq</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">mahnoor.tariq@gmail.com</span>
+<span class="font-label-uppercase text-[10px] text-secondary">+92 321 4455891</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Karachi</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">DHA Phase 6</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-uppercase text-label-uppercase bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined text-[13px]">stars</span>
+<span>Gold Privilege</span>
+</span>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">12</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="font-price-md text-price-md text-on-surface">Rs. 48,600</span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="font-body-sm text-body-sm text-secondary font-medium">2 hours ago</span>
+</td>
+<td class="py-4 px-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<a class="p-1.5 rounded-lg text-secondary hover:bg-surface-container-high transition-colors" href="https://wa.me/923214455891" target="_blank" title="WhatsApp Direct">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</a>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="View Profile" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="Order History" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectPatron('zainab')">
+<td class="py-4 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full flex-shrink-0 bg-primary text-on-primary flex items-center justify-center font-label-ui font-semibold text-sm">
+                      ZM
+                    </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-on-surface truncate">Dr. Zainab Malik</span>
+<span class="font-label-uppercase text-[9px] px-1.5 py-0.2 rounded bg-tertiary-fixed text-on-tertiary-fixed font-bold">DR</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">zainab.malik@shifa.org.pk</span>
+<span class="font-label-uppercase text-[10px] text-secondary">+92 300 8829103</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Islamabad</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sector F-8/2</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-uppercase text-label-uppercase bg-primary text-on-primary">
+<span class="material-symbols-outlined text-[13px] text-tertiary-fixed">diamond</span>
+<span>Platinum VIP</span>
+</span>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">18</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="font-price-md text-price-md text-on-surface">Rs. 78,250</span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Yesterday</span>
+</td>
+<td class="py-4 px-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<a class="p-1.5 rounded-lg text-secondary hover:bg-surface-container-high transition-colors" href="https://wa.me/923008829103" target="_blank" title="WhatsApp Direct">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</a>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="View Profile" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="Order History" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectPatron('bilal')">
+<td class="py-4 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full flex-shrink-0 bg-surface-container-high text-on-surface flex items-center justify-center font-label-ui font-semibold text-sm">
+                      BA
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-on-surface truncate">Bilal Ahmed</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">bilal.ahmed91@hotmail.com</span>
+<span class="font-label-uppercase text-[10px] text-secondary">+92 333 5192840</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Lahore</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Gulberg III</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-uppercase text-label-uppercase bg-surface-container-highest text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px]">award_star</span>
+<span>Silver Atelier</span>
+</span>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">5</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="font-price-md text-price-md text-on-surface">Rs. 19,400</span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="font-body-sm text-body-sm text-on-surface-variant">3 days ago</span>
+</td>
+<td class="py-4 px-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<a class="p-1.5 rounded-lg text-secondary hover:bg-surface-container-high transition-colors" href="https://wa.me/923335192840" target="_blank" title="WhatsApp Direct">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</a>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="View Profile" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="Order History" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectPatron('taimur')">
+<td class="py-4 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full flex-shrink-0 bg-surface-container-high text-on-surface flex items-center justify-center font-label-ui font-semibold text-sm">
+                      TK
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-on-surface truncate">Taimur Khan</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">taimur.khan@outlook.com</span>
+<span class="font-label-uppercase text-[10px] text-secondary">+92 345 2209184</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Rawalpindi</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bahria Town Phase 4</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-uppercase text-label-uppercase bg-surface-container-high text-on-surface-variant">
+<span>Standard</span>
+</span>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">2</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="font-price-md text-price-md text-on-surface">Rs. 6,850</span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Oct 26, 2024</span>
+</td>
+<td class="py-4 px-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<a class="p-1.5 rounded-lg text-secondary hover:bg-surface-container-high transition-colors" href="https://wa.me/923452209184" target="_blank" title="WhatsApp Direct">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</a>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="View Profile" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="Order History" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectPatron('ayesha')">
+<td class="py-4 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-high flex items-center justify-center font-display-brand text-secondary font-semibold text-sm">
+<img class="w-full h-full object-cover" data-alt="Portrait of an upscale woman wearing linen scarf with radiant dewy skin, studio softbox lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdwODlK9ZmVKninSh9QuR1Ob_35tOVoDPrFaXDHiT-gEEmutCtdJulKDZOs-qUMW8SBBc56SjIHsZyIvYyPUDtOVf751rahJKi2OBl2-ziQYhJY2bTNJwTcRObJOEnxGQlrYMkFgUkqt3N9c3ZUE1w1RnWHPZUX1o3Ax4PLhl-lnCV0gK6NGpgonQm7D0_Q5UZScCi0u-VRrDDso9WE9Uymn6qGgZC14fV_3sDLJs94C53Zh-d8-DL6g"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-on-surface truncate">Ayesha Raza</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">ayesha.raza@yahoo.com</span>
+<span class="font-label-uppercase text-[10px] text-secondary">+92 301 7712390</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Multan</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Cantt Area</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-uppercase text-label-uppercase bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined text-[13px]">stars</span>
+<span>Gold Privilege</span>
+</span>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">8</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="font-price-md text-price-md text-on-surface">Rs. 34,200</span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Oct 24, 2024</span>
+</td>
+<td class="py-4 px-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<a class="p-1.5 rounded-lg text-secondary hover:bg-surface-container-high transition-colors" href="https://wa.me/923017712390" target="_blank" title="WhatsApp Direct">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</a>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="View Profile" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="Order History" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectPatron('hamza')">
+<td class="py-4 px-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full flex-shrink-0 bg-surface-container-high text-on-surface flex items-center justify-center font-label-ui font-semibold text-sm">
+                      HS
+                    </div>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-on-surface truncate">Hamza Sheikh</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">hamza.sheikh@techpk.com</span>
+<span class="font-label-uppercase text-[10px] text-secondary">+92 322 9940128</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Karachi</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">PECHS Block 2</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-uppercase text-label-uppercase bg-surface-container-highest text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px]">award_star</span>
+<span>Silver Atelier</span>
+</span>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">4</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="font-price-md text-price-md text-on-surface">Rs. 14,800</span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Oct 21, 2024</span>
+</td>
+<td class="py-4 px-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<a class="p-1.5 rounded-lg text-secondary hover:bg-surface-container-high transition-colors" href="https://wa.me/923229940128" target="_blank" title="WhatsApp Direct">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</a>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="View Profile" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="Order History" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Bar -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+            Showing <span class="font-semibold text-on-surface">1 - 6</span> of <span class="font-semibold text-on-surface">1,428</span> registered patrons
+          </div>
+<div class="flex items-center gap-space-xs">
+<button class="p-1.5 rounded-lg text-outline cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-ui text-label-ui font-semibold flex items-center justify-center" type="button">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-high text-on-surface font-label-ui text-label-ui flex items-center justify-center" type="button">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-high text-on-surface font-label-ui text-label-ui flex items-center justify-center" type="button">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-high text-on-surface font-label-ui text-label-ui flex items-center justify-center" type="button">238</button>
+<button class="p-1.5 rounded-lg text-on-surface hover:bg-surface-container-high" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Selected Patron Profile Preview Card (XL: 4 cols) -->
+<div class="xl:col-span-4 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md sticky top-20">
+<!-- Top Badges & Status -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-uppercase text-label-uppercase text-secondary uppercase font-semibold">Active Profile Focus</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full font-label-uppercase text-[10px] bg-secondary-container text-on-secondary-container font-semibold">
+<span class="material-symbols-outlined text-[12px]">stars</span>
+          Gold Privilege Tier
+        </span>
+</div>
+<!-- Avatar & Headline -->
+<div class="flex items-center gap-space-md pb-space-sm">
+<div class="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-high shadow-md">
+<img class="w-full h-full object-cover" data-alt="Close-up serene editorial portrait of Pakistani woman client with clear glowing skin, warm ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgyfdRkmlgKTZOX_IWri0hUSNVrZ5LUbQwryIFxExvG1inYcNb4x9XSwo6CMGkFW1IC1ew8Lsa96GvJlU9GD1d8L9HJ_vLzG6SXMwRoPbnMfOOx4Td6DAa4B4gg4cHOP_BKFNn20qM-jI3Y6axF4djZBGOfgD-wTDfzk6rR2nntVf7n5al-PIFTBGJYENNjNxuCHo7XwOjY096zRKFzi8w65N4ZOc2cTpCkYHEf7Hf2Ckhc3p8WIHZjQ"/>
+</div>
+<div class="flex flex-col min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Mahnoor Tariq</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Member since Jan 2023</span>
+<div class="flex items-center gap-1 mt-1 text-on-tertiary-container font-label-uppercase text-[10px]">
+<span class="material-symbols-outlined text-[14px] text-tertiary">verified</span>
+<span>COD Verified Patrons Club</span>
+</div>
+</div>
+</div>
+<!-- Quick Metrics Strip -->
+<div class="grid grid-cols-3 gap-space-xs bg-surface-container-low p-space-sm rounded-lg text-center">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-[10px] text-on-surface-variant">Total Spend</span>
+<span class="font-price-md text-price-md text-on-surface font-semibold mt-0.5">Rs. 48.6k</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-uppercase text-[10px] text-on-surface-variant">Orders</span>
+<span class="font-headline-sm text-headline-sm text-on-surface leading-tight mt-0.5">12</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-uppercase text-[10px] text-on-surface-variant">AOV</span>
+<span class="font-price-md text-price-md text-secondary font-semibold mt-0.5">Rs. 4,050</span>
+</div>
+</div>
+<!-- Dermatological / Skin Diagnostic Profile -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-uppercase text-label-uppercase text-on-surface tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">spa</span>
+            Skin Diagnostics &amp; Preferences
+          </span>
+<span class="font-label-uppercase text-[10px] text-secondary">Studio Formulary</span>
+</div>
+<div class="bg-surface-container p-space-md rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant">Skin Typology:</span>
+<span class="font-semibold text-on-surface">Combination / Dehydrated</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant">Primary Concern:</span>
+<span class="font-medium text-on-surface">Seasonal Hyperpigmentation &amp; Dullness</span>
+</div>
+<div class="mt-1 pt-2 flex flex-col gap-1.5">
+<span class="font-label-uppercase text-[10px] text-on-surface-variant uppercase">Formulation Affinity:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container-lowest rounded text-[11px] font-label-ui text-secondary">Beauty Glow Serum 20%</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest rounded text-[11px] font-label-ui text-secondary">Pure Damascena Rose Hydrosol</span>
+<span class="px-2 py-0.5 bg-surface-container-lowest rounded text-[11px] font-label-ui text-on-surface-variant">Bakuchiol Night Elixir</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Shipping & Verified Channel Details -->
+<div class="flex flex-col gap-2">
+<span class="font-label-uppercase text-label-uppercase text-on-surface tracking-wider">Primary Logistics Destination</span>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5">location_on</span>
+<div class="flex flex-col text-body-sm">
+<span class="font-medium text-on-surface">House 44-B, Street 12, Khayaban-e-Seher</span>
+<span class="text-on-surface-variant">DHA Phase 6, Karachi, Sindh (Postal: 75500)</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] font-label-uppercase text-secondary font-semibold">TCS Express Hub Zone A</span>
+<span class="text-outline-variant">•</span>
+<span class="text-[11px] text-on-surface-variant">Return Risk: Low (0%)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Direct Studio Triggers -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<span class="font-label-uppercase text-label-uppercase text-on-surface tracking-wider">Direct Concierge Dispatch</span>
+<div class="grid grid-cols-2 gap-space-xs">
+<a class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-secondary text-on-secondary hover:bg-on-secondary-container transition-all font-label-ui text-label-ui shadow-sm" href="https://wa.me/923214455891?text=Salam%20Mahnoor,%20this%20is%20Fatima%20from%20EBA%20Skin%20Care%20Studio..." target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span>WhatsApp Direct</span>
+</a>
+<button class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-all font-label-ui text-label-ui" onclick="alert('SMS Dispatch Console initiated for +92 321 4455891 via Zong Business Portal')" type="button">
+<span class="material-symbols-outlined text-[18px]">sms</span>
+<span>Send VIP SMS</span>
+</button>
+</div>
+<button class="w-full mt-1 py-2 px-3 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-label-ui flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">history_edu</span>
+<span>View 12 Historical Invoices &amp; Prescriptions</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function selectPatron(id) {
+    // Quick micro-interaction visual indicator
+    console.log("Selected Patron Profile: " + id);
+  }
+</script></main><footer class="w-full bg-surface-container-lowest py-space-md shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="w-full px-8 flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-body-sm text-body-sm"><span>© 2024 EBA Skin Care Luxury Formulation Studio. All rights reserved.</span><div class="flex items-center gap-space-md font-label-uppercase text-label-uppercase"><span>COD Enabled</span><span>JazzCash Active</span><span>EasyPaisa Active</span><span>Secure SSL</span></div></div></footer></div></body></html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error-container": "#ffdad6", "on-tertiary-fixed": "#241a00", "secondary": "#725b38", "on-error": "#ffffff", "on-primary-container": "#898281", "surface-container-high": "#ebe8e3", "on-primary-fixed": "#1f1b1a", "primary-container": "#1f1b1a", "secondary-fixed": "#fedeb2", "outline-variant": "#d1c4c1", "surface-bright": "#fdf9f4", "surface-container-highest": "#e6e2dd", "tertiary": "#735c00", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#e9c349", "background": "#fdf9f4", "outline": "#7f7572", "tertiary-fixed": "#ffe088", "on-primary-fixed-variant": "#4b4644", "on-secondary-container": "#78603e", "inverse-on-surface": "#f4f0eb", "on-tertiary-container": "#4f3d00", "primary-fixed-dim": "#cdc5c3", "surface": "#fdf9f4", "on-background": "#1c1c19", "surface-container-low": "#f7f3ee", "on-tertiary-fixed-variant": "#574500", "surface-container": "#f1ede8", "on-secondary-fixed": "#281800", "tertiary-container": "#cca730", "on-surface-variant": "#4e4543", "on-error-container": "#93000a", "on-primary": "#ffffff", "secondary-container": "#fedeb2", "inverse-primary": "#cdc5c3", "on-surface": "#1c1c19", "surface-variant": "#e6e2dd", "primary": "#000000", "primary-fixed": "#eae0de", "surface-container-lowest": "#ffffff", "inverse-surface": "#31302d", "error": "#ba1a1a", "surface-dim": "#ddd9d5", "on-secondary-fixed-variant": "#584323", "surface-tint": "#635d5b", "secondary-fixed-dim": "#e0c298", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-mobile": "1rem", "gutter": "1.5rem", "margin": "3rem", "margin-mobile": "1.25rem", "space-xl": "2.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-md": "1rem" }, "fontFamily": { "headline-lg": [ "Playfair Display" ], "headline-lg-mobile": [ "Playfair Display" ], "label-uppercase": [ "Inter" ], "display-brand": [ "Playfair Display" ], "body-sm": [ "Inter" ], "display-lg": [ "Playfair Display" ], "display-lg-mobile": [ "Playfair Display" ], "body-md": [ "Inter" ], "label-ui": [ "Inter" ], "price-md": [ "Inter" ], "body-lg": [ "Inter" ], "headline-sm": [ "Playfair Display" ], "headline-md": [ "Playfair Display" ], "price-lg": [ "Inter" ] }, "fontSize": { "headline-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "500" } ], "label-uppercase": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "display-brand": [ "30px", { "lineHeight": "36px", "letterSpacing": "0.15em", "fontWeight": "600" } ], "body-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "display-lg-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-ui": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "price-md": [ "16px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-md": [ "26px", { "lineHeight": "34px", "letterSpacing": "0em", "fontWeight": "500" } ], "price-lg": [ "20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col h-full overflow-hidden"><div class="p-space-lg flex flex-col gap-space-xs"><div class="font-display-brand text-headline-sm uppercase text-on-surface tracking-[0.18em]">EBA SKIN CARE</div><div class="font-label-uppercase text-label-uppercase text-secondary tracking-widest">ADMIN CONSOLE • STUDIO</div></div><nav class="flex-1 px-space-md py-space-xs space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary rounded-lg font-semibold shadow-[0_2px_8px_rgba(26,22,21,0.08)]"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">space_dashboard</span><span class="font-label-ui text-label-ui">Dashboard</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="orders" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">shopping_bag</span><span class="font-label-ui text-label-ui">Orders</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-semibold">12 NEW</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="products" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">spa</span><span class="font-label-ui text-label-ui">Products</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="categories" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">category</span><span class="font-label-ui text-label-ui">Categories</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="shipment-logistics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">local_shipping</span><span class="font-label-ui text-label-ui">Shipment Logistics</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="coupons-and-offers" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">confirmation_number</span><span class="font-label-ui text-label-ui">Coupons &amp; Offers</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="payment-gateways" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">account_balance_wallet</span><span class="font-label-ui text-label-ui">Payment Gateways</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="homepage-control" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">storefront</span><span class="font-label-ui text-label-ui">Homepage Control</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="customers" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">group</span><span class="font-label-ui text-label-ui">Customers</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="reviews" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">grade</span><span class="font-label-ui text-label-ui">Reviews</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">4</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="inventory" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">inventory_2</span><span class="font-label-ui text-label-ui">Inventory</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="notifications" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">notifications</span><span class="font-label-ui text-label-ui">Notifications</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-semibold">3</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="staff-and-roles" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">admin_panel_settings</span><span class="font-label-ui text-label-ui">Staff &amp; Roles</span></div></a><a aria-current="page" class="flex items-center justify-between px-space-md py-space-sm transition-all bg-primary-container text-on-primary rounded-lg font-semibold shadow-[0_2px_8px_rgba(26,22,21,0.08)]" data-path="settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">tune</span><span class="font-label-ui text-label-ui">Settings</span></div></a></nav><div class="p-space-md bg-surface-container/60 m-space-sm rounded-xl flex flex-col gap-space-sm"><a class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface transition-colors" href="#"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[18px] text-secondary">visibility</span><span class="font-label-ui text-label-ui">View Live Storefront</span></div><span class="material-symbols-outlined text-[16px] text-on-surface-variant">north_east</span></a><div class="flex items-center justify-between pt-space-xs"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col"><span class="font-label-ui text-label-ui font-semibold text-on-surface">Fatima Khan</span><span class="font-label-uppercase text-[10px] text-secondary">Owner &amp; Formulator</span></div></div><button class="p-1 text-on-surface-variant hover:text-on-surface rounded" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></div></aside><div class="pl-72 min-h-screen flex flex-col"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-8"><div class="flex items-center gap-space-md w-96"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full bg-surface-container-low pl-10 pr-4 py-2 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search orders, formulation SKUs, patrons..." type="search"/></div></div><div class="flex items-center gap-space-lg"><div class="hidden lg:flex items-center gap-space-md text-on-surface-variant"><div class="flex items-center gap-space-xs font-label-ui text-label-ui"><span class="material-symbols-outlined text-[16px] text-secondary">calendar_today</span><span>Tuesday, 24 Oct 2024</span></div><span class="w-1 h-1 rounded-full bg-outline-variant"></span><div class="flex items-center gap-space-xs font-label-ui text-label-ui"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span>Pakistan Hub (PKR)</span></div></div><div class="flex items-center gap-space-sm"><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span></button><button class="hidden sm:flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-label-ui" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Create Order</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface px-8 py-space-lg flex-1"><div class="flex flex-col w-full">
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-lg mb-space-xl">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex items-center gap-space-sm mb-1">
+<span class="font-label-uppercase text-label-uppercase px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container">System Engine • v4.8</span>
+<span class="font-label-uppercase text-label-uppercase text-outline flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container animate-ping"></span> Live Database Synchronized
+        </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Global Store &amp; System Settings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Configure store identity, Pakistani tax parameters, currency formatting, courier API keys, and maintenance controls.</p>
+</div>
+<div class="flex items-center gap-space-sm self-start xl:self-auto shrink-0">
+<button class="px-4 py-2.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors font-label-ui text-label-ui flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Audit Logs</span>
+</button>
+<button class="px-6 py-2.5 rounded-lg bg-primary text-on-primary hover:bg-surface-tint shadow-md hover:shadow-xl transition-all font-label-ui text-label-ui flex items-center gap-2" id="save-settings-btn" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed">verified</span>
+<span>Save All Changes</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-space-lg">
+<!-- Settings Sub-Navigation Column -->
+<div class="col-span-12 lg:col-span-4 xl:col-span-3 flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-1 sticky top-24">
+<div class="px-3 py-2 text-on-surface-variant font-label-uppercase text-label-uppercase flex items-center justify-between">
+<span>Configuration Modules</span>
+<span class="material-symbols-outlined text-[15px]">tune</span>
+</div>
+<button class="w-full text-left flex items-center justify-between px-3.5 py-3 rounded-lg bg-primary-container text-on-primary font-label-ui text-label-ui shadow-sm transition-all" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[19px] text-secondary-fixed">storefront</span>
+<span>General Store Identity</span>
+</div>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+</button>
+<button class="w-full text-left flex items-center justify-between px-3.5 py-3 rounded-lg text-on-surface hover:bg-surface-container font-label-ui text-label-ui transition-colors" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[19px] text-on-surface-variant">payments</span>
+<span>Regional &amp; Currency (PKR)</span>
+</div>
+</button>
+<button class="w-full text-left flex items-center justify-between px-3.5 py-3 rounded-lg text-on-surface hover:bg-surface-container font-label-ui text-label-ui transition-colors" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[19px] text-on-surface-variant">account_balance</span>
+<span>Tax &amp; Invoicing (FBR)</span>
+</div>
+<span class="font-label-uppercase text-[9px] px-1.5 py-0.5 rounded bg-tertiary-container text-on-tertiary font-bold">FBR ACTIVE</span>
+</button>
+<button class="w-full text-left flex items-center justify-between px-3.5 py-3 rounded-lg text-on-surface hover:bg-surface-container font-label-ui text-label-ui transition-colors" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[19px] text-on-surface-variant">local_shipping</span>
+<span>Courier API Integrations</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</button>
+<button class="w-full text-left flex items-center justify-between px-3.5 py-3 rounded-lg text-on-surface hover:bg-surface-container font-label-ui text-label-ui transition-colors" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[19px] text-on-surface-variant">sms</span>
+<span>WhatsApp &amp; SMS Dispatch</span>
+</div>
+</button>
+<button class="w-full text-left flex items-center justify-between px-3.5 py-3 rounded-lg text-on-surface hover:bg-surface-container font-label-ui text-label-ui transition-colors" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[19px] text-on-surface-variant">shield_lock</span>
+<span>Security &amp; 2FA Protocol</span>
+</div>
+</button>
+<div class="mt-space-lg p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-xs">
+<span class="font-label-uppercase text-[10px] text-secondary tracking-widest uppercase">Atelier Environment</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Primary fulfillment hub linked to Karachi DHA Phase 8 Dispensary.</p>
+<div class="mt-2 flex items-center justify-between text-on-surface font-label-ui text-label-ui">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+              PK-KHI Server Cluster
+            </span>
+<span class="text-on-surface-variant text-[11px]">99.98% SLA</span>
+</div>
+</div>
+</div>
+<!-- Quick Formulation Packaging Preview Visual -->
+<div class="rounded-xl overflow-hidden shadow-sm bg-surface-container-lowest">
+<div class="relative h-44 w-full">
+<img class="w-full h-full object-cover" data-alt="High-end minimalist skincare glass amber dropper bottle and ceramic cream jar resting on sand-hued travertine stone with soft morning sunlight casting soft shadows, luxury Pakistani botanical apothecary product styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ7CyWfa7B4eAYbsetb4Ac79xzyJqAJg7-feNv2P07Vt25-yiHMmvmZndsuo1pkvDkCRifAhP4bpPamXZMYwVciuCmfe1jdPzK0oDD03czyv8kHQVzl6cQ72La3bpnCzwconNV9vJttpF3KuhtRLage_axK6-WX66PGnGG_RKnu3m7V2hppsM2xCKJBE96AGoiogQcVGucxEw6xIgVIlyLfg91lnbQ2JtyA4D59dj8panoiRGidnw5bQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex flex-col justify-end p-4">
+<span class="font-label-uppercase text-[10px] text-secondary-fixed uppercase tracking-wider">Packaging Standard</span>
+<span class="font-headline-sm text-[16px] text-on-primary">DHA Karachi Cleanroom Facility</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm bg-surface-container-lowest">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span> ISO 22716 Certified
+          </span>
+<span class="font-label-uppercase text-[10px] text-secondary font-semibold">BATCH PK-402</span>
+</div>
+</div>
+</div>
+<!-- Main Settings Forms Bento Column -->
+<div class="col-span-12 lg:col-span-8 xl:col-span-9 flex flex-col gap-space-xl">
+<!-- Section 1: Brand & Store Identity -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">storefront</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">1. Brand &amp; Store Identity</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Legal registration entity and patron-facing studio credentials</p>
+</div>
+</div>
+<span class="font-label-uppercase text-label-uppercase px-2.5 py-1 rounded bg-surface-container text-on-surface font-semibold">SECTION 01</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5 md:col-span-2">
+<label class="font-label-ui text-label-ui text-on-surface font-medium flex items-center justify-between">
+<span>Store Legal Name</span>
+<span class="font-label-uppercase text-[10px] text-secondary">Securities &amp; Exchange Commission Registered</span>
+</label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest transition-all outline-none" type="text" value="EBA Skin Care Pakistan (Pvt.) Ltd."/>
+</div>
+<div class="flex flex-col gap-1.5 md:col-span-2">
+<label class="font-label-ui text-label-ui text-on-surface font-medium">Store Brand Tagline</label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest transition-all outline-none" type="text" value="Bespoke Dermal Formulations &amp; Cellular Precision"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">mail</span> Concierge Support Email
+            </label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest transition-all outline-none" type="email" value="concierge@ebaskincare.pk"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">call</span> Store Helpline / WhatsApp Concierge
+            </label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest transition-all outline-none" type="text" value="+92 21 3589 1234"/>
+</div>
+<div class="flex flex-col gap-1.5 md:col-span-2">
+<label class="font-label-ui text-label-ui text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">location_on</span> Registered Atelier &amp; Formulation Lab Address
+            </label>
+<textarea class="w-full px-4 py-3 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest transition-all outline-none resize-none" rows="2">Suite 402, 4th Floor, Al-Murtaza Commercial Lane 3, Phase 8, DHA, Karachi 75500, Pakistan</textarea>
+</div>
+</div>
+</section>
+<!-- Section 2: Regional & Currency Formats -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">currency_rupee</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">2. Regional &amp; Currency Formats</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Domestic denomination standards, thresholds, and metrology rules</p>
+</div>
+</div>
+<span class="font-label-uppercase text-label-uppercase px-2.5 py-1 rounded bg-surface-container text-on-surface font-semibold">SECTION 02</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface font-medium flex items-center justify-between">
+<span>Store Currency</span>
+<span class="material-symbols-outlined text-[15px] text-outline" title="Locked by system admin">lock</span>
+</label>
+<div class="px-4 py-3 rounded-lg bg-surface-container-high font-body-md text-body-md text-on-surface flex items-center justify-between cursor-not-allowed">
+<span>Pakistani Rupee (PKR - Rs.)</span>
+<span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-bold">DEFAULT</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface font-medium">System Timezone</label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container-high font-body-md text-body-md text-on-surface outline-none cursor-default" readonly="" type="text" value="Asia/Karachi (PKT - UTC+5)"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface font-medium">Metrology Measurement Unit</label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest transition-all outline-none" type="text" value="Grams (gm) / Milliliters (ml)"/>
+</div>
+<div class="flex flex-col gap-1.5 p-4 rounded-xl bg-surface-container-low">
+<span class="font-label-ui text-label-ui text-on-surface font-semibold">Free Delivery Benchmark</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Patrons purchasing above this net basket qualify for zero courier surcharge.</span>
+<div class="relative mt-2">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-price-md text-price-md text-secondary">Rs.</span>
+<input class="w-full pl-12 pr-4 py-2.5 rounded-lg bg-surface-container-lowest font-price-md text-price-md text-on-surface outline-none focus:ring-1 focus:ring-secondary transition-all" type="text" value="3,500"/>
+</div>
+</div>
+<div class="flex flex-col gap-1.5 p-4 rounded-xl bg-surface-container-low">
+<span class="font-label-ui text-label-ui text-on-surface font-semibold">Standard Courier Fee</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Default domestic dispatch tariff applied below benchmark nationwide.</span>
+<div class="relative mt-2">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-price-md text-price-md text-secondary">Rs.</span>
+<input class="w-full pl-12 pr-4 py-2.5 rounded-lg bg-surface-container-lowest font-price-md text-price-md text-on-surface outline-none focus:ring-1 focus:ring-secondary transition-all" type="text" value="250"/>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-secondary-container/50 flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-secondary-container">
+<span class="font-label-uppercase text-label-uppercase">Currency Formatter</span>
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-secondary-container">Rs. 8,450.00</div>
+<span class="font-body-sm text-[11px] text-on-secondary-container/80">Preview: "Rs. 8,450" (Space separated, no trailing decimals in cart view)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Logistics & Courier Automation -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">local_shipping</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">3. Logistics &amp; Courier Automation</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Synchronized domestic couriers, webhook triggers, and Cash on Delivery security</p>
+</div>
+</div>
+<span class="font-label-uppercase text-label-uppercase px-2.5 py-1 rounded bg-surface-container text-on-surface font-semibold">SECTION 03</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Courier Card 1: TCS -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-[14px]">
+                  TCS
+                </div>
+<div>
+<h3 class="font-headline-sm text-[16px] text-on-surface">TCS Express API Integration</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">API Key: ••••••••••••8491</span>
+</div>
+</div>
+<span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-tertiary-container text-on-tertiary font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary"></span> OPERATIONAL
+              </span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant bg-surface-container-lowest p-3 rounded-lg">
+<span class="flex items-center gap-1.5 font-label-ui text-label-ui text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-tertiary">sync</span> Tracking Webhook Active
+              </span>
+<button class="text-secondary font-label-uppercase text-[11px] hover:underline" type="button">Re-test Ping</button>
+</div>
+</div>
+<!-- Courier Card 2: Leopard -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold text-[13px]">
+                  LCS
+                </div>
+<div>
+<h3 class="font-headline-sm text-[16px] text-on-surface">Leopard Courier Express API</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Client ID: EBA-LEO-9122</span>
+</div>
+</div>
+<span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-tertiary-container text-on-tertiary font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary"></span> OPERATIONAL
+              </span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant bg-surface-container-lowest p-3 rounded-lg">
+<span class="flex items-center gap-1.5 font-label-ui text-label-ui text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-tertiary">cable</span> Real-time Waybill Generator
+              </span>
+<button class="text-secondary font-label-uppercase text-[11px] hover:underline" type="button">Configure</button>
+</div>
+</div>
+<!-- COD Verification Toggle Card -->
+<div class="md:col-span-2 p-space-md rounded-xl bg-surface-container flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[22px]">phonelink_ring</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-[17px] text-on-surface">Cash on Delivery (COD) OTP Verification</h3>
+<span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-bold">RTO REDUCTION</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Sends automated 4-digit SMS OTP verification to patron mobile before courier consignment slip generation. Lowers Return-To-Origin (RTO) rate to under 2.4%.</p>
+</div>
+</div>
+<!-- Custom Switch Toggle -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" id="cod-otp-toggle" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-surface-container-lowest after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Section 4: Legal Compliance & Tax Numbers (FBR) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">account_balance</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">4. Legal Compliance &amp; Tax Numbers</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Federal Board of Revenue (FBR) POS integration and corporate registry parameters</p>
+</div>
+</div>
+<span class="font-label-uppercase text-label-uppercase px-2.5 py-1 rounded bg-surface-container text-on-surface font-semibold">SECTION 04</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface font-medium flex items-center justify-between">
+<span>National Tax Number (NTN)</span>
+<span class="font-label-uppercase text-[10px] text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">verified</span> Active Taxpayer
+              </span>
+</label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface font-mono tracking-wider focus:bg-surface-container-lowest transition-all outline-none" type="text" value="NTN-8924104-7"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface font-medium flex items-center justify-between">
+<span>Sales Tax Registration Number (STRN)</span>
+<span class="font-label-uppercase text-[10px] text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">verified</span> Verified 18% GST
+              </span>
+</label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface font-mono tracking-wider focus:bg-surface-container-lowest transition-all outline-none" type="text" value="STRN-32778761234"/>
+</div>
+<!-- FBR POS Card -->
+<div class="md:col-span-2 p-space-md rounded-xl bg-surface-container-low flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">qr_code_2</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-[17px] text-on-surface">FBR POS Invoicing Integration</h3>
+<span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-tertiary text-on-tertiary font-bold">DIGITAL FISCAL SEAL</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Automatically contacts FBR middleware on confirmed checkout, appends the official fiscal invoice number, and prints dynamic verification QR code on domestic shipping invoices.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 shrink-0">
+<span class="font-label-uppercase text-[11px] text-tertiary font-bold">POS SYNC: ACTIVE</span>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" id="fbr-sync-toggle" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-surface-container-lowest after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Maintenance & Store Visibility -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">public</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">5. Maintenance &amp; Store Visibility</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Live storefront accessibility, downtime redirects, and guest patron policies</p>
+</div>
+</div>
+<span class="font-label-uppercase text-label-uppercase px-2.5 py-1 rounded bg-surface-container text-on-surface font-semibold">SECTION 05</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-uppercase text-[10px] text-secondary uppercase font-semibold">Public Access</span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse"></span>
+</div>
+<div>
+<span class="font-label-ui text-label-ui text-on-surface-variant">Storefront Status</span>
+<div class="font-headline-sm text-[18px] text-on-surface font-semibold mt-0.5">Online / Live to Public</div>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Storefront is actively processing patron cart transactions across Pakistan.</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-uppercase text-[10px] text-on-surface-variant uppercase font-semibold">Staging Override</span>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input class="sr-only peer" id="maintenance-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-error"></div>
+</label>
+</div>
+<div>
+<span class="font-label-ui text-label-ui text-on-surface-variant">Maintenance Mode</span>
+<div class="font-headline-sm text-[18px] text-on-surface font-semibold mt-0.5" id="maintenance-status-label">Currently Off</div>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Enabling displays a bespoke editorial splash page during laboratory formula updates.</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-uppercase text-[10px] text-secondary uppercase font-semibold">Patron Onboarding</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">how_to_reg</span>
+</div>
+<div>
+<span class="font-label-ui text-label-ui text-on-surface-variant">Registration Mode</span>
+<div class="font-headline-sm text-[18px] text-on-surface font-semibold mt-0.5">Open &amp; Guest Allowed</div>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Express single-click checkout enabled without mandatory password creation.</span>
+</div>
+</div>
+</section>
+<!-- Bottom Floating Action Strip -->
+<div class="p-space-md rounded-xl bg-primary-container text-on-primary flex flex-col sm:flex-row items-center justify-between gap-space-md shadow-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed text-[24px]">info</span>
+<div>
+<span class="font-label-ui text-label-ui font-semibold block text-on-primary">Unsaved Parameters Detected</span>
+<span class="font-body-sm text-[12px] text-on-primary-container">Modified settings will take immediate effect on all Karachi &amp; nationwide edge servers.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<button class="w-1/2 sm:w-auto px-4 py-2 rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-bright transition-colors font-label-ui text-label-ui" type="button">Discard</button>
+<button class="w-1/2 sm:w-auto px-6 py-2 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary-fixed-dim font-label-ui text-label-ui font-semibold shadow-sm transition-all flex items-center justify-center gap-2" id="save-settings-btn-bottom" type="button">
+<span class="material-symbols-outlined text-[17px]">save</span>
+<span>Save All Changes</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification Toast Container -->
+<div class="fixed bottom-6 right-8 bg-surface-container-lowest text-on-surface px-5 py-4 rounded-xl shadow-xl flex items-center gap-3 border-none transition-all duration-300 opacity-0 translate-y-6 pointer-events-none z-50" id="toast-notification">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-ui text-label-ui font-semibold">Settings Successfully Published</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">FBR Pos keys &amp; Courier webhooks refreshed across Pakistan Hub.</span>
+</div>
+</div>
+</div>
+<script>
+  (function () {
+    const saveBtn = document.getElementById('save-settings-btn');
+    const saveBtnBottom = document.getElementById('save-settings-btn-bottom');
+    const toast = document.getElementById('toast-notification');
+    const maintenanceToggle = document.getElementById('maintenance-toggle');
+    const maintenanceStatusLabel = document.getElementById('maintenance-status-label');
+
+    function triggerSaveToast() {
+      if (!toast) return;
+      toast.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-6', 'pointer-events-none');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 4000);
+    }
+
+    if (saveBtn) saveBtn.addEventListener('click', triggerSaveToast);
+    if (saveBtnBottom) saveBtnBottom.addEventListener('click', triggerSaveToast);
+
+    if (maintenanceToggle && maintenanceStatusLabel) {
+      maintenanceToggle.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          maintenanceStatusLabel.textContent = 'Active (Store Offline)';
+          maintenanceStatusLabel.classList.add('text-error');
+        } else {
+          maintenanceStatusLabel.textContent = 'Currently Off';
+          maintenanceStatusLabel.classList.remove('text-error');
+        }
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest py-space-md shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="w-full px-8 flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-body-sm text-body-sm"><span>© 2024 EBA Skin Care Luxury Formulation Studio. All rights reserved.</span><div class="flex items-center gap-space-md font-label-uppercase text-label-uppercase"><span>COD Enabled</span><span>JazzCash Active</span><span>EasyPaisa Active</span><span>Secure SSL</span></div></div></footer></div></body></html>

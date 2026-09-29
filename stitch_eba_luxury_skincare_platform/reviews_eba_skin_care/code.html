@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error-container": "#ffdad6", "on-tertiary-fixed": "#241a00", "secondary": "#725b38", "on-error": "#ffffff", "on-primary-container": "#898281", "surface-container-high": "#ebe8e3", "on-primary-fixed": "#1f1b1a", "primary-container": "#1f1b1a", "secondary-fixed": "#fedeb2", "outline-variant": "#d1c4c1", "surface-bright": "#fdf9f4", "surface-container-highest": "#e6e2dd", "tertiary": "#735c00", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#e9c349", "background": "#fdf9f4", "outline": "#7f7572", "tertiary-fixed": "#ffe088", "on-primary-fixed-variant": "#4b4644", "on-secondary-container": "#78603e", "inverse-on-surface": "#f4f0eb", "on-tertiary-container": "#4f3d00", "primary-fixed-dim": "#cdc5c3", "surface": "#fdf9f4", "on-background": "#1c1c19", "surface-container-low": "#f7f3ee", "on-tertiary-fixed-variant": "#574500", "surface-container": "#f1ede8", "on-secondary-fixed": "#281800", "tertiary-container": "#cca730", "on-surface-variant": "#4e4543", "on-error-container": "#93000a", "on-primary": "#ffffff", "secondary-container": "#fedeb2", "inverse-primary": "#cdc5c3", "on-surface": "#1c1c19", "surface-variant": "#e6e2dd", "primary": "#000000", "primary-fixed": "#eae0de", "surface-container-lowest": "#ffffff", "inverse-surface": "#31302d", "error": "#ba1a1a", "surface-dim": "#ddd9d5", "on-secondary-fixed-variant": "#584323", "surface-tint": "#635d5b", "secondary-fixed-dim": "#e0c298", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-mobile": "1rem", "gutter": "1.5rem", "margin": "3rem", "margin-mobile": "1.25rem", "space-xl": "2.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-md": "1rem" }, "fontFamily": { "headline-lg": [ "Playfair Display" ], "headline-lg-mobile": [ "Playfair Display" ], "label-uppercase": [ "Inter" ], "display-brand": [ "Playfair Display" ], "body-sm": [ "Inter" ], "display-lg": [ "Playfair Display" ], "display-lg-mobile": [ "Playfair Display" ], "body-md": [ "Inter" ], "label-ui": [ "Inter" ], "price-md": [ "Inter" ], "body-lg": [ "Inter" ], "headline-sm": [ "Playfair Display" ], "headline-md": [ "Playfair Display" ], "price-lg": [ "Inter" ] }, "fontSize": { "headline-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "500" } ], "label-uppercase": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "display-brand": [ "30px", { "lineHeight": "36px", "letterSpacing": "0.15em", "fontWeight": "600" } ], "body-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "display-lg-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-ui": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "price-md": [ "16px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-md": [ "26px", { "lineHeight": "34px", "letterSpacing": "0em", "fontWeight": "500" } ], "price-lg": [ "20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col h-full overflow-hidden"><div class="p-space-lg flex flex-col gap-space-xs"><div class="font-display-brand text-headline-sm uppercase text-on-surface tracking-[0.18em]">EBA SKIN CARE</div><div class="font-label-uppercase text-label-uppercase text-secondary tracking-widest">ADMIN CONSOLE • STUDIO</div></div><nav class="flex-1 px-space-md py-space-xs space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary rounded-lg font-semibold shadow-[0_2px_8px_rgba(26,22,21,0.08)]"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">space_dashboard</span><span class="font-label-ui text-label-ui">Dashboard</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="orders" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">shopping_bag</span><span class="font-label-ui text-label-ui">Orders</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-semibold">12 NEW</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="products" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">spa</span><span class="font-label-ui text-label-ui">Products</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="categories" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">category</span><span class="font-label-ui text-label-ui">Categories</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="shipment-logistics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">local_shipping</span><span class="font-label-ui text-label-ui">Shipment Logistics</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="coupons-and-offers" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">confirmation_number</span><span class="font-label-ui text-label-ui">Coupons &amp; Offers</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="payment-gateways" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">account_balance_wallet</span><span class="font-label-ui text-label-ui">Payment Gateways</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="homepage-control" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">storefront</span><span class="font-label-ui text-label-ui">Homepage Control</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="customers" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">group</span><span class="font-label-ui text-label-ui">Customers</span></div></a><a aria-current="page" class="flex items-center justify-between px-space-md py-space-sm transition-all bg-primary-container text-on-primary rounded-lg font-semibold shadow-[0_2px_8px_rgba(26,22,21,0.08)]" data-path="reviews" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">grade</span><span class="font-label-ui text-label-ui">Reviews</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">4</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="inventory" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">inventory_2</span><span class="font-label-ui text-label-ui">Inventory</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="notifications" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">notifications</span><span class="font-label-ui text-label-ui">Notifications</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-semibold">3</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="staff-and-roles" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">admin_panel_settings</span><span class="font-label-ui text-label-ui">Staff &amp; Roles</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">tune</span><span class="font-label-ui text-label-ui">Settings</span></div></a></nav><div class="p-space-md bg-surface-container/60 m-space-sm rounded-xl flex flex-col gap-space-sm"><a class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface transition-colors" href="#"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[18px] text-secondary">visibility</span><span class="font-label-ui text-label-ui">View Live Storefront</span></div><span class="material-symbols-outlined text-[16px] text-on-surface-variant">north_east</span></a><div class="flex items-center justify-between pt-space-xs"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col"><span class="font-label-ui text-label-ui font-semibold text-on-surface">Fatima Khan</span><span class="font-label-uppercase text-[10px] text-secondary">Owner &amp; Formulator</span></div></div><button class="p-1 text-on-surface-variant hover:text-on-surface rounded" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></div></aside><div class="pl-72 min-h-screen flex flex-col"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-8"><div class="flex items-center gap-space-md w-96"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full bg-surface-container-low pl-10 pr-4 py-2 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search orders, formulation SKUs, patrons..." type="search"/></div></div><div class="flex items-center gap-space-lg"><div class="hidden lg:flex items-center gap-space-md text-on-surface-variant"><div class="flex items-center gap-space-xs font-label-ui text-label-ui"><span class="material-symbols-outlined text-[16px] text-secondary">calendar_today</span><span>Tuesday, 24 Oct 2024</span></div><span class="w-1 h-1 rounded-full bg-outline-variant"></span><div class="flex items-center gap-space-xs font-label-ui text-label-ui"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span>Pakistan Hub (PKR)</span></div></div><div class="flex items-center gap-space-sm"><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span></button><button class="hidden sm:flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-label-ui" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Create Order</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface px-8 py-space-lg flex-1"><div class="flex flex-col w-full">
+<div class="flex flex-col gap-space-lg max-w-[1380px] w-full mx-auto pb-space-xl">
+<!-- Top Header Bar with Context & Master Toggle -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-uppercase text-label-uppercase text-secondary uppercase tracking-[0.2em]">Quality Assurance &amp; Dermal Feedback</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-uppercase text-label-uppercase text-outline font-medium">Batch Moderation Console</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Product Reviews &amp; Testimonials Moderation</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Review, verify dermal feedback, approve customer ratings, and publish authentic experiences across Pakistan and GCC storefronts.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm self-start lg:self-center">
+<button class="group flex items-center gap-space-sm px-5 py-3 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface shadow-sm transition-all duration-200" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary group-hover:rotate-45 transition-transform duration-300">tune</span>
+<span class="font-label-ui text-label-ui">Auto-Approve 5-Star Verified Purchases (Settings)</span>
+</button>
+<button class="flex items-center gap-space-xs px-4 py-3 rounded-full bg-primary-container text-on-primary shadow-md hover:bg-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-label-ui text-label-ui">Audit Log</span>
+</button>
+</div>
+</div>
+<!-- Top Metric Stats Bento Matrix -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Metric 1: Pending -->
+<div class="relative overflow-hidden bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between group">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 rounded-full bg-secondary-container/30 pointer-events-none transition-transform group-hover:scale-125 duration-500"></div>
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-wider">Queue Priority</span>
+<span class="font-headline-md text-headline-md text-on-surface font-semibold mt-1">4 Reviews</span>
+</div>
+<span class="p-2 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+</span>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-error font-body-sm text-body-sm">
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+<span class="font-semibold">Action Required</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">∼ 2.4 hrs SLA</span>
+</div>
+</div>
+<!-- Metric 2: Published Reviews -->
+<div class="relative overflow-hidden bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-outline tracking-wider">Live Repository</span>
+<span class="font-headline-md text-headline-md text-on-surface font-semibold mt-1">382 Reviews</span>
+</div>
+<span class="p-2 rounded-lg bg-surface-container-high text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">workspace_premium</span>
+</span>
+</div>
+<div class="mt-4 flex items-center gap-space-xs">
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-price-md text-price-md font-semibold ml-1 text-on-surface">4.9</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">weighted clinical satisfaction</span>
+</div>
+</div>
+<!-- Metric 3: Verified Purchase Rate -->
+<div class="relative overflow-hidden bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-outline tracking-wider">Trust Authenticity</span>
+<span class="font-headline-md text-headline-md text-on-surface font-semibold mt-1">94.2%</span>
+</div>
+<span class="p-2 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</span>
+</div>
+<div class="mt-4 flex items-center gap-space-sm">
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 94.2%"></div>
+</div>
+<span class="font-label-uppercase text-label-uppercase text-secondary font-semibold">OTP+Order</span>
+</div>
+</div>
+<!-- Metric 4: Negative/Inquiry Flagged -->
+<div class="relative overflow-hidden bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-outline tracking-wider">Investigation Queue</span>
+<span class="font-headline-md text-headline-md text-on-surface font-semibold mt-1">2 Reviews</span>
+</div>
+<span class="p-2 rounded-lg bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">flag</span>
+</span>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-error-container font-medium">Logistics &amp; Courier Delays</span>
+<span class="font-label-uppercase text-[10px] text-outline">Leopard / TCS</span>
+</div>
+</div>
+</div>
+<!-- Navigation Tabs & Comprehensive Filters -->
+<div class="flex flex-col gap-space-md bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<!-- Primary Status Segment Control -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-1 p-1 bg-surface-container-low rounded-full">
+<button class="flex items-center gap-2 px-4 py-2 rounded-full bg-primary-container text-on-primary font-label-ui text-label-ui shadow-sm" type="button">
+<span>Pending Approval</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary text-[11px] font-semibold">4</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-full text-on-surface-variant hover:text-on-surface font-label-ui text-label-ui transition-colors" type="button">
+<span>Approved &amp; Live</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-[11px]">378</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-full text-on-surface-variant hover:text-on-surface font-label-ui text-label-ui transition-colors" type="button">
+<span>Flagged / Rejected</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-[11px] font-semibold">6</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-full text-on-surface-variant hover:text-on-surface font-label-ui text-label-ui transition-colors" type="button">
+<span>Archived</span>
+</button>
+</div>
+<!-- Quick Bulk Action triggers -->
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="font-body-sm text-body-sm text-outline">Bulk select active</span>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-ui text-label-ui transition-colors" type="button">
+            Approve All Clean (3)
+          </button>
+</div>
+</div>
+<!-- Detailed Search & Secondary Filtering Toolbar -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm pt-space-xs items-center">
+<!-- Search Input -->
+<div class="md:col-span-5 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-surface-container-low pl-10 pr-4 py-2.5 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline outline-none focus:bg-surface-container-high transition-all" placeholder="Search patron name, formulation phrase, or order ID..." type="search"/>
+</div>
+<!-- Product Formulation Dropdown Filter -->
+<div class="md:col-span-3">
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-low px-4 py-2.5 rounded-lg font-body-sm text-body-sm text-on-surface outline-none cursor-pointer focus:bg-surface-container-high transition-colors pr-10">
+<option value="all">All Formulations (Active Studio)</option>
+<option value="beauty-glow">Beauty Glow Serum (30ml)</option>
+<option value="mens-charcoal">Men's Charcoal Wash (100ml)</option>
+<option value="night-cream">Beauty Night Whitening Cream (50gm)</option>
+<option value="mens-defense">Men's Active Defense Glow Serum (30ml)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Star Rating Filter -->
+<div class="md:col-span-2">
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-low px-4 py-2.5 rounded-lg font-body-sm text-body-sm text-on-surface outline-none cursor-pointer focus:bg-surface-container-high transition-colors pr-10">
+<option value="all">All Ratings</option>
+<option value="5">5 Stars (Pinnacle)</option>
+<option value="4">4 Stars</option>
+<option value="3">3 Stars (Requires Review)</option>
+<option value="1-2">1-2 Stars (Alerts)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[18px]">grade</span>
+</div>
+</div>
+<!-- Verified Purchase Toggle Pill -->
+<div class="md:col-span-2 flex justify-end">
+<label class="flex items-center gap-space-xs cursor-pointer select-none bg-surface-container-low px-3 py-2 rounded-lg hover:bg-surface-container-high transition-colors">
+<input checked="" class="w-4 h-4 rounded text-secondary focus:ring-0 accent-secondary cursor-pointer" type="checkbox"/>
+<span class="font-label-ui text-label-ui text-on-surface">Verified Buyers Only</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Main Workspace: Split Content Grid (Review Cards List + Quick Reply Intelligence Panel) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Review Cards Column -->
+<div class="xl:col-span-8 flex flex-col gap-space-md">
+<!-- ================= Review 1 ================= -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow duration-300 relative flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center font-display-brand text-headline-sm text-secondary font-medium">
+                AS
+              </div>
+<div class="flex flex-col">
+<div class="flex flex-wrap items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Dr. Aamina Sohail</h3>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container/50 text-on-secondary-container font-label-uppercase text-[10px]">
+<span class="material-symbols-outlined text-[13px] text-secondary">verified</span>
+                    Verified Buyer • Islamabad
+                  </span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant mt-1">
+<span class="font-label-ui text-label-ui font-medium text-secondary">Beauty Glow Serum (30ml)</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-body-sm text-body-sm text-outline">SKU: EBA-BGS-030</span>
+</div>
+</div>
+</div>
+<!-- Star Score & Submission Timestamp -->
+<div class="flex flex-col sm:items-end">
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-1.5 font-label-ui text-label-ui font-semibold text-on-surface">5.0</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">Submitted 3 hours ago</span>
+</div>
+</div>
+<!-- Dermal Review Narrative -->
+<div class="bg-surface-container-low/60 p-space-md rounded-lg">
+<p class="font-body-lg text-body-lg text-on-surface italic leading-relaxed">
+              “The formulation is exceptionally stable. Living in Islamabad with the changing winter dry air, this serum restored my moisture barrier within 5 days without any pore congestion. Truly clinical grade formulation for South Asian skin.”
+            </p>
+</div>
+<!-- Customer Media Attachment & Clinical Note Tag -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-uppercase text-[10px] text-outline uppercase tracking-wider">Patron Media (1)</span>
+<div class="relative group cursor-pointer overflow-hidden rounded-lg w-20 h-20 bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300" data-alt="A close-up photograph of an amber glass dropper dispensing a golden viscous skincare serum against clean natural limestone in soft diffuse morning light with fine aesthetic botanical styling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVkQHPs0z_GBqWbiZ31JTLKw4qakvH96mXLsvErTa_89PM2wvGchbdLH71-mEOIa0tzqv5laJnbdtAcyngYMj9vk05WmO6qFDq35Qg9XAP-43SUIr3tenc0Fq--Xn93OJC5PcW4DuL7nvtnD-N6iea5v8ceUsAv6mgLFn09xeP-n7_BczbSOCP9grpo9g_h2yfRIhtoFZ-vua1FHOGNopcE6hKpJfOL2leYc5v4CGZP2f6HW2vWIwLjQ"/>
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-primary text-[20px]">zoom_in</span>
+</div>
+</div>
+</div>
+<div class="hidden sm:flex flex-col justify-center">
+<span class="font-label-ui text-label-ui text-secondary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">biotech</span>
+                  Verified Dermal Practitioner
+                </span>
+<span class="font-body-sm text-body-sm text-outline">Order #PK-98211 (JazzCash Prepaid)</span>
+</div>
+</div>
+<!-- Moderator Action Bar -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-ui text-label-ui transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">star</span>
+<span>Feature on Homepage</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-ui text-label-ui transition-colors" onclick="selectTemplate('patron-thank', 'Dr. Aamina Sohail')" type="button">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+<span>Public Reply</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-error-container text-on-surface-variant hover:text-on-error-container transition-colors" title="Reject Review" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-ui text-label-ui shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Approve &amp; Publish</span>
+</button>
+</div>
+</div>
+</article>
+<!-- ================= Review 2 ================= -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow duration-300 relative flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center font-display-brand text-headline-sm text-secondary font-medium">
+                UT
+              </div>
+<div class="flex flex-col">
+<div class="flex flex-wrap items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Usman Tariq</h3>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container/50 text-on-secondary-container font-label-uppercase text-[10px]">
+<span class="material-symbols-outlined text-[13px] text-secondary">verified</span>
+                    Verified Buyer • Karachi
+                  </span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant mt-1">
+<span class="font-label-ui text-label-ui font-medium text-secondary">Men's Charcoal Oil-Control Face Wash (100ml)</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-body-sm text-body-sm text-outline">SKU: EBA-MCF-100</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:items-end">
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-1.5 font-label-ui text-label-ui font-semibold text-on-surface">5.0</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">Submitted 5 hours ago</span>
+</div>
+</div>
+<div class="bg-surface-container-low/60 p-space-md rounded-lg">
+<p class="font-body-lg text-body-lg text-on-surface italic leading-relaxed">
+              “Best face wash for Karachi's humid summers and coastal weather. Cleans without leaving that dry tight stretch. The Binchotan charcoal gives a very premium lather.”
+            </p>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-body-sm text-body-sm text-outline">Order #PK-98188 (EasyPaisa Verified)</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-uppercase text-[10px] text-secondary font-semibold">Humidity Resilient Claim</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-ui text-label-ui transition-colors" onclick="selectTemplate('patron-thank', 'Usman Tariq')" type="button">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+<span>Public Reply</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-error-container text-on-surface-variant hover:text-on-error-container transition-colors" title="Reject Review" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-ui text-label-ui shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Approve &amp; Publish</span>
+</button>
+</div>
+</div>
+</article>
+<!-- ================= Review 3 (Inquiry / Flagged Logistics) ================= -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow duration-300 relative flex flex-col gap-space-md border-l-4 border-tertiary">
+<!-- Banner for Flag Alert -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-secondary-container/40 text-on-secondary-container">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">local_shipping</span>
+<span class="font-label-ui text-label-ui font-semibold">Flagged: Logistics &amp; Delivery Concern</span>
+<span class="text-outline">—</span>
+<span class="font-body-sm text-body-sm">Formula feedback positive, courier SLA breached.</span>
+</div>
+<span class="font-label-uppercase text-[10px] font-bold tracking-widest px-2 py-0.5 rounded bg-surface-container-lowest">ESC-ALERT</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center font-display-brand text-headline-sm text-secondary font-medium">
+                HQ
+              </div>
+<div class="flex flex-col">
+<div class="flex flex-wrap items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Hina Qureshi</h3>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container/50 text-on-secondary-container font-label-uppercase text-[10px]">
+<span class="material-symbols-outlined text-[13px] text-secondary">verified</span>
+                    Verified Buyer • Lahore
+                  </span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant mt-1">
+<span class="font-label-ui text-label-ui font-medium text-secondary">Beauty Night Whitening Cream (50gm)</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-body-sm text-body-sm text-outline">SKU: EBA-BNW-050</span>
+</div>
+</div>
+</div>
+<!-- 3 Star Rating -->
+<div class="flex flex-col sm:items-end">
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px] text-outline-variant">star</span>
+<span class="material-symbols-outlined text-[18px] text-outline-variant">star</span>
+<span class="ml-1.5 font-label-ui text-label-ui font-semibold text-on-surface">3.0</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">Submitted Yesterday</span>
+</div>
+</div>
+<div class="bg-surface-container-low/60 p-space-md rounded-lg">
+<p class="font-body-lg text-body-lg text-on-surface italic leading-relaxed">
+              “Product texture is wonderful, but delivery via Leopard Courier took 4 days to reach DHA Lahore instead of 2. Jar arrived intact with cold seal safe.”
+            </p>
+</div>
+<!-- Moderation Actions for Flagged Review -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-body-sm text-body-sm text-outline">Leopard Waybill: #LPR-4491029</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<button class="text-tertiary hover:underline font-label-ui text-label-ui flex items-center gap-1" type="button">
+<span>View Courier Telemetry</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-ui text-label-ui transition-colors" onclick="selectTemplate('shipping-apology', 'Hina Qureshi')" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">chat</span>
+<span>Contact Customer via WhatsApp</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-ui text-label-ui transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">sync_alt</span>
+<span>Assign to Logistics Team</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-error-container text-on-surface-variant hover:text-on-error-container transition-colors" title="Reject" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-ui text-label-ui shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Approve Review</span>
+</button>
+</div>
+</div>
+</article>
+<!-- ================= Review 4 ================= -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow duration-300 relative flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center font-display-brand text-headline-sm text-secondary font-medium">
+                FM
+              </div>
+<div class="flex flex-col">
+<div class="flex flex-wrap items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Fahad Mustafa</h3>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container/50 text-on-secondary-container font-label-uppercase text-[10px]">
+<span class="material-symbols-outlined text-[13px] text-secondary">verified</span>
+                    Verified Buyer • Rawalpindi
+                  </span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant mt-1">
+<span class="font-label-ui text-label-ui font-medium text-secondary">Men's Active Defense Glow Serum (30ml)</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-body-sm text-body-sm text-outline">SKU: EBA-MAD-030</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:items-end">
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-1.5 font-label-ui text-label-ui font-semibold text-on-surface">5.0</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">Submitted Oct 29, 2024</span>
+</div>
+</div>
+<div class="bg-surface-container-low/60 p-space-md rounded-lg">
+<p class="font-body-lg text-body-lg text-on-surface italic leading-relaxed">
+              “Zero sticky residue under a collared shirt. Absorbs in 30 seconds. Skin looks calm after shaving.”
+            </p>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-body-sm text-body-sm text-outline">Order #PK-97802 (Cash on Delivery)</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-uppercase text-[10px] text-on-surface-variant font-medium">Post-Shave Efficacy</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-ui text-label-ui transition-colors" onclick="selectTemplate('patron-thank', 'Fahad Mustafa')" type="button">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+<span>Public Reply</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-error-container text-on-surface-variant hover:text-on-error-container transition-colors" title="Reject Review" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-ui text-label-ui shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Approve &amp; Publish</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Quick Reply & Brand Intelligence Panel (Sticky Right Sidebar) -->
+<div class="xl:col-span-4 sticky top-20 flex flex-col gap-space-md">
+<!-- Formulation Studio Quick Reply Composer -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-secondary">forum</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Editorial Reply Studio</h2>
+</div>
+<span class="font-label-uppercase text-[10px] text-secondary px-2 py-0.5 rounded-full bg-secondary-container/60 font-semibold">Official Voice</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Generate authentic clinical replies maintaining EBA's warm apothecaric tone. Select a preset or customize below:
+          </p>
+<!-- Quick Response Preset Pills -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-uppercase text-[10px] text-outline uppercase tracking-wider">Smart Presets</span>
+<div class="flex flex-wrap gap-1.5">
+<button class="px-3 py-1.5 rounded-full bg-surface-container hover:bg-secondary-container/60 hover:text-on-secondary-container text-on-surface font-label-ui text-[12px] transition-colors flex items-center gap-1" onclick="selectTemplate('patron-thank')" type="button">
+<span class="material-symbols-outlined text-[14px] text-secondary">spa</span>
+<span>Thank patron</span>
+</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container hover:bg-secondary-container/60 hover:text-on-secondary-container text-on-surface font-label-ui text-[12px] transition-colors flex items-center gap-1" onclick="selectTemplate('shipping-apology')" type="button">
+<span class="material-symbols-outlined text-[14px] text-tertiary">local_shipping</span>
+<span>Address shipping feedback</span>
+</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container hover:bg-secondary-container/60 hover:text-on-secondary-container text-on-surface font-label-ui text-[12px] transition-colors flex items-center gap-1" onclick="selectTemplate('clinical-consult')" type="button">
+<span class="material-symbols-outlined text-[14px] text-secondary">medical_services</span>
+<span>Offer clinical consultation</span>
+</button>
+</div>
+</div>
+<!-- Dynamic Textarea -->
+<div class="flex flex-col gap-space-xs mt-1">
+<div class="flex items-center justify-between text-outline font-label-ui text-[11px]">
+<span id="replyRecipientLabel">Recipient: Dr. Aamina Sohail</span>
+<span>Signed by: Fatima Khan (Founder)</span>
+</div>
+<textarea class="w-full bg-surface-container-low p-3 rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:bg-surface-container-high transition-colors resize-none" id="replyTextarea" placeholder="Craft response here..." rows="6"></textarea>
+</div>
+<!-- Composer Actions -->
+<div class="flex items-center justify-between pt-space-xs">
+<label class="flex items-center gap-1.5 cursor-pointer text-on-surface-variant font-body-sm text-body-sm">
+<input checked="" class="w-3.5 h-3.5 rounded text-secondary focus:ring-0 accent-secondary" type="checkbox"/>
+<span>Send SMS / WhatsApp alert</span>
+</label>
+<button class="flex items-center gap-1 px-4 py-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-ui text-label-ui shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">send</span>
+<span>Publish Public Reply</span>
+</button>
+</div>
+</div>
+<!-- Moderation Policy & Guidelines Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary">policy</span>
+<h4 class="font-headline-sm text-[16px] font-semibold">Moderation Protocols</h4>
+</div>
+<ul class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary mt-0.5">check_circle</span>
+<span>Publish genuine testimonials mentioning local climates (dry North, humid South).</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary mt-0.5">check_circle</span>
+<span>Logistics remarks under 4 stars must be addressed within 12 hours via Courier Hub.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-error mt-0.5">block</span>
+<span>Reject medical treatment claims not certified by the Dermal Science Board.</span>
+</li>
+</ul>
+</div>
+<!-- Formulation Spotlight Card with Image Placeholder -->
+<div class="relative overflow-hidden bg-surface-container-high rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-uppercase text-label-uppercase text-secondary font-semibold">Top Performing SKU</span>
+<span class="font-label-uppercase text-[10px] text-on-surface px-2 py-0.5 rounded bg-surface-container-lowest">99.1% Positive</span>
+</div>
+<div class="flex items-center gap-space-md mt-1">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="A minimalist frosted glass dropper bottle of luxury botanical skincare oil standing on textured travertine stone with soft eucalyptus shadows in warm neutral tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBran7Tfj6SXw2n_k-AbFMCw5NVSeYThknftEdA6brBhO7hPouuvz3ZO64fydttkPTbeKCWqNUGOoBd25bxlZIuTxXWtU3vzD_Dt-VI-I6aPSuLpyjtFHshwun4mVJmZf7tk7LB62UsOYAej3ckB3-z-xY2zUHNCHViZt4xXS-J9H9NPrcTFVcCghRP8uLYlSY5ywXXKDx2bJKVzsY-0OAAl_kWAeSHGsKjTpCiAV6WbM2kWX7k53-Y3A"/>
+</div>
+<div class="flex flex-col">
+<h5 class="font-headline-sm text-[16px] text-on-surface font-semibold">Beauty Glow Serum (30ml)</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">142 reviews • Avg 4.96 Stars</p>
+<span class="font-label-uppercase text-[10px] text-secondary font-semibold mt-1">Featured on Karachi Flagship</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function selectTemplate(type, patronName) {
+    const textarea = document.getElementById('replyTextarea');
+    const recipientLabel = document.getElementById('replyRecipientLabel');
+    const targetName = patronName || 'valued patron';
+    
+    if (patronName) {
+      recipientLabel.innerText = 'Recipient: ' + patronName;
+    }
+
+    if (type === 'patron-thank') {
+      textarea.value = `Dear ${targetName},\n\nThank you for sharing your experience with our formulation studio. We are delighted that the active ingredients delivered visible dermal stability for your skin. Your trust fuels our continuous botanical research.\n\nWarm regards,\nFatima Khan\nFounder & Formulator, EBA Skin Care`;
+    } else if (type === 'shipping-apology') {
+      textarea.value = `Dear ${targetName},\n\nWe sincerely apologize for the courier transit delay you encountered. While we ensure each jar leaves our studio with pristine cold-seals, our courier partner Leopard fell short of our standard 48-hour delivery commitment to DHA Lahore. Our logistics team has credited Rs. 500 to your studio wallet, and we are actively optimizing this transit lane.\n\nWith gratitude,\nEBA Logistics & Care Team`;
+    } else if (type === 'clinical-consult') {
+      textarea.value = `Dear ${targetName},\n\nThank you for your candid feedback. Our dermal consultant would love to understand your routine in deeper detail and tailor complementary barrier support for your skin type. May we connect with you over WhatsApp or call at your convenience?\n\nIn dermal health,\nClinical Support Desk, EBA`;
+    }
+    textarea.focus();
+  }
+</script></main><footer class="w-full bg-surface-container-lowest py-space-md shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="w-full px-8 flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-body-sm text-body-sm"><span>© 2024 EBA Skin Care Luxury Formulation Studio. All rights reserved.</span><div class="flex items-center gap-space-md font-label-uppercase text-label-uppercase"><span>COD Enabled</span><span>JazzCash Active</span><span>EasyPaisa Active</span><span>Secure SSL</span></div></div></footer></div></body></html>

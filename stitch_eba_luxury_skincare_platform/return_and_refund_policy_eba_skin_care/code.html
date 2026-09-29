@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-surface-variant":"#4e4543","surface":"#fdf9f4","secondary":"#725b38","surface-tint":"#635d5b","on-tertiary-fixed-variant":"#574500","surface-variant":"#e6e2dd","primary":"#000000","on-tertiary-container":"#4f3d00","outline-variant":"#d1c4c1","on-primary-fixed":"#1f1b1a","surface-container-highest":"#e6e2dd","on-secondary-fixed-variant":"#584323","surface-container-high":"#ebe8e3","on-primary":"#ffffff","on-secondary-fixed":"#281800","inverse-on-surface":"#f4f0eb","inverse-surface":"#31302d","outline":"#7f7572","secondary-fixed-dim":"#e0c298","tertiary-container":"#cca730","secondary-fixed":"#fedeb2","surface-container-lowest":"#ffffff","tertiary-fixed":"#ffe088","error":"#ba1a1a","surface-container-low":"#f7f3ee","on-background":"#1c1c19","surface-dim":"#ddd9d5","on-primary-fixed-variant":"#4b4644","primary-container":"#1f1b1a","on-tertiary-fixed":"#241a00","primary-fixed":"#eae0de","on-primary-container":"#898281","inverse-primary":"#cdc5c3","secondary-container":"#fedeb2","surface-container":"#f1ede8","primary-fixed-dim":"#cdc5c3","tertiary":"#735c00","on-secondary-container":"#78603e","background":"#fdf9f4","on-tertiary":"#ffffff","error-container":"#ffdad6","on-error":"#ffffff","surface-bright":"#fdf9f4","on-error-container":"#93000a","on-surface":"#1c1c19","tertiary-fixed-dim":"#e9c349","on-secondary":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","margin-mobile":"1.25rem","space-md":"1rem","space-xl":"2.5rem","space-lg":"1.5rem","space-xs":"0.25rem","margin":"3rem","gutter-mobile":"1rem","gutter":"1.5rem"},"fontFamily":{"body-sm":["Inter"],"price-md":["Inter"],"headline-md":["Playfair Display"],"display-lg-mobile":["Playfair Display"],"headline-lg":["Playfair Display"],"price-lg":["Inter"],"headline-sm":["Playfair Display"],"display-lg":["Playfair Display"],"headline-lg-mobile":["Playfair Display"],"body-md":["Inter"],"label-ui":["Inter"],"label-uppercase":["Inter"],"display-brand":["Playfair Display"],"body-lg":["Inter"]},"fontSize":{"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"400"}],"price-md":["16px",{"lineHeight":"20px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["26px",{"lineHeight":"34px","letterSpacing":"0em","fontWeight":"500"}],"display-lg-mobile":["36px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"500"}],"price-lg":["20px",{"lineHeight":"24px","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"0.01em","fontWeight":"600"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"400"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"0em","fontWeight":"500"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"label-ui":["13px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"label-uppercase":["11px",{"lineHeight":"14px","letterSpacing":"0.12em","fontWeight":"600"}],"display-brand":["30px",{"lineHeight":"36px","letterSpacing":"0.15em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"26px","letterSpacing":"-0.005em","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full bg-primary text-on-primary py-space-xs px-margin-mobile lg:px-margin text-center font-label-uppercase text-label-uppercase uppercase"><div class="max-w-[1380px] mx-auto flex items-center justify-between"><span class="hidden md:inline-block text-surface-variant font-label-uppercase text-label-uppercase">Karachi • Lahore • Islamabad | PKR Rs.</span><span class="mx-auto md:mx-0 font-label-uppercase text-label-uppercase tracking-wider">Free Nationwide Delivery Across Pakistan on Orders Over Rs. 3,500</span><span class="hidden lg:inline-block text-surface-variant font-label-uppercase text-label-uppercase">Care: +92 21 3589 1234</span></div></div><div class="h-28 bg-surface/90 backdrop-blur-xl"><div class="max-w-[1380px] mx-auto h-full px-margin-mobile lg:px-margin flex flex-col justify-between py-space-sm"><div class="flex items-center justify-between gap-gutter"><div class="flex-1 max-w-xs relative hidden md:block"><span class="material-symbols-outlined absolute left-space-sm top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span><input class="w-full bg-surface-container-low pl-9 pr-space-md py-space-xs rounded-full font-body-sm text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest placeholder:text-outline transition-colors" placeholder="Search formulations, ingredients..." type="text"/></div><div class="flex-1 flex justify-center text-center"><a class="inline-block font-display-brand text-display-brand uppercase text-primary select-none hover:opacity-90 transition-opacity" data-path="home" href="#">EBA SKIN CARE</a></div><div class="flex-1 flex items-center justify-end gap-space-md"><a class="relative p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-space-xs" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="px-1.5 py-0.5 rounded-full bg-secondary text-on-secondary font-label-uppercase text-[10px] leading-none">2</span></a><a class="relative p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-space-xs" data-path="cart" href="#"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="font-label-ui text-label-ui hidden sm:inline-block">(1 | Rs. 2,850)</span></a><a class="flex items-center gap-space-xs group" data-path="account" href="#"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="font-label-ui text-label-ui hidden lg:inline-block text-on-surface-variant group-hover:text-on-surface transition-colors">Sign In</span></a></div></div><nav class="flex items-center justify-center gap-space-lg overflow-x-auto py-space-xs" data-active-classes="text-primary font-bold border-b border-primary"><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="home" href="#">Home</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="men" href="#">Men</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="women" href="#">Women</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="shop" href="#">Shop</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="best-sellers" href="#">Best Sellers</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="rituals" href="#">Rituals</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="about-us" href="#">About Us</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="contact-us" href="#">Contact Us</a></nav></div></div></header><main class="w-full pt-36 bg-surface min-h-[70vh]"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Glow -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-32 -right-32 w-96 h-96 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-96 -left-32 w-80 h-80 bg-tertiary-fixed/20 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Header Section / Editorial Banner -->
+<section class="max-w-[1380px] mx-auto w-full px-margin-mobile lg:px-margin pt-space-lg pb-space-xl">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm mb-space-md">
+<a class="hover:text-primary transition-colors" data-path="home" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="hover:text-primary transition-colors cursor-pointer">Customer Care</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-medium">Return &amp; Refund Policy</span>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end">
+<div class="lg:col-span-8 flex flex-col space-y-space-sm">
+<div class="inline-flex items-center gap-2 self-start px-space-md py-1 bg-surface-container-high text-secondary rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span>
+<span class="font-label-uppercase text-label-uppercase uppercase tracking-wider">14-Day Dermal Satisfaction Guarantee</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+            Return, Replacement &amp; Refund Policy
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+            Our clinical formulations are engineered with the highest purity standards. If a formulation does not meet your dermal expectations or arrives compromised during transit, our Lahore and Karachi concierge desks are dedicated to resolving your concerns swiftly and courteously.
+          </p>
+</div>
+<!-- Metric Highlight Badge / Quick Trust Card -->
+<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-space-sm">
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant uppercase">Doorstep Collections</span>
+<span class="font-headline-sm text-headline-sm text-primary">TCS &amp; Leopard Priority</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Karachi, Lahore, Islamabad &amp; Rawalpindi</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Two-Column Structure -->
+<section class="max-w-[1380px] mx-auto w-full px-margin-mobile lg:px-margin pb-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Sticky Table of Contents Sidebar -->
+<aside class="lg:col-span-4 xl:col-span-3 lg:sticky lg:top-40 space-y-space-md">
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-xs mb-space-xs">
+<span class="font-headline-sm text-headline-sm text-primary">Policy Sections</span>
+<span class="material-symbols-outlined text-outline text-[18px]">menu_book</span>
+</div>
+<nav class="flex flex-col space-y-1" id="toc-nav">
+<a class="toc-link flex items-center justify-between px-space-sm py-2 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all" href="#satisfaction-guarantee">
+<span>1. Satisfaction Guarantee</span>
+<span class="material-symbols-outlined text-[14px] opacity-0 transition-opacity">arrow_forward</span>
+</a>
+<a class="toc-link flex items-center justify-between px-space-sm py-2 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all" href="#eligibility-criteria">
+<span>2. Eligibility Criteria</span>
+<span class="material-symbols-outlined text-[14px] opacity-0 transition-opacity">arrow_forward</span>
+</a>
+<a class="toc-link flex items-center justify-between px-space-sm py-2 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all" href="#damaged-consignments">
+<span>3. Damaged Consignments</span>
+<span class="material-symbols-outlined text-[14px] opacity-0 transition-opacity">arrow_forward</span>
+</a>
+<a class="toc-link flex items-center justify-between px-space-sm py-2 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all" href="#return-procedure">
+<span>4. Step-by-Step Procedure</span>
+<span class="material-symbols-outlined text-[14px] opacity-0 transition-opacity">arrow_forward</span>
+</a>
+<a class="toc-link flex items-center justify-between px-space-sm py-2 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all" href="#refund-timelines">
+<span>5. Refund Channels &amp; Times</span>
+<span class="material-symbols-outlined text-[14px] opacity-0 transition-opacity">arrow_forward</span>
+</a>
+<a class="toc-link flex items-center justify-between px-space-sm py-2 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all" href="#non-returnable">
+<span>6. Non-Returnable Items</span>
+<span class="material-symbols-outlined text-[14px] opacity-0 transition-opacity">arrow_forward</span>
+</a>
+<a class="toc-link flex items-center justify-between px-space-sm py-2 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all" href="#support-desks">
+<span>7. Regional Support Desks</span>
+<span class="material-symbols-outlined text-[14px] opacity-0 transition-opacity">arrow_forward</span>
+</a>
+</nav>
+</div>
+<!-- Highlight Direct Concierge Box -->
+<div class="bg-primary text-on-primary rounded-xl p-space-md shadow-md flex flex-col space-y-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]">chat</span>
+<span class="font-label-uppercase text-label-uppercase text-secondary-fixed uppercase tracking-wider">Fast-Track Concierge</span>
+</div>
+<p class="font-body-sm text-body-sm text-surface-variant">
+              Need an urgent replacement? Message our WhatsApp Concierge directly with your order reference.
+            </p>
+<a class="inline-flex items-center justify-center gap-2 w-full py-space-xs px-space-md bg-secondary text-on-secondary rounded-lg font-label-ui text-label-ui hover:bg-secondary/90 transition-all shadow-sm" href="https://wa.me/923000000000" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">send</span>
+              WhatsApp: +92 300 000 EBA
+            </a>
+</div>
+<!-- Quick Resolution SLA Card -->
+<div class="bg-surface-container-high rounded-xl p-space-md flex flex-col gap-2">
+<span class="font-label-uppercase text-label-uppercase uppercase text-secondary">Our Commitment</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-primary font-bold">48 hrs</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Average claim review &amp; authorization</span>
+</div>
+</div>
+</aside>
+<!-- Right Column: Rich Editorial Policy Content -->
+<main class="lg:col-span-8 xl:col-span-9 flex flex-col space-y-space-xl">
+<!-- Section 1: 14-Day Dermal Satisfaction Guarantee -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg lg:p-space-xl shadow-sm scroll-mt-36" id="satisfaction-guarantee">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase uppercase text-secondary mb-1">Section 01</span>
+<h2 class="font-headline-md text-headline-md text-primary">14-Day Dermal Satisfaction Guarantee</h2>
+</div>
+<span class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">spa</span>
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+              We stand unreservedly behind the clinical biocompatibility and potency of our botanical actives. If, within fourteen (14) calendar days of receiving your order, your skin experiences adverse reactions, allergic flare-ups, or unexpected dermal sensitivity, our senior skin advisers are on hand to intervene immediately.
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+<div class="p-space-md rounded-lg bg-surface-container-low flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">change_circle</span>
+<div>
+<h4 class="font-body-md text-body-md font-semibold text-primary">Complimentary Exchange</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Swap for an alternate soothing or hypoallergenic formulation suited to your skin type.</p>
+</div>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">account_balance_wallet</span>
+<div>
+<h4 class="font-body-md text-body-md font-semibold text-primary">Full Store Credit or Refund</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Patrons may elect to receive clinical e-store credit with bonus validity or a bank reversal.</p>
+</div>
+</div>
+</div>
+</article>
+<!-- Section 2: Eligibility Criteria for Returns -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg lg:p-space-xl shadow-sm scroll-mt-36" id="eligibility-criteria">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase uppercase text-secondary mb-1">Section 02</span>
+<h2 class="font-headline-md text-headline-md text-primary">Eligibility Criteria for Returns</h2>
+</div>
+<span class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">fact_check</span>
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+              To safeguard sanitary protocols and assure uncompromised batch lineage across our laboratories, return consignments must satisfy three fundamental standards:
+            </p>
+<div class="space-y-space-sm">
+<div class="p-space-md bg-surface-container-low rounded-lg flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center font-label-ui text-label-ui text-primary font-bold shrink-0">
+                  75%
+                </div>
+<div>
+<span class="font-body-md text-body-md font-semibold text-primary block">Formulation Volume Residual</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    The bottle, jar, or dropper must contain at least 75% of its initial formulated contents. Fully exhausted or substantially depleted containers do not qualify for dermal guarantees.
+                  </span>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center font-label-ui text-label-ui text-primary font-bold shrink-0">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+</div>
+<div>
+<span class="font-body-md text-body-md font-semibold text-primary block">Outer Packaging &amp; Lot Number Seal</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    The bespoke rigid paperboard packaging and intact base batch hologram/identifier must accompany the physical bottle to verify counterfeit authenticity and manufacturing batch integrity.
+                  </span>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center font-label-ui text-label-ui text-primary font-bold shrink-0">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</div>
+<div>
+<span class="font-body-md text-body-md font-semibold text-primary block">Valid Purchase Verification</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    A confirmed Order ID (e.g. <code class="bg-surface-container px-1 py-0.5 rounded text-primary font-mono text-xs font-semibold">#EBA-PK-XXXXX</code>) or the fiscal invoice included within your delivery packet.
+                  </span>
+</div>
+</div>
+</div>
+</article>
+<!-- Section 3: Damaged or Tampered Consignments -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg lg:p-space-xl shadow-sm scroll-mt-36" id="damaged-consignments">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase uppercase text-secondary mb-1">Section 03</span>
+<h2 class="font-headline-md text-headline-md text-primary">Damaged or Tampered Consignments</h2>
+</div>
+<span class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">broken_image</span>
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+              Each EBA luxury vessel is encased in custom molded cellulose padding to withstand transit over regional transit corridors. However, in the rare instance of courier mishandling (such as fractured amber glass, leaking pipette seals, or ruptured tamper stickers):
+            </p>
+<div class="bg-surface-container-high rounded-xl p-space-md flex flex-col md:flex-row items-center gap-space-md">
+<div class="w-16 h-16 rounded-full bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[32px]">warning</span>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">48-Hour Critical Notification Window</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Please notify our concierge within <strong>48 hours</strong> of courier delivery. Provide clear photographs of the broken outer carton, shipping waybill, and affected vessel. Upon instant inspection, an express priority replacement is dispatched without awaiting pickup.
+                </p>
+</div>
+</div>
+</article>
+<!-- Section 4: Return Procedure (Step-by-Step) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg lg:p-space-xl shadow-sm scroll-mt-36" id="return-procedure">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase uppercase text-secondary mb-1">Section 04</span>
+<h2 class="font-headline-md text-headline-md text-primary">Return Procedure (Step-by-Step)</h2>
+</div>
+<span class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">route</span>
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-lg">
+              We have eliminated complex courier logistical friction for our patrons across all major metropolitan areas and tier-2 districts.
+            </p>
+<!-- Steps Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md relative">
+<!-- Step 1 -->
+<div class="p-space-md bg-surface-container-low rounded-xl relative flex flex-col justify-between space-y-space-sm">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-uppercase text-label-uppercase uppercase text-secondary">Step 01</span>
+<span class="material-symbols-outlined text-outline text-[18px]">contact_support</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Initiate Contact</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Send an email to <a class="text-primary underline font-medium" href="mailto:returns@ebaskincare.pk">returns@ebaskincare.pk</a> or text WhatsApp at <strong class="text-primary">+92 300 000 EBA</strong> with your order reference.
+                  </p>
+</div>
+<div class="text-[11px] font-label-uppercase uppercase text-secondary tracking-wider">Estimated Time: 5 Minutes</div>
+</div>
+<!-- Step 2 -->
+<div class="p-space-md bg-surface-container-low rounded-xl relative flex flex-col justify-between space-y-space-sm">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-uppercase text-label-uppercase uppercase text-secondary">Step 02</span>
+<span class="material-symbols-outlined text-outline text-[18px]">photo_camera</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Verification Media</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Submit 2-3 high-resolution images showcasing bottle fullness, lot code on carton bottom, and physical status. Our skin concierge reviews within 4 business hours.
+                  </p>
+</div>
+<div class="text-[11px] font-label-uppercase uppercase text-secondary tracking-wider">Desk SLA: 4 Hours</div>
+</div>
+<!-- Step 3 -->
+<div class="p-space-md bg-surface-container-low rounded-xl relative flex flex-col justify-between space-y-space-sm">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-uppercase text-label-uppercase uppercase text-secondary">Step 03</span>
+<span class="material-symbols-outlined text-outline text-[18px]">hail</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Doorstep Reverse Pickup</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    For Karachi, Lahore, Islamabad &amp; Rawalpindi, our courier rider visits your home/office with a prepaid waterproof return satchel. Zero printing required.
+                  </p>
+</div>
+<div class="text-[11px] font-label-uppercase uppercase text-secondary tracking-wider">Pickup: 24–48 Hours</div>
+</div>
+<!-- Step 4 -->
+<div class="p-space-md bg-surface-container-low rounded-xl relative flex flex-col justify-between space-y-space-sm">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-uppercase text-label-uppercase uppercase text-secondary">Step 04</span>
+<span class="material-symbols-outlined text-outline text-[18px]">domain_verification</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-1">QC &amp; Settlement</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Upon intake at our central Karachi distribution center, laboratory technicians confirm purity codes. Your full refund or replacement credit triggers immediately.
+                  </p>
+</div>
+<div class="text-[11px] font-label-uppercase uppercase text-secondary tracking-wider">Lab QC: 2 Business Days</div>
+</div>
+</div>
+</article>
+<!-- Section 5: Refund Processing Times by Payment Channel -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg lg:p-space-xl shadow-sm scroll-mt-36" id="refund-timelines">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase uppercase text-secondary mb-1">Section 05</span>
+<h2 class="font-headline-md text-headline-md text-primary">Refund Processing Times by Channel</h2>
+</div>
+<span class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+              Refunds are issued directly to the funding source used at checkout. For Cash on Delivery orders, we securely transmit settlements directly to your domestic Pakistani bank account, JazzCash wallet, or EasyPaisa account.
+            </p>
+<!-- Custom Clean Responsive Cards Table -->
+<div class="space-y-space-xs">
+<!-- Item 1: COD -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">local_atm</span>
+</div>
+<div>
+<span class="font-body-md text-body-md font-semibold text-primary block">Cash on Delivery (COD)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Disbursed via 1LINK Bank Transfer (IBAN) or Mobile Wallet</span>
+</div>
+</div>
+<div class="text-left sm:text-right">
+<span class="font-label-uppercase text-label-uppercase uppercase px-space-sm py-1 bg-surface-container-high text-primary rounded-full">
+                    3 – 5 Business Days
+                  </span>
+</div>
+</div>
+<!-- Item 2: JazzCash & EasyPaisa -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<div>
+<span class="font-body-md text-body-md font-semibold text-primary block">JazzCash &amp; EasyPaisa Wallets</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Direct API reversal straight to primary registered MSISDN</span>
+</div>
+</div>
+<div class="text-left sm:text-right">
+<span class="font-label-uppercase text-label-uppercase uppercase px-space-sm py-1 bg-surface-container-high text-primary rounded-full">
+                    48 – 72 Hours
+                  </span>
+</div>
+</div>
+<!-- Item 3: Visa / Mastercard -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">credit_card</span>
+</div>
+<div>
+<span class="font-body-md text-body-md font-semibold text-primary block">Visa, Mastercard &amp; PayPak</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Card settlement reversal subject to issuing bank billing cycles</span>
+</div>
+</div>
+<div class="text-left sm:text-right">
+<span class="font-label-uppercase text-label-uppercase uppercase px-space-sm py-1 bg-surface-container-high text-primary rounded-full">
+                    5 – 7 Business Days
+                  </span>
+</div>
+</div>
+<!-- Item 4: EBA Store Credit -->
+<div class="p-space-md bg-surface-container-high rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">stars</span>
+</div>
+<div>
+<span class="font-body-md text-body-md font-semibold text-primary block">EBA Privilege Store Credit (+5% Bonus)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Immediate digital gift voucher with lifetime validity</span>
+</div>
+</div>
+<div class="text-left sm:text-right">
+<span class="font-label-uppercase text-label-uppercase uppercase px-space-sm py-1 bg-primary text-on-primary rounded-full font-bold">
+                    Instant (0 Hours)
+                  </span>
+</div>
+</div>
+</div>
+</article>
+<!-- Section 6: Non-Returnable Formulations -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg lg:p-space-xl shadow-sm scroll-mt-36" id="non-returnable">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase uppercase text-secondary mb-1">Section 06</span>
+<h2 class="font-headline-md text-headline-md text-primary">Non-Returnable Formulations</h2>
+</div>
+<span class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">block</span>
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+              In strict adherence to the Drug Regulatory Authority and global cosmetics safety guidelines, specific categories cannot be returned under any condition:
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<div class="p-space-md bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-outline text-[24px] mb-2">sanitizer</span>
+<h4 class="font-body-md text-body-md font-semibold text-primary mb-1">Hygiene Accessories</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Opened gold spatulas, jade facial rollers, and synthetic application brushes.</p>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-outline text-[24px] mb-2">card_giftcard</span>
+<h4 class="font-body-md text-body-md font-semibold text-primary mb-1">Complimentary Gifts</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Promotional 5ml / 15ml discovery deluxe miniatures and gifted sachets.</p>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-outline text-[24px] mb-2">inventory</span>
+<h4 class="font-body-md text-body-md font-semibold text-primary mb-1">Archived Vault Sales</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Formulations specifically tagged as "Final Sale / Archive Vault" on invoice.</p>
+</div>
+</div>
+</article>
+<!-- Section 7: Dedicated Support & Return Desks -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg lg:p-space-xl shadow-sm scroll-mt-36" id="support-desks">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase uppercase text-secondary mb-1">Section 07</span>
+<h2 class="font-headline-md text-headline-md text-primary">Regional Support &amp; Return Desks</h2>
+</div>
+<span class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">store</span>
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+              Patrons wishing to consult our skin specialists in person or drop off formulations for expedited quality assessment are welcome at our atelier consultation suites.
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Karachi Atelier -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">location_on</span>
+<span class="font-headline-sm text-headline-sm text-primary">Karachi Atelier</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-xs">
+                    Suite 402, Bukhari Commercial Area, Phase 8, DHA, Karachi, Sindh 75500.
+                  </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong>Direct line:</strong> +92 21 3589 1234
+                  </p>
+</div>
+<div class="mt-space-sm pt-space-xs text-[12px] font-label-ui text-secondary">
+                  Open Mon–Sat: 09:00 AM – 08:00 PM PKT
+                </div>
+</div>
+<!-- Lahore Consultation Desk -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">location_on</span>
+<span class="font-headline-sm text-headline-sm text-primary">Lahore Consultation Suite</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-xs">
+                    MM Alam Road, Block C-2, Gulberg III, Lahore, Punjab 54000.
+                  </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong>Direct line:</strong> +92 42 3578 9876
+                  </p>
+</div>
+<div class="mt-space-sm pt-space-xs text-[12px] font-label-ui text-secondary">
+                  Open Mon–Sat: 10:00 AM – 07:00 PM PKT
+                </div>
+</div>
+</div>
+<!-- Resolution Assurance Banner -->
+<div class="mt-space-md p-space-md bg-surface-container rounded-lg flex items-center justify-between flex-wrap gap-space-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[24px]">verified</span>
+<div>
+<span class="font-body-md text-body-md font-semibold text-primary block">Zero Question Dermal Grace</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Dermatologist-monitored returns for ultimate peace of mind.</span>
+</div>
+</div>
+<a class="px-space-md py-2 bg-primary text-on-primary rounded-lg font-label-uppercase text-label-uppercase uppercase hover:bg-surface-tint transition-colors" data-path="contact-us" href="#">
+                Contact Advisors
+              </a>
+</div>
+</article>
+</main>
+</div>
+</section>
+</div>
+<script>
+    // Smooth interactive TOC Active Spy
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('article[id]');
+      const navLinks = document.querySelectorAll('.toc-link');
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+              const arrow = link.querySelector('.material-symbols-outlined');
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.remove('text-on-surface-variant');
+                link.classList.add('text-primary', 'bg-surface-container', 'font-semibold');
+                if (arrow) arrow.classList.remove('opacity-0');
+              } else {
+                link.classList.remove('text-primary', 'bg-surface-container', 'font-semibold');
+                link.classList.add('text-on-surface-variant');
+                if (arrow) arrow.classList.add('opacity-0');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low text-on-surface pt-space-xl pb-space-lg shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="max-w-[1380px] mx-auto px-margin-mobile lg:px-margin"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter mb-space-xl"><div class="lg:col-span-4 flex flex-col space-y-space-md"><span class="font-display-brand text-headline-sm uppercase tracking-widest text-primary">EBA SKIN CARE</span><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Botanically potent, clinically measured skincare crafted specifically for the South Asian climate. Pure formulation integrity, rooted in timeless botanical wisdom and dermatological precision.</p><div class="flex flex-wrap items-center gap-space-xs pt-space-xs"><span class="px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-uppercase text-label-uppercase uppercase flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">verified</span>100% Halal</span><span class="px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-uppercase text-label-uppercase uppercase flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">spa</span>Cruelty-Free</span><span class="px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-uppercase text-label-uppercase uppercase flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">biotech</span>Dermatologist Tested</span></div></div><div class="lg:col-span-2 flex flex-col space-y-space-sm"><span class="font-headline-sm text-headline-sm text-primary mb-space-xs">Collections</span><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="women" href="#">Women's Atelier</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="men" href="#">Men's Apothecary</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="best-sellers" href="#">Cult Best Sellers</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="rituals" href="#">Regimen Rituals</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="shop" href="#">New Arrivals</a></div><div class="lg:col-span-3 flex flex-col space-y-space-sm"><span class="font-headline-sm text-headline-sm text-primary mb-space-xs">Customer Care</span><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="track-your-order" href="#">Track Your Order</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="shipping-and-delivery" href="#">Shipping &amp; Delivery</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="return-and-refund-policy" href="#">Return &amp; Refund Policy</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact-skin-advisors" href="#">Contact Skin Advisors</a><div class="pt-space-xs font-label-ui text-label-ui text-secondary">Helpline: +92 21 3589 1234</div></div><div class="lg:col-span-3 flex flex-col space-y-space-md"><span class="font-headline-sm text-headline-sm text-primary">EBA Privilege Club</span><p class="font-body-sm text-body-sm text-on-surface-variant">Receive sensorial discoveries, private event invitations, and curated clinical regimens.</p><div class="flex flex-col gap-space-xs"><div class="flex items-center bg-surface-container-lowest rounded-lg p-space-xs shadow-[0_1px_4px_rgba(0,0,0,0.03)]"><input class="w-full bg-transparent px-space-sm py-space-xs font-body-sm text-body-sm text-on-surface focus:outline-none placeholder:text-outline" placeholder="Your email address..." type="email"/><button class="px-space-md py-space-xs bg-primary text-on-primary rounded-lg font-label-uppercase text-label-uppercase uppercase hover:bg-surface-tint hover:text-on-primary transition-colors" type="button">Join</button></div><span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">By joining, you agree to EBA Terms &amp; Privacy Policy.</span></div></div></div><div class="pt-space-lg flex flex-col lg:flex-row items-center justify-between gap-space-md"><div class="flex flex-wrap items-center justify-center lg:justify-start gap-space-xs"><span class="font-label-uppercase text-label-uppercase text-on-surface-variant mr-space-xs">Payment Concierge:</span><span class="px-space-sm py-1 bg-surface-container-high text-on-surface rounded font-label-ui text-[11px]">Cash on Delivery</span><span class="px-space-sm py-1 bg-surface-container-high text-on-surface rounded font-label-ui text-[11px]">JazzCash</span><span class="px-space-sm py-1 bg-surface-container-high text-on-surface rounded font-label-ui text-[11px]">EasyPaisa</span><span class="px-space-sm py-1 bg-surface-container-high text-on-surface rounded font-label-ui text-[11px]">1LINK Bank Transfer</span><span class="px-space-sm py-1 bg-surface-container-high text-on-surface rounded font-label-ui text-[11px]">Visa / Mastercard</span></div><div class="font-body-sm text-body-sm text-on-surface-variant text-center lg:text-right">© 2024 EBA Skin Care Pakistan (Pvt.) Ltd. All rights reserved. Crafted with care.</div></div></div></footer></body></html>

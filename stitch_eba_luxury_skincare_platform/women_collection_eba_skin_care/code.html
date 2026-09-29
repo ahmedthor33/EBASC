@@ -1,0 +1,557 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-variant": "#e6e2dd", "primary-fixed": "#eae0de", "surface-container": "#f1ede8", "inverse-primary": "#cdc5c3", "outline": "#7f7572", "on-tertiary": "#ffffff", "primary": "#000000", "on-primary-fixed-variant": "#4b4644", "tertiary-fixed-dim": "#e9c349", "surface-tint": "#635d5b", "primary-fixed-dim": "#cdc5c3", "background": "#fdf9f4", "on-tertiary-container": "#4f3d00", "on-secondary-fixed-variant": "#584323", "surface-dim": "#ddd9d5", "tertiary-container": "#cca730", "surface": "#fdf9f4", "surface-bright": "#fdf9f4", "on-surface": "#1c1c19", "on-primary-container": "#898281", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "surface-container-low": "#f7f3ee", "on-tertiary-fixed-variant": "#574500", "error": "#ba1a1a", "tertiary": "#735c00", "outline-variant": "#d1c4c1", "on-tertiary-fixed": "#241a00", "on-secondary-container": "#78603e", "secondary-fixed": "#fedeb2", "on-background": "#1c1c19", "tertiary-fixed": "#ffe088", "surface-container-high": "#ebe8e3", "surface-container-highest": "#e6e2dd", "secondary": "#725b38", "error-container": "#ffdad6", "primary-container": "#1f1b1a", "on-surface-variant": "#4e4543", "secondary-container": "#fedeb2", "on-secondary": "#ffffff", "inverse-surface": "#31302d", "on-error": "#ffffff", "on-primary-fixed": "#1f1b1a", "on-secondary-fixed": "#281800", "inverse-on-surface": "#f4f0eb", "secondary-fixed-dim": "#e0c298", "on-primary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "margin": "3rem", "space-md": "1rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter": "1.5rem", "margin-mobile": "1.25rem", "space-xl": "2.5rem", "gutter-mobile": "1rem" }, "fontFamily": { "body-lg": [ "Inter" ], "display-lg": [ "Playfair Display" ], "headline-sm": [ "Playfair Display" ], "headline-lg": [ "Playfair Display" ], "headline-md": [ "Playfair Display" ], "label-ui": [ "Inter" ], "label-uppercase": [ "Inter" ], "price-md": [ "Inter" ], "body-md": [ "Inter" ], "body-sm": [ "Inter" ], "headline-lg-mobile": [ "Playfair Display" ], "price-lg": [ "Inter" ], "display-brand": [ "Playfair Display" ], "display-lg-mobile": [ "Playfair Display" ] }, "fontSize": { "body-lg": [ "16px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-md": [ "26px", { "lineHeight": "34px", "letterSpacing": "0em", "fontWeight": "500" } ], "label-ui": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "label-uppercase": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "price-md": [ "16px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" } ], "body-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "500" } ], "price-lg": [ "20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "display-brand": [ "30px", { "lineHeight": "36px", "letterSpacing": "0.15em", "fontWeight": "600" } ], "display-lg-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" } ] } } } }</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50"><div class="bg-primary-container text-on-secondary px-gutter-mobile lg:px-gutter py-space-xs"><div class="max-w-[1380px] mx-auto flex flex-col md:flex-row items-center justify-between gap-y-1 font-label-uppercase text-label-uppercase text-surface-container-low"><div class="hidden md:flex items-center gap-space-sm"><span class="text-tertiary-fixed font-semibold tracking-wider">PKR Rs.</span><span class="text-outline-variant">|</span><span class="">Karachi • Lahore • Islamabad</span></div><div class="text-center tracking-widest font-medium text-surface-bright">Free Nationwide Delivery Across Pakistan on Orders Over Rs. 3,500 | Cash on Delivery Available</div><div class="flex items-center gap-space-md"><span class="hidden lg:inline text-outline-variant">Care:</span><a class="text-surface-bright hover:text-tertiary-fixed transition-colors font-medium" href="tel:+922135891234">+92 21 3589 1234</a></div></div></div><div class="bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="max-w-[1380px] mx-auto px-gutter-mobile lg:px-margin h-20 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><a href="#" class="flex items-center gap-3" data-path="home">
+  <img src="https://lh3.googleusercontent.com/aida/AEtjO1W8kQkUmJ3MRQ7j1e5fKQVFuXpNmikX8BcmKX5AW0AM65_zhaX7FTmRaNlgMA_cIvtiCOPsX84irH0gT4Zeat04MgS60ZB1bgNqBaY8PxlCdJHvb9O-Agq-63wL0cQem2W9xYF9_XMzJnUcpGKYOGaV8ZyeHMgHgwETjBXolvw0lOIb6BAmluNYiFnP7so_W31NerA8pFKYF-3XaGXrsBbHEw3S1HuuUoad8C8tlrGr4cxA31FyFxO8GPaU" alt="EBA Skin Care" class="h-9 w-auto object-contain">
+</a></div><nav class="hidden xl:flex items-center gap-space-lg font-label-uppercase text-label-uppercase tracking-widest" data-active-classes="text-primary font-semibold"><a href="#" class="flex items-center gap-3" data-path="home">
+  <img src="https://lh3.googleusercontent.com/aida/AEtjO1W8kQkUmJ3MRQ7j1e5fKQVFuXpNmikX8BcmKX5AW0AM65_zhaX7FTmRaNlgMA_cIvtiCOPsX84irH0gT4Zeat04MgS60ZB1bgNqBaY8PxlCdJHvb9O-Agq-63wL0cQem2W9xYF9_XMzJnUcpGKYOGaV8ZyeHMgHgwETjBXolvw0lOIb6BAmluNYiFnP7so_W31NerA8pFKYF-3XaGXrsBbHEw3S1HuuUoad8C8tlrGr4cxA31FyFxO8GPaU" alt="EBA Skin Care" class="h-9 w-auto object-contain">
+</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="men" href="#">Men</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="women" href="#">Women</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="shop" href="#">Shop</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="best-sellers" href="#">Best Sellers</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="rituals" href="#">Rituals</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact-us" href="#">Contact Us</a></nav><div class="flex items-center gap-space-sm lg:gap-space-md"><button aria-label="Search" class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors focus:outline-none" type="button"><span class="material-symbols-outlined text-[22px]">search</span></button><a aria-label="Wishlist" class="relative p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center focus:outline-none" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-tertiary text-on-tertiary font-label-uppercase text-[10px] flex items-center justify-center font-bold">2</span></a><a aria-label="Cart" class="relative flex items-center gap-space-xs p-space-xs text-on-surface-variant hover:text-on-surface transition-colors focus:outline-none" data-path="cart" href="#"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-primary text-on-primary font-label-uppercase text-[10px] flex items-center justify-center font-bold">1</span></div><span class="hidden md:inline font-price-md text-price-md text-on-surface ml-1">Rs. 2,850</span></a><div class="h-5 w-px bg-surface-variant hidden sm:block"></div><a class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface transition-colors focus:outline-none" data-path="login" href="#"><span class="hidden lg:inline font-label-uppercase text-label-uppercase tracking-wider">Sign In / Account</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></a></div></div></div></header><main class="w-full pt-28 bg-surface min-h-[calc(100vh-28rem)]"><div class="flex flex-col w-full">
+<!-- Gender/Collection Toggle & Context Nav Bar -->
+<section class="w-full bg-surface-container-low/70 py-space-sm">
+<div class="max-w-[1380px] mx-auto px-gutter-mobile lg:px-margin flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<nav class="flex items-center gap-space-xs font-label-uppercase text-label-uppercase text-on-surface-variant">
+<a class="hover:text-primary transition-colors" data-path="home" href="#">Home</a>
+<span class="">/</span>
+<a class="hover:text-primary transition-colors" data-path="shop" href="#">Collections</a>
+<span class="">/</span>
+<span class="text-secondary font-semibold">Women's Luminance</span>
+</nav>
+<!-- Category Switcher Pill Pair -->
+<div class="inline-flex items-center bg-surface-container rounded-full p-1 shadow-sm">
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container-lowest text-on-surface shadow-sm font-label-uppercase text-label-uppercase">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+          Women's Luminance Atelier
+        </span>
+<a class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface transition-colors font-label-uppercase text-label-uppercase" data-path="men" href="#">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+          Switch to Men's Fortitude Line
+          <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Editorial Hero Section -->
+<section class="relative w-full overflow-hidden bg-gradient-to-b from-surface via-surface-container-low to-surface pt-space-md pb-space-xl">
+<div class="max-w-[1380px] mx-auto px-gutter-mobile lg:px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Text & Narrative (Left Col: 6 cols) -->
+<div class="lg:col-span-6 flex flex-col space-y-space-md order-2 lg:order-1">
+<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-secondary-container/60 text-on-secondary-container w-fit shadow-sm font-label-uppercase text-label-uppercase">
+<span class="material-symbols-outlined text-[15px] text-secondary">spa</span>
+<span class="">Clinically Formulated for South Asian Dermal Resilience</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface leading-tight">
+            Radiance Reimagined: <br>
+<span class="font-display-lg text-display-lg italic text-secondary">The Women's Luminance Atelier</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+            Bio-engineered botanical actives tailored specifically for regional climates. Counteracts intense UV exposure, sharp humidity swings, and hyperpigmentation with immaculate clinical grace.
+          </p>
+<!-- Badges cluster -->
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest shadow-sm font-label-uppercase text-label-uppercase text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified</span>
+<span class="">Halal Dermal Certified</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest shadow-sm font-label-uppercase text-label-uppercase text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-tertiary">biotech</span>
+<span class="">Dermatologist Tested</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest shadow-sm font-label-uppercase text-label-uppercase text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-secondary">local_shipping</span>
+<span class="">Karachi • Lahore • Islamabad Express</span>
+</div>
+</div>
+<!-- CTAs -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm pt-space-sm">
+<a class="h-12 px-space-lg rounded-full bg-primary text-on-primary font-label-uppercase text-label-uppercase tracking-widest flex items-center justify-center gap-space-xs shadow-md hover:bg-surface-container-highest hover:text-on-surface transition-all" href="#trio-products">
+<span class="">Explore 3-Piece Regimen</span>
+<span class="material-symbols-outlined text-[18px]">south</span>
+</a>
+<a class="h-12 px-space-lg rounded-full bg-surface-container text-on-surface font-label-uppercase text-label-uppercase tracking-widest flex items-center justify-center gap-space-xs hover:bg-surface-container-high transition-all shadow-sm" href="#bundle-offer">
+<span class="material-symbols-outlined text-[18px] text-secondary">auto_stories</span>
+<span class="">Consult Routine Guide</span>
+</a>
+</div>
+<!-- Mini trust snippet -->
+<div class="flex items-center gap-space-md pt-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="">Rated 4.9/5 by 1,480+ women in Pakistan</span>
+</div>
+</div>
+<!-- Centerpiece Product Array (Right Col: 6 cols) -->
+<div class="lg:col-span-6 relative order-1 lg:order-2 flex justify-center">
+<div class="relative w-full rounded-2xl overflow-hidden shadow-xl bg-surface-container-lowest">
+<img alt="EBA Skin Care Women's Luxury Collection Bottles" class="w-full h-[380px] sm:h-[460px] object-cover object-center transform hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1Ds1BH3EzWikUq-amXVgGsrcGXspEQfPMcvKF-2MowcxXR-41fTizJ2c90SUOmmtWSLW0dmNgTK0bH5VQqlBignylBmSKp_VlP96YYSovs9pn7CcTi4HxskkHeg0DQOqA2UYql27_4BWL3l-yxGD4vmS5ND2yMY_RO5_JH6sUd-A-R_dzydjCj8kwaQBW7fmGNabWoq57ldwW15dtzzjC5KRE98ECB8j0S62XV4G9WhVY7sqCbcrWXQ">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent pointer-events-none"></div>
+<div class="absolute bottom-4 left-4 right-4 p-space-sm rounded-xl bg-surface/90 backdrop-blur-md shadow-md flex items-center justify-between">
+<div>
+<span class="font-label-uppercase text-label-uppercase text-secondary uppercase tracking-widest block">Featured Apothecary</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">The 2025 Luminance Suite</span>
+</div>
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-uppercase text-[11px] font-semibold">100% Halal</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: The 3 Core Formulations Showcase Grid -->
+<section class="w-full py-space-xl bg-surface" id="trio-products">
+<div class="max-w-[1380px] mx-auto px-gutter-mobile lg:px-margin">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl">
+<div>
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest uppercase block mb-1">Dermatological Precision</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Core Active Formulations</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          Carefully calibrated trio created to interact synergistically, targeting pigmentation, dermal hydration, and photo-oxidation.
+        </p>
+</div>
+<!-- 3 Products Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+<!-- PRODUCT 1: Gentle Clarifying Face Wash -->
+<article class="relative flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" data-alt="Minimalist frosted luxury cosmetic pump bottle containing Women's Gentle Clarifying Face Wash with soft pink rose petals and fresh eucalyptus leaves on a warm cream surface soft diffused morning studio light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq6c8y6-i4doNFVVugJsO_n7cTn1QGFdw-LsBAi_IVWxmOZ3WK9p6tikEnL_ZwzbBVND0-cPvRnnlYmIvyEJjgju_obFOpebbJy1jLWzpGQA1y-zSg1XlvwHvYQGHz9GtcKVfZS-csjkb95PGIxmANmCp6ILv3xi6sSzUNZZ41EFKKmU1I7UzWIiNV5bm1HZogLB7AYbCCCW6AH_885ImanMZZBUQw_pbfs1r26W3qydcNM0fYMXf_ig">
+<!-- Heart Wishlist Toggle -->
+<button aria-label="Add to Wishlist" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-on-surface hover:text-tertiary transition-transform active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[19px]">favorite</span>
+</button>
+<!-- Badge -->
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-uppercase text-label-uppercase shadow-sm">
+                Daily Ritual
+              </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="px-2.5 py-1 rounded-md bg-secondary text-on-secondary font-label-uppercase text-[10px] tracking-wider">
+                100ml / 3.4 fl. oz
+              </span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between space-y-space-md">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-1">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">(318 reviews)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Women's Gentle Clarifying Face Wash</h3>
+<p class="font-body-sm text-body-sm text-secondary font-semibold mt-1">Salicylic Acid + Centella Asiatica &amp; Rose Damascena Water</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Removes stubborn pollutants and excess sebum without stripping the skin's natural lipid barrier. Formulated at physiological pH 5.5.</p>
+</div>
+<div class="pt-space-xs space-y-space-sm">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-price-lg text-price-lg text-on-surface">Rs. 1,650</span>
+<span class="font-body-sm text-body-sm text-outline line-through">Rs. 1,950</span>
+</div>
+<span class="font-label-uppercase text-label-uppercase text-secondary font-semibold">TCS dispatch: 24 hrs</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-12 rounded-full bg-primary text-on-primary font-label-uppercase text-label-uppercase tracking-wider font-semibold hover:bg-surface-container-highest hover:text-on-surface transition-all flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+<span class="">Add to Bag</span>
+</button>
+<button aria-label="Quick View Details" class="w-12 h-12 rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT 2: Beauty Glow Serum (Hero Highlight) -->
+<article class="relative flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" data-alt="Refined clear dropper pipette bottle filled with luminous golden beauty glow serum resting on polished pale marble with rose-tinted fabric folds and morning highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeLyXcefQA73i9Aso3aZUrTsrf5RUVKwqPicHaZl8TzywoMyOhpZTBUSBMdYS3OdTzqlJLx5xZ1kg0KFfiucvAi7zOzprzRYQqO1_o2e4CQlHntUfFun1iL-zWohMns3qR6GYMx1LDLTHgiFuk5iykgqTHfSDHn1C6NVR31USJcj_UlBS2WCFOtf3W24tadmy37k3eWdsiwWgNqhD5Uuwsu9JmdrYw4xkrpIGYUP-FG2YpVCUPBpuPOw">
+<!-- Heart Wishlist Toggle -->
+<button aria-label="Add to Wishlist" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-on-surface hover:text-tertiary transition-transform active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[19px]">favorite</span>
+</button>
+<!-- Badge -->
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-uppercase text-label-uppercase font-semibold shadow-sm">
+                Pakistan #1 Best Seller
+              </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="px-2.5 py-1 rounded-md bg-secondary text-on-secondary font-label-uppercase text-[10px] tracking-wider">
+                30ml / 1.0 fl. oz
+              </span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between space-y-space-md">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-1">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">(892 reviews)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Beauty Glow Serum</h3>
+<p class="font-body-sm text-body-sm text-secondary font-semibold mt-1">10% Niacinamide + Alpha Arbutin &amp; 24K Gold Micro-Infusion</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Active cellular dark spot diminution, melanin suppression, and continuous glass-skin radiance under local weather conditions.</p>
+</div>
+<div class="pt-space-xs space-y-space-sm">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-price-lg text-price-lg text-on-surface">Rs. 2,850</span>
+<span class="font-body-sm text-body-sm text-outline line-through">Rs. 3,200</span>
+</div>
+<span class="font-label-uppercase text-label-uppercase text-tertiary font-semibold">Immediate Stock</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-12 rounded-full bg-secondary text-on-secondary font-label-uppercase text-label-uppercase tracking-wider font-semibold hover:bg-primary transition-all flex items-center justify-center gap-2 shadow-md">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+<span class="">Add to Bag</span>
+</button>
+<button aria-label="Quick View Details" class="w-12 h-12 rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT 3: Beauty Night Whitening Cream -->
+<article class="relative flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" data-alt="Heavy frosted glass cosmetic jar with polished rose-gold metallic lid containing rich velvet night whitening cream alongside a rose gold mini cosmetic spatula on warm stone surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjFQ7jlCLBZzcuK8c28gT-PwZ5CaBpz5ZGoyrbe6zKB4-oIWoa-gKx2wA9ucKzo9w_ocgsub9-HIT-_JftPqrmIgJV4BxCPAjl0DWDb6xpvOCT8Zs6lqg-GvwPpiNAeV03V73l73XadFMUtY8UvomB34YnfhEv9w0UFiH_cUJHamD9oq0YIUxGBOfe3b8AgXapwuhsqXeHW1fNpmqFHGpFYY3lqw-LlVWvTv15hCFPccRIaOvUHGj9Jg">
+<!-- Heart Wishlist Toggle -->
+<button aria-label="Add to Wishlist" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-on-surface hover:text-tertiary transition-transform active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[19px]">favorite</span>
+</button>
+<!-- Badge -->
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-uppercase text-label-uppercase shadow-sm">
+                Clinical Award Winner
+              </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="px-2.5 py-1 rounded-md bg-secondary text-on-secondary font-label-uppercase text-[10px] tracking-wider">
+                50gm / Net Wt. 1.76 oz
+              </span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between space-y-space-md">
+<div>
+<div class="flex items-center gap-1 text-tertiary mb-1">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">(446 reviews)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Beauty Night Whitening Cream</h3>
+<p class="font-body-sm text-body-sm text-secondary font-semibold mt-1">Pure Glutathione + Multi-Peptides &amp; Hyaluronic 4D Matrix</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Overnight deep cellular repair. Restores uniform luminosity, fades hyperpigmentation, and seals long-lasting velvet barrier moisture.</p>
+</div>
+<div class="pt-space-xs space-y-space-sm">
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-2">
+<span class="font-price-lg text-price-lg text-on-surface">Rs. 3,200</span>
+<span class="font-body-sm text-body-sm text-outline line-through">Rs. 3,750</span>
+</div>
+<span class="font-label-uppercase text-label-uppercase text-secondary font-semibold">TCS dispatch: 24 hrs</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-12 rounded-full bg-primary text-on-primary font-label-uppercase text-label-uppercase tracking-wider font-semibold hover:bg-surface-container-highest hover:text-on-surface transition-all flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+<span class="">Add to Bag</span>
+</button>
+<button aria-label="Quick View Details" class="w-12 h-12 rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Section 4: The Complete 3-Step Women's Luminance Ritual Bundle -->
+<section class="w-full py-space-xl bg-surface-container-low" id="bundle-offer">
+<div class="max-w-[1380px] mx-auto px-gutter-mobile lg:px-margin">
+<div class="bg-surface-container-lowest rounded-3xl p-space-md lg:p-space-xl shadow-lg relative overflow-hidden">
+<!-- Subtle Top Accent Band -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-secondary-container via-secondary to-tertiary-container"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Ritual Workflow (Left 7 Cols) -->
+<div class="lg:col-span-7 flex flex-col space-y-space-md">
+<div>
+<span class="font-label-uppercase text-label-uppercase text-secondary font-semibold tracking-widest uppercase">Synergistic Daily Program</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-1">The Complete 3-Step Luminance Ritual</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-xl">
+                Engineered to follow the natural circadian rhythm of Pakistani dermal cells. Cleanse, target active melanin synthesis, and seal renewal overnight.
+              </p>
+</div>
+<!-- Steps Visualization Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm pt-space-xs">
+<!-- Step 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between space-y-space-sm">
+<div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-secondary font-semibold flex items-center justify-center font-label-uppercase text-label-uppercase mb-2 shadow-sm">
+                    01
+                  </div>
+<span class="font-headline-sm text-headline-sm text-on-surface block">Purify</span>
+<span class="font-body-sm text-body-sm text-secondary font-medium">Gentle Face Wash</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5">Gentle morning &amp; evening cleanse with Salicylic Acid + Centella Asiatica.</p>
+</div>
+<span class="font-label-uppercase text-[10px] tracking-wider text-outline-variant">AM &amp; PM</span>
+</div>
+<!-- Step 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between space-y-space-sm">
+<div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-secondary font-semibold flex items-center justify-center font-label-uppercase text-label-uppercase mb-2 shadow-sm">
+                    02
+                  </div>
+<span class="font-headline-sm text-headline-sm text-on-surface block">Brighten</span>
+<span class="font-body-sm text-body-sm text-secondary font-medium">Beauty Glow Serum</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5">Apply 3-4 golden drops. Suppresses hyper-pigment production deep in epidermis.</p>
+</div>
+<span class="font-label-uppercase text-[10px] tracking-wider text-outline-variant">Target Phase</span>
+</div>
+<!-- Step 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between space-y-space-sm">
+<div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-secondary font-semibold flex items-center justify-center font-label-uppercase text-label-uppercase mb-2 shadow-sm">
+                    03
+                  </div>
+<span class="font-headline-sm text-headline-sm text-on-surface block">Restore</span>
+<span class="font-body-sm text-body-sm text-secondary font-medium">Night Cream</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5">Smooth pearl-sized amount before sleeping for multi-peptide regeneration.</p>
+</div>
+<span class="font-label-uppercase text-[10px] tracking-wider text-outline-variant">Overnight Seal</span>
+</div>
+</div>
+<!-- Included Perks Checkmarks -->
+<div class="flex flex-wrap items-center gap-x-6 gap-y-2 pt-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px] text-tertiary">check_circle</span> Luxury Velvet Vanity Pouch Included</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px] text-tertiary">check_circle</span> Rose Gold Skincare Spatula Included</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px] text-tertiary">check_circle</span> Free Nationwide Express Shipping</span>
+</div>
+</div>
+<!-- Bundle Pricing Card (Right 5 Cols) -->
+<div class="lg:col-span-5 bg-surface-container rounded-2xl p-space-lg flex flex-col justify-between space-y-space-md shadow-sm">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-uppercase text-label-uppercase font-semibold">
+                  Save 15% Atelier Bundle
+                </span>
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant">Limited Batch</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Full Luminance Atelier Suite</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Includes 100ml Wash, 30ml Glow Serum &amp; 50gm Whitening Cream in custom gift packaging.</p>
+<!-- Price Box -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm my-space-md flex items-baseline justify-between shadow-inner">
+<div>
+<span class="font-label-uppercase text-[11px] text-outline block">Bundle Price</span>
+<div class="flex items-baseline gap-2">
+<span class="font-price-lg text-price-lg text-on-surface font-bold">Rs. 6,545</span>
+<span class="font-body-md text-body-md text-outline line-through">Rs. 7,700</span>
+</div>
+</div>
+<div class="text-right">
+<span class="px-2.5 py-1 rounded bg-secondary/15 text-secondary font-label-uppercase text-[11px] font-bold">You Save Rs. 1,155</span>
+</div>
+</div>
+<!-- Promo Code Click-to-Copy -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">sell</span>
+<div class="flex flex-col">
+<span class="font-label-uppercase text-[10px] text-on-surface-variant uppercase tracking-wider">Promo Code</span>
+<span class="font-label-uppercase text-label-uppercase font-bold tracking-widest text-on-surface" id="coupon-code">LUMINANCE15</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-uppercase text-label-uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-btn" onclick="navigator.clipboard.writeText('LUMINANCE15'); this.innerText = 'Copied!'; setTimeout(() =&gt; this.innerText = 'Copy Code', 2000);">
+                  Copy Code
+                </button>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<button class="w-full h-12 rounded-full bg-primary text-on-primary font-label-uppercase text-label-uppercase tracking-widest font-semibold hover:bg-surface-container-highest hover:text-on-surface transition-all flex items-center justify-center gap-2 shadow-md">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span class="">Claim Trio Bundle (Rs. 6,545)</span>
+</button>
+<div class="flex items-center justify-center gap-4 text-on-surface-variant font-body-sm text-[12px] pt-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">credit_card</span> JazzCash / EasyPaisa</span>
+<span class="">•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">payments</span> Cash on Delivery</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Benefits & Regional Suitability Strip -->
+<section class="w-full py-space-xl bg-surface">
+<div class="max-w-[1380px] mx-auto px-gutter-mobile lg:px-margin">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Pillar 1 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-low flex flex-col space-y-space-sm shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-lowest text-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[26px]">eco</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">100% Halal Certified</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Cruelty-free, clean botanical actives completely free from parabens, animal fats, and harsh chemical bleaching agents.</p>
+</div>
+<!-- Pillar 2 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-low flex flex-col space-y-space-sm shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-lowest text-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[26px]">water_drop</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Monsoon &amp; Heat Resilient</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Engineered for Karachi humidity and intense interior Punjab summers. Ultra-light, rapid skin absorption with zero pore congestion.</p>
+</div>
+<!-- Pillar 3 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-low flex flex-col space-y-space-sm shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-lowest text-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[26px]">local_shipping</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Nationwide COD &amp; TCS</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Seamless Cash on Delivery across 150+ Pakistani cities with prompt Leopard &amp; TCS dispatch notifications direct to WhatsApp.</p>
+</div>
+<!-- Pillar 4 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-low flex flex-col space-y-space-sm shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-lowest text-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[26px]">verified_user</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">14-Day Skin Guarantee</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Experience visible tone clarification and hydration within two weeks, supported by our Lahore &amp; Karachi dermatology advisory desk.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Verified Pakistani Women Reviews & Testimonials -->
+<section class="w-full py-space-xl bg-surface-container-low">
+<div class="max-w-[1380px] mx-auto px-gutter-mobile lg:px-margin">
+<!-- Testimonials Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl">
+<div>
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest uppercase block mb-1">Authentic Voices</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Verified Community Reflections</h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant">Over 1,480 Verified Pakistani Deliveries</span>
+</div>
+</div>
+<!-- Testimonial Cards Carousel / Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Review 1 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-body-sm text-[11px] text-outline">Verified Order #18429</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic leading-relaxed">
+              “Living in Karachi with extreme humidity usually means night creams cause breakouts. The EBA Night Whitening Cream melts into the skin like water and my post-acne marks faded within 18 days.”
+            </p>
+</div>
+<div class="flex items-center gap-3 pt-space-xs">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm flex items-center justify-center font-bold">
+              A
+            </div>
+<div class="flex flex-col">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Ayesha Malik</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">DHA Phase 6, Karachi</span>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-body-sm text-[11px] text-outline">Verified Order #19102</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic leading-relaxed">
+              “The Beauty Glow Serum gives the most unreal glass finish underneath morning makeup. Zero greasiness through long wedding events in Lahore. Truly unmatched luxury formulation.”
+            </p>
+</div>
+<div class="flex items-center gap-3 pt-space-xs">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm flex items-center justify-center font-bold">
+              Z
+            </div>
+<div class="flex flex-col">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Zainab Raza</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Gulberg III, Lahore</span>
+</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-body-sm text-[11px] text-outline">Verified Order #17540</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic leading-relaxed">
+              “I was skeptical of local brands until trying the 3-step ritual. TCS delivered to Islamabad in 24 hours with Cash on Delivery. The Clarifying Wash doesn't leave that tight, stripped feeling.”
+            </p>
+</div>
+<div class="flex items-center gap-3 pt-space-xs">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container font-headline-sm flex items-center justify-center font-bold">
+              M
+            </div>
+<div class="flex flex-col">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Dr. Mahnoor Tariq</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Sector F-7/2, Islamabad</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro FAQ / Reassurance CTA strip -->
+<div class="mt-space-xl p-space-md rounded-2xl bg-surface-container flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[28px] text-secondary">contact_support</span>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Unsure about your dermal profile?</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Chat directly with our certified female skincare consultants via WhatsApp or phone.</p>
+</div>
+</div>
+<a class="px-space-lg py-2.5 rounded-full bg-surface-container-lowest text-on-surface hover:bg-primary hover:text-on-primary transition-all font-label-uppercase text-label-uppercase tracking-wider font-semibold shadow-sm flex items-center gap-2 whitespace-nowrap" href="tel:+922135891234">
+<span class="material-symbols-outlined text-[16px]">call</span>
+<span class="">+92 21 3589 1234</span>
+</a>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="max-w-[1380px] mx-auto px-gutter-mobile lg:px-margin pt-space-xl pb-space-lg"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl"><div class="flex flex-col space-y-space-md"><div class="mb-4">
+  <img src="https://lh3.googleusercontent.com/aida/AEtjO1Vl7cS0Tw-_ChBywAVFyLyvhBwxfU9GtU7RwEenRO3qQvrCFXld8MCKVBix6whwdYF2tEqZ8LK0G3BsWVf6iYKswRoswMcFUainskA70A_5gm-UPC53jZ8lGo3cvXvG6zyotmeW-qLAvoJA11cP5wbw7mR1kkQf3RXc1K2WOqcMu-8nabJdVp76dB8WIyhDBE3ed3-g7eoLgExOwiDimaU1gDfZpDmuwabZE1OnOGgnwXtXg2EzbKAUgGLD" alt="EBA Skin Care" class="h-10 w-auto object-contain">
+</div><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Clinically formulated luxury skincare crafted for South Asian skin types and climates. Halal-certified, cruelty-free, and dermatologically tested.</p><div class="flex items-center gap-space-sm pt-space-xs"><span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-uppercase text-[10px] tracking-wider font-semibold">Halal Certified</span><span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-uppercase text-[10px] tracking-wider font-semibold">Cruelty Free</span><span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-uppercase text-[10px] tracking-wider font-semibold">Derm Tested</span></div></div><div class="flex flex-col space-y-space-md"><h3 class="font-headline-sm text-headline-sm text-on-surface">Collections</h3><ul class="flex flex-col space-y-space-sm font-body-md text-body-md text-on-surface-variant"><li class=""><a class="hover:text-on-surface transition-colors" data-path="men" href="#">Men's Charcoal Face Wash</a></li><li class=""><a class="hover:text-on-surface transition-colors" data-path="men" href="#">Men's Cellular Night Recovery</a></li><li class=""><a class="hover:text-on-surface transition-colors" data-path="women" href="#">Women's Gentle Milk Cleanser</a></li><li class=""><a class="hover:text-on-surface transition-colors" data-path="women" href="#">Women's Glow Radiance Serum</a></li><li class=""><a class="hover:text-on-surface transition-colors" data-path="women" href="#">Advanced Whitening Elixir Cream</a></li><li class=""><a class="hover:text-on-surface transition-colors" data-path="shop" href="#">Curated Gift Sets</a></li><li class=""><a class="hover:text-on-surface transition-colors" data-path="best-sellers" href="#">Pakistan Best Sellers</a></li></ul></div><div class="flex flex-col space-y-space-md"><h3 class="font-headline-sm text-headline-sm text-on-surface">Customer Care</h3><ul class="flex flex-col space-y-space-sm font-body-md text-body-md text-on-surface-variant"><li class=""><a class="hover:text-on-surface transition-colors flex items-center justify-between" data-path="track-order" href="#"><span class="">Track Your Order (TCS / Leopard)</span><span class="material-symbols-outlined text-[14px]">local_shipping</span></a></li><li class=""><a class="hover:text-on-surface transition-colors" data-path="shipping-policy" href="#">Shipping &amp; Delivery (Pakistan)</a></li><li class=""><a class="hover:text-on-surface transition-colors" data-path="returns" href="#">Return &amp; Refund Policy</a></li><li class=""><a class="hover:text-on-surface transition-colors" data-path="privacy" href="#">Privacy Policy</a></li><li class=""><a class="hover:text-on-surface transition-colors" data-path="faqs" href="#">Frequently Asked Questions</a></li><li class=""><a class="hover:text-on-surface transition-colors" data-path="contact-us" href="#">Contact Our Skin Specialists</a></li></ul></div><div class="flex flex-col space-y-space-md"><h3 class="font-headline-sm text-headline-sm text-on-surface">EBA Privilege Club</h3><p class="font-body-md text-body-md text-on-surface-variant">Receive sensorial invitations, clinical skincare insights, and seasonal privileges across Pakistan.</p><form class="flex flex-col gap-space-sm"><div class="relative w-full"><input class="w-full h-12 px-space-md bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded-lg focus:outline-none placeholder:text-outline-variant shadow-inner" placeholder="Enter your email address" type="email"></div><button class="w-full h-12 rounded-full bg-primary text-on-primary font-label-uppercase text-label-uppercase tracking-widest font-semibold hover:bg-surface-container-highest hover:text-on-surface transition-all flex items-center justify-center gap-space-xs" type="submit">Subscribe to Privilege</button></form><div class="flex items-center gap-space-sm pt-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span><span class="">Direct Helpline: +92 21 3589 1234</span></div></div></div><div class="mt-space-xl pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md bg-surface-container/60 rounded-xl p-space-md"><div class="flex flex-col sm:flex-row items-center gap-space-sm text-center sm:text-left"><span class="font-label-uppercase text-label-uppercase tracking-wider text-on-surface-variant font-semibold">Trusted Payment Partners:</span><div class="flex flex-wrap items-center justify-center gap-2"><span class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-uppercase text-[11px] font-semibold tracking-wider shadow-sm">Cash on Delivery (COD)</span><span class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-uppercase text-[11px] font-semibold tracking-wider shadow-sm">JazzCash</span><span class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-uppercase text-[11px] font-semibold tracking-wider shadow-sm">EasyPaisa</span><span class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-uppercase text-[11px] font-semibold tracking-wider shadow-sm">Bank Transfer / 1LINK</span><span class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-uppercase text-[11px] font-semibold tracking-wider shadow-sm">Visa / Mastercard</span></div></div><div class="font-label-uppercase text-label-uppercase text-on-surface-variant tracking-wider text-center md:text-right">© 2025 EBA Skin Care Pakistan. All Rights Reserved.</div></div></div></footer>
+
+</body></html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-surface-variant":"#4e4543","surface":"#fdf9f4","secondary":"#725b38","surface-tint":"#635d5b","on-tertiary-fixed-variant":"#574500","surface-variant":"#e6e2dd","primary":"#000000","on-tertiary-container":"#4f3d00","outline-variant":"#d1c4c1","on-primary-fixed":"#1f1b1a","surface-container-highest":"#e6e2dd","on-secondary-fixed-variant":"#584323","surface-container-high":"#ebe8e3","on-primary":"#ffffff","on-secondary-fixed":"#281800","inverse-on-surface":"#f4f0eb","inverse-surface":"#31302d","outline":"#7f7572","secondary-fixed-dim":"#e0c298","tertiary-container":"#cca730","secondary-fixed":"#fedeb2","surface-container-lowest":"#ffffff","tertiary-fixed":"#ffe088","error":"#ba1a1a","surface-container-low":"#f7f3ee","on-background":"#1c1c19","surface-dim":"#ddd9d5","on-primary-fixed-variant":"#4b4644","primary-container":"#1f1b1a","on-tertiary-fixed":"#241a00","primary-fixed":"#eae0de","on-primary-container":"#898281","inverse-primary":"#cdc5c3","secondary-container":"#fedeb2","surface-container":"#f1ede8","primary-fixed-dim":"#cdc5c3","tertiary":"#735c00","on-secondary-container":"#78603e","background":"#fdf9f4","on-tertiary":"#ffffff","error-container":"#ffdad6","on-error":"#ffffff","surface-bright":"#fdf9f4","on-error-container":"#93000a","on-surface":"#1c1c19","tertiary-fixed-dim":"#e9c349","on-secondary":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","margin-mobile":"1.25rem","space-md":"1rem","space-xl":"2.5rem","space-lg":"1.5rem","space-xs":"0.25rem","margin":"3rem","gutter-mobile":"1rem","gutter":"1.5rem"},"fontFamily":{"body-sm":["Inter"],"price-md":["Inter"],"headline-md":["Playfair Display"],"display-lg-mobile":["Playfair Display"],"headline-lg":["Playfair Display"],"price-lg":["Inter"],"headline-sm":["Playfair Display"],"display-lg":["Playfair Display"],"headline-lg-mobile":["Playfair Display"],"body-md":["Inter"],"label-ui":["Inter"],"label-uppercase":["Inter"],"display-brand":["Playfair Display"],"body-lg":["Inter"]},"fontSize":{"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"400"}],"price-md":["16px",{"lineHeight":"20px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["26px",{"lineHeight":"34px","letterSpacing":"0em","fontWeight":"500"}],"display-lg-mobile":["36px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"500"}],"price-lg":["20px",{"lineHeight":"24px","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"0.01em","fontWeight":"600"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"400"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"0em","fontWeight":"500"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"label-ui":["13px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"label-uppercase":["11px",{"lineHeight":"14px","letterSpacing":"0.12em","fontWeight":"600"}],"display-brand":["30px",{"lineHeight":"36px","letterSpacing":"0.15em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"26px","letterSpacing":"-0.005em","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full bg-primary text-on-primary py-space-xs px-margin-mobile lg:px-margin text-center font-label-uppercase text-label-uppercase uppercase"><div class="max-w-[1380px] mx-auto flex items-center justify-between"><span class="hidden md:inline-block text-surface-variant font-label-uppercase text-label-uppercase">Karachi • Lahore • Islamabad | PKR Rs.</span><span class="mx-auto md:mx-0 font-label-uppercase text-label-uppercase tracking-wider">Free Nationwide Delivery Across Pakistan on Orders Over Rs. 3,500</span><span class="hidden lg:inline-block text-surface-variant font-label-uppercase text-label-uppercase">Care: +92 21 3589 1234</span></div></div><div class="h-28 bg-surface/90 backdrop-blur-xl"><div class="max-w-[1380px] mx-auto h-full px-margin-mobile lg:px-margin flex flex-col justify-between py-space-sm"><div class="flex items-center justify-between gap-gutter"><div class="flex-1 max-w-xs relative hidden md:block"><span class="material-symbols-outlined absolute left-space-sm top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span><input class="w-full bg-surface-container-low pl-9 pr-space-md py-space-xs rounded-full font-body-sm text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest placeholder:text-outline transition-colors" placeholder="Search formulations, ingredients..." type="text"/></div><div class="flex-1 flex justify-center text-center"><a class="inline-block font-display-brand text-display-brand uppercase text-primary select-none hover:opacity-90 transition-opacity" data-path="home" href="#">EBA SKIN CARE</a></div><div class="flex-1 flex items-center justify-end gap-space-md"><a class="relative p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-space-xs" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="px-1.5 py-0.5 rounded-full bg-secondary text-on-secondary font-label-uppercase text-[10px] leading-none">2</span></a><a class="relative p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-space-xs" data-path="cart" href="#"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="font-label-ui text-label-ui hidden sm:inline-block">(1 | Rs. 2,850)</span></a><a class="flex items-center gap-space-xs group" data-path="account" href="#"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="font-label-ui text-label-ui hidden lg:inline-block text-on-surface-variant group-hover:text-on-surface transition-colors">Sign In</span></a></div></div><nav class="flex items-center justify-center gap-space-lg overflow-x-auto py-space-xs" data-active-classes="text-primary font-bold border-b border-primary"><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="home" href="#">Home</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="men" href="#">Men</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="women" href="#">Women</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="shop" href="#">Shop</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="best-sellers" href="#">Best Sellers</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="rituals" href="#">Rituals</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="about-us" href="#">About Us</a><a class="font-label-uppercase text-label-uppercase uppercase text-on-surface-variant hover:text-on-surface transition-colors pb-space-xs whitespace-nowrap" data-path="contact-us" href="#">Contact Us</a></nav></div></div></header><main class="w-full pt-36 bg-surface min-h-[70vh]"><div class="flex flex-col w-full">
+<div class="relative w-full bg-surface-container-low py-space-xl overflow-hidden">
+<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-secondary-fixed/30 blur-3xl pointer-events-none"></div>
+<div class="absolute left-1/4 -bottom-20 w-80 h-80 rounded-full bg-surface-variant/40 blur-2xl pointer-events-none"></div>
+<div class="max-w-[1380px] mx-auto px-margin-mobile lg:px-margin relative z-10">
+<nav aria-label="Breadcrumb" class="flex items-center gap-space-xs font-label-uppercase text-label-uppercase uppercase text-on-surface-variant mb-space-md">
+<a class="hover:text-primary transition-colors" data-path="home" href="#">Home</a>
+<span class="text-outline">/</span>
+<span class="text-on-surface-variant">Legal &amp; Compliance</span>
+<span class="text-outline">/</span>
+<span class="text-primary font-semibold">Privacy Policy</span>
+</nav>
+<div class="flex flex-wrap items-center gap-space-sm mb-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high text-secondary font-label-uppercase text-label-uppercase uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+          Official Policy • Last Updated: October 2024
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-uppercase text-label-uppercase uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">gavel</span>
+          PECA &amp; SBP Compliant Framework
+        </span>
+</div>
+<div class="max-w-4xl">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-space-sm leading-tight">
+          Privacy Policy &amp; Patron Data Protection
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+          At EBA Skin Care (Pakistan), we value the trust you place in our bespoke formulations and digital platforms. This Privacy Policy details how we gather, protect, and process your personal and transactional information across Karachi, Lahore, Islamabad, and nationwide.
+        </p>
+</div>
+<div class="mt-space-lg grid grid-cols-2 sm:grid-cols-4 gap-gutter max-w-3xl">
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<span class="font-label-uppercase text-label-uppercase text-outline block">Data Storage</span>
+<span class="font-headline-sm text-headline-sm text-primary">256-Bit</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Encrypted At Rest</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<span class="font-label-uppercase text-label-uppercase text-outline block">Brokers</span>
+<span class="font-headline-sm text-headline-sm text-primary">0% Sale</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Strict Non-Disclosure</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<span class="font-label-uppercase text-label-uppercase text-outline block">Settlements</span>
+<span class="font-headline-sm text-headline-sm text-primary">PCI-DSS</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Level 1 Redundancy</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<span class="font-label-uppercase text-label-uppercase text-outline block">Verification</span>
+<span class="font-headline-sm text-headline-sm text-primary">100% COD</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">SMS Dispatch OTP</span>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-[1380px] mx-auto px-margin-mobile lg:px-margin py-space-xl w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<aside class="lg:col-span-4 xl:col-span-3 sticky top-40 space-y-space-md order-2 lg:order-1">
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-label-uppercase text-label-uppercase uppercase tracking-wider text-primary">Document Navigation</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">menu_book</span>
+</div>
+<nav class="flex flex-col space-y-1" id="policy-nav">
+<a class="toc-link group flex items-start gap-space-xs p-space-xs rounded-lg transition-colors text-on-surface hover:bg-surface-container" href="#section-1">
+<span class="font-label-ui text-label-ui text-secondary font-semibold min-w-[1.25rem]">01</span>
+<span class="font-body-sm text-body-sm group-hover:text-primary font-medium">Information We Collect</span>
+</a>
+<a class="toc-link group flex items-start gap-space-xs p-space-xs rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container" href="#section-2">
+<span class="font-label-ui text-label-ui text-secondary font-semibold min-w-[1.25rem]">02</span>
+<span class="font-body-sm text-body-sm group-hover:text-primary">How We Utilize Your Data</span>
+</a>
+<a class="toc-link group flex items-start gap-space-xs p-space-xs rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container" href="#section-3">
+<span class="font-label-ui text-label-ui text-secondary font-semibold min-w-[1.25rem]">03</span>
+<span class="font-body-sm text-body-sm group-hover:text-primary">Payment Gateway Security</span>
+</a>
+<a class="toc-link group flex items-start gap-space-xs p-space-xs rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container" href="#section-4">
+<span class="font-label-ui text-label-ui text-secondary font-semibold min-w-[1.25rem]">04</span>
+<span class="font-body-sm text-body-sm group-hover:text-primary">Logistics &amp; Courier Sharing</span>
+</a>
+<a class="toc-link group flex items-start gap-space-xs p-space-xs rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container" href="#section-5">
+<span class="font-label-ui text-label-ui text-secondary font-semibold min-w-[1.25rem]">05</span>
+<span class="font-body-sm text-body-sm group-hover:text-primary">Cookies &amp; Tracking Tech</span>
+</a>
+<a class="toc-link group flex items-start gap-space-xs p-space-xs rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container" href="#section-6">
+<span class="font-label-ui text-label-ui text-secondary font-semibold min-w-[1.25rem]">06</span>
+<span class="font-body-sm text-body-sm group-hover:text-primary">Patron Rights &amp; Retention</span>
+</a>
+<a class="toc-link group flex items-start gap-space-xs p-space-xs rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container" href="#section-7">
+<span class="font-label-ui text-label-ui text-secondary font-semibold min-w-[1.25rem]">07</span>
+<span class="font-body-sm text-body-sm group-hover:text-primary">Data Protection Desk</span>
+</a>
+</nav>
+</div>
+<div class="bg-surface-container-highest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs text-secondary">
+<span class="material-symbols-outlined text-[20px]">contact_support</span>
+<span class="font-label-uppercase text-label-uppercase uppercase">Concierge Legal Support</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm leading-relaxed">
+            Have questions regarding your rights under Pakistani electronic privacy laws? Reach our compliance officers in Karachi directly.
+          </p>
+<div class="space-y-1.5 font-label-ui text-label-ui">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">mail</span>
+<a class="hover:text-primary underline" href="mailto:privacy@ebaskincare.pk">privacy@ebaskincare.pk</a>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">call</span>
+<span>+92 21 3589 1234</span>
+</div>
+</div>
+<a class="mt-space-sm inline-flex items-center justify-between w-full px-space-sm py-space-xs bg-primary text-on-primary rounded-lg font-label-uppercase text-label-uppercase uppercase hover:bg-surface-tint transition-colors" href="#section-7">
+<span>Direct Inquiry</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-sm flex items-center gap-space-xs shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[24px]">verified</span>
+<div>
+<span class="font-label-ui text-label-ui font-semibold text-primary block">Official Seal</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">ISO/IEC 27001 Protocol</span>
+</div>
+</div>
+</aside>
+<section class="lg:col-span-8 xl:col-span-9 space-y-space-xl order-1 lg:order-2">
+<article class="scroll-mt-44 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm transition-all hover:shadow-md" id="section-1">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-uppercase text-label-uppercase text-secondary bg-surface-container px-2.5 py-1 rounded-full uppercase">Section 01</span>
+<span class="font-body-sm text-body-sm text-outline">Scope: Collection Architecture</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">1. Information We Collect</h2>
+<div class="space-y-space-sm font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p>
+              When navigating the digital boutique of <strong class="text-primary font-semibold">EBA Skin Care Pakistan (Pvt.) Ltd.</strong>, we gather distinct data profiles essential for compounding personalized botanical formulations, confirming local courier dispatch routes, and honoring client preferences.
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm my-space-sm">
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex items-center gap-2 mb-1 text-primary">
+<span class="material-symbols-outlined text-[18px] text-secondary">badge</span>
+<span class="font-label-ui text-label-ui font-bold">Patron Contact Credentials</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Full legal name, active WhatsApp and voice telephone lines within the Pakistani numbering plan (+92), electronic mailing addresses, and exact physical premises (street, sector/mohalla, city, and postal sector).
+                </p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex items-center gap-2 mb-1 text-primary">
+<span class="material-symbols-outlined text-[18px] text-secondary">biotech</span>
+<span class="font-label-ui text-label-ui font-bold">Dermatological &amp; Consultation Intake</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Responses submitted via our Skin Diagnostic Concierge, including self-reported barrier concerns, South Asian environmental exposure variables (humidity, UV, pollution), and topical sensitives.
+                </p>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-high rounded-lg flex items-start gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">info</span>
+<div>
+<span class="font-label-ui text-label-ui font-bold block mb-0.5">Guest Checkout Privilege</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  We acknowledge that patrons frequently prioritize ephemeral interaction. You are fully empowered to complete acquisitions via our Guest Pathway without creating a permanent account record or password authentication profile on our servers.
+                </p>
+</div>
+</div>
+</div>
+</article>
+<article class="scroll-mt-44 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm transition-all hover:shadow-md" id="section-2">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-uppercase text-label-uppercase text-secondary bg-surface-container px-2.5 py-1 rounded-full uppercase">Section 02</span>
+<span class="font-body-sm text-body-sm text-outline">Scope: Operational Purpose</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">2. How We Utilize Your Data</h2>
+<div class="space-y-space-sm font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p>
+              Every informational asset entrusted to EBA Skin Care is employed strictly within the parameters of ethical luxury stewardship and direct order execution.
+            </p>
+<ul class="space-y-space-xs">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[18px] mt-1">check_circle</span>
+<span><strong class="text-primary font-medium">Bespoke Fulfillment:</strong> Compounding, packaging, and generating standardized Pakistani airway bills (Waybills) for domestic courier intake.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[18px] mt-1">check_circle</span>
+<span><strong class="text-primary font-medium">Direct Operational Telemetry:</strong> Generating live automated SMS and WhatsApp transactional dispatches (out for delivery, payment receipts, and delivery rider handoff notifications).</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[18px] mt-1">check_circle</span>
+<span><strong class="text-primary font-medium">Seasonal Regime Optimization:</strong> Tailoring topical formulation recommendations appropriate to shifting seasonal indices across Punjab, Sindh, KPK, and federal territories.</span>
+</li>
+</ul>
+<div class="p-space-sm bg-primary text-on-primary rounded-lg flex items-center justify-between gap-space-sm mt-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary-fixed text-[24px]">shield</span>
+<span class="font-label-ui text-label-ui tracking-wide uppercase">Patron Guarantee: Zero Commercial Data Brokerage</span>
+</div>
+<span class="font-label-uppercase text-label-uppercase bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded uppercase font-semibold">Strict Clause</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Under no circumstance does EBA Skin Care sell, lease, barter, or distribute patron demographics, contact registries, or purchasing histories to third-party advertising syndicates, bulk telemarketers, or affiliate data clearinghouses.
+            </p>
+</div>
+</article>
+<article class="scroll-mt-44 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm transition-all hover:shadow-md" id="section-3">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-uppercase text-label-uppercase text-secondary bg-surface-container px-2.5 py-1 rounded-full uppercase">Section 03</span>
+<span class="font-body-sm text-body-sm text-outline">Scope: Financial Integrations</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">3. Payment Gateway Security</h2>
+<div class="space-y-space-sm font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p>
+              Our monetary reconciliation ecosystem is built around absolute patron privacy. EBA Skin Care operates on a zero-footprint philosophy regarding sensitive banking instrumentation:
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-ui text-label-ui font-semibold text-primary">JazzCash &amp; EasyPaisa Mobile Wallets</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">account_balance_wallet</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Transactions initiated via direct digital wallet integration are routed through tokenized State Bank of Pakistan (SBP) authorized payment switches. Patron wallet MPINs and OTPs are entered solely within sandboxed merchant portals and never intersect our web servers.
+                  </p>
+</div>
+<div class="mt-space-sm pt-space-xs text-outline font-label-uppercase text-label-uppercase uppercase">
+                  Direct Tokenization
+                </div>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-ui text-label-ui font-semibold text-primary">1LINK &amp; Card Infrastructure</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">credit_card</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Card settlements (Visa, Mastercard, PayPak) are executed via PCI-DSS Certified Level-1 payment gateways using 256-bit TLS encryption. EBA Skin Care never archives raw 16-digit Primary Account Numbers (PAN) or 3-digit CVVs.
+                  </p>
+</div>
+<div class="mt-space-sm pt-space-xs text-outline font-label-uppercase text-label-uppercase uppercase">
+                  End-to-End Encrypted
+                </div>
+</div>
+</div>
+<div class="bg-surface-container-high p-space-sm rounded-lg flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[22px] mt-0.5">local_shipping</span>
+<div>
+<span class="font-label-ui text-label-ui font-bold text-primary block mb-0.5">Cash on Delivery (COD) Safeguards</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  For COD dispatches, we conduct brief automated phone/SMS verification to prevent unauthorized consignments. Cash collections are accounted for through formalized logistics manifests without secondary telemetry retention.
+                </p>
+</div>
+</div>
+</div>
+</article>
+<article class="scroll-mt-44 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm transition-all hover:shadow-md" id="section-4">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-uppercase text-label-uppercase text-secondary bg-surface-container px-2.5 py-1 rounded-full uppercase">Section 04</span>
+<span class="font-body-sm text-body-sm text-outline">Scope: Physical Logistics</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">4. Logistics &amp; Courier Sharing</h2>
+<div class="space-y-space-sm font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p>
+              Physical conveyance of fragile, temperature-sensitive formulations necessitates sharing defined patron shipping data with accredited nationwide courier services. We partner exclusively with premier logistics authorities:
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm my-space-sm">
+<div class="bg-surface-container-low p-space-sm rounded-lg text-center">
+<span class="font-label-uppercase text-label-uppercase font-bold text-primary block mb-1">TCS Express</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Air &amp; Overland Priority Transit</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg text-center">
+<span class="font-label-uppercase text-label-uppercase font-bold text-primary block mb-1">Leopards Courier</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Nationwide Express Routing</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg text-center">
+<span class="font-label-uppercase text-label-uppercase font-bold text-primary block mb-1">Trax Logistics</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Urban Same-Day &amp; COD Processing</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Information transmitted is bounded strictly to: <em class="text-primary font-medium">Consignee Name, Delivery Landmark, District/City, and Primary Telephone Line</em>. Courier partners are bound by formal Non-Disclosure Agreements (NDAs) that prohibit utilizing patron contacts for unsolicited secondary promotions or personal communication outside parcel handoff.
+            </p>
+</div>
+</article>
+<article class="scroll-mt-44 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm transition-all hover:shadow-md" id="section-5">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-uppercase text-label-uppercase text-secondary bg-surface-container px-2.5 py-1 rounded-full uppercase">Section 05</span>
+<span class="font-body-sm text-body-sm text-outline">Scope: Digital Telemetry</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">5. Cookies &amp; Tracking Technologies</h2>
+<div class="space-y-space-sm font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p>
+              To render an uninterrupted digital shopping journey across our catalog, we deploy lightweight session mechanisms designed for convenience rather than invasive surveillance:
+            </p>
+<div class="space-y-space-xs my-space-sm">
+<div class="flex items-start gap-space-sm p-space-sm bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[20px]">shopping_bag</span>
+<div>
+<span class="font-label-ui text-label-ui font-semibold text-primary block">Ephemeral Cart Persistence</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Preserves selected glass flacons, regimens, and promotional bundle items inside your bag during session navigation without forcing instant account signup.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm p-space-sm bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[20px]">tune</span>
+<div>
+<span class="font-label-ui text-label-ui font-semibold text-primary block">Currency &amp; Regional Localization</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Retains selected currency (Pakistani Rupee - PKR Rs.) and nearest metropolitan delivery hub (Karachi, Lahore, Islamabad, Faisalabad, Peshawar, Quetta) for calculated transit estimates.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm p-space-sm bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[20px]">analytics</span>
+<div>
+<span class="font-label-ui text-label-ui font-semibold text-primary block">Aggregated Performance Metrics</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Anonymized telemetry to monitor page rendering speeds across cellular 4G/5G connections within Pakistan. IP addresses are truncated to safeguard identity.</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Patrons can configure browser parameters to reject cookies without voiding access to core product specifications, formulation indexes, and ingredient breakdowns.
+            </p>
+</div>
+</article>
+<article class="scroll-mt-44 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm transition-all hover:shadow-md" id="section-6">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-uppercase text-label-uppercase text-secondary bg-surface-container px-2.5 py-1 rounded-full uppercase">Section 06</span>
+<span class="font-body-sm text-body-sm text-outline">Scope: Patron Sovereignty</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">6. Patron Rights &amp; Data Retention</h2>
+<div class="space-y-space-sm font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p>
+              In alignment with international privacy principles and Pakistan's Prevention of Electronic Crimes Act (PECA), every EBA Skin Care patron retains complete authority over their digital identity.
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<span class="font-label-ui text-label-ui font-bold text-primary block mb-1">Right to Complete Erasure</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  You may petition for the permanent destruction of your patron profile, past skin consultation logs, and recorded communications. Requests are fulfilled within 7 business days.
+                </p>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<span class="font-label-ui text-label-ui font-bold text-primary block mb-1">Instant Opt-Out (Privilege Club)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Every promotional SMS or WhatsApp bulletin contains an instant deregistration shortcode. You may likewise adjust dispatch parameters directly from your account console.
+                </p>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs">
+<strong class="text-primary font-medium">Statutory Financial Retention:</strong> While personal contact markers can be expunged, transaction invoice copies are retained for 5 tax assessment years as mandated by the Federal Board of Revenue (FBR) of Pakistan for statutory audit and sales tax validation.
+            </p>
+</div>
+</article>
+<article class="scroll-mt-44 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm transition-all hover:shadow-md" id="section-7">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-uppercase text-label-uppercase text-secondary bg-surface-container px-2.5 py-1 rounded-full uppercase">Section 07</span>
+<span class="font-body-sm text-body-sm text-outline">Scope: Legal Jurisdiction</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">7. Contact the Data Protection Desk</h2>
+<div class="space-y-space-sm font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<p>
+              For formal statutory petitions, right-to-erasure notifications, or regulatory correspondence, our Data Protection Officer (DPO) and Corporate Legal Council can be directly reached through registered physical or digital mail:
+            </p>
+<div class="p-space-md bg-surface-container rounded-xl grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="space-y-space-xs">
+<span class="font-label-uppercase text-label-uppercase text-secondary uppercase font-semibold block">Karachi Executive Atelier</span>
+<span class="font-label-ui text-label-ui font-bold text-primary block">EBA Skin Care Pakistan (Pvt.) Ltd.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  Suite 402, 4th Floor, Al-Murtaza Commercial Lane 3,<br/>
+                  Phase 8, Defence Housing Authority (DHA),<br/>
+                  Karachi 75500, Sindh, Pakistan.
+                </p>
+</div>
+<div class="space-y-space-xs flex flex-col justify-between">
+<div>
+<span class="font-label-uppercase text-label-uppercase text-secondary uppercase font-semibold block mb-1">Direct Channels</span>
+<div class="space-y-1 font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="font-label-ui text-label-ui font-semibold text-primary">Email:</span>
+<a class="text-secondary hover:underline" href="mailto:legal@ebaskincare.pk">legal@ebaskincare.pk</a>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-ui text-label-ui font-semibold text-primary">Helpline:</span>
+<span>+92 21 3589 1234 (Ext. 4)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-ui text-label-ui font-semibold text-primary">Hours:</span>
+<span>Monday – Friday, 10:00 AM – 6:00 PM PKT</span>
+</div>
+</div>
+</div>
+<div class="pt-2">
+<span class="inline-flex items-center gap-1 font-label-uppercase text-[10px] tracking-wider text-outline uppercase">
+<span class="w-2 h-2 rounded-full bg-emerald-600 inline-block"></span> Compliance Desk Operating
+                  </span>
+</div>
+</div>
+</div>
+</div>
+</article>
+</section>
+</div>
+</div>
+<section class="w-full bg-surface-container-high py-space-lg mb-space-xl">
+<div class="max-w-[1380px] mx-auto px-margin-mobile lg:px-margin flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm text-center sm:text-left">
+<span class="material-symbols-outlined text-[28px] text-secondary">verified_user</span>
+<div>
+<span class="font-headline-sm text-headline-sm text-primary block">Need a Certified Copy for Legal Records?</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Download our verified, digitally signed PDF policy statement for corporate or institutional verification.</span>
+</div>
+</div>
+<button class="px-space-md py-space-xs bg-primary text-on-primary rounded-lg font-label-uppercase text-label-uppercase uppercase hover:bg-surface-tint transition-all flex items-center gap-2 shrink-0" onclick="window.print()" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+<span>Print Statement</span>
+</button>
+</div>
+</section>
+<script>
+    (function() {
+      const links = document.querySelectorAll('.toc-link');
+      const sections = document.querySelectorAll('article[id^="section-"]');
+
+      function setActiveLink() {
+        let scrollY = window.pageYOffset;
+        let currentId = '';
+
+        sections.forEach(function(sec) {
+          const sectionTop = sec.offsetTop - 200;
+          const sectionHeight = sec.offsetHeight;
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            currentId = sec.getAttribute('id');
+          }
+        });
+
+        links.forEach(function(link) {
+          const target = link.getAttribute('href').substring(1);
+          if (target === currentId) {
+            link.classList.add('bg-surface-container', 'text-primary', 'font-semibold');
+            link.classList.remove('text-on-surface-variant');
+          } else {
+            link.classList.remove('bg-surface-container', 'text-primary', 'font-semibold');
+            link.classList.add('text-on-surface-variant');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', setActiveLink, { passive: true });
+      setActiveLink();
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-low text-on-surface pt-space-xl pb-space-lg shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="max-w-[1380px] mx-auto px-margin-mobile lg:px-margin"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter mb-space-xl"><div class="lg:col-span-4 flex flex-col space-y-space-md"><span class="font-display-brand text-headline-sm uppercase tracking-widest text-primary">EBA SKIN CARE</span><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Botanically potent, clinically measured skincare crafted specifically for the South Asian climate. Pure formulation integrity, rooted in timeless botanical wisdom and dermatological precision.</p><div class="flex flex-wrap items-center gap-space-xs pt-space-xs"><span class="px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-uppercase text-label-uppercase uppercase flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">verified</span>100% Halal</span><span class="px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-uppercase text-label-uppercase uppercase flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">spa</span>Cruelty-Free</span><span class="px-space-sm py-space-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-uppercase text-label-uppercase uppercase flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">biotech</span>Dermatologist Tested</span></div></div><div class="lg:col-span-2 flex flex-col space-y-space-sm"><span class="font-headline-sm text-headline-sm text-primary mb-space-xs">Collections</span><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="women" href="#">Women's Atelier</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="men" href="#">Men's Apothecary</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="best-sellers" href="#">Cult Best Sellers</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="rituals" href="#">Regimen Rituals</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="shop" href="#">New Arrivals</a></div><div class="lg:col-span-3 flex flex-col space-y-space-sm"><span class="font-headline-sm text-headline-sm text-primary mb-space-xs">Customer Care</span><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="track-your-order" href="#">Track Your Order</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="shipping-and-delivery" href="#">Shipping &amp; Delivery</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="return-and-refund-policy" href="#">Return &amp; Refund Policy</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact-skin-advisors" href="#">Contact Skin Advisors</a><div class="pt-space-xs font-label-ui text-label-ui text-secondary">Helpline: +92 21 3589 1234</div></div><div class="lg:col-span-3 flex flex-col space-y-space-md"><span class="font-headline-sm text-headline-sm text-primary">EBA Privilege Club</span><p class="font-body-sm text-body-sm text-on-surface-variant">Receive sensorial discoveries, private event invitations, and curated clinical regimens.</p><div class="flex flex-col gap-space-xs"><div class="flex items-center bg-surface-container-lowest rounded-lg p-space-xs shadow-[0_1px_4px_rgba(0,0,0,0.03)]"><input class="w-full bg-transparent px-space-sm py-space-xs font-body-sm text-body-sm text-on-surface focus:outline-none placeholder:text-outline" placeholder="Your email address..." type="email"/><button class="px-space-md py-space-xs bg-primary text-on-primary rounded-lg font-label-uppercase text-label-uppercase uppercase hover:bg-surface-tint hover:text-on-primary transition-colors" type="button">Join</button></div><span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">By joining, you agree to EBA Terms &amp; Privacy Policy.</span></div></div></div><div class="pt-space-lg flex flex-col lg:flex-row items-center justify-between gap-space-md"><div class="flex flex-wrap items-center justify-center lg:justify-start gap-space-xs"><span class="font-label-uppercase text-label-uppercase text-on-surface-variant mr-space-xs">Payment Concierge:</span><span class="px-space-sm py-1 bg-surface-container-high text-on-surface rounded font-label-ui text-[11px]">Cash on Delivery</span><span class="px-space-sm py-1 bg-surface-container-high text-on-surface rounded font-label-ui text-[11px]">JazzCash</span><span class="px-space-sm py-1 bg-surface-container-high text-on-surface rounded font-label-ui text-[11px]">EasyPaisa</span><span class="px-space-sm py-1 bg-surface-container-high text-on-surface rounded font-label-ui text-[11px]">1LINK Bank Transfer</span><span class="px-space-sm py-1 bg-surface-container-high text-on-surface rounded font-label-ui text-[11px]">Visa / Mastercard</span></div><div class="font-body-sm text-body-sm text-on-surface-variant text-center lg:text-right">© 2024 EBA Skin Care Pakistan (Pvt.) Ltd. All rights reserved. Crafted with care.</div></div></div></footer></body></html>

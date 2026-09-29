@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error-container": "#ffdad6", "on-tertiary-fixed": "#241a00", "secondary": "#725b38", "on-error": "#ffffff", "on-primary-container": "#898281", "surface-container-high": "#ebe8e3", "on-primary-fixed": "#1f1b1a", "primary-container": "#1f1b1a", "secondary-fixed": "#fedeb2", "outline-variant": "#d1c4c1", "surface-bright": "#fdf9f4", "surface-container-highest": "#e6e2dd", "tertiary": "#735c00", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#e9c349", "background": "#fdf9f4", "outline": "#7f7572", "tertiary-fixed": "#ffe088", "on-primary-fixed-variant": "#4b4644", "on-secondary-container": "#78603e", "inverse-on-surface": "#f4f0eb", "on-tertiary-container": "#4f3d00", "primary-fixed-dim": "#cdc5c3", "surface": "#fdf9f4", "on-background": "#1c1c19", "surface-container-low": "#f7f3ee", "on-tertiary-fixed-variant": "#574500", "surface-container": "#f1ede8", "on-secondary-fixed": "#281800", "tertiary-container": "#cca730", "on-surface-variant": "#4e4543", "on-error-container": "#93000a", "on-primary": "#ffffff", "secondary-container": "#fedeb2", "inverse-primary": "#cdc5c3", "on-surface": "#1c1c19", "surface-variant": "#e6e2dd", "primary": "#000000", "primary-fixed": "#eae0de", "surface-container-lowest": "#ffffff", "inverse-surface": "#31302d", "error": "#ba1a1a", "surface-dim": "#ddd9d5", "on-secondary-fixed-variant": "#584323", "surface-tint": "#635d5b", "secondary-fixed-dim": "#e0c298", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-mobile": "1rem", "gutter": "1.5rem", "margin": "3rem", "margin-mobile": "1.25rem", "space-xl": "2.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-md": "1rem" }, "fontFamily": { "headline-lg": [ "Playfair Display" ], "headline-lg-mobile": [ "Playfair Display" ], "label-uppercase": [ "Inter" ], "display-brand": [ "Playfair Display" ], "body-sm": [ "Inter" ], "display-lg": [ "Playfair Display" ], "display-lg-mobile": [ "Playfair Display" ], "body-md": [ "Inter" ], "label-ui": [ "Inter" ], "price-md": [ "Inter" ], "body-lg": [ "Inter" ], "headline-sm": [ "Playfair Display" ], "headline-md": [ "Playfair Display" ], "price-lg": [ "Inter" ] }, "fontSize": { "headline-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "500" } ], "label-uppercase": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "display-brand": [ "30px", { "lineHeight": "36px", "letterSpacing": "0.15em", "fontWeight": "600" } ], "body-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "display-lg-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-ui": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "price-md": [ "16px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-md": [ "26px", { "lineHeight": "34px", "letterSpacing": "0em", "fontWeight": "500" } ], "price-lg": [ "20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col h-full overflow-hidden"><div class="p-space-lg flex flex-col gap-space-xs"><div class="font-display-brand text-headline-sm uppercase text-on-surface tracking-[0.18em]">EBA SKIN CARE</div><div class="font-label-uppercase text-label-uppercase text-secondary tracking-widest">ADMIN CONSOLE • STUDIO</div></div><nav class="flex-1 px-space-md py-space-xs space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary rounded-lg font-semibold shadow-[0_2px_8px_rgba(26,22,21,0.08)]"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">space_dashboard</span><span class="font-label-ui text-label-ui">Dashboard</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="orders" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">shopping_bag</span><span class="font-label-ui text-label-ui">Orders</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-semibold">12 NEW</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="products" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">spa</span><span class="font-label-ui text-label-ui">Products</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="categories" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">category</span><span class="font-label-ui text-label-ui">Categories</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="shipment-logistics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">local_shipping</span><span class="font-label-ui text-label-ui">Shipment Logistics</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="coupons-and-offers" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">confirmation_number</span><span class="font-label-ui text-label-ui">Coupons &amp; Offers</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="payment-gateways" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">account_balance_wallet</span><span class="font-label-ui text-label-ui">Payment Gateways</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="homepage-control" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">storefront</span><span class="font-label-ui text-label-ui">Homepage Control</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="customers" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">group</span><span class="font-label-ui text-label-ui">Customers</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="reviews" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">grade</span><span class="font-label-ui text-label-ui">Reviews</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">4</span></a><a aria-current="page" class="flex items-center justify-between px-space-md py-space-sm transition-all bg-primary-container text-on-primary rounded-lg font-semibold shadow-[0_2px_8px_rgba(26,22,21,0.08)]" data-path="inventory" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">inventory_2</span><span class="font-label-ui text-label-ui">Inventory</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="notifications" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">notifications</span><span class="font-label-ui text-label-ui">Notifications</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-semibold">3</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="staff-and-roles" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">admin_panel_settings</span><span class="font-label-ui text-label-ui">Staff &amp; Roles</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">tune</span><span class="font-label-ui text-label-ui">Settings</span></div></a></nav><div class="p-space-md bg-surface-container/60 m-space-sm rounded-xl flex flex-col gap-space-sm"><a class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface transition-colors" href="#"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[18px] text-secondary">visibility</span><span class="font-label-ui text-label-ui">View Live Storefront</span></div><span class="material-symbols-outlined text-[16px] text-on-surface-variant">north_east</span></a><div class="flex items-center justify-between pt-space-xs"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col"><span class="font-label-ui text-label-ui font-semibold text-on-surface">Fatima Khan</span><span class="font-label-uppercase text-[10px] text-secondary">Owner &amp; Formulator</span></div></div><button class="p-1 text-on-surface-variant hover:text-on-surface rounded" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></div></aside><div class="pl-72 min-h-screen flex flex-col"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-8"><div class="flex items-center gap-space-md w-96"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full bg-surface-container-low pl-10 pr-4 py-2 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search orders, formulation SKUs, patrons..." type="search"/></div></div><div class="flex items-center gap-space-lg"><div class="hidden lg:flex items-center gap-space-md text-on-surface-variant"><div class="flex items-center gap-space-xs font-label-ui text-label-ui"><span class="material-symbols-outlined text-[16px] text-secondary">calendar_today</span><span>Tuesday, 24 Oct 2024</span></div><span class="w-1 h-1 rounded-full bg-outline-variant"></span><div class="flex items-center gap-space-xs font-label-ui text-label-ui"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span>Pakistan Hub (PKR)</span></div></div><div class="flex items-center gap-space-sm"><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span></button><button class="hidden sm:flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-label-ui" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Create Order</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface px-8 py-space-lg flex-1"><div class="flex flex-col w-full gap-space-lg">
+<!-- Editorial Top Bar / Header Context -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs max-w-2xl">
+<div class="flex items-center gap-2">
+<span class="font-label-uppercase text-label-uppercase tracking-widest text-secondary">Depot Logistics &amp; Batch Traceability</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-uppercase text-[10px] text-on-surface-variant font-medium">Warehouse Sync: Live</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Inventory &amp; Stock Management</h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        Real-time multi-depot stock levels, batch numbers, low-stock threshold alerts, and replenishment orders across Pakistan hubs.
+      </p>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-sm self-start lg:self-end">
+<button class="group flex items-center gap-space-xs px-4 py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary group-hover:scale-110 transition-transform">picture_as_pdf</span>
+<span class="font-label-ui text-label-ui">Stock Audit Report (PDF)</span>
+</button>
+<button class="flex items-center gap-space-xs px-4 py-2.5 rounded-lg bg-primary hover:bg-neutral-800 text-on-primary transition-all shadow-md" onclick="document.getElementById('adjustment-flyout').classList.remove('translate-x-full')" type="button">
+<span class="material-symbols-outlined text-[18px]">add_box</span>
+<span class="font-label-ui text-label-ui font-medium">+ Receive New Batch / PO</span>
+</button>
+</div>
+</div>
+<!-- Restock Critical Alert Banner -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-md shadow-sm">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-tertiary-container"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pl-2">
+<div class="flex items-start md:items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-tertiary-container/30 flex items-center justify-center flex-shrink-0 text-on-tertiary-container">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-uppercase text-label-uppercase text-tertiary tracking-wider font-semibold">Urgent Restock Buffer Triggered</span>
+<span class="text-[10px] px-2 py-0.2 rounded-full bg-secondary-container text-on-secondary-container font-medium">Auto PO #EBA-PO-8842 Generated</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-normal">
+            2 Formulations have fallen below safety buffer in <span class="font-semibold text-on-surface">Karachi Central Depot</span> &amp; <span class="font-semibold text-on-surface">Lahore Fulfillment Hub</span>. Automated replenishment triggered.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-end md:self-auto flex-shrink-0">
+<button class="px-3 py-1.5 rounded-lg bg-tertiary-container text-on-tertiary-container font-label-ui text-label-ui font-semibold hover:opacity-90 transition-opacity" type="button">
+          Review PO Dispatch
+        </button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface rounded-lg" onclick="this.closest('.relative').remove()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- KPI Metrics Strip (Bento Editorial Style) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Metric 1 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-wider">Inventory Volume</span>
+<span class="font-headline-md text-headline-md text-on-surface mt-1">3,420 <span class="text-body-md font-body-md font-normal text-on-surface-variant">Units</span></span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">inventory_2</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>Across 3 Regional Depots</span>
+<span class="font-label-uppercase text-[10px] text-secondary font-semibold">94.2% Capacity</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-wider">Total Valuation (Cost)</span>
+<span class="font-headline-md text-headline-md text-on-surface mt-1">Rs. 8,640,000</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +4.8% vs last cycle
+        </span>
+<span class="font-label-uppercase text-[10px] text-on-surface-variant">PKR Base</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-error tracking-wider">Critical Buffer Alert</span>
+<span class="font-headline-md text-headline-md text-error mt-1">2 Urgent SKUs</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-[22px]">error</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between bg-error-container/20 -mx-space-md -mb-space-md px-space-md py-2 text-error font-body-sm text-body-sm">
+<span>Glow Serum &amp; Night Cream</span>
+<span class="font-label-uppercase text-[10px] font-semibold underline cursor-pointer">Fast-Track</span>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-wider">Inbound Transit</span>
+<span class="font-headline-md text-headline-md text-on-surface mt-1">1,200 <span class="text-body-md font-body-md font-normal text-on-surface-variant">Units</span></span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[22px]">local_shipping</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>Expected Arrival: 04 Nov</span>
+<span class="font-label-uppercase text-[10px] text-secondary font-semibold">2 Batches (KHI)</span>
+</div>
+</div>
+</div>
+<!-- Interactive Controls: Filter Bar & Depot Selector -->
+<div class="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-space-md bg-surface-container-low p-space-md rounded-xl shadow-sm">
+<!-- Left: Tabs / Depot Filter -->
+<div class="flex flex-wrap items-center gap-space-xs" id="depot-tabs">
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant mr-2">Depot:</span>
+<button class="px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-label-uppercase text-label-uppercase shadow-sm" type="button">All Depots (3)</button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-uppercase text-label-uppercase" type="button">Karachi Central</button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-uppercase text-label-uppercase" type="button">Lahore Hub</button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-uppercase text-label-uppercase" type="button">Islamabad Satellite</button>
+</div>
+<!-- Right: Category, Status dropdowns & Search -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Category select -->
+<div class="flex items-center gap-1 bg-surface-container-lowest px-3 py-1.5 rounded-lg shadow-sm">
+<span class="font-label-uppercase text-[10px] text-on-surface-variant">Line:</span>
+<select class="bg-transparent font-label-ui text-label-ui text-on-surface outline-none cursor-pointer">
+<option>All Formulations</option>
+<option>Women's Rituals</option>
+<option>Men's Regimen</option>
+<option>Packaging &amp; Flacons</option>
+</select>
+</div>
+<!-- Status Filter -->
+<div class="flex items-center gap-1 bg-surface-container-lowest px-3 py-1.5 rounded-lg shadow-sm">
+<span class="font-label-uppercase text-[10px] text-on-surface-variant">Status:</span>
+<select class="bg-transparent font-label-ui text-label-ui text-on-surface outline-none cursor-pointer">
+<option>All Statuses</option>
+<option>Critically Low</option>
+<option>Low Stock</option>
+<option>Healthy Buffer</option>
+<option>In Transit</option>
+</select>
+</div>
+<!-- Search in Table -->
+<div class="relative flex-1 sm:w-64">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[18px] text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-lowest pl-9 pr-3 py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant outline-none focus:bg-surface-bright shadow-sm" placeholder="Filter SKU or Lot..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Primary Inventory Table -->
+<div class="w-full overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-uppercase text-[11px] tracking-wider uppercase">
+<th class="py-3.5 px-4 font-semibold">Formulation &amp; SKU</th>
+<th class="py-3.5 px-3 font-semibold">Category</th>
+<th class="py-3.5 px-3 font-semibold">Batch / Lot</th>
+<th class="py-3.5 px-3 font-semibold">Exp. Date</th>
+<th class="py-3.5 px-3 font-semibold text-right">Karachi Depot</th>
+<th class="py-3.5 px-3 font-semibold text-right">Lahore Hub</th>
+<th class="py-3.5 px-3 font-semibold text-right">Total Units</th>
+<th class="py-3.5 px-3 font-semibold text-right">Safety Min</th>
+<th class="py-3.5 px-3 font-semibold text-right">Run Velocity</th>
+<th class="py-3.5 px-3 font-semibold text-center">Status</th>
+<th class="py-3.5 px-4 font-semibold text-right">Quick Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-sm text-body-sm">
+<!-- Row 1: Beauty Glow Serum (Critically Low) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-4 px-4 min-w-[220px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Amber glass dropper bottle of Beauty Glow Serum with minimalist cream label sitting on warm limestone pedestal with soft studio light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBULzCo46useLHgom288FG3FTL_JATMx2nXbtpW94GDSAU_j9m1pydxRjRgIGadmaFQjveHzR4wRL_SYJXMuFy5Cbxl1u3EJHONUVeeai2oKB3RH-2WAozE9YDjAnaXXvd8V_peqT8zYu_f-29lD713i5Sjs9riBeOK0uNOapOfkCI9F15cX1f4oyqPMY1HuzcaMNfBjIhexVZP3Eo2S09XrOFFfw1aaep2LjQs3kgatm8O7kzgba5NSA"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface truncate">Beauty Glow Serum (30ml)</span>
+<span class="font-label-uppercase text-[10px] text-secondary font-mono tracking-wider">SKU: EBA-W-01</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-uppercase text-[10px]">Women's</span>
+</td>
+<td class="py-4 px-3 font-mono text-[11px] text-on-surface font-medium">LOT-2024-09</td>
+<td class="py-4 px-3 text-on-surface-variant font-label-ui text-[12px]">Dec 2026</td>
+<td class="py-4 px-3 text-right">
+<span class="inline-flex items-center gap-1 font-semibold text-error bg-error-container/40 px-2 py-0.5 rounded">
+                18 <span class="material-symbols-outlined text-[13px]">arrow_downward</span>
+</span>
+</td>
+<td class="py-4 px-3 text-right font-medium">45</td>
+<td class="py-4 px-3 text-right font-bold text-on-surface">63</td>
+<td class="py-4 px-3 text-right text-on-surface-variant">50</td>
+<td class="py-4 px-3 text-right font-mono text-on-surface-variant">14 /day</td>
+<td class="py-4 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-uppercase text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                Critically Low
+              </span>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded bg-tertiary-container text-on-tertiary-container font-label-ui text-[11px] font-semibold hover:opacity-90 transition-opacity" type="button">
+                  Reorder
+                </button>
+<button class="px-2 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-[11px]" onclick="openAdjustment('Beauty Glow Serum (30ml)', 'Karachi Central Depot')" type="button">
+                  Adjust
+                </button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Men's Restorative Night Cream (Low Stock) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group bg-surface-container-lowest">
+<td class="py-4 px-4 min-w-[220px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Matte obsidian black cosmetic jar of Men's Restorative Night Cream with embossed gold typography on slate counter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmdzsprx1q_Unt-keG4qyQKuwXh9xEtO7MLLeDG_HVtZfmaWhwDdQCt4FYZAJPMkYSvLXdBPJAiZdfSh1kC1qYbYbfMwmsEC1HOmxYDt3Qs2fbPf1hwziZu5TH8QpB0i2rInYVlKfBn-nJ-kRswbCtlpl01hKVm556cQW5-XaaQEMJIpUgN0JZ4oSO_ej3pAU-Fbg-OUKfjA6hgNtQ7GD_g9sGGjQ0jTgnyb49Y_ssAB2qe-16wdDMjw"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface truncate">Men's Restorative Night Cream (50gm)</span>
+<span class="font-label-uppercase text-[10px] text-secondary font-mono tracking-wider">SKU: EBA-M-02</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-uppercase text-[10px]">Men's</span>
+</td>
+<td class="py-4 px-3 font-mono text-[11px] text-on-surface font-medium">LOT-2024-08</td>
+<td class="py-4 px-3 text-on-surface-variant font-label-ui text-[12px]">Nov 2026</td>
+<td class="py-4 px-3 text-right font-medium">32</td>
+<td class="py-4 px-3 text-right">
+<span class="inline-flex items-center gap-1 font-semibold text-tertiary bg-tertiary-container/30 px-2 py-0.5 rounded">
+                24 <span class="material-symbols-outlined text-[13px]">arrow_downward</span>
+</span>
+</td>
+<td class="py-4 px-3 text-right font-bold text-on-surface">56</td>
+<td class="py-4 px-3 text-right text-on-surface-variant">40</td>
+<td class="py-4 px-3 text-right font-mono text-on-surface-variant">6 /day</td>
+<td class="py-4 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-uppercase text-[10px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Low Stock
+              </span>
+</td>
+<td class="py-4 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded bg-secondary text-on-secondary font-label-ui text-[11px] font-semibold hover:opacity-95 transition-opacity" type="button">
+                  Reorder
+                </button>
+<button class="px-2 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-[11px]" onclick="openAdjustment('Men\'s Restorative Night Cream (50gm)', 'Lahore Fulfillment Hub')" type="button">
+                  Adjust
+                </button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Men's Charcoal Oil-Control Face Wash (Healthy) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-4 px-4 min-w-[220px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Monochrome charcoal pump bottle of clarifying face wash on wet volcanic textured rock surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD9p8HKo7yLOvs1Y8w2aPHIaMu0TOLWKgHnUOtgGykChWrDPODDjBIY6Tdu-HlcKRI58NjPLx1EeL9yy6sO2vScakQdNiZaEiBeA1YqK_jDufC-aIyFE3wSxpKjMCDeVp595yB3h6VSw2Hqll5NUgwn0EoTOLN-HH0RnDLGCNOJibE8yWWlLzxR8m0PNV05a4VzaD-d5uLtxklOTYzMJawvHOGcYODwTYk0CbI2PkMMSYzUz0lRU_QWw"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface truncate">Men's Charcoal Oil-Control (100ml)</span>
+<span class="font-label-uppercase text-[10px] text-secondary font-mono tracking-wider">SKU: EBA-M-01</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-uppercase text-[10px]">Men's</span>
+</td>
+<td class="py-4 px-3 font-mono text-[11px] text-on-surface font-medium">LOT-2024-10</td>
+<td class="py-4 px-3 text-on-surface-variant font-label-ui text-[12px]">Oct 2027</td>
+<td class="py-4 px-3 text-right font-medium">340</td>
+<td class="py-4 px-3 text-right font-medium">210</td>
+<td class="py-4 px-3 text-right font-bold text-on-surface">550</td>
+<td class="py-4 px-3 text-right text-on-surface-variant">100</td>
+<td class="py-4 px-3 text-right font-mono text-on-surface-variant">18 /day</td>
+<td class="py-4 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-secondary font-label-uppercase text-[10px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Healthy
+              </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-[11px]" onclick="openAdjustment('Men\'s Charcoal Face Wash (100ml)', 'Karachi Central Depot')" type="button">
+                Adjust Stock
+              </button>
+</td>
+</tr>
+<!-- Row 4: Women's Clarifying Face Wash (Healthy) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-4 px-4 min-w-[220px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Frosted glass botanical skincare cleanser tube with rosewater tint and bronze cap on linen drapery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdyJFavOZS-OZ4Znhwy2jKwefznJj_EjBt4cRB5M_jlFab0I6bvXHFZJQjMs0fMfXmaJcH-sqEvKN0mLJTUkex0mDWxrEjfdRuyGl7ZtbLeDrA2jnqaYajmVi3fpJFHebNYRtsUZyHUuTin48v2xweDHPf7708ZG_ljE7e4Cyet_SN3KhxS2VeOqDLMpW3v_VOcujA0zo8OlMht0z6nDrM9IPCPKEwN_5FIziDZf6XGU30f8NbE6MScw"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface truncate">Women's Clarifying Wash (100ml)</span>
+<span class="font-label-uppercase text-[10px] text-secondary font-mono tracking-wider">SKU: EBA-W-02</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-uppercase text-[10px]">Women's</span>
+</td>
+<td class="py-4 px-3 font-mono text-[11px] text-on-surface font-medium">LOT-2024-10</td>
+<td class="py-4 px-3 text-on-surface-variant font-label-ui text-[12px]">Oct 2027</td>
+<td class="py-4 px-3 text-right font-medium">280</td>
+<td class="py-4 px-3 text-right font-medium">185</td>
+<td class="py-4 px-3 text-right font-bold text-on-surface">465</td>
+<td class="py-4 px-3 text-right text-on-surface-variant">100</td>
+<td class="py-4 px-3 text-right font-mono text-on-surface-variant">11 /day</td>
+<td class="py-4 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-secondary font-label-uppercase text-[10px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Healthy
+              </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-[11px]" onclick="openAdjustment('Women\'s Clarifying Face Wash', 'Lahore Fulfillment Hub')" type="button">
+                Adjust Stock
+              </button>
+</td>
+</tr>
+<!-- Row 5: Beauty Night Whitening Cream (Healthy) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-4 px-4 min-w-[220px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Pearlescent white luxury treatment pot of Beauty Night Whitening Cream with brushed gold seal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxJBTYWHZjg69S0U139xhixxT7E29YH-ITogwluiPpMgV3-_RZssKG9jUVWegtu7UTz7DH4nrAA-u6QVHMHAe84pcOWgogTh0CeFpoQOLifmxKvG6SDyQo0vNybqBoNxKaMSV63Ho8geSKWZNHKMna9FLcMXswbDr4-FEM7WT5zbrk-ggsjspHYJX66ptoApOplQzh0cBy5tw-6Q58C_ea8ZQKjM8D4kJLU6TC1-ae7bjuZWj0DauVvw"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface truncate">Beauty Night Whitening (50gm)</span>
+<span class="font-label-uppercase text-[10px] text-secondary font-mono tracking-wider">SKU: EBA-W-03</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-uppercase text-[10px]">Women's</span>
+</td>
+<td class="py-4 px-3 font-mono text-[11px] text-on-surface font-medium">LOT-2024-07</td>
+<td class="py-4 px-3 text-on-surface-variant font-label-ui text-[12px]">Jul 2026</td>
+<td class="py-4 px-3 text-right font-medium">140</td>
+<td class="py-4 px-3 text-right font-medium">95</td>
+<td class="py-4 px-3 text-right font-bold text-on-surface">235</td>
+<td class="py-4 px-3 text-right text-on-surface-variant">60</td>
+<td class="py-4 px-3 text-right font-mono text-on-surface-variant">9 /day</td>
+<td class="py-4 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-secondary font-label-uppercase text-[10px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Healthy
+              </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-[11px]" onclick="openAdjustment('Beauty Night Whitening Cream (50gm)', 'Karachi Central Depot')" type="button">
+                Adjust Stock
+              </button>
+</td>
+</tr>
+<!-- Row 6: Men's Active Defense Glow Serum (Healthy) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-4 px-4 min-w-[220px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-container flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Deep forest green dropper bottle with gold metallic accents for men's peptide defense serum on raw sand" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMld5q0xaeUAZD8BjXStxcEsUIhT23JWwp2r4Zb29TSmHLbaiiMEU8qV-YjsKpYkU5gfpu0RvuK65KvUlcZzqFyGpB7-NmmIaepdRd_CiOk29Z2FQX7MHswAhCpC5Nahvk3gwfjvJz3FBdcQ_155Ux6AT4o3GrpJ-F-XPsInI7jJTy_xV52CveKXMSvowGI573wqpn-KyxZiBij2zoIcgihBD79-PDMXsqSe2cd8x_F04FWIT3NIiYrw"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface truncate">Men's Active Defense Serum (30ml)</span>
+<span class="font-label-uppercase text-[10px] text-secondary font-mono tracking-wider">SKU: EBA-M-03</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-uppercase text-[10px]">Men's</span>
+</td>
+<td class="py-4 px-3 font-mono text-[11px] text-on-surface font-medium">LOT-2024-09</td>
+<td class="py-4 px-3 text-on-surface-variant font-label-ui text-[12px]">Sep 2026</td>
+<td class="py-4 px-3 text-right font-medium">190</td>
+<td class="py-4 px-3 text-right font-medium">130</td>
+<td class="py-4 px-3 text-right font-bold text-on-surface">320</td>
+<td class="py-4 px-3 text-right text-on-surface-variant">50</td>
+<td class="py-4 px-3 text-right font-mono text-on-surface-variant">8 /day</td>
+<td class="py-4 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-secondary font-label-uppercase text-[10px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Healthy
+              </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-[11px]" onclick="openAdjustment('Men\'s Active Defense Glow Serum', 'Lahore Fulfillment Hub')" type="button">
+                Adjust Stock
+              </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Audit Summary -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span>Displaying <span class="font-semibold text-on-surface">6</span> of <span class="font-semibold text-on-surface">18</span> active formulated SKUs</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-[11px] font-mono">Last full depot count: 18 Oct 2024</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors disabled:opacity-40" disabled="" type="button">Previous</button>
+<button class="px-3 py-1.5 rounded bg-primary text-on-primary font-semibold" type="button">1</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" type="button">2</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" type="button">3</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" type="button">Next</button>
+</div>
+</div>
+</div>
+<!-- Regional Depot Distribution & Stock Velocity Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md">
+<!-- Depot Health Chart & Velocity breakdown -->
+<div class="lg:col-span-2 rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-wider">Replenishment Cycle Velocity</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-0.5">Depot Inventory Health Matrix</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="flex items-center gap-1 text-[11px] font-label-uppercase text-on-surface-variant">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span> Karachi
+          </span>
+<span class="flex items-center gap-1 text-[11px] font-label-uppercase text-on-surface-variant">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span> Lahore
+          </span>
+<span class="flex items-center gap-1 text-[11px] font-label-uppercase text-on-surface-variant">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container"></span> Islamabad
+          </span>
+</div>
+</div>
+<!-- Compact SVG Bar Chart / Velocity Graph -->
+<div class="w-full h-44 my-2 flex flex-col justify-end">
+<svg class="w-full h-full" fill="none" preserveaspectratio="none" viewbox="0 0 540 130">
+<!-- Grid lines -->
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="540" y1="20" y2="20"></line>
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="540" y1="60" y2="60"></line>
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="540" y1="100" y2="100"></line>
+<!-- Bar Group 1: Glow Serum -->
+<rect class="fill-error" height="40" rx="3" width="16" x="25" y="85"></rect>
+<rect class="fill-secondary" height="60" rx="3" width="16" x="45" y="65"></rect>
+<rect class="fill-secondary-container" height="15" rx="3" width="16" x="65" y="110"></rect>
+<!-- Bar Group 2: Night Cream -->
+<rect class="fill-primary" height="55" rx="3" width="16" x="115" y="70"></rect>
+<rect class="fill-secondary" height="45" rx="3" width="16" x="135" y="80"></rect>
+<rect class="fill-secondary-container" height="10" rx="3" width="16" x="155" y="115"></rect>
+<!-- Bar Group 3: Charcoal Wash -->
+<rect class="fill-primary" height="100" rx="3" width="16" x="205" y="25"></rect>
+<rect class="fill-secondary" height="80" rx="3" width="16" x="225" y="45"></rect>
+<rect class="fill-secondary-container" height="30" rx="3" width="16" x="245" y="95"></rect>
+<!-- Bar Group 4: Clarifying Wash -->
+<rect class="fill-primary" height="90" rx="3" width="16" x="295" y="35"></rect>
+<rect class="fill-secondary" height="70" rx="3" width="16" x="315" y="55"></rect>
+<rect class="fill-secondary-container" height="25" rx="3" width="16" x="335" y="100"></rect>
+<!-- Bar Group 5: Whitening -->
+<rect class="fill-primary" height="75" rx="3" width="16" x="385" y="50"></rect>
+<rect class="fill-secondary" height="57" rx="3" width="16" x="405" y="68"></rect>
+<rect class="fill-secondary-container" height="20" rx="3" width="16" x="425" y="105"></rect>
+<!-- Bar Group 6: Active Defense -->
+<rect class="fill-primary" height="85" rx="3" width="16" x="475" y="40"></rect>
+<rect class="fill-secondary" height="65" rx="3" width="16" x="495" y="60"></rect>
+<rect class="fill-secondary-container" height="23" rx="3" width="16" x="515" y="102"></rect>
+</svg>
+<!-- Chart Labels -->
+<div class="flex items-center justify-between text-[10px] font-label-uppercase text-on-surface-variant pt-2">
+<span class="w-20 text-center truncate">Glow Serum</span>
+<span class="w-20 text-center truncate">Night Cream</span>
+<span class="w-20 text-center truncate">Charcoal Wash</span>
+<span class="w-20 text-center truncate">Clarifying</span>
+<span class="w-20 text-center truncate">Whitening</span>
+<span class="w-20 text-center truncate">Active Def.</span>
+</div>
+</div>
+<div class="mt-space-sm pt-3 flex flex-wrap items-center justify-between gap-2 bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary">info</span>
+<span class="font-body-sm text-body-sm text-on-surface">Average regional turnover rate is currently <span class="font-semibold">9.4 days</span> per replenishment batch.</span>
+</div>
+<button class="text-secondary font-label-uppercase text-label-uppercase hover:underline" type="button">
+          View Transit Logs →
+        </button>
+</div>
+</div>
+<!-- In-Transit Purchase Orders & Laboratory Releases -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-wider">Formulation Batches</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-0.5">PO &amp; Transit Log</h2>
+</div>
+<span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">2 Active</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Inbound PO Item 1 -->
+<div class="p-3 rounded-lg bg-surface-container-low flex flex-col gap-1.5 relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">PO #EBA-PO-2024-88</span>
+<span class="font-label-uppercase text-[10px] font-semibold text-tertiary">In QC Transit</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Beauty Glow Serum (30ml) • 800 Units</span>
+<div class="flex items-center justify-between text-[11px] font-label-uppercase text-on-surface-variant pt-1">
+<span>Destination: Karachi Depot</span>
+<span class="font-semibold text-on-surface">ETA: 04 Nov</span>
+</div>
+<!-- Mini Progress Bar -->
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden mt-1">
+<div class="bg-secondary h-full rounded-full" style="width: 70%"></div>
+</div>
+</div>
+<!-- Inbound PO Item 2 -->
+<div class="p-3 rounded-lg bg-surface-container-low flex flex-col gap-1.5 relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">PO #EBA-PO-2024-89</span>
+<span class="font-label-uppercase text-[10px] font-semibold text-secondary">Lab Formulating</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Men's Restorative Cream • 400 Units</span>
+<div class="flex items-center justify-between text-[11px] font-label-uppercase text-on-surface-variant pt-1">
+<span>Destination: Lahore Hub</span>
+<span class="font-semibold text-on-surface">ETA: 09 Nov</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden mt-1">
+<div class="bg-tertiary-container h-full rounded-full" style="width: 35%"></div>
+</div>
+</div>
+</div>
+<div class="mt-space-sm pt-2">
+<button class="w-full py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-ui text-label-ui transition-colors text-center font-medium" type="button">
+          Manage Master Purchase Orders
+        </button>
+</div>
+</div>
+</div>
+<!-- Slide-Over Flyout / Modal: Quick Stock Adjustment Panel -->
+<div class="fixed inset-y-0 right-0 w-full sm:w-[480px] bg-surface-container-lowest shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between" id="adjustment-flyout">
+<!-- Flyout Header -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest">Apothecary Audit Log</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Quick Stock Adjustment</h3>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-on-surface rounded-full hover:bg-surface-container transition-colors" onclick="document.getElementById('adjustment-flyout').classList.add('translate-x-full')" type="button">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</button>
+</div>
+<!-- Flyout Form Body -->
+<form class="p-space-lg flex-1 overflow-y-auto space-y-space-md" id="stock-adjust-form" onsubmit="event.preventDefault(); submitAdjustment();">
+<!-- Formulation Select -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface font-medium">Select Formulation / SKU</label>
+<div class="relative">
+<select class="w-full h-12 bg-surface-container-low px-3 rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:bg-surface-bright shadow-sm appearance-none" id="adjust-formulation">
+<option value="Beauty Glow Serum (30ml)">Beauty Glow Serum (30ml) • EBA-W-01</option>
+<option value="Men's Restorative Night Cream (50gm)">Men's Restorative Night Cream (50gm) • EBA-M-02</option>
+<option value="Men's Charcoal Face Wash (100ml)">Men's Charcoal Oil-Control Face Wash • EBA-M-01</option>
+<option value="Women's Clarifying Face Wash">Women's Clarifying Face Wash (100ml) • EBA-W-02</option>
+<option value="Beauty Night Whitening Cream (50gm)">Beauty Night Whitening Cream (50gm) • EBA-W-03</option>
+<option value="Men's Active Defense Glow Serum">Men's Active Defense Glow Serum (30ml) • EBA-M-03</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Warehouse Selection -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface font-medium">Target Depot Facility</label>
+<div class="grid grid-cols-2 gap-space-xs">
+<label class="flex items-center gap-2 p-3 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+<input checked="" class="accent-primary" name="depot-choice" type="radio" value="Karachi Central Depot"/>
+<span class="font-label-ui text-label-ui text-on-surface">Karachi Central</span>
+</label>
+<label class="flex items-center gap-2 p-3 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+<input class="accent-primary" name="depot-choice" type="radio" value="Lahore Fulfillment Hub"/>
+<span class="font-label-ui text-label-ui text-on-surface">Lahore Hub</span>
+</label>
+</div>
+</div>
+<!-- Adjustment Reason -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface font-medium">Adjustment Reason (Compliance Audit)</label>
+<div class="relative">
+<select class="w-full h-12 bg-surface-container-low px-3 rounded-lg font-body-sm text-body-sm text-on-surface outline-none focus:bg-surface-bright shadow-sm appearance-none" id="adjust-reason">
+<option value="Damaged during courier handling">Damaged during courier handling (TCS/CallCourier)</option>
+<option value="Quality Lab sample testing">Quality Lab sample testing &amp; batch QA</option>
+<option value="Stock count discrepancy">Physical stock count discrepancy</option>
+<option value="New production intake">New production intake / Unscheduled batch</option>
+<option value="Customer return / Inspection failed">Customer return - inspection failed</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Count Direction & Number of Units -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface font-medium">Quantity Adjustment (+ / -)</label>
+<div class="flex items-center gap-space-sm">
+<div class="flex rounded-lg overflow-hidden bg-surface-container p-1 gap-1">
+<button class="px-3 py-1.5 rounded bg-primary text-on-primary font-bold text-[14px] transition-colors" id="btn-decrement" onclick="setAdjustmentMode('-')" type="button">- Reduce</button>
+<button class="px-3 py-1.5 rounded text-on-surface hover:bg-surface-container-high font-bold text-[14px] transition-colors" id="btn-increment" onclick="setAdjustmentMode('+')" type="button">+ Add</button>
+</div>
+<div class="relative flex-1">
+<input class="w-full h-12 bg-surface-container-low px-4 rounded-lg font-headline-sm text-headline-sm text-on-surface text-center outline-none focus:bg-surface-bright shadow-sm" id="adjust-units" max="1000" min="1" type="number" value="5"/>
+</div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1" id="stock-impact-msg">This will deduct 5 units from live inventory in Karachi Central.</span>
+</div>
+<!-- Batch lot verification -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface font-medium">Internal Batch Verification Note</label>
+<textarea class="w-full bg-surface-container-low p-3 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant outline-none focus:bg-surface-bright shadow-sm resize-none" placeholder="Reference courier incident number, lab slip or QA form ID..." rows="3"></textarea>
+</div>
+<div class="p-3 rounded-lg bg-surface-container flex items-center gap-space-sm text-on-surface-variant text-[11px] font-body-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">verified_user</span>
+<span>Action will be permanently stamped under staff profile Fatima Khan (Owner &amp; Formulator).</span>
+</div>
+</form>
+<!-- Flyout Footer -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-end gap-space-sm">
+<button class="px-4 py-2.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-ui text-label-ui transition-colors" onclick="document.getElementById('adjustment-flyout').classList.add('translate-x-full')" type="button">
+        Cancel
+      </button>
+<button class="px-5 py-2.5 rounded-lg bg-primary hover:bg-neutral-800 text-on-primary font-label-ui text-label-ui font-semibold shadow-md transition-all" onclick="submitAdjustment()" type="button">
+        Save Stock Count
+      </button>
+</div>
+</div>
+<!-- Backdrop for Flyout -->
+<div class="fixed inset-0 bg-primary/20 backdrop-blur-xs z-40 hidden" id="flyout-backdrop" onclick="document.getElementById('adjustment-flyout').classList.add('translate-x-full')"></div>
+</div>
+<!-- Inline Micro-interaction Script -->
+<script>
+  let adjustmentMode = '-';
+
+  function setAdjustmentMode(mode) {
+    adjustmentMode = mode;
+    const btnDec = document.getElementById('btn-decrement');
+    const btnInc = document.getElementById('btn-increment');
+    const msg = document.getElementById('stock-impact-msg');
+    const units = document.getElementById('adjust-units').value;
+    
+    if (mode === '-') {
+      btnDec.className = 'px-3 py-1.5 rounded bg-primary text-on-primary font-bold text-[14px] transition-colors';
+      btnInc.className = 'px-3 py-1.5 rounded text-on-surface hover:bg-surface-container-high font-bold text-[14px] transition-colors';
+      msg.textContent = `This will deduct ${units} units from live inventory in target depot.`;
+    } else {
+      btnInc.className = 'px-3 py-1.5 rounded bg-primary text-on-primary font-bold text-[14px] transition-colors';
+      btnDec.className = 'px-3 py-1.5 rounded text-on-surface hover:bg-surface-container-high font-bold text-[14px] transition-colors';
+      msg.textContent = `This will add ${units} units to live inventory in target depot.`;
+    }
+  }
+
+  function openAdjustment(productName, depotName) {
+    const flyout = document.getElementById('adjustment-flyout');
+    const select = document.getElementById('adjust-formulation');
+    
+    // Attempt match select
+    for (let i = 0; i < select.options.length; i++) {
+      if (select.options[i].text.includes(productName.substring(0, 10))) {
+        select.selectedIndex = i;
+        break;
+      }
+    }
+
+    // Match radio depot
+    const radios = document.getElementsByName('depot-choice');
+    for (let r of radios) {
+      if (r.value.includes(depotName) || depotName.includes(r.value.substring(0, 5))) {
+        r.checked = true;
+      }
+    }
+
+    flyout.classList.remove('translate-x-full');
+  }
+
+  function submitAdjustment() {
+    const flyout = document.getElementById('adjustment-flyout');
+    const formulation = document.getElementById('adjust-formulation').value;
+    const units = document.getElementById('adjust-units').value;
+    const sign = adjustmentMode === '+' ? '+' : '-';
+    
+    alert(`Success: Adjusted stock for ${formulation} by ${sign}${units} units. Audit ledger updated.`);
+    flyout.classList.add('translate-x-full');
+  }
+
+  // Observe flyout class to toggle backdrop
+  const flyoutEl = document.getElementById('adjustment-flyout');
+  const backdropEl = document.getElementById('flyout-backdrop');
+  const observer = new MutationObserver(() => {
+    if (flyoutEl.classList.contains('translate-x-full')) {
+      backdropEl.classList.add('hidden');
+    } else {
+      backdropEl.classList.remove('hidden');
+    }
+  });
+  observer.observe(flyoutEl, { attributes: true, attributeFilter: ['class'] });
+</script></main><footer class="w-full bg-surface-container-lowest py-space-md shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="w-full px-8 flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-body-sm text-body-sm"><span>© 2024 EBA Skin Care Luxury Formulation Studio. All rights reserved.</span><div class="flex items-center gap-space-md font-label-uppercase text-label-uppercase"><span>COD Enabled</span><span>JazzCash Active</span><span>EasyPaisa Active</span><span>Secure SSL</span></div></div></footer></div></body></html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error-container": "#ffdad6", "on-tertiary-fixed": "#241a00", "secondary": "#725b38", "on-error": "#ffffff", "on-primary-container": "#898281", "surface-container-high": "#ebe8e3", "on-primary-fixed": "#1f1b1a", "primary-container": "#1f1b1a", "secondary-fixed": "#fedeb2", "outline-variant": "#d1c4c1", "surface-bright": "#fdf9f4", "surface-container-highest": "#e6e2dd", "tertiary": "#735c00", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#e9c349", "background": "#fdf9f4", "outline": "#7f7572", "tertiary-fixed": "#ffe088", "on-primary-fixed-variant": "#4b4644", "on-secondary-container": "#78603e", "inverse-on-surface": "#f4f0eb", "on-tertiary-container": "#4f3d00", "primary-fixed-dim": "#cdc5c3", "surface": "#fdf9f4", "on-background": "#1c1c19", "surface-container-low": "#f7f3ee", "on-tertiary-fixed-variant": "#574500", "surface-container": "#f1ede8", "on-secondary-fixed": "#281800", "tertiary-container": "#cca730", "on-surface-variant": "#4e4543", "on-error-container": "#93000a", "on-primary": "#ffffff", "secondary-container": "#fedeb2", "inverse-primary": "#cdc5c3", "on-surface": "#1c1c19", "surface-variant": "#e6e2dd", "primary": "#000000", "primary-fixed": "#eae0de", "surface-container-lowest": "#ffffff", "inverse-surface": "#31302d", "error": "#ba1a1a", "surface-dim": "#ddd9d5", "on-secondary-fixed-variant": "#584323", "surface-tint": "#635d5b", "secondary-fixed-dim": "#e0c298", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-mobile": "1rem", "gutter": "1.5rem", "margin": "3rem", "margin-mobile": "1.25rem", "space-xl": "2.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-md": "1rem" }, "fontFamily": { "headline-lg": [ "Playfair Display" ], "headline-lg-mobile": [ "Playfair Display" ], "label-uppercase": [ "Inter" ], "display-brand": [ "Playfair Display" ], "body-sm": [ "Inter" ], "display-lg": [ "Playfair Display" ], "display-lg-mobile": [ "Playfair Display" ], "body-md": [ "Inter" ], "label-ui": [ "Inter" ], "price-md": [ "Inter" ], "body-lg": [ "Inter" ], "headline-sm": [ "Playfair Display" ], "headline-md": [ "Playfair Display" ], "price-lg": [ "Inter" ] }, "fontSize": { "headline-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "500" } ], "label-uppercase": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "display-brand": [ "30px", { "lineHeight": "36px", "letterSpacing": "0.15em", "fontWeight": "600" } ], "body-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "display-lg-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-ui": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "price-md": [ "16px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-md": [ "26px", { "lineHeight": "34px", "letterSpacing": "0em", "fontWeight": "500" } ], "price-lg": [ "20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col h-full overflow-hidden"><div class="p-space-lg flex flex-col gap-space-xs"><div class="font-display-brand text-headline-sm uppercase text-on-surface tracking-[0.18em]">EBA SKIN CARE</div><div class="font-label-uppercase text-label-uppercase text-secondary tracking-widest">ADMIN CONSOLE • STUDIO</div></div><nav class="flex-1 px-space-md py-space-xs space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary rounded-lg font-semibold shadow-[0_2px_8px_rgba(26,22,21,0.08)]"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">space_dashboard</span><span class="font-label-ui text-label-ui">Dashboard</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="orders" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">shopping_bag</span><span class="font-label-ui text-label-ui">Orders</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-semibold">12 NEW</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="products" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">spa</span><span class="font-label-ui text-label-ui">Products</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="categories" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">category</span><span class="font-label-ui text-label-ui">Categories</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="shipment-logistics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">local_shipping</span><span class="font-label-ui text-label-ui">Shipment Logistics</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="coupons-and-offers" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">confirmation_number</span><span class="font-label-ui text-label-ui">Coupons &amp; Offers</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="payment-gateways" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">account_balance_wallet</span><span class="font-label-ui text-label-ui">Payment Gateways</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="homepage-control" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">storefront</span><span class="font-label-ui text-label-ui">Homepage Control</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="customers" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">group</span><span class="font-label-ui text-label-ui">Customers</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="reviews" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">grade</span><span class="font-label-ui text-label-ui">Reviews</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">4</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="inventory" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">inventory_2</span><span class="font-label-ui text-label-ui">Inventory</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="notifications" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">notifications</span><span class="font-label-ui text-label-ui">Notifications</span></div><span class="font-label-uppercase text-[10px] px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-semibold">3</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="staff-and-roles" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">admin_panel_settings</span><span class="font-label-ui text-label-ui">Staff &amp; Roles</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[19px]">tune</span><span class="font-label-ui text-label-ui">Settings</span></div></a></nav><div class="p-space-md bg-surface-container/60 m-space-sm rounded-xl flex flex-col gap-space-sm"><a class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface transition-colors" href="#"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[18px] text-secondary">visibility</span><span class="font-label-ui text-label-ui">View Live Storefront</span></div><span class="material-symbols-outlined text-[16px] text-on-surface-variant">north_east</span></a><div class="flex items-center justify-between pt-space-xs"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col"><span class="font-label-ui text-label-ui font-semibold text-on-surface">Fatima Khan</span><span class="font-label-uppercase text-[10px] text-secondary">Owner &amp; Formulator</span></div></div><button class="p-1 text-on-surface-variant hover:text-on-surface rounded" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></div></aside><div class="pl-72 min-h-screen flex flex-col"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-8"><div class="flex items-center gap-space-md w-96"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full bg-surface-container-low pl-10 pr-4 py-2 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search orders, formulation SKUs, patrons..." type="search"/></div></div><div class="flex items-center gap-space-lg"><div class="hidden lg:flex items-center gap-space-md text-on-surface-variant"><div class="flex items-center gap-space-xs font-label-ui text-label-ui"><span class="material-symbols-outlined text-[16px] text-secondary">calendar_today</span><span>Tuesday, 24 Oct 2024</span></div><span class="w-1 h-1 rounded-full bg-outline-variant"></span><div class="flex items-center gap-space-xs font-label-ui text-label-ui"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span>Pakistan Hub (PKR)</span></div></div><div class="flex items-center gap-space-sm"><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span></button><button class="hidden sm:flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-label-ui" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Create Order</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface px-8 py-space-lg flex-1"><div class="flex flex-col w-full">
+<!-- Top Visual Accent & Editorial Title Section -->
+<div class="relative w-full rounded-2xl bg-surface-container-low p-space-lg shadow-sm overflow-hidden mb-space-lg">
+<div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
+<div class="absolute right-40 -bottom-16 w-56 h-56 rounded-full bg-tertiary-fixed-dim/20 blur-2xl pointer-events-none"></div>
+<div class="relative flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="space-y-space-xs max-w-2xl">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest uppercase">Governance &amp; Security</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant">PKR Hub Clearance</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Staff &amp; Role-Based Access Control</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+          Manage studio administrators, store associates, inventory managers, and courier dispatch personnel across regional distribution centers in Karachi, Lahore, and Islamabad.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="px-4 py-2.5 rounded-lg bg-surface-container-high text-on-surface font-label-ui text-label-ui hover:bg-surface-container-highest transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Access Audit Log</span>
+</button>
+<button class="px-5 py-2.5 rounded-lg bg-primary text-on-primary font-label-ui text-label-ui hover:bg-primary-container transition-all flex items-center gap-2 shadow-md hover:shadow-lg" id="open-invite-drawer" type="button">
+<span class="material-symbols-outlined text-[19px]">person_add</span>
+<span>+ Invite New Staff Member</span>
+</button>
+</div>
+</div>
+<!-- Editorial Key Metrics Strip -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-md mt-space-lg pt-space-md border-t-0 bg-surface-container-lowest/80 rounded-xl p-space-md backdrop-blur-sm shadow-sm">
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-secondary">Active Headcount</span>
+<span class="font-price-lg text-price-lg text-on-surface mt-1">14 Members</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Across 3 provincial hubs</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-secondary">Pending Invites</span>
+<span class="font-price-lg text-price-lg text-on-surface mt-1">2 Dispatched</span>
+<span class="font-body-sm text-body-sm text-tertiary mt-0.5">Awaiting atelier OTP</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-secondary">Security Profile</span>
+<span class="font-price-lg text-price-lg text-on-surface mt-1">2FA Enforced</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">SMS &amp; Authenticator App</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-uppercase text-label-uppercase text-secondary">Session Health</span>
+<span class="font-price-lg text-price-lg text-on-surface mt-1">99.8% Compliant</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Zero unvetted logins</span>
+</div>
+</div>
+</div>
+<!-- Role Definition Summary Cards (Bento Carousel / Grid) -->
+<div class="mb-space-lg">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">shield_person</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Standard Role Blueprints</h2>
+</div>
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant">4 Standard Archetypes</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1: Owner / Super Admin -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-surface-container-high/60 rounded-bl-full pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[19px]">verified_user</span>
+</span>
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-uppercase text-[10px]">Tier 0</span>
+</div>
+<h3 class="font-headline-sm text-[18px] text-on-surface group-hover:text-secondary transition-colors">Owner / Super Admin</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 line-clamp-2">
+            Unrestricted master custody over PKR ledger, net margins, tax withholding, inventory ledger, and root studio credentials.
+          </p>
+</div>
+<div class="pt-space-md mt-space-sm">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Allocated</span>
+<span class="font-semibold text-on-surface font-label-ui">1 Member</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<!-- Card 2: Store Manager -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary-container/20 rounded-bl-full pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="w-9 h-9 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[19px]">storefront</span>
+</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-uppercase text-[10px]">Tier 1</span>
+</div>
+<h3 class="font-headline-sm text-[18px] text-on-surface group-hover:text-secondary transition-colors">Store Manager</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 line-clamp-2">
+            Full formulation catalog authoring, price modulation, patron records, reviews moderation, and localized depot restock orders.
+          </p>
+</div>
+<div class="pt-space-md mt-space-sm">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Allocated</span>
+<span class="font-semibold text-on-surface font-label-ui">3 Members</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 65%"></div>
+</div>
+</div>
+</div>
+<!-- Card 3: Fulfillment & Dispatcher -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-surface-container-highest/60 rounded-bl-full pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="w-9 h-9 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[19px]">local_shipping</span>
+</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-uppercase text-[10px]">Tier 2</span>
+</div>
+<h3 class="font-headline-sm text-[18px] text-on-surface group-hover:text-secondary transition-colors">Fulfillment &amp; Dispatcher</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 line-clamp-2">
+            Order queuing, automated courier waybill generation (TCS, Leopards, Trax), manifest signing, and batch packaging validation.
+          </p>
+</div>
+<div class="pt-space-md mt-space-sm">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Allocated</span>
+<span class="font-semibold text-on-surface font-label-ui">6 Members</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-tertiary-container h-full rounded-full" style="width: 80%"></div>
+</div>
+</div>
+</div>
+<!-- Card 4: Customer Concierge -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary-fixed/30 rounded-bl-full pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="w-9 h-9 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[19px]">support_agent</span>
+</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-uppercase text-[10px]">Tier 2</span>
+</div>
+<h3 class="font-headline-sm text-[18px] text-on-surface group-hover:text-secondary transition-colors">Customer Concierge</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 line-clamp-2">
+            Patron consultation logs, return initiation, review triage, WhatsApp concierge desk, and read-only dispatch status tracking.
+          </p>
+</div>
+<div class="pt-space-md mt-space-sm">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Allocated</span>
+<span class="font-semibold text-on-surface font-label-ui">4 Members</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-outline h-full rounded-full" style="width: 45%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Staff Directory Table Section -->
+<div class="w-full bg-surface-container-lowest rounded-2xl p-space-md sm:p-space-lg shadow-sm">
+<!-- Directory Header Controls -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md mb-space-md pb-space-md bg-surface-container-low/40 -mx-space-md sm:-mx-space-lg px-space-md sm:px-space-lg pt-1 rounded-t-2xl">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">badge</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Active Staff Directory</h2>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">5 provisioned team members currently seated in digital console</span>
+</div>
+<!-- Filters & Quick Actions -->
+<div class="flex flex-wrap items-center gap-space-xs sm:gap-space-sm">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="bg-surface-container-lowest pl-9 pr-3 py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant outline-none focus:bg-surface-bright shadow-sm w-52 sm:w-64" placeholder="Filter by name, SKU hub..." type="text"/>
+</div>
+<select class="bg-surface-container-lowest px-3 py-1.5 rounded-lg font-label-ui text-label-ui text-on-surface outline-none shadow-sm cursor-pointer">
+<option>All Hub Locations</option>
+<option>Karachi Atelier &amp; Lab</option>
+<option>Lahore Dispatch Center</option>
+<option>Karachi Central Depot</option>
+</select>
+<button class="p-2 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+</div>
+<!-- Responsive Table Wrapper -->
+<div class="overflow-x-auto -mx-space-md sm:-mx-space-lg px-space-md sm:px-space-lg">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-uppercase text-[11px] uppercase tracking-wider rounded-lg">
+<th class="py-3 px-4 font-semibold rounded-l-lg">Team Member</th>
+<th class="py-3 px-4 font-semibold">Corporate Email</th>
+<th class="py-3 px-4 font-semibold">Assigned Role</th>
+<th class="py-3 px-4 font-semibold">Branch / Hub</th>
+<th class="py-3 px-4 font-semibold">Status</th>
+<th class="py-3 px-4 font-semibold">Last Session</th>
+<th class="py-3 px-4 font-semibold text-right rounded-r-lg">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0">
+<!-- Row 1: Fatima Khan -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full overflow-hidden shrink-0 shadow-sm bg-primary flex items-center justify-center text-on-primary">
+<img class="w-full h-full object-cover" data-alt="Close up warm studio portrait of Fatima Khan, Pakistani luxury skincare founder in silk raw linen minimalist attire, natural soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT2myucRp-fyaQ-sWCsr5kanYyOebXJFx0j07FwrbOXmlBnJNfGtPMCM0VqrFOr9oaD1S7Va3ugq4XIlyDseWnRO3D5GLQWnx5CGesqTlUna1cC-L_UEVvgq0wB4LR_r3oGiFeb2aRirMqCCpfiiTdTkKjvNpai3RXd7N0WI1he7gvc4DvyIMVmEp0svpLOUK5c6VXCFJ7Xia03YeFAWjUNAZZK77625eNQTRDl0qozrqcRQiiO1c1zg"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface truncate">Fatima Khan</span>
+<span class="font-body-sm text-[11px] text-secondary">Founder &amp; Master Chemist</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-body-sm text-body-sm text-on-surface-variant font-mono text-[12px]">fatima.khan@ebaskincare.pk</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary text-on-primary font-label-uppercase text-[10px] tracking-wide font-semibold shadow-sm">
+<span class="material-symbols-outlined text-[13px]">diamond</span>
+                Owner (Super Admin)
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">all_inclusive</span>
+<span>All Hubs &amp; Digital Studio</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-uppercase text-[10px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Active
+              </span>
+</td>
+<td class="py-3.5 px-4 font-body-sm text-body-sm text-on-surface">Just Now</td>
+<td class="py-3.5 px-4 text-right">
+<div class="relative inline-block text-left">
+<button class="px-3 py-1 rounded-md bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors font-label-ui text-[12px] font-medium shadow-sm" type="button">
+                  Manage Role
+                </button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Dr. Raza Farooq -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full overflow-hidden shrink-0 shadow-sm bg-surface-container-high flex items-center justify-center text-on-surface">
+<img class="w-full h-full object-cover" data-alt="Sophisticated portrait of Dr. Raza Farooq, middle-aged male Pakistani dermatologist wearing a crisp laboratory coat, warm beige background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCILzVmpIy23IK86ZfOwx4qI7ucuTomXRpwugLJ6lL6z52fvcCQtB3_2ZOk6aUYljpRWarIRgrEVMayHeztH9CUxgx2PmCcPHngtMg9Uh9jjuVcCmawr__e3jz5gpydZe9Z-3qfvoqGmk9RDm51TaHffXPPeAZHx7hSc-DR789L6acBA0_S5e8pEC08Bh1yhy4CXpfAtRnt-TCeeBWEj796rUe57aAikxYY8WWIC_c0CMEXWA7H3pKIyw"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface truncate">Dr. Raza Farooq</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">R&amp;D Clinical Director</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-body-sm text-body-sm text-on-surface-variant font-mono text-[12px]">raza.farooq@ebaskincare.pk</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-uppercase text-[10px] tracking-wide font-semibold">
+<span class="material-symbols-outlined text-[13px] text-secondary">science</span>
+                Lead Formulator / Consultant
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
+<span>Karachi Atelier &amp; Lab</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-uppercase text-[10px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Active
+              </span>
+</td>
+<td class="py-3.5 px-4 font-body-sm text-body-sm text-on-surface-variant">2 hours ago</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-[12px]" type="button">
+                  Edit Permissions
+                </button>
+<button class="p-1 rounded-md text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Asim Riaz -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full overflow-hidden shrink-0 shadow-sm bg-surface-container-high flex items-center justify-center text-on-surface font-semibold">
+<span class="font-label-ui text-label-ui">AR</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface truncate">Asim Riaz</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Fleet &amp; Dispatcher Supervisor</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-body-sm text-body-sm text-on-surface-variant font-mono text-[12px]">asim.riaz@ebaskincare.pk</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-uppercase text-[10px] tracking-wide font-semibold">
+<span class="material-symbols-outlined text-[13px]">local_shipping</span>
+                Fulfillment &amp; Logistics Lead
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">warehouse</span>
+<span>Lahore Dispatch Center</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-uppercase text-[10px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Active
+              </span>
+</td>
+<td class="py-3.5 px-4 font-body-sm text-body-sm text-on-surface-variant">Yesterday</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-[12px]" type="button">
+                  Edit Permissions
+                </button>
+<button class="p-1 rounded-md text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Maryam Bilal -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full overflow-hidden shrink-0 shadow-sm bg-surface-container-high flex items-center justify-center text-on-surface">
+<img class="w-full h-full object-cover" data-alt="Portrait of Maryam Bilal, young South Asian female professional customer concierge, warm ambient studio lighting, poised confident demeanor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz76h-nkWNoLfOzYv5LI6Z9uS32mdQ4Fl_IzkQkhTErkT7DFpQly896-HkxtraQ0DNosrdGfZQfKeJs2_1zi7PGnq8qzEOS18EZ_mIQFJlfsMMUzt2qOGWJcSJwhwUSFNTcE5n8QOVA8jO24pcPYdrGbfhwFsVs0sWiTXXb0_4HkZMWXTxFiQ9S2EgRYxVAeJzXr22O5G2h1vo8m0Kii0QIXHIUKwE7rH-DwSmsIYOKvxgnjYiBKhH7g"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface truncate">Maryam Bilal</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Patron Experience Specialist</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-body-sm text-body-sm text-on-surface-variant font-mono text-[12px]">maryam.b@ebaskincare.pk</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-uppercase text-[10px] tracking-wide font-semibold">
+<span class="material-symbols-outlined text-[13px]">forum</span>
+                Customer Concierge
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
+<span>Karachi Atelier</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-uppercase text-[10px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Active
+              </span>
+</td>
+<td class="py-3.5 px-4 font-body-sm text-body-sm text-on-surface-variant">Today, 9:15 AM</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-[12px]" type="button">
+                  Edit Permissions
+                </button>
+<button class="p-1 rounded-md text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Tariq Mehmood -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full overflow-hidden shrink-0 shadow-sm bg-surface-container-high flex items-center justify-center text-on-surface font-semibold">
+<span class="font-label-ui text-label-ui">TM</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface truncate">Tariq Mehmood</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Batch Reconciliation Officer</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-body-sm text-body-sm text-on-surface-variant font-mono text-[12px]">tariq.m@ebaskincare.pk</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-uppercase text-[10px] tracking-wide font-semibold">
+<span class="material-symbols-outlined text-[13px] text-secondary">inventory_2</span>
+                Inventory &amp; Depot Auditor
+              </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">inventory</span>
+<span>Karachi Central Depot</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-uppercase text-[10px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Active
+              </span>
+</td>
+<td class="py-3.5 px-4 font-body-sm text-body-sm text-on-surface-variant">3 days ago</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-ui text-[12px]" type="button">
+                  Edit Permissions
+                </button>
+<button class="p-1 rounded-md text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Bulk Status Footer -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-md mt-space-md border-t-0 bg-surface-container-low/40 -mx-space-md sm:-mx-space-lg px-space-md sm:px-space-lg pb-1 rounded-b-2xl">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span>Showing <strong class="text-on-surface">5</strong> of <strong class="text-on-surface">14</strong> registered administrators &amp; handlers</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-md bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm disabled:opacity-40" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="px-3 py-1 rounded-md bg-primary text-on-primary font-label-ui text-label-ui">1</span>
+<button class="px-3 py-1 rounded-md bg-surface-container-lowest text-on-surface font-label-ui text-label-ui hover:bg-surface-container-high shadow-sm" type="button">2</button>
+<button class="px-3 py-1 rounded-md bg-surface-container-lowest text-on-surface font-label-ui text-label-ui hover:bg-surface-container-high shadow-sm" type="button">3</button>
+<button class="p-1.5 rounded-md bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Security Protocol & Session Banner -->
+<div class="mt-space-lg p-space-md rounded-xl bg-surface-container-low flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-fixed text-[20px]">lock_clock</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Strict Provincial Access Isolation Enabled</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Staff members locked to specific dispatch hubs cannot review transaction records outside their assigned operational territory.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 font-label-uppercase text-label-uppercase text-secondary">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>ISO 27001 SkinCare Standard</span>
+</div>
+</div>
+<!-- Slide-out Drawer / Modal Overlay -->
+<div class="fixed inset-0 bg-primary/40 backdrop-blur-sm z-50 hidden transition-opacity duration-300" id="invite-drawer-backdrop"></div>
+<!-- Slide-out Drawer Panel -->
+<aside class="fixed top-0 right-0 h-full w-full max-w-lg bg-surface-container-lowest z-50 shadow-2xl flex flex-col justify-between translate-x-full transition-transform duration-300 ease-out overflow-hidden" id="invite-drawer">
+<!-- Drawer Header -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between shrink-0 shadow-sm">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">person_add</span>
+<span class="font-label-uppercase text-label-uppercase text-secondary uppercase tracking-widest">New Appointment</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Invite Staff Member</h2>
+</div>
+<button class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" id="close-invite-drawer" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Scrollable Form Content -->
+<form class="flex-1 overflow-y-auto p-space-lg space-y-space-md" id="invite-staff-form">
+<!-- Full Name Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui font-medium text-on-surface flex items-center justify-between" for="staff-name">
+<span>Full Legal Name</span>
+<span class="font-label-uppercase text-[10px] text-secondary">Required</span>
+</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">badge</span>
+<input class="w-full bg-surface-container-low pl-10 pr-4 py-2.5 rounded-lg font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant outline-none focus:bg-surface-bright shadow-sm transition-all" id="staff-name" placeholder="e.g. Sana Javed" required="" type="text"/>
+</div>
+</div>
+<!-- Corporate Email Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui font-medium text-on-surface flex items-center justify-between" for="staff-email">
+<span>Corporate Email Address</span>
+<span class="font-label-uppercase text-[10px] text-secondary">@ebaskincare.pk only</span>
+</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">mail</span>
+<input class="w-full bg-surface-container-low pl-10 pr-4 py-2.5 rounded-lg font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant outline-none focus:bg-surface-bright shadow-sm transition-all font-mono text-[13px]" id="staff-email" placeholder="sana@ebaskincare.pk" required="" type="email"/>
+</div>
+</div>
+<!-- Role Selection Dropdown -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui font-medium text-on-surface" for="staff-role">Assigned Role Preset</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">admin_panel_settings</span>
+<select class="w-full bg-surface-container-low pl-10 pr-8 py-2.5 rounded-lg font-body-md text-body-md text-on-surface outline-none focus:bg-surface-bright shadow-sm transition-all appearance-none cursor-pointer" id="staff-role">
+<option value="store_manager">Store Manager (Atelier Catalog, SKUs &amp; Reviews)</option>
+<option value="dispatcher">Fulfillment Dispatcher (Waybills &amp; Courier Manifests)</option>
+<option value="concierge">Customer Concierge (WhatsApp, Inquiries &amp; Triage)</option>
+<option value="auditor">Inventory Auditor (Depot Stock Levels &amp; Audit Logs)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Assign Location / Warehouse Hub -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui font-medium text-on-surface" for="staff-location">Assign Regional Warehouse / Depot</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">location_city</span>
+<select class="w-full bg-surface-container-low pl-10 pr-8 py-2.5 rounded-lg font-body-md text-body-md text-on-surface outline-none focus:bg-surface-bright shadow-sm transition-all appearance-none cursor-pointer" id="staff-location">
+<option value="karachi_central">Karachi Central Depot (KHI-01)</option>
+<option value="lahore_hub">Lahore Dispatch Center (LHE-02)</option>
+<option value="islamabad_satellite">Islamabad Satellite Facility (ISB-03)</option>
+<option value="all_hubs">All Provincial Hubs (Restricted Access)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Granular Permissions Checklist -->
+<div class="flex flex-col gap-2 pt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Granular Studio Privileges</span>
+<span class="font-label-uppercase text-[10px] text-on-surface-variant">Custom Overrides</span>
+</div>
+<div class="space-y-2 bg-surface-container-low p-space-md rounded-xl">
+<!-- Item 1: Checked -->
+<label class="flex items-start gap-3 cursor-pointer group select-none">
+<input checked="" class="mt-1 w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-medium text-on-surface group-hover:text-secondary transition-colors">View Financials &amp; PKR Revenue Reports</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Access to daily settlement summaries, payment gateway logs, and gross margins</span>
+</div>
+</label>
+<!-- Item 2: Checked -->
+<label class="flex items-start gap-3 cursor-pointer group select-none pt-2">
+<input checked="" class="mt-1 w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-medium text-on-surface group-hover:text-secondary transition-colors">Process &amp; Fulfill Orders</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Print COD consignment notes, mark ready-to-ship, and assign couriers</span>
+</div>
+</label>
+<!-- Item 3: Checked -->
+<label class="flex items-start gap-3 cursor-pointer group select-none pt-2">
+<input checked="" class="mt-1 w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-medium text-on-surface group-hover:text-secondary transition-colors">Edit Product Pricing &amp; SKUs</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Modify batch expiry tags, formulation descriptions, and retail pricing</span>
+</div>
+</label>
+<!-- Item 4: Checked -->
+<label class="flex items-start gap-3 cursor-pointer group select-none pt-2">
+<input checked="" class="mt-1 w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-medium text-on-surface group-hover:text-secondary transition-colors">Moderate Customer Reviews</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Verify verified purchaser submissions and publish testimonials</span>
+</div>
+</label>
+<!-- Item 5: Unchecked (Restricted to Owner) -->
+<label class="flex items-start gap-3 cursor-not-allowed opacity-60 group select-none pt-2">
+<input class="mt-1 w-4 h-4 rounded text-outline cursor-not-allowed" disabled="" type="checkbox"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md font-medium text-on-surface">Manage Staff &amp; Permissions</span>
+<span class="font-label-uppercase text-[9px] px-1.5 py-0.2 rounded bg-surface-container-highest text-on-surface font-semibold">Owner Only</span>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Granting or rescinding console credentials is restricted to Super Admin role</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Information Callout -->
+<div class="p-space-sm bg-secondary-container/40 rounded-lg flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">mark_email_read</span>
+<span class="font-body-sm text-[11px] text-on-secondary-container">
+          The recipient will receive an invitation link valid for 48 hours containing cryptographic token setup instructions.
+        </span>
+</div>
+</form>
+<!-- Drawer Footer Actions -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-end gap-space-sm shrink-0 shadow-sm">
+<button class="px-5 py-2.5 rounded-lg bg-surface-container-high text-on-surface font-label-ui text-label-ui hover:bg-surface-container-highest transition-colors" id="cancel-invite-drawer" type="button">
+        Cancel
+      </button>
+<button class="px-6 py-2.5 rounded-lg bg-primary text-on-primary font-label-ui text-label-ui hover:bg-primary-container transition-all flex items-center gap-2 shadow-md" id="submit-invite-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Send Invitation Email</span>
+</button>
+</div>
+</aside>
+<!-- Interactive JavaScript Handling for Drawer -->
+<script>
+    (function () {
+      const openBtn = document.getElementById('open-invite-drawer');
+      const closeBtn = document.getElementById('close-invite-drawer');
+      const cancelBtn = document.getElementById('cancel-invite-drawer');
+      const drawer = document.getElementById('invite-drawer');
+      const backdrop = document.getElementById('invite-drawer-backdrop');
+      const submitBtn = document.getElementById('submit-invite-btn');
+
+      function openDrawer() {
+        backdrop.classList.remove('hidden');
+        setTimeout(() => {
+          backdrop.classList.add('opacity-100');
+          drawer.classList.remove('translate-x-full');
+        }, 10);
+      }
+
+      function closeDrawer() {
+        drawer.classList.add('translate-x-full');
+        backdrop.classList.remove('opacity-100');
+        setTimeout(() => {
+          backdrop.classList.add('hidden');
+        }, 300);
+      }
+
+      if (openBtn) openBtn.addEventListener('click', openDrawer);
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      if (cancelBtn) cancelBtn.addEventListener('click', closeDrawer);
+      if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+      if (submitBtn) {
+        submitBtn.addEventListener('click', () => {
+          const originalText = submitBtn.innerHTML;
+          submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span><span>Dispatching...</span>';
+          submitBtn.disabled = true;
+          setTimeout(() => {
+            submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done</span><span>Invite Dispatched!</span>';
+            setTimeout(() => {
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+              closeDrawer();
+            }, 1000);
+          }, 1200);
+        });
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest py-space-md shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="w-full px-8 flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-body-sm text-body-sm"><span>© 2024 EBA Skin Care Luxury Formulation Studio. All rights reserved.</span><div class="flex items-center gap-space-md font-label-uppercase text-label-uppercase"><span>COD Enabled</span><span>JazzCash Active</span><span>EasyPaisa Active</span><span>Secure SSL</span></div></div></footer></div></body></html>

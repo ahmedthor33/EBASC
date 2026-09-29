@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "inverse-primary": "#cdc5c3", "surface-dim": "#ddd9d5", "outline-variant": "#d1c4c1", "outline": "#7f7572", "primary": "#000000", "on-surface-variant": "#4e4543", "on-secondary": "#ffffff", "on-primary-fixed-variant": "#4b4644", "on-primary-container": "#898281", "secondary-fixed": "#fedeb2", "on-tertiary-fixed": "#241a00", "on-background": "#1c1c19", "tertiary-fixed-dim": "#e9c349", "surface-container-high": "#ebe8e3", "on-tertiary-container": "#4f3d00", "primary-container": "#1f1b1a", "surface-variant": "#e6e2dd", "on-tertiary": "#ffffff", "surface-container-highest": "#e6e2dd", "on-primary-fixed": "#1f1b1a", "on-surface": "#1c1c19", "error-container": "#ffdad6", "on-primary": "#ffffff", "background": "#fdf9f4", "primary-fixed-dim": "#cdc5c3", "surface": "#fdf9f4", "secondary-container": "#fedeb2", "tertiary-container": "#cca730", "primary-fixed": "#eae0de", "error": "#ba1a1a", "on-secondary-container": "#78603e", "on-error": "#ffffff", "surface-tint": "#635d5b", "on-tertiary-fixed-variant": "#574500", "on-error-container": "#93000a", "surface-container-low": "#f7f3ee", "surface-container-lowest": "#ffffff", "inverse-on-surface": "#f4f0eb", "secondary-fixed-dim": "#e0c298", "on-secondary-fixed-variant": "#584323", "tertiary-fixed": "#ffe088", "surface-container": "#f1ede8", "surface-bright": "#fdf9f4", "on-secondary-fixed": "#281800", "tertiary": "#735c00", "secondary": "#725b38", "inverse-surface": "#31302d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-mobile": "1.25rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "gutter-mobile": "1rem", "gutter": "1.5rem", "space-xl": "2.5rem", "margin": "3rem", "space-md": "1rem", "space-sm": "0.5rem" }, "fontFamily": { "price-lg": ["Inter"], "price-md": ["Inter"], "label-ui": ["Inter"], "display-lg-mobile": ["Playfair Display"], "display-brand": ["Playfair Display"], "label-uppercase": ["Inter"], "headline-lg": ["Playfair Display"], "headline-sm": ["Playfair Display"], "headline-lg-mobile": ["Playfair Display"], "display-lg": ["Playfair Display"], "headline-md": ["Playfair Display"], "body-sm": ["Inter"], "body-lg": ["Inter"], "body-md": ["Inter"] }, "fontSize": { "price-lg": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "price-md": ["16px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-ui": ["13px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "display-brand": ["30px", { "lineHeight": "36px", "letterSpacing": "0.15em", "fontWeight": "600" }], "label-uppercase": ["11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" }], "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "500" }], "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "headline-md": ["26px", { "lineHeight": "34px", "letterSpacing": "0em", "fontWeight": "500" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container"><aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-low z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="pt-8 px-6 pb-6"><h1 class="font-display-brand text-headline-sm text-primary uppercase">EBA SKIN CARE</h1><p class="font-label-uppercase text-label-uppercase text-secondary tracking-widest mt-1">ADMIN CONSOLE • STUDIO</p></div><nav class="flex flex-col gap-1 px-4" data-active-classes="bg-primary text-on-primary rounded-lg"><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-ui text-label-ui">Dashboard</span></div></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="orders" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">shopping_bag</span><span class="font-label-ui text-label-ui">Orders</span></div><span class="bg-secondary-container text-on-secondary-container font-label-uppercase text-label-uppercase px-2 py-0.5 rounded-full">12 NEW</span></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="products" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">package_2</span><span class="font-label-ui text-label-ui">Products</span></div></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="categories" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">layers</span><span class="font-label-ui text-label-ui">Categories</span></div></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="shipment-logistics" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">local_shipping</span><span class="font-label-ui text-label-ui">Shipment Logistics</span></div><span class="font-label-uppercase text-label-uppercase text-outline tracking-wider">TCS / LEP</span></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="coupons-offers" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">sell</span><span class="font-label-ui text-label-ui">Coupons &amp; Offers</span></div></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="payment-gateways" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">credit_card</span><span class="font-label-ui text-label-ui">Payment Gateways</span></div></a><a aria-current="page" class="flex items-center justify-between px-3 py-2.5 transition-colors bg-primary text-on-primary rounded-lg" data-path="homepage-control" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">dashboard_customize</span><span class="font-label-ui text-label-ui">Homepage Control</span></div></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="customers" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-label-ui text-label-ui">Customers</span></div></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reviews" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">hotel_class</span><span class="font-label-ui text-label-ui">Reviews</span></div><span class="bg-surface-variant text-on-surface-variant font-label-uppercase text-label-uppercase px-2 py-0.5 rounded-full">4</span></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="inventory" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">warehouse</span><span class="font-label-ui text-label-ui">Inventory</span></div></a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-label-ui text-label-ui">Settings</span></div></a></nav></div><div class="p-4 flex flex-col gap-3"><a class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-ui text-label-ui transition-colors" href="#" target="_blank"><span class="material-symbols-outlined text-[18px]">storefront</span><span>View Live Storefront</span><span class="material-symbols-outlined text-[16px] text-outline">north_east</span></a><div class="flex items-center justify-between p-3 rounded-xl bg-surface-container"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center"><span class="font-label-ui text-label-ui text-on-primary font-semibold">F</span></div><div class="flex flex-col"><span class="font-label-ui text-label-ui text-on-surface font-semibold">Fatima Khan</span><span class="font-body-sm text-body-sm text-on-surface-variant">Store Owner</span></div></div><button class="text-outline hover:text-on-surface transition-colors flex items-center p-1 rounded-lg hover:bg-surface-container-high" type="button"><span class="material-symbols-outlined text-[20px]">logout</span></button></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-8"><div class="flex items-center gap-4 flex-1 max-w-lg"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span><input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm rounded-lg pl-9 pr-4 py-2 border-0 outline-none focus:ring-1 focus:ring-secondary-fixed-dim transition-all shadow-[0_1px_4px_rgba(0,0,0,0.02)]" placeholder="Search orders, SKUs, settings..." type="text"/></div></div><div class="flex items-center gap-5"><span class="font-label-uppercase text-label-uppercase text-on-surface-variant hidden xl:inline-block tracking-wider">Fiscal Q4 • 2024</span><div class="flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span><span class="font-label-ui text-label-ui text-on-surface">Live in Pakistan • PKR (Rs.)</span></div><button class="relative p-2 rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><button class="flex items-center gap-1.5 bg-primary text-on-primary font-label-ui text-label-ui px-4 py-2 rounded-full shadow-[0_4px_16px_rgba(26,22,21,0.10)] hover:bg-primary-container transition-all active:scale-[0.98]" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>Add Product</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Command Strip & Breadcrumbs -->
+<div class="px-8 pt-6 pb-6 bg-surface">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 font-label-uppercase text-label-uppercase text-outline tracking-widest">
+<span class="hover:text-on-surface cursor-pointer transition-colors">Admin Console</span>
+<span>/</span>
+<span class="hover:text-on-surface cursor-pointer transition-colors">Content Management</span>
+<span>/</span>
+<span class="text-secondary font-semibold">Homepage Control</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Homepage Control &amp; Visual Merchandising</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Curate your digital storefront in real-time. Configure navigation links, hero formulations, promotional ribbons, and institutional footer coordinates.
+        </p>
+</div>
+<!-- Action Cluster -->
+<div class="flex flex-wrap items-center gap-3">
+<!-- Viewport Preview Toggles -->
+<div class="flex items-center bg-surface-container rounded-full p-1 shadow-sm">
+<button class="px-3.5 py-1.5 rounded-full font-label-ui text-label-ui flex items-center gap-1.5 bg-primary text-on-primary transition-all" id="preview-btn-desktop" onclick="setPreviewMode('desktop')" type="button">
+<span class="material-symbols-outlined text-[16px]">desktop_mac</span>
+<span>Desktop</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-full font-label-ui text-label-ui flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface transition-all" id="preview-btn-mobile" onclick="setPreviewMode('mobile')" type="button">
+<span class="material-symbols-outlined text-[16px]">smartphone</span>
+<span>Mobile 390px</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-full font-label-ui text-label-ui flex items-center gap-1.5 text-on-surface-variant hover:text-on-surface transition-all" id="preview-btn-tablet" onclick="setPreviewMode('tablet')" type="button">
+<span class="material-symbols-outlined text-[16px]">tablet</span>
+<span>Tablet</span>
+</button>
+</div>
+<button class="px-4 py-2 rounded-full font-label-ui text-label-ui bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" onclick="resetDraftModal()" type="button">
+          Discard Draft
+        </button>
+<button class="flex items-center gap-2 px-5 py-2 rounded-full font-label-ui text-label-ui bg-primary text-on-primary shadow-md hover:bg-primary-container transition-all active:scale-[0.98]" onclick="triggerPublishFeedback()" type="button">
+<span class="material-symbols-outlined text-[18px]">cloud_upload</span>
+<span>Publish Changes to Storefront</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Workstation Canvas: Split 2-Column Responsive Matrix -->
+<div class="px-8 pb-12">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN: Form & Studio Configurations (~55%) -->
+<div class="xl:col-span-7 flex flex-col gap-6">
+<!-- Tabs Navigation Bar -->
+<div class="bg-surface-container-lowest rounded-xl p-2 shadow-sm">
+<nav class="flex items-center gap-1 overflow-x-auto" id="studio-tabs">
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg font-label-ui text-label-ui transition-all text-on-surface-variant hover:bg-surface-container" id="tab-nav" onclick="switchStudioTab('nav')" type="button">
+<span class="material-symbols-outlined text-[18px]">menu</span>
+<span>Navigation Bar</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg font-label-ui text-label-ui transition-all bg-primary text-on-primary font-semibold" id="tab-hero" onclick="switchStudioTab('hero')" type="button">
+<span class="material-symbols-outlined text-[18px]">photo_library</span>
+<span>Hero Section</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg font-label-ui text-label-ui transition-all text-on-surface-variant hover:bg-surface-container" id="tab-banners" onclick="switchStudioTab('banners')" type="button">
+<span class="material-symbols-outlined text-[18px]">campaign</span>
+<span>Banners &amp; Ribbons</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg font-label-ui text-label-ui transition-all text-on-surface-variant hover:bg-surface-container" id="tab-footer" onclick="switchStudioTab('footer')" type="button">
+<span class="material-symbols-outlined text-[18px]">dock</span>
+<span>Institutional Footer</span>
+</button>
+</nav>
+</div>
+<!-- TAB CONTENT 1: NAVIGATION BAR -->
+<div class="hidden flex-col gap-6" id="panel-nav">
+<!-- Announcement Bar Setup -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest block mb-0.5">Top Announcement Strip</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Urgent Dispatch &amp; Free Tier Notice</h3>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="nav-banner-toggle" onchange="toggleLiveAnnouncement(this.checked)" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div>
+<label class="font-label-ui text-label-ui text-on-surface-variant block mb-1">Announcement Copy (Pakistan Nationwide)</label>
+<input class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md px-4 py-2.5 rounded-lg outline-none focus:bg-surface-container-lowest shadow-sm" id="input-announcement" oninput="syncAnnouncement(this.value)" type="text" value="FREE NATIONWIDE DELIVERY ACROSS PAKISTAN ON ORDERS OVER RS. 3,500"/>
+</div>
+</div>
+<!-- Primary Menu Items Reordering -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest block mb-0.5">Hierarchy &amp; Taxonomies</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Primary Storefront Links</h3>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full font-label-ui text-label-ui bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Add Menu Item</span>
+</button>
+</div>
+<!-- Reorder List -->
+<div class="flex flex-col gap-2.5" id="nav-item-list">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab">drag_indicator</span>
+<div class="flex flex-col">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Home</span>
+<span class="font-body-sm text-body-sm text-outline">Route: /</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-uppercase text-label-uppercase px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Default Root</span>
+<span class="material-symbols-outlined text-[20px] text-outline hover:text-on-surface cursor-pointer">tune</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab">drag_indicator</span>
+<div class="flex flex-col">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Women Collection</span>
+<span class="font-body-sm text-body-sm text-outline">Route: /collections/women</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-uppercase text-label-uppercase px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container">Mega Menu</span>
+<span class="material-symbols-outlined text-[20px] text-outline hover:text-on-surface cursor-pointer">tune</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab">drag_indicator</span>
+<div class="flex flex-col">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Men Collection (Fortitude)</span>
+<span class="font-body-sm text-body-sm text-outline">Route: /collections/men</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-uppercase text-label-uppercase px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Featured</span>
+<span class="material-symbols-outlined text-[20px] text-outline hover:text-on-surface cursor-pointer">tune</span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab">drag_indicator</span>
+<div class="flex flex-col">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Shop Catalog</span>
+<span class="font-body-sm text-body-sm text-outline">Route: /shop</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-outline hover:text-on-surface cursor-pointer">tune</span>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab">drag_indicator</span>
+<div class="flex flex-col">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Rituals &amp; Regimens</span>
+<span class="font-body-sm text-body-sm text-outline">Route: /rituals</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-outline hover:text-on-surface cursor-pointer">tune</span>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline cursor-grab">drag_indicator</span>
+<div class="flex flex-col">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">About Us</span>
+<span class="font-body-sm text-body-sm text-outline">Route: /about</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-outline hover:text-on-surface cursor-pointer">tune</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB CONTENT 2: HERO SECTION (ACTIVE DEFAULT) -->
+<div class="flex flex-col gap-6" id="panel-hero">
+<!-- Preset Switcher -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest block mb-0.5">Campaign Presets</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Hero Display Strategy</h3>
+</div>
+<span class="font-label-uppercase text-label-uppercase px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container">A/B Testing Active</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<button class="p-3.5 rounded-lg text-left bg-surface-container-high text-primary font-semibold flex flex-col gap-1 transition-all" type="button">
+<span class="font-label-ui text-label-ui">Bespoke Dermal</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Cellular Actives (Live)</span>
+</button>
+<button class="p-3.5 rounded-lg text-left bg-surface-container-low hover:bg-surface-container text-on-surface flex flex-col gap-1 transition-all" type="button">
+<span class="font-label-ui text-label-ui">Winter Radiance</span>
+<span class="font-body-sm text-body-sm text-outline">Cold Hydration Promo</span>
+</button>
+<button class="p-3.5 rounded-lg text-left bg-surface-container-low hover:bg-surface-container text-on-surface flex flex-col gap-1 transition-all" type="button">
+<span class="font-label-ui text-label-ui">Men Fortitude</span>
+<span class="font-body-sm text-body-sm text-outline">High-SPF Shield Focus</span>
+</button>
+</div>
+</div>
+<!-- Hero Copywriting Engine -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col gap-5">
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest block">Editorial Typography &amp; Storytelling</span>
+<div class="space-y-4">
+<div>
+<label class="font-label-ui text-label-ui text-on-surface-variant block mb-1">Eyebrow Tagline</label>
+<input class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md px-4 py-2.5 rounded-lg outline-none focus:bg-surface-container-lowest shadow-sm" id="input-hero-eyebrow" oninput="updateHeroEyebrow(this.value)" type="text" value="CELLULAR PRECISION • NATIVE BOTANICALS"/>
+</div>
+<div>
+<label class="font-label-ui text-label-ui text-on-surface-variant block mb-1">Primary Headline (Playfair Display)</label>
+<input class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md px-4 py-2.5 rounded-lg outline-none focus:bg-surface-container-lowest shadow-sm" id="input-hero-headline" oninput="updateHeroHeadline(this.value)" type="text" value="Formulated for South Asian Dermal Resilience"/>
+</div>
+<div>
+<label class="font-label-ui text-label-ui text-on-surface-variant block mb-1">Sub-headline / Empirical Paragraph</label>
+<textarea class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md p-4 rounded-lg outline-none focus:bg-surface-container-lowest shadow-sm" id="input-hero-sub" oninput="updateHeroSub(this.value)" rows="3">Botanically potent, clinically measured skincare crafted specifically for the 42°C summer heat, monsoon humidity, and dry smog seasons of Pakistan.</textarea>
+</div>
+</div>
+</div>
+<!-- Imagery & Media Asset Configuration -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest block mb-0.5">Asset Management</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Hero Visual Canvas</h3>
+</div>
+<span class="font-label-uppercase text-label-uppercase text-outline tracking-wider">Aspect 16:9 • High-DPI</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-surface-container-low p-4 rounded-xl">
+<div class="md:col-span-5 h-36 rounded-lg overflow-hidden relative shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Close-up luxury skincare serum bottles in amber glass with golden liquid droppers, resting on warm beige limestone against a soft atmospheric sunlight morning background, minimal South Asian luxury apothecary aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6Twn90IRsrLgLcuN-qd_KofdeXiQNmXsg6R-qnbbz-erk7JwNsyEfC26xP5RpjCy2wxIS7Xwe7bSfg1crbTdiVOPgw3sDBlRyzYaEtBSj0iRCWay6lh-TZ4rNzwE5xh-6udwf_KjUBZTXqg9VWwqK3iKydkSJr_pHZjhu-rlbVH_lU-9tjrInDUd6Npu5_6dkrqkXCPYbFbS9vejHvleTD8v2uOLljbjABvn8Ir4iYFgPRzP5z2YGMQ"/>
+<span class="absolute bottom-2 left-2 bg-primary/80 backdrop-blur-sm text-on-primary font-label-uppercase text-label-uppercase px-2 py-0.5 rounded">Current Focal</span>
+</div>
+<div class="md:col-span-7 flex flex-col justify-between gap-3">
+<div class="flex flex-col">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">amber-flacon-editorial-v3.webp</span>
+<span class="font-body-sm text-body-sm text-outline">2400 × 1350px • Optimized WebP • 412 KB</span>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<button class="px-3.5 py-1.5 bg-surface-container-lowest text-on-surface font-label-ui text-label-ui rounded-full shadow-sm hover:bg-surface-container transition-colors" type="button">
+                    Change Asset
+                  </button>
+<button class="px-3.5 py-1.5 bg-surface-container text-on-surface-variant font-label-ui text-label-ui rounded-full hover:bg-surface-container-high transition-colors" type="button">
+                    Focal Point: Center
+                  </button>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA Buttons & Trust Badges -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col gap-5">
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest block">Call-To-Actions &amp; Trust Assurances</span>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-4 bg-surface-container-low rounded-lg flex flex-col gap-2">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Primary CTA Button</span>
+<input class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-3 py-2 rounded outline-none shadow-sm" id="cta-primary-text" oninput="updatePrimaryCTA(this.value)" type="text" value="Explore Women Collection"/>
+<span class="font-body-sm text-body-sm text-outline">Target Route: /collections/women</span>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg flex flex-col gap-2">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Secondary CTA Button</span>
+<input class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-3 py-2 rounded outline-none shadow-sm" id="cta-secondary-text" oninput="updateSecondaryCTA(this.value)" type="text" value="Discover Men Fortitude"/>
+<span class="font-body-sm text-body-sm text-outline">Target Route: /collections/men</span>
+</div>
+</div>
+<div class="pt-2 flex flex-col gap-3">
+<span class="font-label-ui text-label-ui font-medium text-on-surface-variant">Regional Dermatological Trust Badges</span>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+<label class="flex items-center gap-2.5 p-3 rounded-lg bg-surface-container-low cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-primary accent-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">100% Halal Actives</span>
+</label>
+<label class="flex items-center gap-2.5 p-3 rounded-lg bg-surface-container-low cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-primary accent-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Monsoonal Climate-Resistant</span>
+</label>
+<label class="flex items-center gap-2.5 p-3 rounded-lg bg-surface-container-low cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-primary accent-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Cruelty-Free Tested</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB CONTENT 3: BANNERS & RIBBONS -->
+<div class="hidden flex-col gap-6" id="panel-banners">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest block mb-0.5">Campaign Promotions</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Active Banners &amp; Seasonal Strips</h3>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full font-label-ui text-label-ui bg-primary text-on-primary shadow-sm hover:bg-primary-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Create New Banner</span>
+</button>
+</div>
+<!-- Banner Card 1 -->
+<div class="p-4 bg-surface-container-low rounded-xl flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Winter Solstice Privilege Tier</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-uppercase text-label-uppercase px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container">Top Notification</span>
+<span class="font-label-uppercase text-label-uppercase px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant">Live</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                "Winter Solstice Privilege Tier (+5% Bonus on Rs. 8,000+) • Code: SOLSTICE5"
+              </p>
+<div class="flex items-center justify-between pt-2">
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span>Nov 1 – Dec 15, 2024</span>
+</span>
+<div class="flex items-center gap-2">
+<button class="p-1 text-outline hover:text-on-surface" type="button"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="p-1 text-outline hover:text-error" type="button"><span class="material-symbols-outlined text-[18px]">visibility_off</span></button>
+</div>
+</div>
+</div>
+<!-- Banner Card 2 -->
+<div class="p-4 bg-surface-container-low rounded-xl flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Concierge WhatsApp Consultation</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-uppercase text-label-uppercase px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant">Mid-Page Feature</span>
+<span class="font-label-uppercase text-label-uppercase px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container">Live</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                "Complimentary Dermal Consultation with Certified Clinical Estheticians on WhatsApp • Direct Connect"
+              </p>
+<div class="flex items-center justify-between pt-2">
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">all_inclusive</span>
+<span>Always Running</span>
+</span>
+<div class="flex items-center gap-2">
+<button class="p-1 text-outline hover:text-on-surface" type="button"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="p-1 text-outline hover:text-error" type="button"><span class="material-symbols-outlined text-[18px]">visibility_off</span></button>
+</div>
+</div>
+</div>
+<!-- Banner Card 3 (Draft) -->
+<div class="p-4 bg-surface-container-low rounded-xl flex flex-col gap-3 opacity-75">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Karachi &amp; Lahore 24h Express Dispatch</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-uppercase text-label-uppercase px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant">Draft</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                "Same-day courier dispatch across Clifton, DHA, Gulberg, and Cantt zones on orders prior to 2:00 PM."
+              </p>
+<div class="flex items-center justify-between pt-2">
+<span class="font-body-sm text-body-sm text-outline">Targeting Q1 2025</span>
+<button class="p-1 text-outline hover:text-on-surface" type="button"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB CONTENT 4: FOOTER CONTROLS -->
+<div class="hidden flex-col gap-6" id="panel-footer">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex flex-col gap-5">
+<div>
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest block mb-0.5">Brand Presence</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Editorial Narrative &amp; Reassurance</h3>
+</div>
+<div class="space-y-4">
+<div>
+<label class="font-label-ui text-label-ui text-on-surface-variant block mb-1">Brand Atelier Tagline</label>
+<input class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md px-4 py-2.5 rounded-lg outline-none focus:bg-surface-container-lowest shadow-sm" type="text" value="Formulated with dermatological purity for South Asian skin vitality."/>
+</div>
+<div>
+<label class="font-label-ui text-label-ui text-on-surface-variant block mb-1">Atelier Addresses &amp; Flagships</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-3 py-2 rounded-lg outline-none" type="text" value="DHA Phase VI, Karachi, Pakistan"/>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-3 py-2 rounded-lg outline-none" type="text" value="Gulberg III, Lahore, Pakistan"/>
+</div>
+</div>
+<div>
+<label class="font-label-ui text-label-ui text-on-surface-variant block mb-1">Direct Concierge Coordinates</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-3 py-2 rounded-lg outline-none" type="text" value="+92 21 3589 1234 (Concierge)"/>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm px-3 py-2 rounded-lg outline-none" type="text" value="concierge@ebaskincare.pk"/>
+</div>
+</div>
+</div>
+<!-- Regional Payment Badges Toggles -->
+<div class="pt-4 flex flex-col gap-3">
+<span class="font-label-ui text-label-ui font-semibold text-on-surface">Payment System Trust Gateway Icons</span>
+<div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+<label class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container">
+<input checked="" class="w-4 h-4 rounded text-primary mb-2" type="checkbox"/>
+<span class="font-label-uppercase text-label-uppercase text-on-surface">JazzCash</span>
+</label>
+<label class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container">
+<input checked="" class="w-4 h-4 rounded text-primary mb-2" type="checkbox"/>
+<span class="font-label-uppercase text-label-uppercase text-on-surface">EasyPaisa</span>
+</label>
+<label class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container">
+<input checked="" class="w-4 h-4 rounded text-primary mb-2" type="checkbox"/>
+<span class="font-label-uppercase text-label-uppercase text-on-surface">COD (Nationwide)</span>
+</label>
+<label class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container">
+<input checked="" class="w-4 h-4 rounded text-primary mb-2" type="checkbox"/>
+<span class="font-label-uppercase text-label-uppercase text-on-surface">1LINK Union</span>
+</label>
+<label class="flex flex-col items-center justify-center p-3 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container">
+<input checked="" class="w-4 h-4 rounded text-primary mb-2" type="checkbox"/>
+<span class="font-label-uppercase text-label-uppercase text-on-surface">Visa / MC</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Interactive Live Preview Panel (~45%) -->
+<div class="xl:col-span-5 flex flex-col gap-3 sticky top-20">
+<!-- Browser Mockup Chrome Header -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-xl overflow-hidden flex flex-col">
+<!-- Chrome Bar -->
+<div class="bg-surface-container px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-[#E57373]"></span>
+<span class="w-3 h-3 rounded-full bg-[#FFD54F]"></span>
+<span class="w-3 h-3 rounded-full bg-[#81C784]"></span>
+</div>
+<!-- Virtual URL Capsule -->
+<div class="flex items-center gap-1.5 bg-surface-container-lowest px-4 py-1.5 rounded-full text-on-surface-variant font-body-sm text-body-sm shadow-sm max-w-xs w-full justify-center">
+<span class="material-symbols-outlined text-[14px] text-tertiary">lock</span>
+<span class="tracking-tight text-on-surface font-medium truncate">https://ebaskincare.pk</span>
+</div>
+<!-- Zoom & Synced Indicator -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant hidden sm:inline">LIVE SYNC</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">100%</span>
+</div>
+</div>
+<!-- Preview Screen Container (Responsive Frame Wrapper) -->
+<div class="bg-surface p-2 sm:p-4 overflow-y-auto max-h-[820px] transition-all flex justify-center" id="preview-canvas-wrapper">
+<div class="w-full transition-all duration-300 flex flex-col shadow-sm bg-surface-container-lowest rounded-lg overflow-hidden" id="preview-viewport-box">
+<!-- Simulated Storefront Live Element: Announcement Strip -->
+<div class="bg-primary text-on-primary py-2 px-3 text-center transition-all" id="live-announcement-strip">
+<p class="font-label-uppercase text-label-uppercase tracking-wider" id="live-announcement-text">
+                  FREE NATIONWIDE DELIVERY ACROSS PAKISTAN ON ORDERS OVER RS. 3,500
+                </p>
+</div>
+<!-- Simulated Storefront Header -->
+<div class="px-5 py-4 bg-surface-container-lowest flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="font-display-brand text-[20px] tracking-[0.2em] text-primary uppercase font-bold">EBA SKIN CARE</span>
+<div class="hidden md:flex items-center gap-3 font-label-uppercase text-label-uppercase text-on-surface-variant">
+<span class="text-primary font-semibold">Home</span>
+<span>Women</span>
+<span>Men</span>
+<span>Rituals</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">search</span>
+<div class="relative">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="absolute -top-1 -right-1.5 w-3.5 h-3.5 rounded-full bg-secondary text-on-secondary font-label-uppercase text-[9px] flex items-center justify-center">2</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2.5 py-1 rounded-full text-on-surface font-label-ui text-[11px]">
+<span class="material-symbols-outlined text-[14px]">local_mall</span>
+<span>Rs. 2,850</span>
+</div>
+</div>
+</div>
+<!-- Simulated Storefront Hero Section -->
+<div class="relative bg-gradient-to-b from-surface-container to-surface-container-low p-6 sm:p-8 flex flex-col justify-center min-h-[380px] overflow-hidden">
+<!-- Atmospheric Background Asset -->
+<div class="absolute inset-0 opacity-25 mix-blend-multiply">
+<img class="w-full h-full object-cover" data-alt="Subtle high-fashion botanical leaf shadows casting elegant dappled sunlight patterns on ivory limestone silk paper background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDACvfZR8kMketeIdU1blR5IJwZ65C9g7B1JG_TVXf8p1WZf_G5MYEQtKvh9aVLFP7UxJ1LO-dJjKDHbvrWvFzIUnA0Z7sbO6WFLnY7uFyNBQ5kyB9jkzwdl9MzrdPVz_ImHc1wP8G3jK2PYKGOiU8VaK3FDwQLncQsRb4T4cXNJbaKzSsqv6dAap3_Zrf7aoKsn3RxpcFkS5GeG-5LjlXrLbMXED2PIRmolhYN9qd1xNZYeM8iL_xNuQ"/>
+</div>
+<div class="relative z-10 flex flex-col gap-3 max-w-md">
+<span class="font-label-uppercase text-label-uppercase text-secondary tracking-widest font-semibold" id="live-hero-eyebrow">
+                    CELLULAR PRECISION • NATIVE BOTANICALS
+                  </span>
+<h2 class="font-headline-lg text-[28px] sm:text-headline-lg text-primary leading-tight font-serif" id="live-hero-headline">
+                    Formulated for South Asian Dermal Resilience
+                  </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3" id="live-hero-sub">
+                    Botanically potent, clinically measured skincare crafted specifically for the 42°C summer heat, monsoon humidity, and dry smog seasons of Pakistan.
+                  </p>
+<!-- Live CTA Buttons -->
+<div class="flex flex-wrap items-center gap-2.5 pt-2">
+<button class="px-5 py-2.5 rounded-full bg-primary text-on-primary font-label-ui text-label-ui shadow-sm hover:scale-[1.02] transition-transform" id="live-primary-cta" type="button">
+                      Explore Women Collection
+                    </button>
+<button class="px-4 py-2.5 rounded-full bg-surface-container-lowest text-on-surface font-label-ui text-label-ui shadow-sm hover:bg-surface-container transition-colors" id="live-secondary-cta" type="button">
+                      Discover Men Fortitude
+                    </button>
+</div>
+<!-- Live Trust Badges Matrix -->
+<div class="flex flex-wrap items-center gap-3 pt-3 text-on-surface-variant font-label-uppercase text-[10px] tracking-wide">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-tertiary">verified</span>
+<span>100% Halal Actives</span>
+</span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-tertiary">wb_sunny</span>
+<span>Monsoon Climate-Proof</span>
+</span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-tertiary">spa</span>
+<span>Cruelty-Free</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Simulated Mid-Page Promotion Banner Strip -->
+<div class="bg-secondary-container text-on-secondary-container p-3 text-center flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+<span class="font-label-ui text-[12px] font-semibold tracking-wide">
+                  Privilege Club: Complimentary Express Dispatch via TCS &amp; Leopards Courier on all prepaid carts
+                </span>
+</div>
+<!-- Simulated Storefront Footer Capsule Preview -->
+<div class="bg-primary text-on-primary p-6 flex flex-col gap-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<span class="font-display-brand text-[15px] uppercase tracking-widest text-on-primary">EBA SKIN CARE</span>
+<p class="font-body-sm text-[11px] text-on-primary-container leading-relaxed">
+                      Dermatologically balanced actives formulated for high-humidity and monsoonal climates.
+                    </p>
+<span class="font-label-uppercase text-[10px] text-on-primary-container">Ateliers: Karachi • Lahore</span>
+</div>
+<div class="flex flex-col gap-1.5 text-[11px] font-body-sm text-on-primary-container">
+<span class="font-label-uppercase text-[10px] text-on-primary font-bold tracking-widest mb-1">CLIENT SERVICES</span>
+<span>WhatsApp Concierge</span>
+<span>Track TCS / Leopards Order</span>
+<span>Dermal Consultation</span>
+<span>Halal Actives Certification</span>
+</div>
+</div>
+<!-- Simulated Local Payment Badges in Footer -->
+<div class="pt-3 flex flex-wrap items-center justify-between gap-2">
+<span class="font-label-uppercase text-[10px] text-on-primary-container tracking-wider">Secured Checkout Channels</span>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-primary font-label-uppercase text-[9px] font-bold">JazzCash</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-primary font-label-uppercase text-[9px] font-bold">EasyPaisa</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-primary font-label-uppercase text-[9px] font-bold">COD</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-primary font-label-uppercase text-[9px] font-bold">1LINK</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Meta Bar -->
+<div class="bg-surface-container-low px-4 py-2.5 flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">devices</span>
+<span>Hardware-accelerated live rendering</span>
+</span>
+<button class="text-primary hover:text-on-surface-variant font-label-ui text-label-ui flex items-center gap-1" type="button">
+<span>Open in New Tab</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function switchStudioTab(tabName) {
+    const tabs = ['nav', 'hero', 'banners', 'footer'];
+    tabs.forEach(t => {
+      const panel = document.getElementById('panel-' + t);
+      const btn = document.getElementById('tab-' + t);
+      if (t === tabName) {
+        panel.classList.remove('hidden');
+        panel.classList.add('flex');
+        btn.classList.add('bg-primary', 'text-on-primary', 'font-semibold');
+        btn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container');
+      } else {
+        panel.classList.add('hidden');
+        panel.classList.remove('flex');
+        btn.classList.remove('bg-primary', 'text-on-primary', 'font-semibold');
+        btn.classList.add('text-on-surface-variant', 'hover:bg-surface-container');
+      }
+    });
+  }
+
+  function setPreviewMode(mode) {
+    const viewportBox = document.getElementById('preview-viewport-box');
+    const btnDesktop = document.getElementById('preview-btn-desktop');
+    const btnMobile = document.getElementById('preview-btn-mobile');
+    const btnTablet = document.getElementById('preview-btn-tablet');
+
+    [btnDesktop, btnMobile, btnTablet].forEach(b => {
+      b.classList.remove('bg-primary', 'text-on-primary');
+      b.classList.add('text-on-surface-variant');
+    });
+
+    if (mode === 'mobile') {
+      viewportBox.style.maxWidth = '390px';
+      btnMobile.classList.add('bg-primary', 'text-on-primary');
+      btnMobile.classList.remove('text-on-surface-variant');
+    } else if (mode === 'tablet') {
+      viewportBox.style.maxWidth = '768px';
+      btnTablet.classList.add('bg-primary', 'text-on-primary');
+      btnTablet.classList.remove('text-on-surface-variant');
+    } else {
+      viewportBox.style.maxWidth = '100%';
+      btnDesktop.classList.add('bg-primary', 'text-on-primary');
+      btnDesktop.classList.remove('text-on-surface-variant');
+    }
+  }
+
+  function toggleLiveAnnouncement(isChecked) {
+    const strip = document.getElementById('live-announcement-strip');
+    strip.style.display = isChecked ? 'block' : 'none';
+  }
+
+  function syncAnnouncement(val) {
+    document.getElementById('live-announcement-text').innerText = val;
+  }
+
+  function updateHeroEyebrow(val) {
+    document.getElementById('live-hero-eyebrow').innerText = val;
+  }
+
+  function updateHeroHeadline(val) {
+    document.getElementById('live-hero-headline').innerText = val;
+  }
+
+  function updateHeroSub(val) {
+    document.getElementById('live-hero-sub').innerText = val;
+  }
+
+  function updatePrimaryCTA(val) {
+    document.getElementById('live-primary-cta').innerText = val;
+  }
+
+  function updateSecondaryCTA(val) {
+    document.getElementById('live-secondary-cta').innerText = val;
+  }
+
+  function triggerPublishFeedback() {
+    alert("Success: Visual Merchandising draft has been verified and deployed live to https://ebaskincare.pk CDN.");
+  }
+
+  function resetDraftModal() {
+    if (confirm("Reset current draft modifications to live CDN configuration?")) {
+      location.reload();
+    }
+  }
+</script></main></div></body></html>
