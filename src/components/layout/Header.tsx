@@ -4,10 +4,14 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import { useCart } from '@/context/CartContext';
+import { useWishlist } from '@/context/WishlistContext';
 
 export function Header() {
   const pathname = usePathname();
   const { user, profile, isAdmin, signOut } = useAuth();
+  const { totalCount: cartCount, subtotal: cartSubtotal } = useCart();
+  const { count: wishlistCount } = useWishlist();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Dynamic category theme check
@@ -135,9 +139,11 @@ export function Header() {
               className="relative p-2 text-on-surface-variant hover:text-on-surface transition-colors rounded-full hover:bg-black/5"
             >
               <span className="material-symbols-outlined text-[22px]">favorite</span>
-              <span className="absolute 0.5 top-0.5 right-0.5 w-4 h-4 rounded-full bg-[#735C00] text-white text-[10px] font-bold flex items-center justify-center">
-                2
-              </span>
+              {wishlistCount > 0 && (
+                <span className="absolute 0.5 top-0.5 right-0.5 w-4 h-4 rounded-full bg-[#735C00] text-white text-[10px] font-bold flex items-center justify-center">
+                  {wishlistCount}
+                </span>
+              )}
             </Link>
 
             {/* Cart */}
@@ -148,12 +154,14 @@ export function Header() {
             >
               <div className="relative">
                 <span className="material-symbols-outlined text-[22px]">shopping_bag</span>
-                <span className="absolute -top-1 -right-1.5 w-4 h-4 rounded-full bg-[#1A1615] text-white text-[10px] font-bold flex items-center justify-center">
-                  1
-                </span>
+                {cartCount > 0 && (
+                  <span className="absolute -top-1 -right-1.5 w-4 h-4 rounded-full bg-[#1A1615] text-white text-[10px] font-bold flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
               </div>
               <span className="hidden md:inline font-price-md text-sm font-semibold text-on-surface">
-                Rs. 2,850
+                Rs. {cartSubtotal.toLocaleString()}
               </span>
             </Link>
 

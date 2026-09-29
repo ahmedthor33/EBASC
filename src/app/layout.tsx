@@ -3,6 +3,9 @@ import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 import { StoreLayout } from '@/components/layout/StoreLayout';
 
+import { CartProvider } from '@/context/CartContext';
+import { WishlistProvider } from '@/context/WishlistContext';
+
 export const metadata: Metadata = {
   title: 'EBA Skin Care | High-Performance Luxury Skincare Pakistan',
   description:
@@ -37,7 +40,11 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <AuthProvider>
-          <StoreLayout>{children}</StoreLayout>
+          <WishlistProvider>
+            <CartProvider>
+              <StoreLayout>{children}</StoreLayout>
+            </CartProvider>
+          </WishlistProvider>
         </AuthProvider>
       </body>
     </html>
