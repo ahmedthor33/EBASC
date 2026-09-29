@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import { BrandLogo } from '@/components/ui/BrandLogo';
 
 interface AuthFormProps {
   initialTab?: 'signin' | 'signup';
@@ -158,14 +159,7 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
         <div>
           {/* Header Brand */}
           <div className="flex items-center justify-between mb-8">
-            <div className="flex flex-col">
-              <span className="font-display-brand text-2xl uppercase text-[#1C1C19] tracking-[0.2em] font-semibold">
-                EBA
-              </span>
-              <span className="font-label-uppercase text-[#725B38] tracking-[0.3em] uppercase text-[9px] -mt-1 font-bold">
-                Dermatologie
-              </span>
-            </div>
+            <BrandLogo variant="light" size="md" href="/" />
             <Link
               href="/shop"
               className="inline-flex items-center gap-1.5 font-label-ui text-xs text-[#4E4543] hover:text-[#1A1615] transition-colors"

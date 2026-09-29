@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import { BrandLogo } from '@/components/ui/BrandLogo';
 
 export default function MyAccountPage() {
   const { user, profile, role, isAdmin, signOut, isLoading } = useAuth();
@@ -82,11 +83,14 @@ export default function MyAccountPage() {
 
   return (
     <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-12 py-8 w-full">
-      {/* Breadcrumb / Overline */}
-      <div className="flex items-center gap-2 mb-4 font-label-uppercase text-[11px] tracking-widest text-[#7F7572]">
-        <Link href="/" className="hover:text-[#1C1C19]">Home</Link>
-        <span>/</span>
-        <span className="text-[#725B38] font-semibold">Client Patron Portal</span>
+      {/* Brand Header & Breadcrumb */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-2 border-b border-[#EADECF]/60">
+        <BrandLogo variant="light" size="md" href="/" />
+        <div className="flex items-center gap-2 font-label-uppercase text-[11px] tracking-widest text-[#7F7572]">
+          <Link href="/" className="hover:text-[#1C1C19]">Home</Link>
+          <span>/</span>
+          <span className="text-[#725B38] font-semibold">Client Patron Portal</span>
+        </div>
       </div>
 
       {/* Client Overview Card */}

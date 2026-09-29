@@ -2,36 +2,68 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { BrandLogo } from '@/components/ui/BrandLogo';
 
 export function Footer() {
+  const pathname = usePathname();
+  const isDarkPage = pathname?.startsWith('/men');
+
   return (
-    <footer className="w-full bg-[#F7F3EE] border-t border-[#EADECF] text-[#1C1C19]">
+    <footer
+      className={`w-full border-t transition-colors duration-300 ${
+        isDarkPage
+          ? 'bg-[#14171C] border-[#232830] text-[#F2F2F2]'
+          : 'bg-[#F7F3EE] border-[#EADECF] text-[#1C1C19]'
+      }`}
+    >
       <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-12 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           
           {/* Brand Column */}
           <div className="space-y-4">
-            <Link href="/" className="flex flex-col group select-none">
-              <span className="font-display-brand text-2xl font-bold tracking-[0.18em] leading-[1.05] text-[#1C1C19]">
-                EBA SKIN
-              </span>
-              <span className="font-display-brand text-2xl font-bold tracking-[0.18em] leading-[1.05] text-[#1C1C19]">
-                CARE
-              </span>
-            </Link>
+            <BrandLogo
+              variant={isDarkPage ? 'dark' : 'light'}
+              size="lg"
+              showTagline
+              taglineText="LUXURY BOTANICALS • PAKISTAN"
+              href="/"
+            />
 
-            <p className="font-body-md text-xs sm:text-sm text-[#4E4543] leading-relaxed">
+            <p
+              className={`font-body-md text-xs sm:text-sm leading-relaxed ${
+                isDarkPage ? 'text-[#BAC2CE]' : 'text-[#4E4543]'
+              }`}
+            >
               Clinically formulated luxury skincare crafted for South Asian skin types and climates. Halal-certified, cruelty-free, and dermatologically tested.
             </p>
 
             <div className="flex flex-wrap items-center gap-2 pt-1">
-              <span className="px-3 py-1 rounded-full bg-[#EBE8E3] text-[#1C1C19] font-label-uppercase text-[10px] tracking-wider font-semibold border border-[#EADECF]">
+              <span
+                className={`px-3 py-1 rounded-full font-label-uppercase text-[10px] tracking-wider font-semibold border ${
+                  isDarkPage
+                    ? 'bg-[#1C2026] text-[#FFE088] border-[#2D343E]'
+                    : 'bg-[#EBE8E3] text-[#1C1C19] border-[#EADECF]'
+                }`}
+              >
                 Halal Certified
               </span>
-              <span className="px-3 py-1 rounded-full bg-[#EBE8E3] text-[#1C1C19] font-label-uppercase text-[10px] tracking-wider font-semibold border border-[#EADECF]">
+              <span
+                className={`px-3 py-1 rounded-full font-label-uppercase text-[10px] tracking-wider font-semibold border ${
+                  isDarkPage
+                    ? 'bg-[#1C2026] text-[#FFE088] border-[#2D343E]'
+                    : 'bg-[#EBE8E3] text-[#1C1C19] border-[#EADECF]'
+                }`}
+              >
                 Cruelty Free
               </span>
-              <span className="px-3 py-1 rounded-full bg-[#EBE8E3] text-[#1C1C19] font-label-uppercase text-[10px] tracking-wider font-semibold border border-[#EADECF]">
+              <span
+                className={`px-3 py-1 rounded-full font-label-uppercase text-[10px] tracking-wider font-semibold border ${
+                  isDarkPage
+                    ? 'bg-[#1C2026] text-[#FFE088] border-[#2D343E]'
+                    : 'bg-[#EBE8E3] text-[#1C1C19] border-[#EADECF]'
+                }`}
+              >
                 Derm Tested
               </span>
             </div>
