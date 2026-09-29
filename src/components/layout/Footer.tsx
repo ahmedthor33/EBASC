@@ -5,110 +5,188 @@ import Link from 'next/link';
 
 export function Footer() {
   return (
-    <footer className="w-full bg-[#1A1615] text-[#FDF9F4] pt-16 pb-12 border-t border-[#31302D]">
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+    <footer className="w-full bg-[#F7F3EE] border-t border-[#EADECF] text-[#1C1C19]">
+      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-12 pt-16 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           
           {/* Brand Column */}
-          <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-block">
-              <span className="font-display-brand text-[#FDF9F4] tracking-[0.16em] uppercase text-2xl font-semibold">
-                EBA Skin Care
+          <div className="space-y-4">
+            <Link href="/" className="flex flex-col group select-none">
+              <span className="font-display-brand text-2xl font-bold tracking-[0.18em] leading-[1.05] text-[#1C1C19]">
+                EBA SKIN
               </span>
-              <span className="block font-label-uppercase text-[#C5A880] tracking-[0.25em] text-[10px] uppercase">
-                Clinique Botanica • South Asia
+              <span className="font-display-brand text-2xl font-bold tracking-[0.18em] leading-[1.05] text-[#1C1C19]">
+                CARE
               </span>
             </Link>
-            <p className="font-body-md text-sm text-[#CDC5C3] max-w-sm leading-relaxed">
-              Clinically formulated botanical skincare engineered specifically for Pakistani microclimates. Dermatologist-tested, 100% Halal, and cruelty-free.
+
+            <p className="font-body-md text-xs sm:text-sm text-[#4E4543] leading-relaxed">
+              Clinically formulated luxury skincare crafted for South Asian skin types and climates. Halal-certified, cruelty-free, and dermatologically tested.
             </p>
-            <div className="pt-2 text-xs text-[#898281] space-y-1">
-              <p>Clifton Block 4, Karachi • Gulberg III, Lahore • F-7/2, Islamabad</p>
-              <p>Email: <a href="mailto:care@ebaskincare.pk" className="text-[#FFE088] hover:underline">care@ebaskincare.pk</a> | Tel: +92 21 3589 1234</p>
+
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              <span className="px-3 py-1 rounded-full bg-[#EBE8E3] text-[#1C1C19] font-label-uppercase text-[10px] tracking-wider font-semibold border border-[#EADECF]">
+                Halal Certified
+              </span>
+              <span className="px-3 py-1 rounded-full bg-[#EBE8E3] text-[#1C1C19] font-label-uppercase text-[10px] tracking-wider font-semibold border border-[#EADECF]">
+                Cruelty Free
+              </span>
+              <span className="px-3 py-1 rounded-full bg-[#EBE8E3] text-[#1C1C19] font-label-uppercase text-[10px] tracking-wider font-semibold border border-[#EADECF]">
+                Derm Tested
+              </span>
             </div>
           </div>
 
-          {/* Collections */}
-          <div className="space-y-3">
-            <h4 className="font-label-uppercase text-xs tracking-widest text-[#C5A880] uppercase font-semibold">
-              Collections
-            </h4>
-            <ul className="space-y-2 text-sm text-[#CDC5C3]">
-              <li>
-                <Link href="/women" className="hover:text-white transition-colors">Women Botanical Line</Link>
-              </li>
-              <li>
-                <Link href="/men" className="hover:text-white transition-colors">Men Obsidian Slate</Link>
-              </li>
-              <li>
-                <Link href="/shop" className="hover:text-white transition-colors">All Formulations</Link>
-              </li>
-              <li>
-                <Link href="/shop?filter=bestseller" className="hover:text-white transition-colors">Best Sellers</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Client Concierge */}
-          <div className="space-y-3">
-            <h4 className="font-label-uppercase text-xs tracking-widest text-[#C5A880] uppercase font-semibold">
-              Client Care
-            </h4>
-            <ul className="space-y-2 text-sm text-[#CDC5C3]">
-              <li>
-                <Link href="/my-account" className="hover:text-white transition-colors">Track Order & History</Link>
-              </li>
-              <li>
-                <Link href="/return-and-refund-policy" className="hover:text-white transition-colors">Return & Refund Policy</Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link href="/contact-us" className="hover:text-white transition-colors">Consultation & Contact</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Local Payments & Verification */}
+          {/* Collections Column */}
           <div className="space-y-4">
-            <h4 className="font-label-uppercase text-xs tracking-widest text-[#C5A880] uppercase font-semibold">
-              Payment Methods
-            </h4>
-            <p className="text-xs text-[#CDC5C3] leading-relaxed">
-              Secure localized checkout verified across Pakistan.
+            <h3 className="font-headline-sm text-base font-semibold text-[#1C1C19]">
+              Collections
+            </h3>
+            <ul className="space-y-2.5 font-body-md text-xs sm:text-sm text-[#4E4543]">
+              <li>
+                <Link href="/men" className="hover:text-[#1C1C19] transition-colors">
+                  Men's Charcoal Face Wash
+                </Link>
+              </li>
+              <li>
+                <Link href="/men" className="hover:text-[#1C1C19] transition-colors">
+                  Men's Cellular Night Recovery
+                </Link>
+              </li>
+              <li>
+                <Link href="/women" className="hover:text-[#1C1C19] transition-colors">
+                  Women's Gentle Milk Cleanser
+                </Link>
+              </li>
+              <li>
+                <Link href="/women" className="hover:text-[#1C1C19] transition-colors">
+                  Women's Glow Radiance Serum
+                </Link>
+              </li>
+              <li>
+                <Link href="/women" className="hover:text-[#1C1C19] transition-colors">
+                  Advanced Whitening Elixir Cream
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop" className="hover:text-[#1C1C19] transition-colors">
+                  Curated Gift Sets
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop?filter=best-sellers" className="hover:text-[#1C1C19] transition-colors">
+                  Pakistan Best Sellers
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Customer Care Column */}
+          <div className="space-y-4">
+            <h3 className="font-headline-sm text-base font-semibold text-[#1C1C19]">
+              Customer Care
+            </h3>
+            <ul className="space-y-2.5 font-body-md text-xs sm:text-sm text-[#4E4543]">
+              <li>
+                <Link href="/my-account" className="hover:text-[#1C1C19] transition-colors flex items-center justify-between">
+                  <span>Track Your Order (TCS / Leopard)</span>
+                  <span className="material-symbols-outlined text-[15px] text-[#725B38]">local_shipping</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy" className="hover:text-[#1C1C19] transition-colors">
+                  Shipping &amp; Delivery (Pakistan)
+                </Link>
+              </li>
+              <li>
+                <Link href="/return-and-refund-policy" className="hover:text-[#1C1C19] transition-colors">
+                  Return &amp; Refund Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy" className="hover:text-[#1C1C19] transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact-us" className="hover:text-[#1C1C19] transition-colors">
+                  Frequently Asked Questions
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact-us" className="hover:text-[#1C1C19] transition-colors">
+                  Contact Our Skin Specialists
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* EBA Privilege Club Column */}
+          <div className="space-y-4">
+            <h3 className="font-headline-sm text-base font-semibold text-[#1C1C19]">
+              EBA Privilege Club
+            </h3>
+            <p className="font-body-md text-xs sm:text-sm text-[#4E4543] leading-relaxed">
+              Receive sensorial invitations, clinical skincare insights, and seasonal privileges across Pakistan.
             </p>
-            <div className="flex flex-wrap gap-2 pt-1">
-              <span className="px-2.5 py-1 rounded bg-[#31302D] text-[#F4F0EB] text-[11px] font-medium border border-white/10">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                alert('Thank you for subscribing to EBA Privilege Club!');
+              }}
+              className="space-y-2.5"
+            >
+              <input
+                type="email"
+                required
+                placeholder="Enter your email address"
+                className="w-full h-11 px-4 bg-white text-xs text-[#1C1C19] rounded-lg border border-[#EADECF] focus:outline-none focus:border-[#C5A880]"
+              />
+              <button
+                type="submit"
+                className="w-full h-11 rounded-full bg-[#1A1615] text-[#FDF9F4] font-label-uppercase text-xs tracking-widest font-semibold hover:bg-black transition-all shadow-sm"
+              >
+                Subscribe to Privilege
+              </button>
+            </form>
+            <div className="flex items-center gap-1.5 pt-1 text-xs text-[#4E4543]">
+              <span className="material-symbols-outlined text-[16px] text-[#725B38]">verified_user</span>
+              <span>Direct Helpline: +92 21 3589 1234</span>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Bottom Payment Strip & Copyright */}
+        <div className="mt-14 pt-8 border-t border-[#EADECF] flex flex-col md:flex-row items-center justify-between gap-4 bg-[#F1EDE8]/60 rounded-2xl p-4 sm:p-5">
+          <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+            <span className="font-label-uppercase text-xs tracking-wider text-[#4E4543] font-semibold">
+              Trusted Payment Partners:
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <span className="px-2.5 py-1 rounded bg-white text-[#1C1C19] font-label-uppercase text-[10px] font-semibold tracking-wider shadow-sm border border-[#EADECF]">
                 Cash on Delivery (COD)
               </span>
-              <span className="px-2.5 py-1 rounded bg-[#31302D] text-[#F4F0EB] text-[11px] font-medium border border-white/10">
+              <span className="px-2.5 py-1 rounded bg-white text-[#1C1C19] font-label-uppercase text-[10px] font-semibold tracking-wider shadow-sm border border-[#EADECF]">
                 JazzCash
               </span>
-              <span className="px-2.5 py-1 rounded bg-[#31302D] text-[#F4F0EB] text-[11px] font-medium border border-white/10">
+              <span className="px-2.5 py-1 rounded bg-white text-[#1C1C19] font-label-uppercase text-[10px] font-semibold tracking-wider shadow-sm border border-[#EADECF]">
                 EasyPaisa
               </span>
-              <span className="px-2.5 py-1 rounded bg-[#31302D] text-[#F4F0EB] text-[11px] font-medium border border-white/10">
-                Bank Transfer (IBAN)
+              <span className="px-2.5 py-1 rounded bg-white text-[#1C1C19] font-label-uppercase text-[10px] font-semibold tracking-wider shadow-sm border border-[#EADECF]">
+                Bank Transfer / 1LINK
+              </span>
+              <span className="px-2.5 py-1 rounded bg-white text-[#1C1C19] font-label-uppercase text-[10px] font-semibold tracking-wider shadow-sm border border-[#EADECF]">
+                Visa / Mastercard
               </span>
             </div>
-            <div className="text-[11px] text-[#898281] flex items-center gap-1.5 pt-1">
-              <span className="material-symbols-outlined text-[15px] text-[#FFE088]">lock</span>
-              <span>256-bit Encrypted Checkout</span>
-            </div>
           </div>
 
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-[#898281] gap-4">
-          <p>© {new Date().getFullYear()} EBA Skin Care. All rights reserved. Designed for South Asian Dermatological Refinement.</p>
-          <div className="flex items-center gap-6">
-            <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
-            <Link href="/return-and-refund-policy" className="hover:text-white transition-colors">Returns</Link>
-            <Link href="/contact-us" className="hover:text-white transition-colors">Support</Link>
+          <div className="font-label-uppercase text-[11px] text-[#7F7572] tracking-wider text-center md:text-right">
+            © 2026 EBA Skin Care Pakistan. All Rights Reserved.
           </div>
         </div>
+
       </div>
     </footer>
   );
