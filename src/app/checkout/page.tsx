@@ -400,7 +400,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* Right Column: Order Summary */}
-        <div className="lg:col-span-5 sticky top-28 space-y-6">
+        <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
           <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#EADECF] shadow-lg space-y-5">
             <h2 className="font-display-brand text-xl font-semibold text-[#1C1C19]">
               Parcel Summary ({items.length} items)

@@ -195,7 +195,7 @@ export default function CartPage() {
         </div>
 
         {/* Right Column: Order Summary Card */}
-        <div className="lg:col-span-5 sticky top-28">
+        <div className="lg:col-span-5 lg:sticky lg:top-28">
           <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#EADECF] shadow-lg space-y-6">
             <h2 className="font-display-brand text-xl font-semibold text-[#1C1C19]">Order Summary</h2>
 

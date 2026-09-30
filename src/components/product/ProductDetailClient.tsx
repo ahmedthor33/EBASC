@@ -72,7 +72,7 @@ export default function ProductDetailClient({ initialSlug }: { initialSlug?: str
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Left Column: Product Image Vessel */}
-          <div className="lg:col-span-6 sticky top-28">
+          <div className="lg:col-span-6 lg:sticky lg:top-28">
             <div className={`relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border ${
               isMen ? 'bg-[#181B20] border-[#232830]' : 'bg-white border-[#EADECF]'
             }`}>
