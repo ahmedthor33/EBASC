@@ -2,6 +2,8 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { ProductItem } from '@/lib/products';
+import { getShippingSettings, DEFAULT_SHIPPING_SETTINGS, ShippingSettings } from '@/lib/shippingStorage';
+import { getStoredCoupons } from '@/lib/couponStorage';
 
 export interface CartItem {
   product: ProductItem;
@@ -30,31 +32,44 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-const FREE_SHIPPING_THRESHOLD = 3500;
-const STANDARD_SHIPPING_FEE = 200;
-
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [appliedCoupon, setAppliedCoupon] = useState<string | null>(null);
   const [couponDiscount, setCouponDiscount] = useState<number>(0);
   const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [shippingSettings, setShippingSettings] = useState<ShippingSettings>(DEFAULT_SHIPPING_SETTINGS);
+
+  // Sync dynamic shipping settings from admin storage
+  useEffect(() => {
+    setShippingSettings(getShippingSettings());
+    const handler = () => setShippingSettings(getShippingSettings());
+    window.addEventListener('eba_shipping_updated', handler);
+    return () => window.removeEventListener('eba_shipping_updated', handler);
+  }, []);
 
   // Load cart from localStorage
   useEffect(() => {
     try {
+      // Purge old mock test cart once
+      const purgeKey = 'eba_cart_test_purged_v2';
+      if (!localStorage.getItem(purgeKey)) {
+        localStorage.removeItem('eba_cart_items');
+        localStorage.setItem(purgeKey, 'true');
+        setItems([]);
+        setIsLoaded(true);
+        return;
+      }
+
       const saved = localStorage.getItem('eba_cart_items');
       if (saved) {
-        setItems(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        setItems(Array.isArray(parsed) ? parsed : []);
       } else {
-        // Initial sample cart item so cart is not empty on first exploration
-        const { PRODUCTS } = require('@/lib/products');
-        if (PRODUCTS && PRODUCTS[1]) {
-          setItems([{ product: PRODUCTS[1], quantity: 1 }]);
-        }
+        setItems([]);
       }
     } catch {
-      // ignore
+      setItems([]);
     } finally {
       setIsLoaded(true);
     }
@@ -112,10 +127,39 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     return sum + itemPrice * item.quantity;
   }, 0);
 
-  const shippingFee = subtotal >= FREE_SHIPPING_THRESHOLD || items.length === 0 ? 0 : STANDARD_SHIPPING_FEE;
+  const freeShippingThreshold = shippingSettings.freeShippingThreshold || 3500;
+  const standardShippingFee = shippingSettings.standardRate ?? 250;
+  const shippingFee = subtotal >= freeShippingThreshold || items.length === 0 ? 0 : standardShippingFee;
 
   const applyCoupon = (code: string) => {
     const clean = code.trim().toUpperCase();
+
+    // Check stored / admin coupons first
+    const storedCoupons = getStoredCoupons();
+    const matched = storedCoupons.find((c) => c.code.toUpperCase() === clean);
+
+    if (matched) {
+      if (!matched.isActive) {
+        return { success: false, message: `Coupon code "${clean}" is currently disabled.` };
+      }
+      if (subtotal < matched.minOrder) {
+        return {
+          success: false,
+          message: `${clean} requires a minimum order of Rs. ${matched.minOrder.toLocaleString()}`,
+        };
+      }
+      let disc = 0;
+      if (matched.type === 'percentage') {
+        disc = Math.round((subtotal * matched.value) / 100);
+      } else {
+        disc = Math.min(subtotal, matched.value);
+      }
+      const label = `${matched.code} (${matched.type === 'percentage' ? `${matched.value}% Off` : `Rs. ${matched.value} Off`})`;
+      setAppliedCoupon(label);
+      setCouponDiscount(disc);
+      return { success: true, message: `Discount coupon ${matched.code} applied!` };
+    }
+
     if (clean === 'EBAWELCOME') {
       const disc = Math.round(subtotal * 0.1);
       setAppliedCoupon('EBAWELCOME (10% Off)');
@@ -139,7 +183,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const totalAmount = Math.max(0, subtotal - couponDiscount + shippingFee);
-  const amountNeededForFreeShipping = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
+  const amountNeededForFreeShipping = Math.max(0, freeShippingThreshold - subtotal);
 
   return (
     <CartContext.Provider
@@ -154,7 +198,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         shippingFee,
         discount: couponDiscount,
         totalAmount,
-        freeShippingThreshold: FREE_SHIPPING_THRESHOLD,
+        freeShippingThreshold,
         amountNeededForFreeShipping,
         appliedCoupon,
         applyCoupon,

@@ -194,10 +194,57 @@ export const PRODUCTS: ProductItem[] = [
   },
 ];
 
+const SLUG_ALIASES: Record<string, string> = {
+  'men-charcoal-face-wash-100ml': 'men-face-wash-100ml',
+  'men-active-defense-glow-serum-30ml': 'men-beauty-glow-serum-30ml',
+  'men-restorative-night-cream-50gm': 'men-beauty-night-whitening-cream-50gm',
+  'women-clarifying-cleanser-100ml': 'women-face-wash-100ml',
+  'glow-serum-30ml': 'beauty-glow-serum-30ml',
+  'night-whitening-cream-50gm': 'women-beauty-night-whitening-cream-50gm',
+};
+
+const PRODUCTS_STORAGE_KEY = 'eba_products_catalog';
+
+export function getStoredProducts(): ProductItem[] {
+  if (typeof window === 'undefined') return PRODUCTS;
+  try {
+    const raw = localStorage.getItem(PRODUCTS_STORAGE_KEY);
+    if (!raw) return PRODUCTS;
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      return parsed;
+    }
+    return PRODUCTS;
+  } catch {
+    return PRODUCTS;
+  }
+}
+
+export function saveStoredProducts(products: ProductItem[]): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(products));
+    window.dispatchEvent(new Event('eba_products_updated'));
+    return true;
+  } catch (err) {
+    console.warn('Failed to save products to localStorage:', err);
+    return false;
+  }
+}
+
 export function getProductBySlug(slug: string): ProductItem | undefined {
-  return PRODUCTS.find((p) => p.slug === slug);
+  if (!slug) return undefined;
+  const canonicalSlug = SLUG_ALIASES[slug] || slug;
+  const allProducts = getStoredProducts();
+  return (
+    allProducts.find((p) => p.slug === canonicalSlug || p.slug === slug) ||
+    PRODUCTS.find((p) => p.slug === canonicalSlug || p.slug === slug)
+  );
 }
 
 export function getProductsByCategory(category: 'women' | 'men'): ProductItem[] {
-  return PRODUCTS.filter((p) => p.category === category);
+  const allProducts = getStoredProducts();
+  return allProducts.filter((p) => p.category === category);
 }
+
+

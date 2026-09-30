@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
+import { ArrowLeft, Lock, Trash2, Plus, Minus, ShoppingBag, Truck } from 'lucide-react';
 
 export default function CartPage() {
   const {
@@ -38,7 +39,7 @@ export default function CartPage() {
     return (
       <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-12 py-20 text-center">
         <div className="w-16 h-16 rounded-full bg-[#F7F3EE] text-[#725B38] flex items-center justify-center mx-auto mb-4 border border-[#EADECF]">
-          <span className="material-symbols-outlined text-[32px]">shopping_bag</span>
+          <ShoppingBag className="w-8 h-8" />
         </div>
         <h1 className="font-display-brand text-3xl font-semibold mb-2 text-[#1C1C19]">Your Bag is Empty</h1>
         <p className="font-body-md text-sm text-[#7F7572] max-w-md mx-auto mb-8 leading-relaxed">
@@ -74,7 +75,7 @@ export default function CartPage() {
       <div className="p-4 sm:p-5 rounded-2xl bg-[#F7F3EE] border border-[#EADECF] mb-8">
         <div className="flex items-center justify-between text-xs mb-2">
           <div className="flex items-center gap-2 font-semibold text-[#1C1C19]">
-            <span className="material-symbols-outlined text-[18px] text-[#725B38]">local_shipping</span>
+            <Truck className="w-4 h-4 text-[#725B38] shrink-0" />
             {amountNeededForFreeShipping === 0 ? (
               <span className="text-emerald-700">Congratulations! You unlocked Complimentary Nationwide Shipping.</span>
             ) : (
@@ -140,16 +141,18 @@ export default function CartPage() {
                       type="button"
                       onClick={() => updateQuantity(product.id, quantity - 1)}
                       className="p-1 hover:text-[#C5A880] transition-colors"
+                      aria-label="Decrease quantity"
                     >
-                      <span className="material-symbols-outlined text-[16px]">remove</span>
+                      <Minus className="w-3.5 h-3.5" />
                     </button>
                     <span className="px-3 font-semibold text-xs">{quantity}</span>
                     <button
                       type="button"
                       onClick={() => updateQuantity(product.id, quantity + 1)}
                       className="p-1 hover:text-[#C5A880] transition-colors"
+                      aria-label="Increase quantity"
                     >
-                      <span className="material-symbols-outlined text-[16px]">add</span>
+                      <Plus className="w-3.5 h-3.5" />
                     </button>
                   </div>
 
@@ -161,9 +164,9 @@ export default function CartPage() {
                     <button
                       type="button"
                       onClick={() => removeFromCart(product.id)}
-                      className="text-[11px] text-red-600 hover:underline flex items-center gap-0.5 justify-end mt-1"
+                      className="text-[11px] text-red-600 hover:underline flex items-center gap-1 justify-end mt-1"
                     >
-                      <span className="material-symbols-outlined text-[13px]">delete</span>
+                      <Trash2 className="w-3 h-3" />
                       <span>Remove</span>
                     </button>
                   </div>
@@ -175,9 +178,9 @@ export default function CartPage() {
           <div className="flex items-center justify-between pt-2">
             <Link
               href="/shop"
-              className="text-xs font-label-ui text-[#725B38] hover:underline flex items-center gap-1"
+              className="text-xs font-label-ui text-[#725B38] hover:underline flex items-center gap-1.5"
             >
-              <span className="material-symbols-outlined text-[16px]">arrow_back</span>
+              <ArrowLeft className="w-3.5 h-3.5" />
               <span>Continue Formulations Shopping</span>
             </Link>
 
@@ -275,20 +278,19 @@ export default function CartPage() {
             {/* Checkout Button */}
             <Link
               href="/checkout"
-              className="w-full py-4 rounded-full bg-[#1A1615] text-[#FDF9F4] font-label-uppercase text-xs tracking-widest font-semibold hover:bg-black transition-all shadow-md flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-full bg-[#1A1615] text-[#FDF9F4] font-label-uppercase text-xs tracking-widest font-semibold hover:bg-black transition-all shadow-md flex items-center justify-center"
             >
               <span>Proceed to Checkout</span>
-              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
             </Link>
 
             {/* Trust Badges in Drawer */}
             <div className="pt-3 border-t border-[#EADECF] space-y-2 text-xs text-[#7F7572]">
               <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px] text-emerald-700">lock</span>
+                <Lock className="w-3.5 h-3.5 text-emerald-700" />
                 <span>256-bit Bank Grade Encrypted Checkout</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px] text-[#725B38]">local_shipping</span>
+                <Truck className="w-3.5 h-3.5 text-[#725B38]" />
                 <span>Cash on Delivery & Raast Instant Transfer</span>
               </div>
             </div>

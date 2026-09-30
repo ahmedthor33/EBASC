@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
+import { getPaymentSettings, DEFAULT_PAYMENT_SETTINGS, PaymentSettings } from '@/lib/paymentStorage';
+import { AlertCircle, Banknote, Smartphone, Wallet, Building2 } from 'lucide-react';
 
 type PaymentMethodType = 'cod' | 'jazzcash' | 'easypaisa' | 'bank';
 
@@ -13,6 +15,23 @@ export default function CheckoutPage() {
   const router = useRouter();
   const { items, subtotal, shippingFee, discount, totalAmount, clearCart } = useCart();
   const { user, profile } = useAuth();
+
+  // Dynamic payment gateways from Admin
+  const [payments, setPayments] = useState<PaymentSettings>(DEFAULT_PAYMENT_SETTINGS);
+
+  useEffect(() => {
+    const loaded = getPaymentSettings();
+    setPayments(loaded);
+    // If COD is disabled, fallback to first enabled
+    if (!loaded.codEnabled) {
+      if (loaded.jazzcashEnabled) setPaymentMethod('jazzcash');
+      else if (loaded.easypaisaEnabled) setPaymentMethod('easypaisa');
+      else if (loaded.bankTransferEnabled) setPaymentMethod('bank');
+    }
+    const handler = () => setPayments(getPaymentSettings());
+    window.addEventListener('eba_payments_updated', handler);
+    return () => window.removeEventListener('eba_payments_updated', handler);
+  }, []);
 
   // Form states
   const [fullName, setFullName] = useState(profile?.full_name || '');
@@ -115,8 +134,8 @@ export default function CheckoutPage() {
       </div>
 
       {error && (
-        <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
-          <span className="material-symbols-outlined text-[18px]">error</span>
+        <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2.5">
+          <AlertCircle className="w-4 h-4 shrink-0" />
           <span>{error}</span>
         </div>
       )}
@@ -129,7 +148,7 @@ export default function CheckoutPage() {
           {/* Step 1: Customer Contact & Delivery Address */}
           <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#EADECF] shadow-sm space-y-5">
             <div className="flex items-center gap-2 text-sm font-semibold text-[#1C1C19] border-b border-[#EADECF] pb-3">
-              <span className="w-6 h-6 rounded-full bg-[#1A1615] text-[#FFE088] text-xs flex items-center justify-center">1</span>
+              <span className="w-6 h-6 rounded-full bg-[#1A1615] text-[#FFE088] text-xs flex items-center justify-center font-bold">1</span>
               <span>Delivery Coordinates (Pakistan Only)</span>
             </div>
 
@@ -247,87 +266,98 @@ export default function CheckoutPage() {
           {/* Step 2: Payment Method */}
           <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#EADECF] shadow-sm space-y-5">
             <div className="flex items-center gap-2 text-sm font-semibold text-[#1C1C19] border-b border-[#EADECF] pb-3">
-              <span className="w-6 h-6 rounded-full bg-[#1A1615] text-[#FFE088] text-xs flex items-center justify-center">2</span>
+              <span className="w-6 h-6 rounded-full bg-[#1A1615] text-[#FFE088] text-xs flex items-center justify-center font-bold">2</span>
               <span>Payment Protocol</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {/* Option 1: COD */}
-              <button
-                type="button"
-                onClick={() => setPaymentMethod('cod')}
-                className={`p-4 rounded-xl border text-left flex items-start gap-3 transition-all ${
-                  paymentMethod === 'cod'
-                    ? 'border-[#1A1615] bg-[#F7F3EE] ring-1 ring-[#1A1615]'
-                    : 'border-[#EADECF] bg-white hover:bg-[#FDF9F4]'
-                }`}
-              >
-                <span className="material-symbols-outlined text-[22px] text-[#725B38]">payments</span>
-                <div>
-                  <h4 className="font-semibold text-xs text-[#1C1C19]">Cash on Delivery (COD)</h4>
-                  <p className="text-[11px] text-[#7F7572] mt-0.5">Pay in cash upon doorstep arrival across Pakistan.</p>
-                </div>
-              </button>
+              {payments.codEnabled && (
+                <button
+                  type="button"
+                  onClick={() => setPaymentMethod('cod')}
+                  className={`p-4 rounded-xl border text-left flex items-start gap-3 transition-all ${
+                    paymentMethod === 'cod'
+                      ? 'border-[#1A1615] bg-[#F7F3EE] ring-1 ring-[#1A1615]'
+                      : 'border-[#EADECF] bg-white hover:bg-[#FDF9F4]'
+                  }`}
+                >
+                  <Banknote className="w-5 h-5 text-[#725B38] shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold text-xs text-[#1C1C19]">Cash on Delivery (COD)</h4>
+                    <p className="text-[11px] text-[#7F7572] mt-0.5">Pay in cash upon doorstep arrival across Pakistan.</p>
+                  </div>
+                </button>
+              )}
 
               {/* Option 2: JazzCash */}
-              <button
-                type="button"
-                onClick={() => setPaymentMethod('jazzcash')}
-                className={`p-4 rounded-xl border text-left flex items-start gap-3 transition-all ${
-                  paymentMethod === 'jazzcash'
-                    ? 'border-[#1A1615] bg-[#F7F3EE] ring-1 ring-[#1A1615]'
-                    : 'border-[#EADECF] bg-white hover:bg-[#FDF9F4]'
-                }`}
-              >
-                <span className="material-symbols-outlined text-[22px] text-red-600">account_balance_wallet</span>
-                <div>
-                  <h4 className="font-semibold text-xs text-[#1C1C19]">JazzCash Mobile Account</h4>
-                  <p className="text-[11px] text-[#7F7572] mt-0.5">Transfer to 0300 1234567 and input TID.</p>
-                </div>
-              </button>
+              {payments.jazzcashEnabled && (
+                <button
+                  type="button"
+                  onClick={() => setPaymentMethod('jazzcash')}
+                  className={`p-4 rounded-xl border text-left flex items-start gap-3 transition-all ${
+                    paymentMethod === 'jazzcash'
+                      ? 'border-[#1A1615] bg-[#F7F3EE] ring-1 ring-[#1A1615]'
+                      : 'border-[#EADECF] bg-white hover:bg-[#FDF9F4]'
+                  }`}
+                >
+                  <Smartphone className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold text-xs text-[#1C1C19]">JazzCash Mobile Account</h4>
+                    <p className="text-[11px] text-[#7F7572] mt-0.5">Transfer to {payments.jazzcashAccount} and input TID.</p>
+                  </div>
+                </button>
+              )}
 
               {/* Option 3: EasyPaisa */}
-              <button
-                type="button"
-                onClick={() => setPaymentMethod('easypaisa')}
-                className={`p-4 rounded-xl border text-left flex items-start gap-3 transition-all ${
-                  paymentMethod === 'easypaisa'
-                    ? 'border-[#1A1615] bg-[#F7F3EE] ring-1 ring-[#1A1615]'
-                    : 'border-[#EADECF] bg-white hover:bg-[#FDF9F4]'
-                }`}
-              >
-                <span className="material-symbols-outlined text-[22px] text-emerald-600">contactless</span>
-                <div>
-                  <h4 className="font-semibold text-xs text-[#1C1C19]">EasyPaisa Wallet</h4>
-                  <p className="text-[11px] text-[#7F7572] mt-0.5">Transfer to 0345 7654321 and input TID.</p>
-                </div>
-              </button>
+              {payments.easypaisaEnabled && (
+                <button
+                  type="button"
+                  onClick={() => setPaymentMethod('easypaisa')}
+                  className={`p-4 rounded-xl border text-left flex items-start gap-3 transition-all ${
+                    paymentMethod === 'easypaisa'
+                      ? 'border-[#1A1615] bg-[#F7F3EE] ring-1 ring-[#1A1615]'
+                      : 'border-[#EADECF] bg-white hover:bg-[#FDF9F4]'
+                  }`}
+                >
+                  <Wallet className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold text-xs text-[#1C1C19]">EasyPaisa Wallet</h4>
+                    <p className="text-[11px] text-[#7F7572] mt-0.5">Transfer to {payments.easypaisaAccount} and input TID.</p>
+                  </div>
+                </button>
+              )}
 
               {/* Option 4: Direct Bank Transfer */}
-              <button
-                type="button"
-                onClick={() => setPaymentMethod('bank')}
-                className={`p-4 rounded-xl border text-left flex items-start gap-3 transition-all ${
-                  paymentMethod === 'bank'
-                    ? 'border-[#1A1615] bg-[#F7F3EE] ring-1 ring-[#1A1615]'
-                    : 'border-[#EADECF] bg-white hover:bg-[#FDF9F4]'
-                }`}
-              >
-                <span className="material-symbols-outlined text-[22px] text-[#725B38]">account_balance</span>
-                <div>
-                  <h4 className="font-semibold text-xs text-[#1C1C19]">Direct Bank (Meezan)</h4>
-                  <p className="text-[11px] text-[#7F7572] mt-0.5">Meezan Bank IBAN Transfer & attach receipt.</p>
-                </div>
-              </button>
+              {payments.bankTransferEnabled && (
+                <button
+                  type="button"
+                  onClick={() => setPaymentMethod('bank')}
+                  className={`p-4 rounded-xl border text-left flex items-start gap-3 transition-all ${
+                    paymentMethod === 'bank'
+                      ? 'border-[#1A1615] bg-[#F7F3EE] ring-1 ring-[#1A1615]'
+                      : 'border-[#EADECF] bg-white hover:bg-[#FDF9F4]'
+                  }`}
+                >
+                  <Building2 className="w-5 h-5 text-[#725B38] shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold text-xs text-[#1C1C19]">{payments.bankName || 'Direct Bank'}</h4>
+                    <p className="text-[11px] text-[#7F7572] mt-0.5">Online transfer & attach TID / receipt screenshot.</p>
+                  </div>
+                </button>
+              )}
             </div>
 
             {/* Sub-Panel for Digital / Bank Payments */}
             {paymentMethod !== 'cod' && (
               <div className="p-4 rounded-2xl bg-[#F7F3EE] border border-[#EADECF] space-y-3 animate-fade-in text-xs">
                 <div className="font-semibold text-[#1C1C19]">
-                  {paymentMethod === 'jazzcash' && 'JazzCash Account: 0300 1234567 (Title: EBA Skin Care Pvt Ltd)'}
-                  {paymentMethod === 'easypaisa' && 'EasyPaisa Account: 0345 7654321 (Title: EBA Skin Care Pvt Ltd)'}
-                  {paymentMethod === 'bank' && 'Meezan Bank IBAN: PK36MEZN0001020304050607 (Title: EBA Skin Care)'}
+                  {paymentMethod === 'jazzcash' &&
+                    `JazzCash Account: ${payments.jazzcashAccount} (Title: ${payments.jazzcashTitle})`}
+                  {paymentMethod === 'easypaisa' &&
+                    `EasyPaisa Account: ${payments.easypaisaAccount} (Title: ${payments.easypaisaTitle})`}
+                  {paymentMethod === 'bank' &&
+                    `${payments.bankName}: IBAN ${payments.iban} (Account Title: ${payments.accountTitle}${payments.accountNumber ? `, Account No: ${payments.accountNumber}` : ''})`}
                 </div>
                 <p className="text-[#7F7572] leading-relaxed">
                   Please complete the payment transfer for <strong>Rs. {totalAmount.toLocaleString()}</strong> and provide your Transaction ID (TID) or upload screenshot receipt below:
@@ -429,10 +459,7 @@ export default function CheckoutPage() {
                   <span>Sealing Dispatch...</span>
                 </>
               ) : (
-                <>
-                  <span>Confirm & Place Order</span>
-                  <span className="material-symbols-outlined text-[16px]">verified</span>
-                </>
+                <span>Confirm & Place Order</span>
               )}
             </button>
 

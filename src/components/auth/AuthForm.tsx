@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { BrandLogo } from '@/components/ui/BrandLogo';
+import { Mail, Lock, Eye, EyeOff, User, ShieldCheck, Truck, Award, AlertCircle, CheckCircle2, ArrowRight } from 'lucide-react';
 
 interface AuthFormProps {
   initialTab?: 'signin' | 'signup';
@@ -20,10 +21,10 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { signIn, signUp, loginAsDemoAdmin, loginAsDemoCustomer } = useAuth();
+  const { signIn, signUp } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectTo = searchParams.get('redirectTo') || '/my-account';
+  const redirectTo = searchParams.get('redirectTo');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,13 +34,19 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
 
     try {
       if (tab === 'signin') {
-        const { error } = await signIn(email, password);
+        const { error, isAdmin: userIsAdmin } = await signIn(email, password);
         if (error) {
           setErrorMessage(error.message || 'Invalid email or password.');
           setIsSubmitting(false);
           return;
         }
-        router.push(redirectTo);
+
+        // If the user has administrative privileges, redirect directly to admin panel
+        if (userIsAdmin) {
+          router.push(redirectTo && redirectTo !== '/my-account' ? redirectTo : '/admin');
+        } else {
+          router.push(redirectTo || '/my-account');
+        }
       } else {
         if (!fullName.trim()) {
           setErrorMessage('Please enter your full name.');
@@ -54,7 +61,7 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
         }
         setSuccessMessage('Account created successfully! Redirecting...');
         setTimeout(() => {
-          router.push(redirectTo);
+          router.push(redirectTo || '/my-account');
         }, 1200);
       }
     } catch {
@@ -62,16 +69,6 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const handleDemoAdmin = () => {
-    loginAsDemoAdmin();
-    router.push('/admin');
-  };
-
-  const handleDemoCustomer = () => {
-    loginAsDemoCustomer();
-    router.push('/my-account');
   };
 
   return (
@@ -105,7 +102,7 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
         {/* Middle Narrative */}
         <div className="relative z-10 mt-16 lg:mt-28 max-w-lg">
           <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-[#FFE088] border border-white/10 text-xs">
-            <span className="material-symbols-outlined text-[16px]">verified</span>
+            <Award className="w-4 h-4 text-[#FFE088] shrink-0" />
             <span className="font-label-uppercase tracking-wider font-semibold">Clinical Botanical Discipline</span>
           </div>
           <h1 className="font-display-lg text-3xl lg:text-5xl text-[#FFFFFF] tracking-tight leading-tight">
@@ -119,7 +116,7 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
           <div className="mt-8 pt-6 space-y-4 border-t border-white/10">
             <div className="flex items-start gap-3.5 text-white">
               <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-[#FFE088] shrink-0 mt-0.5">
-                <span className="material-symbols-outlined text-[18px]">local_shipping</span>
+                <Truck className="w-4 h-4 text-[#FFE088]" />
               </div>
               <div>
                 <p className="font-label-ui text-xs text-[#FFFFFF] font-semibold tracking-wide">
@@ -133,7 +130,7 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
 
             <div className="flex items-start gap-3.5 text-white">
               <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-[#FFE088] shrink-0 mt-0.5">
-                <span className="material-symbols-outlined text-[18px]">verified_user</span>
+                <ShieldCheck className="w-4 h-4 text-[#FFE088]" />
               </div>
               <div>
                 <p className="font-label-ui text-xs text-[#FFFFFF] font-semibold tracking-wide">
@@ -165,7 +162,7 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
               className="inline-flex items-center gap-1.5 font-label-ui text-xs text-[#4E4543] hover:text-[#1A1615] transition-colors"
             >
               <span>Explore Catalog</span>
-              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
@@ -205,15 +202,15 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
 
           {/* Error & Success Messages */}
           {errorMessage && (
-            <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2 animate-fade-in">
-              <span className="material-symbols-outlined text-[18px]">error</span>
+            <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2.5 animate-fade-in">
+              <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{errorMessage}</span>
             </div>
           )}
 
           {successMessage && (
-            <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2 animate-fade-in">
-              <span className="material-symbols-outlined text-[18px]">check_circle</span>
+            <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2.5 animate-fade-in">
+              <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
               <span>{successMessage}</span>
             </div>
           )}
@@ -225,17 +222,15 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
                 <label className="block font-label-ui text-xs font-semibold text-[#1C1C19] mb-1.5 uppercase tracking-wider">
                   Full Name
                 </label>
-                <div className="relative">
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-[20px] text-[#7F7572]">
-                    person
-                  </span>
+                <div className="relative flex items-center">
+                  <User className="absolute left-3.5 w-4 h-4 text-[#7F7572] pointer-events-none" />
                   <input
                     type="text"
                     required
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="e.g. Ayesha Khan"
-                    className="w-full pl-11 pr-4 py-3 bg-[#FDF9F4] border border-[#EADECF] rounded-lg text-sm text-[#1C1C19] placeholder-[#7F7572] focus:outline-none focus:border-[#C5A880] focus:ring-2 focus:ring-[#C5A880]/20 transition-all"
+                    className="w-full pl-10 pr-4 py-3 bg-[#FDF9F4] border border-[#EADECF] rounded-lg text-sm text-[#1C1C19] placeholder-[#7F7572] focus:outline-none focus:border-[#C5A880] focus:ring-2 focus:ring-[#C5A880]/20 transition-all"
                   />
                 </div>
               </div>
@@ -245,17 +240,15 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
               <label className="block font-label-ui text-xs font-semibold text-[#1C1C19] mb-1.5 uppercase tracking-wider">
                 Email Address
               </label>
-              <div className="relative">
-                <span className="absolute left-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-[20px] text-[#7F7572]">
-                  mail
-                </span>
+              <div className="relative flex items-center">
+                <Mail className="absolute left-3.5 w-4 h-4 text-[#7F7572] pointer-events-none" />
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your.email@domain.com"
-                  className="w-full pl-11 pr-4 py-3 bg-[#FDF9F4] border border-[#EADECF] rounded-lg text-sm text-[#1C1C19] placeholder-[#7F7572] focus:outline-none focus:border-[#C5A880] focus:ring-2 focus:ring-[#C5A880]/20 transition-all"
+                  className="w-full pl-10 pr-4 py-3 bg-[#FDF9F4] border border-[#EADECF] rounded-lg text-sm text-[#1C1C19] placeholder-[#7F7572] focus:outline-none focus:border-[#C5A880] focus:ring-2 focus:ring-[#C5A880]/20 transition-all"
                 />
               </div>
             </div>
@@ -274,26 +267,23 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
                   </Link>
                 )}
               </div>
-              <div className="relative">
-                <span className="absolute left-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-[20px] text-[#7F7572]">
-                  lock
-                </span>
+              <div className="relative flex items-center">
+                <Lock className="absolute left-3.5 w-4 h-4 text-[#7F7572] pointer-events-none" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••••••"
-                  className="w-full pl-11 pr-11 py-3 bg-[#FDF9F4] border border-[#EADECF] rounded-lg text-sm text-[#1C1C19] placeholder-[#7F7572] focus:outline-none focus:border-[#C5A880] focus:ring-2 focus:ring-[#C5A880]/20 transition-all"
+                  className="w-full pl-10 pr-10 py-3 bg-[#FDF9F4] border border-[#EADECF] rounded-lg text-sm text-[#1C1C19] placeholder-[#7F7572] focus:outline-none focus:border-[#C5A880] focus:ring-2 focus:ring-[#C5A880]/20 transition-all"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#7F7572] hover:text-[#1C1C19] focus:outline-none"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  className="absolute right-3.5 text-[#7F7572] hover:text-[#1C1C19] focus:outline-none p-1"
                 >
-                  <span className="material-symbols-outlined text-[20px]">
-                    {showPassword ? 'visibility_off' : 'visibility'}
-                  </span>
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
             </div>
@@ -310,43 +300,14 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
                   <span>Processing...</span>
                 </>
               ) : tab === 'signin' ? (
-                <>
-                  <span>Sign In to Sanctuary</span>
-                  <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </>
+                <span>Sign In to Sanctuary</span>
               ) : (
-                <>
-                  <span>Create EBA Client Account</span>
-                  <span className="material-symbols-outlined text-[16px]">check</span>
-                </>
+                <span>Create EBA Client Account</span>
               )}
             </button>
           </form>
 
-          {/* Quick Demo Access Bar */}
-          <div className="mt-8 pt-6 border-t border-[#EADECF]">
-            <p className="font-label-uppercase text-[10px] text-center text-[#7F7572] tracking-wider uppercase mb-3 font-semibold">
-              Instant Development & Review Access
-            </p>
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                type="button"
-                onClick={handleDemoAdmin}
-                className="py-2.5 px-3 rounded-lg border border-[#1A1615] bg-[#1F1B1A] text-[#FFE088] font-label-ui text-xs font-semibold hover:bg-black transition-all text-center flex items-center justify-center gap-1.5 shadow-sm"
-              >
-                <span className="material-symbols-outlined text-[16px]">shield_person</span>
-                <span>Enter as Owner Admin</span>
-              </button>
-              <button
-                type="button"
-                onClick={handleDemoCustomer}
-                className="py-2.5 px-3 rounded-lg border border-[#EADECF] bg-[#F7F3EE] text-[#1C1C19] font-label-ui text-xs font-semibold hover:bg-[#EBE8E3] transition-all text-center flex items-center justify-center gap-1.5 shadow-sm"
-              >
-                <span className="material-symbols-outlined text-[16px]">person</span>
-                <span>Enter as Customer</span>
-              </button>
-            </div>
-          </div>
+
         </div>
 
         {/* Localized Bottom Trust Strip */}

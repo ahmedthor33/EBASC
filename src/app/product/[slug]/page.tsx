@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { getProductBySlug, PRODUCTS } from '@/lib/products';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
+import { Minus, Plus, ShoppingBag, CheckCircle2, Truck, CreditCard, ShieldCheck, RotateCcw, Heart, Star } from 'lucide-react';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -80,6 +81,7 @@ export default function ProductDetailPage() {
                 alt={product.name}
                 fill
                 priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-center"
               />
               {product.badge && (
@@ -98,14 +100,15 @@ export default function ProductDetailPage() {
                   isMen ? 'bg-[#14171C]/90 text-white hover:text-[#C9A96E]' : 'bg-white/90 text-[#1C1C19] hover:text-[#B76E79]'
                 }`}
               >
-                <span
-                  className={`material-symbols-outlined text-[22px] ${
-                    isLiked ? (isMen ? 'text-[#C9A96E]' : 'text-[#B76E79]') : ''
+                <Heart
+                  className={`w-5 h-5 transition-colors ${
+                    isLiked
+                      ? isMen
+                        ? 'fill-[#C9A96E] text-[#C9A96E]'
+                        : 'fill-[#B76E79] text-[#B76E79]'
+                      : ''
                   }`}
-                  style={{ fontVariationSettings: isLiked ? "'FILL' 1" : "'FILL' 0" }}
-                >
-                  favorite
-                </span>
+                />
               </button>
             </div>
           </div>
@@ -116,13 +119,10 @@ export default function ProductDetailPage() {
               <div className="flex items-center gap-2 mb-2">
                 <div className="flex items-center text-[#D4AF37]">
                   {[...Array(5)].map((_, i) => (
-                    <span
+                    <Star
                       key={i}
-                      className="material-symbols-outlined text-[17px]"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      star
-                    </span>
+                      className="w-4 h-4 fill-[#D4AF37] text-[#D4AF37]"
+                    />
                   ))}
                 </div>
                 <span className="text-xs font-semibold">({product.reviewsCount} verified reviews)</span>
@@ -196,16 +196,18 @@ export default function ProductDetailPage() {
                     type="button"
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
                     className="p-1 hover:text-[#C5A880] transition-colors"
+                    aria-label="Decrease quantity"
                   >
-                    <span className="material-symbols-outlined text-[18px]">remove</span>
+                    <Minus className="w-4 h-4" />
                   </button>
                   <span className="font-price-md font-semibold text-sm">{quantity}</span>
                   <button
                     type="button"
                     onClick={() => setQuantity(quantity + 1)}
                     className="p-1 hover:text-[#C5A880] transition-colors"
+                    aria-label="Increase quantity"
                   >
-                    <span className="material-symbols-outlined text-[18px]">add</span>
+                    <Plus className="w-4 h-4" />
                   </button>
                 </div>
 
@@ -219,7 +221,7 @@ export default function ProductDetailPage() {
                       : 'bg-[#1A1615] text-[#FDF9F4] hover:bg-black'
                   }`}
                 >
-                  <span className="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                  <ShoppingBag className="w-4 h-4" />
                   <span>Add to Bag • Rs. {((product.salePrice ?? product.price) * quantity).toLocaleString()}</span>
                 </button>
               </div>
@@ -227,11 +229,11 @@ export default function ProductDetailPage() {
               {addedToast && (
                 <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center justify-between animate-fade-in">
                   <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-[18px]">check_circle</span>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-700" />
                     <span>Added <strong>{product.name}</strong> to your bag!</span>
                   </div>
                   <Link href="/cart" className="underline font-semibold hover:text-black">
-                    View Bag & Checkout →
+                    View Bag & Checkout
                   </Link>
                 </div>
               )}
@@ -241,23 +243,23 @@ export default function ProductDetailPage() {
             <div className={`p-4 rounded-2xl border grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs ${
               isMen ? 'bg-[#14171C] border-[#232830]' : 'bg-white border-[#EADECF]'
             }`}>
-              <div>
-                <span className="material-symbols-outlined text-[20px] text-[#725B38] mb-1">local_shipping</span>
+              <div className="flex flex-col items-center">
+                <Truck className="w-5 h-5 text-[#725B38] mb-1.5" />
                 <p className="font-semibold text-[11px]">Free Shipping</p>
                 <p className="text-[10px] text-[#7F7572]">Orders &gt; Rs. 3,500</p>
               </div>
-              <div>
-                <span className="material-symbols-outlined text-[20px] text-[#725B38] mb-1">payments</span>
+              <div className="flex flex-col items-center">
+                <CreditCard className="w-5 h-5 text-[#725B38] mb-1.5" />
                 <p className="font-semibold text-[11px]">Cash on Delivery</p>
                 <p className="text-[10px] text-[#7F7572]">Nationwide Pakistan</p>
               </div>
-              <div>
-                <span className="material-symbols-outlined text-[20px] text-[#725B38] mb-1">verified_user</span>
+              <div className="flex flex-col items-center">
+                <ShieldCheck className="w-5 h-5 text-[#725B38] mb-1.5" />
                 <p className="font-semibold text-[11px]">100% Halal</p>
                 <p className="text-[10px] text-[#7F7572]">Alcohol-Free</p>
               </div>
-              <div>
-                <span className="material-symbols-outlined text-[20px] text-[#725B38] mb-1">replay</span>
+              <div className="flex flex-col items-center">
+                <RotateCcw className="w-5 h-5 text-[#725B38] mb-1.5" />
                 <p className="font-semibold text-[11px]">Easy Returns</p>
                 <p className="text-[10px] text-[#7F7572]">7-Day Guarantee</p>
               </div>
@@ -305,9 +307,7 @@ export default function ProductDetailPage() {
                 <ul className="space-y-2.5 text-sm">
                   {product.benefits.map((b, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
-                      <span className="material-symbols-outlined text-[18px] text-[#725B38] shrink-0 mt-0.5">
-                        check_circle
-                      </span>
+                      <CheckCircle2 className="w-4 h-4 text-[#725B38] shrink-0 mt-0.5" />
                       <span>{b}</span>
                     </li>
                   ))}
@@ -413,14 +413,20 @@ export default function ProductDetailPage() {
               Complete the Ritual
             </h2>
             <Link href={`/${product.category}`} className="text-xs font-label-ui hover:underline">
-              View {product.categoryName} →
+              View {product.categoryName}
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedProducts.map((p) => (
               <div key={p.id} className="p-4 rounded-2xl border bg-white/5 border-theme">
                 <Link href={`/product/${p.slug}`} className="block relative aspect-square rounded-xl overflow-hidden mb-3">
-                  <Image src={p.image} alt={p.name} fill className="object-cover" />
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover"
+                  />
                 </Link>
                 <h4 className="font-headline-sm text-base font-semibold">{p.name}</h4>
                 <p className="text-xs text-[#7F7572] mt-0.5">{p.subtitle}</p>

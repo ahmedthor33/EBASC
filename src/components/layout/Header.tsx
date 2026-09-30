@@ -1,12 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { BrandLogo } from '@/components/ui/BrandLogo';
+import { getStoreSettings, DEFAULT_STORE_SETTINGS, StoreSettings } from '@/lib/storeSettingsStorage';
+import { Search, Heart, ShoppingBag, User, Menu, X } from 'lucide-react';
 
 export function Header() {
   const pathname = usePathname();
@@ -14,6 +16,14 @@ export function Header() {
   const { totalCount: cartCount, subtotal: cartSubtotal } = useCart();
   const { count: wishlistCount } = useWishlist();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [storeSettings, setStoreSettings] = useState<StoreSettings>(DEFAULT_STORE_SETTINGS);
+
+  useEffect(() => {
+    setStoreSettings(getStoreSettings());
+    const handler = () => setStoreSettings(getStoreSettings());
+    window.addEventListener('eba_store_settings_updated', handler);
+    return () => window.removeEventListener('eba_store_settings_updated', handler);
+  }, []);
 
   // Check if current route is a dark-theme page (e.g. Men Collection)
   const isDarkPage = pathname?.startsWith('/men');
@@ -21,33 +31,70 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Top Announcement Strip */}
-      <div
-        className={`px-4 sm:px-6 lg:px-12 py-2 transition-colors duration-300 ${
-          isDarkPage ? 'bg-[#0A0C0E] text-[#E6E2DD]' : 'bg-[#1A1615] text-[#F7F3EE]'
-        }`}
-      >
-        <div className="max-w-[1380px] mx-auto flex flex-col md:flex-row items-center justify-between gap-y-1 font-label-uppercase text-[11px] tracking-wider">
-          <div className="hidden md:flex items-center gap-2">
-            <span className="text-[#FFE088] font-bold tracking-widest">PKR Rs.</span>
-            <span className="text-[#7F7572]">|</span>
-            <span className="tracking-widest text-[#E6E2DD]">Karachi • Lahore • Islamabad</span>
-          </div>
+      {storeSettings.bannerActive !== false && (
+        <div
+          className="px-4 sm:px-6 lg:px-12 py-2 transition-colors duration-300 border-b border-black/10"
+          style={{
+            backgroundColor: storeSettings.announcementBgColor || (isDarkPage ? '#0A0C0E' : '#1A1615'),
+            color: storeSettings.announcementTextColor || '#F7F3EE',
+          }}
+        >
+          <div className="max-w-[1380px] mx-auto flex flex-col md:flex-row items-center justify-between gap-y-1 font-label-uppercase text-[11px] tracking-wider">
+            <div className="hidden md:flex items-center gap-2">
+              <span
+                style={{ color: storeSettings.announcementAccentColor || '#FFE088' }}
+                className="font-bold tracking-widest"
+              >
+                {storeSettings.currency || 'PKR'} Rs.
+              </span>
+              <span className="opacity-40">|</span>
+              <span className="tracking-widest opacity-85">
+                {storeSettings.announcementLeftTag || 'Karachi • Lahore • Islamabad'}
+              </span>
+            </div>
 
-          <div className="text-center tracking-widest font-medium text-xs">
-            Free Nationwide Delivery Across Pakistan on Orders Over Rs. 3,500 | Cash on Delivery Available
-          </div>
+            <div className="text-center tracking-widest font-medium text-xs px-4 overflow-hidden">
+              {storeSettings.announcementTicker ? (
+                <div className="overflow-hidden whitespace-nowrap max-w-[85vw] sm:max-w-2xl mx-auto">
+                  <div className="inline-block animate-pulse font-semibold">
+                    {storeSettings.announcementBanner}
+                  </div>
+                </div>
+              ) : (
+                storeSettings.announcementBanner
+              )}
+            </div>
 
-          <div className="flex items-center gap-3">
-            <span className="hidden lg:inline text-[#CDC5C3]">Care:</span>
-            <a
-              href="tel:+922135891234"
-              className="hover:text-[#FFE088] transition-colors font-medium"
-            >
-              +92 21 3589 1234
-            </a>
+            <div className="flex items-center gap-2">
+              {storeSettings.announcementRightLink?.startsWith('tel:') ? (
+                <a
+                  href={storeSettings.announcementRightLink}
+                  style={{ color: storeSettings.announcementAccentColor || '#FFE088' }}
+                  className="hover:underline transition-colors font-semibold flex items-center gap-1.5"
+                >
+                  {storeSettings.announcementRightText || storeSettings.supportPhone || '+92 300 1234567'}
+                </a>
+              ) : storeSettings.announcementRightLink ? (
+                <Link
+                  href={storeSettings.announcementRightLink}
+                  style={{ color: storeSettings.announcementAccentColor || '#FFE088' }}
+                  className="hover:underline transition-colors font-semibold flex items-center gap-1"
+                >
+                  <span>{storeSettings.announcementRightText || 'Shop Collection'}</span>
+                  <span>→</span>
+                </Link>
+              ) : (
+                <span
+                  style={{ color: storeSettings.announcementAccentColor || '#FFE088' }}
+                  className="font-semibold"
+                >
+                  {storeSettings.announcementRightText || 'Care: +92 300 1234567'}
+                </span>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Main Luxury Navigation Bar */}
       <div
@@ -124,30 +171,7 @@ export function Header() {
             >
               Shop
             </Link>
-            <Link
-              href="/#bestsellers"
-              className={`transition-colors py-1 ${
-                pathname?.includes('filter=best-sellers')
-                  ? isDarkPage
-                    ? 'text-white font-bold'
-                    : 'text-[#1C1C19] font-bold'
-                  : isDarkPage
-                  ? 'text-[#A5ACB8] hover:text-white font-medium'
-                  : 'text-[#4E4543] hover:text-[#1C1C19] font-medium'
-              }`}
-            >
-              Best Sellers
-            </Link>
-            <Link
-              href="/#rituals"
-              className={`transition-colors py-1 ${
-                isDarkPage
-                  ? 'text-[#A5ACB8] hover:text-white font-medium'
-                  : 'text-[#4E4543] hover:text-[#1C1C19] font-medium'
-              }`}
-            >
-              Rituals
-            </Link>
+
             <Link
               href="/contact-us"
               className={`transition-colors py-1 ${
@@ -176,7 +200,7 @@ export function Header() {
                   : 'text-[#4E4543] hover:text-[#1C1C19]'
               }`}
             >
-              <span className="material-symbols-outlined text-[22px]">search</span>
+              <Search className="w-5 h-5 stroke-[1.75]" />
             </Link>
 
             {/* Wishlist */}
@@ -189,10 +213,12 @@ export function Header() {
                   : 'text-[#4E4543] hover:text-[#1C1C19]'
               }`}
             >
-              <span className="material-symbols-outlined text-[22px]">favorite</span>
-              <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#735C00] text-white text-[10px] font-bold flex items-center justify-center font-label-uppercase">
-                {wishlistCount > 0 ? wishlistCount : 2}
-              </span>
+              <Heart className={`w-5 h-5 stroke-[1.75] ${wishlistCount > 0 ? 'fill-[#735C00] text-[#735C00]' : ''}`} />
+              {wishlistCount > 0 && (
+                <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#735C00] text-white text-[10px] font-bold flex items-center justify-center font-label-uppercase">
+                  {wishlistCount}
+                </span>
+              )}
             </Link>
 
             {/* Cart with Price Pill */}
@@ -206,22 +232,26 @@ export function Header() {
               }`}
             >
               <div className="relative flex items-center justify-center">
-                <span className="material-symbols-outlined text-[22px]">shopping_bag</span>
+                <ShoppingBag className="w-5 h-5 stroke-[1.75]" />
+                {cartCount > 0 && (
+                  <span
+                    className={`absolute -top-1 -right-1.5 w-4 h-4 rounded-full text-white text-[10px] font-bold flex items-center justify-center font-label-uppercase ${
+                      isDarkPage ? 'bg-[#FFE088] text-[#1C1C19]' : 'bg-[#1A1615] text-white'
+                    }`}
+                  >
+                    {cartCount}
+                  </span>
+                )}
+              </div>
+              {cartCount > 0 && (
                 <span
-                  className={`absolute -top-1 -right-1.5 w-4 h-4 rounded-full text-white text-[10px] font-bold flex items-center justify-center font-label-uppercase ${
-                    isDarkPage ? 'bg-[#FFE088] text-[#1C1C19]' : 'bg-[#1A1615] text-white'
+                  className={`hidden sm:inline font-price-md text-sm font-semibold ml-1 ${
+                    isDarkPage ? 'text-white' : 'text-[#1C1C19]'
                   }`}
                 >
-                  {cartCount > 0 ? cartCount : 1}
+                  Rs. {cartSubtotal.toLocaleString()}
                 </span>
-              </div>
-              <span
-                className={`hidden sm:inline font-price-md text-sm font-semibold ml-1 ${
-                  isDarkPage ? 'text-white' : 'text-[#1C1C19]'
-                }`}
-              >
-                Rs. {cartSubtotal > 0 ? cartSubtotal.toLocaleString() : '2,850'}
-              </span>
+              )}
             </Link>
 
             <div
@@ -250,7 +280,7 @@ export function Header() {
                     : 'bg-[#1A1615] text-white border-transparent'
                 }`}
               >
-                <span className="material-symbols-outlined text-[18px]">person</span>
+                <User className="w-4 h-4" />
               </div>
             </Link>
 
@@ -273,9 +303,7 @@ export function Header() {
               }`}
               aria-label="Toggle Navigation Menu"
             >
-              <span className="material-symbols-outlined text-[26px]">
-                {mobileMenuOpen ? 'close' : 'menu'}
-              </span>
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -317,20 +345,7 @@ export function Header() {
             >
               Shop Catalog
             </Link>
-            <Link
-              href="/#bestsellers"
-              onClick={() => setMobileMenuOpen(false)}
-              className="font-label-uppercase text-xs tracking-widest py-2 border-b border-current/10"
-            >
-              Best Sellers
-            </Link>
-            <Link
-              href="/#rituals"
-              onClick={() => setMobileMenuOpen(false)}
-              className="font-label-uppercase text-xs tracking-widest py-2 border-b border-current/10"
-            >
-              Rituals
-            </Link>
+
             <Link
               href="/contact-us"
               onClick={() => setMobileMenuOpen(false)}

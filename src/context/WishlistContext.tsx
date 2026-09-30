@@ -8,6 +8,7 @@ interface WishlistContextType {
   toggleWishlist: (product: ProductItem) => void;
   isInWishlist: (productId: string) => boolean;
   removeFromWishlist: (productId: string) => void;
+  clearWishlist: () => void;
   count: number;
 }
 
@@ -19,18 +20,25 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     try {
+      // Purge old mock test items once
+      const purgeKey = 'eba_wishlist_test_purged_v2';
+      if (!localStorage.getItem(purgeKey)) {
+        localStorage.removeItem('eba_wishlist_items');
+        localStorage.setItem(purgeKey, 'true');
+        setWishlist([]);
+        setIsLoaded(true);
+        return;
+      }
+
       const saved = localStorage.getItem('eba_wishlist_items');
       if (saved) {
-        setWishlist(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        setWishlist(Array.isArray(parsed) ? parsed : []);
       } else {
-        // Pre-populate with two sample items matching the Stitch initial design state
-        const { PRODUCTS } = require('@/lib/products');
-        if (PRODUCTS && PRODUCTS.length >= 2) {
-          setWishlist([PRODUCTS[0], PRODUCTS[1]]);
-        }
+        setWishlist([]);
       }
     } catch {
-      // ignore
+      setWishlist([]);
     } finally {
       setIsLoaded(true);
     }
@@ -56,6 +64,15 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
     setWishlist((prev) => prev.filter((p) => p.id !== productId));
   };
 
+  const clearWishlist = () => {
+    setWishlist([]);
+    try {
+      localStorage.removeItem('eba_wishlist_items');
+    } catch {
+      // ignore
+    }
+  };
+
   const isInWishlist = (productId: string) => {
     return wishlist.some((p) => p.id === productId);
   };
@@ -67,6 +84,7 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
         toggleWishlist,
         isInWishlist,
         removeFromWishlist,
+        clearWishlist,
         count: wishlist.length,
       }}
     >

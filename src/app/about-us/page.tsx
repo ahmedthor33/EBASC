@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { FlaskConical, Thermometer, Sparkles, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 export const metadata = {
   title: 'Our Apothecary Heritage & Story | EBA Skin Care',
@@ -44,7 +45,7 @@ export default function AboutUsPage() {
           <div className="p-8 rounded-3xl bg-white border border-[#EADECF] shadow-sm flex flex-col justify-between">
             <div>
               <div className="w-12 h-12 rounded-2xl bg-[#F7F3EE] text-[#725B38] flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-[26px]">biotech</span>
+                <FlaskConical className="w-6 h-6" />
               </div>
               <span className="font-label-uppercase text-[11px] text-[#725B38] tracking-widest uppercase font-semibold">
                 Pillar 01
@@ -57,7 +58,7 @@ export default function AboutUsPage() {
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-[#EADECF] text-[11px] font-semibold text-[#725B38] flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[16px]">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-[#725B38] shrink-0" />
               <span>Halal Certified Batching</span>
             </div>
           </div>
@@ -66,7 +67,7 @@ export default function AboutUsPage() {
           <div className="p-8 rounded-3xl bg-white border border-[#EADECF] shadow-sm flex flex-col justify-between">
             <div>
               <div className="w-12 h-12 rounded-2xl bg-[#F7F3EE] text-[#725B38] flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-[26px]">thermostat</span>
+                <Thermometer className="w-6 h-6" />
               </div>
               <span className="font-label-uppercase text-[11px] text-[#725B38] tracking-widest uppercase font-semibold">
                 Pillar 02
@@ -79,7 +80,7 @@ export default function AboutUsPage() {
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-[#EADECF] text-[11px] font-semibold text-[#725B38] flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[16px]">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-[#725B38] shrink-0" />
               <span>Breathable Lipid Matrix</span>
             </div>
           </div>
@@ -88,7 +89,7 @@ export default function AboutUsPage() {
           <div className="p-8 rounded-3xl bg-white border border-[#EADECF] shadow-sm flex flex-col justify-between">
             <div>
               <div className="w-12 h-12 rounded-2xl bg-[#F7F3EE] text-[#725B38] flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-[26px]">spa</span>
+                <Sparkles className="w-6 h-6" />
               </div>
               <span className="font-label-uppercase text-[11px] text-[#725B38] tracking-widest uppercase font-semibold">
                 Pillar 03
@@ -101,7 +102,7 @@ export default function AboutUsPage() {
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-[#EADECF] text-[11px] font-semibold text-[#725B38] flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[16px]">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-[#725B38] shrink-0" />
               <span>100% Cruelty Free</span>
             </div>
           </div>
@@ -110,7 +111,7 @@ export default function AboutUsPage() {
           <div className="p-8 rounded-3xl bg-white border border-[#EADECF] shadow-sm flex flex-col justify-between">
             <div>
               <div className="w-12 h-12 rounded-2xl bg-[#F7F3EE] text-[#725B38] flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-[26px]">shield</span>
+                <ShieldCheck className="w-6 h-6" />
               </div>
               <span className="font-label-uppercase text-[11px] text-[#725B38] tracking-widest uppercase font-semibold">
                 Pillar 04
@@ -123,7 +124,7 @@ export default function AboutUsPage() {
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-[#EADECF] text-[11px] font-semibold text-[#725B38] flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[16px]">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-[#725B38] shrink-0" />
               <span>Dermatologist Supervised</span>
             </div>
           </div>
@@ -158,10 +159,9 @@ export default function AboutUsPage() {
               </p>
               <Link
                 href="/women"
-                className="inline-flex items-center gap-2 font-label-ui text-xs font-semibold text-[#B76E79] hover:underline"
+                className="inline-flex items-center font-label-ui text-xs font-semibold text-[#B76E79] hover:underline"
               >
                 <span>Explore Women Collection</span>
-                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
               </Link>
             </div>
 
@@ -177,10 +177,9 @@ export default function AboutUsPage() {
               </p>
               <Link
                 href="/men"
-                className="inline-flex items-center gap-2 font-label-ui text-xs font-semibold text-[#FFE088] hover:underline"
+                className="inline-flex items-center font-label-ui text-xs font-semibold text-[#FFE088] hover:underline"
               >
                 <span>Explore Men Collection</span>
-                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
               </Link>
             </div>
           </div>

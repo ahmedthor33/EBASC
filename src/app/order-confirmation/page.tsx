@@ -3,6 +3,7 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { CheckCircle2, Printer } from 'lucide-react';
 
 function OrderConfirmationContent() {
   const searchParams = useSearchParams();
@@ -26,7 +27,7 @@ function OrderConfirmationContent() {
       {/* Success Stamp */}
       <div className="text-center space-y-4 mb-12">
         <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mx-auto border border-emerald-200 shadow-sm">
-          <span className="material-symbols-outlined text-[34px]">verified</span>
+          <CheckCircle2 className="w-8 h-8 text-emerald-700" />
         </div>
         <span className="font-label-uppercase text-xs tracking-widest text-[#725B38] font-bold uppercase">
           Dispatch Order Confirmed
@@ -57,7 +58,7 @@ function OrderConfirmationContent() {
               onClick={() => window.print()}
               className="px-4 py-2 rounded-full border border-[#EADECF] text-xs font-label-ui flex items-center gap-1.5 hover:bg-[#F7F3EE] transition-colors"
             >
-              <span className="material-symbols-outlined text-[16px]">print</span>
+              <Printer className="w-4 h-4" />
               <span>Print Official Invoice</span>
             </button>
             <Link
@@ -131,10 +132,9 @@ function OrderConfirmationContent() {
       <div className="mt-12 text-center">
         <Link
           href="/shop"
-          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#1A1615] text-[#FDF9F4] font-label-uppercase text-xs tracking-widest font-semibold hover:bg-black transition-all shadow-md"
+          className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#1A1615] text-[#FDF9F4] font-label-uppercase text-xs tracking-widest font-semibold hover:bg-black transition-all shadow-md"
         >
           <span>Continue Exploring Catalog</span>
-          <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
         </Link>
       </div>
     </div>

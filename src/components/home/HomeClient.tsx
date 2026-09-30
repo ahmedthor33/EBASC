@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
-import { ProductItem, PRODUCTS } from '@/lib/products';
+import { ProductItem, PRODUCTS, getStoredProducts } from '@/lib/products';
+import { getCustomBanners, DEFAULT_BANNERS, BannerStoreState } from '@/lib/bannerStorage';
+import { Sparkles, ShieldCheck, Truck, CreditCard, Heart, Eye, Star, ShoppingBag, CheckCircle2, ChevronLeft, ChevronRight, Check, Gift, Tag, Copy, Clock, Mail, Lock, X, MailCheck } from 'lucide-react';
 
 interface DisplayProduct {
   id: string;
@@ -83,7 +85,7 @@ const BEST_SELLER_PRODUCTS: DisplayProduct[] = [
     id: 'prod-m-1',
     category: 'men',
     name: "Men's Charcoal Oil-Control Cleanser",
-    slug: 'men-charcoal-face-wash-100ml',
+    slug: 'men-face-wash-100ml',
     subtitle: 'Activated Charcoal + Tea Tree',
     size: '100ml Matte Tube',
     price: 1750,
@@ -101,7 +103,7 @@ const BEST_SELLER_PRODUCTS: DisplayProduct[] = [
     id: 'prod-m-3',
     category: 'men',
     name: "Men's Restorative Night Cream",
-    slug: 'men-restorative-night-cream-50gm',
+    slug: 'men-beauty-night-whitening-cream-50gm',
     subtitle: 'Hyaluronic 4D + Caffeine Complex',
     size: '50gm Jar',
     price: 3100,
@@ -119,7 +121,7 @@ const BEST_SELLER_PRODUCTS: DisplayProduct[] = [
     id: 'prod-m-2',
     category: 'men',
     name: "Men's Active Defense Glow Serum",
-    slug: 'men-active-defense-glow-serum-30ml',
+    slug: 'men-beauty-glow-serum-30ml',
     subtitle: 'Vitamin C 15% + Zinc PCA',
     size: '30ml Dark Vial',
     price: 2950,
@@ -147,16 +149,149 @@ export function HomeClient() {
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
   const [couponCopied, setCouponCopied] = useState(false);
   const [trioAddedToast, setTrioAddedToast] = useState(false);
+  const [customBanners, setCustomBanners] = useState<BannerStoreState>(DEFAULT_BANNERS);
+  const [allProducts, setAllProducts] = useState<ProductItem[]>(PRODUCTS);
+
+  useEffect(() => {
+    setCustomBanners(getCustomBanners());
+    const bannerHandler = () => setCustomBanners(getCustomBanners());
+    window.addEventListener('eba_banners_updated', bannerHandler);
+
+    setAllProducts(getStoredProducts());
+    const prodHandler = () => setAllProducts(getStoredProducts());
+    window.addEventListener('eba_products_updated', prodHandler);
+
+    return () => {
+      window.removeEventListener('eba_banners_updated', bannerHandler);
+      window.removeEventListener('eba_products_updated', prodHandler);
+    };
+  }, []);
+
+  // Hero Slider State (Women vs Men)
+  const [heroSlide, setHeroSlide] = useState<'women' | 'men'>('women');
+  const [isHeroAutoPlaying, setIsHeroAutoPlaying] = useState<boolean>(true);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
+  // Auto-rotate hero slider every 6 seconds, pause on hover
+  useEffect(() => {
+    if (!isHeroAutoPlaying) return;
+    const interval = setInterval(() => {
+      setHeroSlide((prev) => (prev === 'women' ? 'men' : 'women'));
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [isHeroAutoPlaying]);
+
+  // Touch swipe support for mobile patrons
+  const handleHeroTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleHeroTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleHeroTouchEnd = () => {
+    if (touchStartX === null || touchEndX === null) return;
+    const distance = touchStartX - touchEndX;
+    if (distance > 45) {
+      // Swiped left
+      setHeroSlide('men');
+    } else if (distance < -45) {
+      // Swiped right
+      setHeroSlide('women');
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
+  // Dynamic current slide data
+  const currentHeroSlide = useMemo(() => {
+    if (heroSlide === 'women') {
+      return {
+        key: 'women' as const,
+        badge: customBanners.pageBanners.women?.badge || 'THE WOMEN BOTANICAL LINE • 24K ESSENCE',
+        title: customBanners.pageBanners.women?.title || 'Bespoke Botanical Radiance,',
+        titleHighlight: customBanners.pageBanners.women?.titleHighlight || 'Infused with 24K Essence.',
+        subtitle:
+          customBanners.pageBanners.women?.subtitle ||
+          'Meticulously calibrated botanical elixirs, damask rose hydrosols, and multi-peptides engineered to fortify cellular resilience against intense heat, urban smog, and humidity across Pakistan.',
+        primaryCtaLabel: 'Shop Women Collection',
+        primaryCtaUrl: '/women',
+        secondaryCtaLabel: 'Explore All Shop',
+        secondaryCtaUrl: '/shop',
+        image: customBanners.homeHero.primaryImage || '/images/hero_women.png',
+        imageBadge: 'The Women Line',
+        imageSubtitle: 'Glow & Cellular Luminescence',
+        capsule: 'Formulated for Humidity, Urban Heat & Melanin Profiles',
+        badgeDot: 'bg-[#CCA730]',
+        ctaBg: 'bg-[#725B38] hover:bg-[#5C482C]',
+        accentText: 'text-[#725B38]',
+        metrics: [
+          { val: '98.4%', label: 'Barrier Restoration' },
+          { val: '14 Days', label: 'Visible Radiance' },
+          { val: '100%', label: 'Halal & Non-Comedogenic' },
+        ],
+      };
+    } else {
+      return {
+        key: 'men' as const,
+        badge: customBanners.pageBanners.men?.badge || 'THE MEN FORTITUDE LINE • GROOMING DISCIPLINE',
+        title: customBanners.pageBanners.men?.title || 'Obsidian Slate Fortitude,',
+        titleHighlight: customBanners.pageBanners.men?.titleHighlight || 'High-Performance Purity.',
+        subtitle:
+          customBanners.pageBanners.men?.subtitle ||
+          'Engineered specifically for male dermal thickness and active lifestyle exposure. Activated volcanic charcoal, clinical Niacinamide, and antioxidant shields that defeat grease, humidity, and pollution.',
+        primaryCtaLabel: 'Shop Men Collection',
+        primaryCtaUrl: '/men',
+        secondaryCtaLabel: 'Explore All Shop',
+        secondaryCtaUrl: '/shop',
+        image: customBanners.homeHero.secondaryImage || '/images/hero_men.png',
+        imageBadge: 'The Men Line',
+        imageSubtitle: 'Active Pure Fortitude',
+        capsule: 'Activated Volcanic Charcoal & Hyaluronic Matrix',
+        badgeDot: 'bg-[#FFE088]',
+        ctaBg: 'bg-[#1F1B1A] hover:bg-black',
+        accentText: 'text-[#8C6D3F]',
+        metrics: [
+          { val: '96.8%', label: 'Sebum & Grime Control' },
+          { val: '24 Hours', label: 'Moisture Barrier Lock' },
+          { val: '100%', label: 'Dermatologist Formulated' },
+        ],
+      };
+    }
+  }, [heroSlide, customBanners]);
+
+  // Dynamically build display products from stored admin catalog
+  const dynamicDisplayProducts: DisplayProduct[] = useMemo(() => {
+    return allProducts.map((p) => ({
+      id: p.id,
+      category: p.category,
+      name: p.name,
+      slug: p.slug,
+      subtitle: p.subtitle,
+      size: p.size,
+      price: p.salePrice || p.price,
+      originalPrice: p.price,
+      rating: p.rating || 5.0,
+      reviewsCount: p.reviewsCount || 0,
+      badge: p.badge || (p.salePrice && p.salePrice < p.price ? 'SPECIAL OFFER' : 'FORMULATION'),
+      badgeColor: p.category === 'women' ? 'bg-[#FEDEB2] text-[#78603E]' : 'bg-[#E0E2EC] text-[#191C20]',
+      image: p.image,
+      description: p.description,
+    }));
+  }, [allProducts]);
 
   // Filtered Products
-  const filteredProducts =
-    bestsellerCategory === 'all'
-      ? BEST_SELLER_PRODUCTS
-      : BEST_SELLER_PRODUCTS.filter((p) => p.category === bestsellerCategory);
+  const filteredProducts = useMemo(() => {
+    return bestsellerCategory === 'all'
+      ? dynamicDisplayProducts
+      : dynamicDisplayProducts.filter((p) => p.category === bestsellerCategory);
+  }, [bestsellerCategory, dynamicDisplayProducts]);
 
   // Helper to add to cart from display product
   const handleAddToCart = (item: DisplayProduct) => {
-    const fullProduct = PRODUCTS.find((p) => p.id === item.id) || {
+    const fullProduct = allProducts.find((p) => p.id === item.id) || {
       id: item.id,
       category: item.category,
       categoryName: item.category === 'women' ? 'Women Collection' : 'Men Collection',
@@ -184,8 +319,8 @@ export function HomeClient() {
   const handleBuyFullTrio = () => {
     const relevantProducts =
       ritualTab === 'women'
-        ? PRODUCTS.filter((p) => p.category === 'women')
-        : PRODUCTS.filter((p) => p.category === 'men');
+        ? allProducts.filter((p) => p.category === 'women')
+        : allProducts.filter((p) => p.category === 'men');
 
     relevantProducts.forEach((p) => addToCart(p, 1));
     applyCoupon('EBAGLOW');
@@ -215,7 +350,7 @@ export function HomeClient() {
       {/* Toast notifications */}
       {trioAddedToast && (
         <div className="fixed bottom-6 right-6 z-50 bg-[#1A1615] text-[#FDF9F4] px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 border border-[#CCA730] animate-fade-in">
-          <span className="material-symbols-outlined text-[#FFE088] text-[22px]">check_circle</span>
+          <CheckCircle2 className="w-5 h-5 text-[#FFE088] shrink-0" />
           <div>
             <div className="font-semibold text-sm">3-Step Regimen Trio Added!</div>
             <div className="text-xs text-[#E6E2DD]">Coupon EBAGLOW applied for 15% discount.</div>
@@ -223,126 +358,191 @@ export function HomeClient() {
         </div>
       )}
 
-      {/* 1. Interactive Dual Hero Section */}
-      <section className="relative w-full bg-[#F7F3EE] px-4 sm:px-6 lg:px-12 pt-8 pb-20">
-        <div className="max-w-[1380px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left Column: Editorial Headline & Dual CTAs */}
-          <div className="lg:col-span-6 flex flex-col items-start z-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EBE8E3] shadow-sm mb-4 border border-[#EADECF]">
-              <span className="w-2 h-2 rounded-full bg-[#CCA730] animate-pulse" />
-              <span className="font-label-uppercase text-[11px] tracking-widest text-[#4E4543] font-semibold">
-                Clinique Botanica • South Asia
-              </span>
+      {/* 1. Dual Collection Interactive Hero Slider */}
+      <section
+        className="relative w-full bg-[#F7F3EE] px-4 sm:px-6 lg:px-12 pt-6 sm:pt-8 pb-16 sm:pb-20 select-none overflow-hidden"
+        onMouseEnter={() => setIsHeroAutoPlaying(false)}
+        onMouseLeave={() => setIsHeroAutoPlaying(true)}
+        onTouchStart={handleHeroTouchStart}
+        onTouchMove={handleHeroTouchMove}
+        onTouchEnd={handleHeroTouchEnd}
+        aria-roledescription="carousel"
+      >
+        <div className="max-w-[1380px] mx-auto">
+          {/* Top Segmented Line Selector & Slide Controls */}
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-6 sm:mb-8 pb-3 border-b border-[#EADECF]">
+            {/* Quick Segmented Toggle Pills (Touch-Friendly on Mobile) */}
+            <div className="inline-flex items-center p-1 bg-[#EBE8E3] rounded-full border border-[#EADECF] text-xs font-label-uppercase shadow-sm">
+              <button
+                type="button"
+                onClick={() => setHeroSlide('women')}
+                className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full font-semibold transition-all duration-300 ${
+                  heroSlide === 'women'
+                    ? 'bg-[#725B38] text-white shadow-md'
+                    : 'text-[#4E4543] hover:text-[#1C1C19]'
+                }`}
+                aria-label="View Women Collection Slide"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FFE088]" />
+                <span>Women Collection</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setHeroSlide('men')}
+                className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full font-semibold transition-all duration-300 ${
+                  heroSlide === 'men'
+                    ? 'bg-[#1F1B1A] text-[#FFE088] shadow-md'
+                    : 'text-[#4E4543] hover:text-[#1C1C19]'
+                }`}
+                aria-label="View Men Collection Slide"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FFE088]" />
+                <span>Men Collection</span>
+              </button>
             </div>
 
-            <h1 className="font-display-lg text-4xl sm:text-5xl lg:text-6xl text-[#1C1C19] leading-tight tracking-tight mb-4">
-              High-Performance Radiance,{' '}
-              <span className="italic font-normal text-[#725B38]">
-                Tailored for Every Skin.
+            {/* Slide Navigation Arrows & Step Indicator */}
+            <div className="flex items-center gap-3">
+              <span className="font-label-ui text-xs text-[#7F7572] tracking-wider uppercase hidden sm:inline-block">
+                Slide {heroSlide === 'women' ? '01' : '02'} of 02
               </span>
-            </h1>
-
-            <p className="font-body-lg text-base sm:text-lg text-[#4E4543] max-w-xl mb-8 leading-relaxed">
-              Clinically proven botanical formulations engineered for South Asian climates. Dermatologically tested, cruelty-free, and meticulously calibrated for Men and Women.
-            </p>
-
-            {/* Dual Primary CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
-              <Link
-                href="/women"
-                className="group relative px-8 py-4 rounded-full bg-[#725B38] text-white font-label-uppercase text-xs tracking-widest font-semibold shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Shop Women Collection
-                  <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">
-                    arrow_forward
-                  </span>
-                </span>
-                <div className="absolute inset-0 bg-[#FEDEB2] opacity-0 group-hover:opacity-20 transition-opacity" />
-              </Link>
-
-              <Link
-                href="/men"
-                className="group relative px-8 py-4 rounded-full bg-[#1F1B1A] text-white font-label-uppercase text-xs tracking-widest font-semibold shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Shop Men Collection
-                  <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">
-                    arrow_forward
-                  </span>
-                </span>
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
-              </Link>
-            </div>
-
-            {/* Metric Highlights */}
-            <div className="grid grid-cols-3 gap-6 pt-6 mt-8 w-full bg-[#F1EDE8]/70 p-5 rounded-2xl border border-[#EADECF]">
-              <div>
-                <div className="font-price-lg text-xl sm:text-2xl text-[#1C1C19] font-bold">98.4%</div>
-                <div className="font-body-sm text-xs text-[#4E4543] mt-0.5">Barrier Restoration</div>
-              </div>
-              <div>
-                <div className="font-price-lg text-xl sm:text-2xl text-[#1C1C19] font-bold">14 Days</div>
-                <div className="font-body-sm text-xs text-[#4E4543] mt-0.5">Visible Radiance</div>
-              </div>
-              <div>
-                <div className="font-price-lg text-xl sm:text-2xl text-[#1C1C19] font-bold">100%</div>
-                <div className="font-body-sm text-xs text-[#4E4543] mt-0.5">Halal & Non-Comedogenic</div>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => setHeroSlide((prev) => (prev === 'women' ? 'men' : 'women'))}
+                  className="w-9 h-9 rounded-full bg-white hover:bg-[#F2ECE4] border border-[#EADECF] text-[#1C1C19] flex items-center justify-center transition-all shadow-sm active:scale-95 cursor-pointer"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setHeroSlide((prev) => (prev === 'women' ? 'men' : 'women'))}
+                  className="w-9 h-9 rounded-full bg-white hover:bg-[#F2ECE4] border border-[#EADECF] text-[#1C1C19] flex items-center justify-center transition-all shadow-sm active:scale-95 cursor-pointer"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Hero Visual Dual Montage */}
-          <div className="lg:col-span-6 relative">
-            <div className="relative w-full aspect-[4/5] sm:aspect-square lg:aspect-[5/6] rounded-2xl overflow-hidden shadow-2xl bg-[#F1EDE8] border border-[#EADECF]">
-              <div className="absolute inset-0 grid grid-cols-2">
-                {/* Left Half: Women's Soft Luxury Glow */}
-                <Link href="/women" className="relative h-full overflow-hidden group block">
-                  <Image
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlOJoPgKGYUTFyrU6Zkru90zysTKfNIA4WC0fjWWHRJmUI181UrP1n64fpKiIZ3rMJr6HhkDWyTrC53gMDjEcXGh1SXlC4ZlCKX8FFMEV8Q7E872J-un1b7RAwbBaMqbjKDcYJ5DLdji-2WfzWnFoR6t9lN-uKhDrKpeqJITYrEZU3ZGkD5QkHH1PSRhBr_GNkxRHIvAzbt4s_WpNr25tYizGsnxp_2nU-oUVqZxEZn95dhwawTgezCw"
-                    alt="Close-up luxury skincare bottle of golden radiant serum resting on wet travertine marble surface"
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-4 sm:p-6 text-white">
-                    <span className="font-label-uppercase text-[11px] text-[#FEDEB2] tracking-widest font-bold">
-                      The Women Line
-                    </span>
-                    <span className="font-headline-sm text-lg sm:text-xl text-white">
-                      Glow & Luminescence
-                    </span>
-                  </div>
+          {/* Active Slide Body: Dynamic 2-column layout matching current aesthetic */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Editorial Headline & Actions */}
+            <div className="lg:col-span-6 flex flex-col items-start z-10 transition-opacity duration-300">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EBE8E3] shadow-sm mb-4 border border-[#EADECF]">
+                <span className={`w-2 h-2 rounded-full ${currentHeroSlide.badgeDot} animate-pulse`} />
+                <span className="font-label-uppercase text-[11px] tracking-widest text-[#4E4543] font-semibold">
+                  {currentHeroSlide.badge}
+                </span>
+              </div>
+
+              <h1 className="font-display-lg text-3xl sm:text-5xl lg:text-6xl text-[#1C1C19] leading-tight tracking-tight mb-4 min-h-[72px] sm:min-h-[105px]">
+                {currentHeroSlide.title}{' '}
+                <span className={`italic font-normal ${currentHeroSlide.accentText}`}>
+                  {currentHeroSlide.titleHighlight}
+                </span>
+              </h1>
+
+              <p className="font-body-lg text-sm sm:text-base lg:text-lg text-[#4E4543] max-w-xl mb-6 sm:mb-8 leading-relaxed">
+                {currentHeroSlide.subtitle}
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto">
+                <Link
+                  href={currentHeroSlide.primaryCtaUrl}
+                  className={`group relative px-8 py-3.5 sm:py-4 rounded-full ${currentHeroSlide.ctaBg} text-white font-label-uppercase text-xs tracking-widest font-semibold shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-hidden`}
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    <span>{currentHeroSlide.primaryCtaLabel}</span>
+                    <span className="transition-transform group-hover:translate-x-1">→</span>
+                  </span>
+                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
 
-                {/* Right Half: Men's Obsidian Slate */}
-                <Link href="/men" className="relative h-full overflow-hidden group block bg-[#14171C]">
-                  <Image
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWdjQaMELbJx4Huf2UMZsszy_ANpp09ABiY8lcItAUlA4ruXHAoBRm7pTW0Z_hn3UGNDH-eQLub5BqroLcHqDYKI78drAb9I2DOOjdnGuIjxXB2uFz_weBpGtYujNDSZe8pE0eeDezriMDEgS_Bz9VcGAInXpBK9dllvmUMUE0065H5wR0yK2fA1TXmz5NvDvsTiZ6Qi3gFoZfYoMHTVAfsJHaTpWRWjO8KpF2SJHQnL-JwZknuUIUkw"
-                    alt="Minimalist luxury cosmetic dropper and matte black pumice container for men skincare"
-                    fill
-                    className="object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1615] via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6 text-white">
-                    <span className="font-label-uppercase text-[11px] text-[#FFE088] tracking-widest font-bold">
-                      The Men Line
-                    </span>
-                    <span className="font-headline-sm text-lg sm:text-xl text-white">
-                      Active Pure Fortitude
-                    </span>
-                  </div>
+                <Link
+                  href={currentHeroSlide.secondaryCtaUrl}
+                  className="group relative px-8 py-3.5 sm:py-4 rounded-full bg-white hover:bg-[#F2ECE4] border border-[#EADECF] text-[#1C1C19] font-label-uppercase text-xs tracking-widest font-semibold shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center"
+                >
+                  <span className="relative z-10">
+                    {currentHeroSlide.secondaryCtaLabel}
+                  </span>
                 </Link>
               </div>
 
-              {/* Floating Clinical Capsule Overlay */}
-              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-full shadow-xl flex items-center gap-2 whitespace-nowrap border border-[#EADECF]">
-                <span className="material-symbols-outlined text-[#CCA730] text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>
-                  verified
-                </span>
-                <span className="font-label-ui text-xs text-[#1C1C19] font-semibold">
-                  Formulated for Humidity, Urban Heat & Melanin Profiles
-                </span>
+              {/* Metric Highlights */}
+              <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-5 sm:pt-6 mt-6 sm:mt-8 w-full bg-[#F1EDE8]/70 p-4 sm:p-5 rounded-2xl border border-[#EADECF]">
+                {currentHeroSlide.metrics.map((m, idx) => (
+                  <div key={idx}>
+                    <div className="font-price-lg text-lg sm:text-2xl text-[#1C1C19] font-bold">
+                      {m.val}
+                    </div>
+                    <div className="font-body-sm text-[10px] sm:text-xs text-[#4E4543] mt-0.5 leading-tight">
+                      {m.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Hero Visual Showcase */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative w-full aspect-[4/5] sm:aspect-square lg:aspect-[5/6] rounded-2xl overflow-hidden shadow-2xl bg-[#14171C] border border-[#EADECF] group">
+                <Link href={currentHeroSlide.primaryCtaUrl} className="relative w-full h-full block">
+                  <Image
+                    key={currentHeroSlide.image}
+                    src={currentHeroSlide.image}
+                    alt={currentHeroSlide.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-5 sm:p-8 text-white">
+                    <span className="font-label-uppercase text-[11px] sm:text-xs text-[#FEDEB2] tracking-widest font-bold">
+                      {currentHeroSlide.imageBadge}
+                    </span>
+                    <span className="font-headline-sm text-lg sm:text-2xl text-white mt-1">
+                      {currentHeroSlide.imageSubtitle}
+                    </span>
+                  </div>
+                </Link>
+
+                {/* Floating Clinical Capsule Overlay */}
+                <div className="absolute bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-xl flex items-center gap-2 max-w-[92%] border border-[#EADECF]">
+                  <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#CCA730] shrink-0" />
+                  <span className="font-label-ui text-[10px] sm:text-xs text-[#1C1C19] font-semibold truncate">
+                    {currentHeroSlide.capsule}
+                  </span>
+                </div>
+
+                {/* Direct quick slide tap dots */}
+                <div className="absolute top-4 right-4 flex items-center gap-2 z-20 bg-black/40 backdrop-blur-sm px-2.5 py-1.5 rounded-full border border-white/10">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setHeroSlide('women');
+                    }}
+                    className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
+                      heroSlide === 'women' ? 'bg-[#FFE088] scale-125' : 'bg-white/40 hover:bg-white/70'
+                    }`}
+                    aria-label="Select Women slide"
+                  />
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setHeroSlide('men');
+                    }}
+                    className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
+                      heroSlide === 'men' ? 'bg-[#FFE088] scale-125' : 'bg-white/40 hover:bg-white/70'
+                    }`}
+                    aria-label="Select Men slide"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -355,7 +555,7 @@ export function HomeClient() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             <div className="flex items-center gap-3 bg-white p-4 rounded-xl border border-[#EADECF] shadow-sm">
               <div className="w-12 h-12 rounded-full bg-[#F1EDE8] flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[#725B38] text-[24px]">science</span>
+                <Sparkles className="w-6 h-6 text-[#725B38]" />
               </div>
               <div>
                 <div className="font-label-ui text-xs font-semibold text-[#1C1C19]">Dermatologist Tested</div>
@@ -365,7 +565,7 @@ export function HomeClient() {
 
             <div className="flex items-center gap-3 bg-white p-4 rounded-xl border border-[#EADECF] shadow-sm">
               <div className="w-12 h-12 rounded-full bg-[#F1EDE8] flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[#735C00] text-[24px]">verified</span>
+                <ShieldCheck className="w-6 h-6 text-[#735C00]" />
               </div>
               <div>
                 <div className="font-label-ui text-xs font-semibold text-[#1C1C19]">100% Halal & Pure</div>
@@ -375,7 +575,7 @@ export function HomeClient() {
 
             <div className="flex items-center gap-3 bg-white p-4 rounded-xl border border-[#EADECF] shadow-sm">
               <div className="w-12 h-12 rounded-full bg-[#F1EDE8] flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[#725B38] text-[24px]">rocket_launch</span>
+                <Truck className="w-6 h-6 text-[#725B38]" />
               </div>
               <div>
                 <div className="font-label-ui text-xs font-semibold text-[#1C1C19]">Express Delivery</div>
@@ -385,7 +585,7 @@ export function HomeClient() {
 
             <div className="flex items-center gap-3 bg-white p-4 rounded-xl border border-[#EADECF] shadow-sm">
               <div className="w-12 h-12 rounded-full bg-[#F1EDE8] flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[#735C00] text-[24px]">payments</span>
+                <CreditCard className="w-6 h-6 text-[#735C00]" />
               </div>
               <div>
                 <div className="font-label-ui text-xs font-semibold text-[#1C1C19]">Cash on Delivery</div>
@@ -416,6 +616,7 @@ export function HomeClient() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Women Collection Card */}
             <div className="group relative rounded-2xl overflow-hidden bg-[#F7F3EE] border border-[#EADECF] shadow-md hover:shadow-xl transition-all duration-500 flex flex-col justify-between p-6 sm:p-10 min-h-[480px]">
+              <Link href="/women" className="absolute inset-0 z-0 cursor-pointer" title="Explore Women Collection" />
               <div className="absolute inset-0 -z-10 overflow-hidden">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPi0NXUwKknclMwDhsA31eHakfqIjw5naozUqTuX_Lm3exQtILEW0eJ634MgK2zprb8i85xrwDHXwiDIMk4TepQHE50Asi_92jMjKniW4LXpJGWGjnGGCyw4rXpoJsnDrp9aSee8RgkT0qZ9Z3bkKvcEoWVftFFaY5BsAqKocdtBcXR7OZ-mL0sv_poN7DbwX7Pa2IYc44RgIuViQUrNu0pbHYZd8QVSbqY-mgQCZaZc7BmUMHL1LDhw"
@@ -426,7 +627,7 @@ export function HomeClient() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#F7F3EE] via-[#F7F3EE]/75 to-transparent" />
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="relative z-10 flex items-center justify-between">
                 <span className="px-3.5 py-1.5 rounded-full bg-[#FEDEB2] text-[#78603E] font-label-uppercase text-[11px] font-bold tracking-wider">
                   Women&apos;s Regimen
                 </span>
@@ -435,7 +636,7 @@ export function HomeClient() {
                 </span>
               </div>
 
-              <div className="mt-28 space-y-3">
+              <div className="relative z-10 mt-28 space-y-3">
                 <span className="font-label-uppercase text-xs text-[#725B38] tracking-widest font-bold">
                   Glow, Restore & Even Tone
                 </span>
@@ -448,10 +649,9 @@ export function HomeClient() {
                 <div className="pt-3">
                   <Link
                     href="/women"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#725B38] text-white font-label-uppercase text-xs font-semibold tracking-wider hover:bg-[#1C1C19] transition-all shadow-md"
+                    className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#725B38] text-white font-label-uppercase text-xs font-semibold tracking-wider hover:bg-[#1C1C19] transition-all shadow-md"
                   >
                     <span>Explore Women</span>
-                    <span className="material-symbols-outlined text-[16px]">east</span>
                   </Link>
                 </div>
               </div>
@@ -459,6 +659,7 @@ export function HomeClient() {
 
             {/* Men Collection Card */}
             <div className="group relative rounded-2xl overflow-hidden bg-[#1F1B1A] text-white border border-[#2D343E] shadow-md hover:shadow-xl transition-all duration-500 flex flex-col justify-between p-6 sm:p-10 min-h-[480px]">
+              <Link href="/men" className="absolute inset-0 z-0 cursor-pointer" title="Explore Men Collection" />
               <div className="absolute inset-0 -z-10 overflow-hidden">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk4PZJZLWfLnugGVUR6DQn2mW3_OVzdxo8Hq_tqGTJyTp1iIQG0DPpXAWc5YfNNTBEcowzHydiKCUlDGIW8SkGPms18Ia66d8vayqHl8FQEtB1KcUiZv7sJMuTRXENskW2b3U-BKSGoD3fvlbfLF_XM-gDcKwUq4IuWUYhWsrwC3oCr4oL1NcA-oSLC9cLJccZYDeO2npQleyD3CHl0Jqn0ygW_iGWPElJswAchUVH_wfRqAIm19BNIQ"
@@ -469,7 +670,7 @@ export function HomeClient() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1F1B1A] via-[#1F1B1A]/85 to-transparent" />
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="relative z-10 flex items-center justify-between">
                 <span className="px-3.5 py-1.5 rounded-full bg-[#EBE8E3]/20 text-[#FFE088] font-label-uppercase text-[11px] font-bold tracking-wider backdrop-blur-sm">
                   Men&apos;s Regimen
                 </span>
@@ -478,7 +679,7 @@ export function HomeClient() {
                 </span>
               </div>
 
-              <div className="mt-28 space-y-3">
+              <div className="relative z-10 mt-28 space-y-3">
                 <span className="font-label-uppercase text-xs text-[#FFE088] tracking-widest font-bold">
                   Anti-Pollution & Rebalance
                 </span>
@@ -491,10 +692,9 @@ export function HomeClient() {
                 <div className="pt-3">
                   <Link
                     href="/men"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-[#1C1C19] font-label-uppercase text-xs font-semibold tracking-wider hover:bg-[#FFE088] transition-all shadow-md"
+                    className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-white text-[#1C1C19] font-label-uppercase text-xs font-semibold tracking-wider hover:bg-[#FFE088] transition-all shadow-md"
                   >
                     <span>Explore Men</span>
-                    <span className="material-symbols-outlined text-[16px]">east</span>
                   </Link>
                 </div>
               </div>
@@ -560,14 +760,20 @@ export function HomeClient() {
                   key={product.id}
                   className="group product-card flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 p-4 border border-[#EADECF]"
                 >
-                  <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#F1EDE8] mb-4">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
+                  <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#F1EDE8] mb-4 group/img">
+                    <Link
+                      href={`/product/${product.slug}`}
+                      className="block relative w-full h-full cursor-pointer"
+                      title={`View ${product.name}`}
+                    >
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover/img:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </Link>
 
                     {/* Badge */}
                     <div
@@ -601,25 +807,20 @@ export function HomeClient() {
                           benefits: [],
                         })
                       }
-                      className={`absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center transition-all shadow-sm ${
+                      className={`absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center transition-all shadow-sm ${
                         inWish ? 'text-red-500' : 'text-[#4E4543] hover:text-red-500 hover:scale-110'
                       }`}
                     >
-                      <span
-                        className="material-symbols-outlined text-[18px]"
-                        style={{ fontVariationSettings: inWish ? "'FILL' 1" : "'FILL' 0" }}
-                      >
-                        favorite
-                      </span>
+                      <Heart className={`w-4 h-4 ${inWish ? 'fill-red-500 text-red-500' : ''}`} />
                     </button>
 
                     {/* Quick View Hover Button */}
-                    <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex justify-center">
+                    <div className="absolute bottom-3 left-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity flex justify-center">
                       <button
                         onClick={() => setQuickViewProduct(product)}
                         className="w-full py-2.5 px-4 rounded-full bg-white/95 backdrop-blur-md text-[#1C1C19] font-label-uppercase text-xs tracking-wider font-semibold shadow-md hover:bg-white transition-colors flex items-center justify-center gap-1.5"
                       >
-                        <span className="material-symbols-outlined text-[16px]">visibility</span> Quick Overview
+                        <Eye className="w-4 h-4" /> <span>Quick Overview</span>
                       </button>
                     </div>
                   </div>
@@ -628,13 +829,10 @@ export function HomeClient() {
                     <div className="flex items-center gap-1 text-[#CCA730]">
                       <div className="flex items-center">
                         {[...Array(5)].map((_, i) => (
-                          <span
+                          <Star
                             key={i}
-                            className="material-symbols-outlined text-[14px]"
-                            style={{ fontVariationSettings: "'FILL' 1" }}
-                          >
-                            star
-                          </span>
+                            className="w-3.5 h-3.5 fill-[#CCA730] text-[#CCA730]"
+                          />
                         ))}
                       </div>
                       <span className="font-body-sm text-xs text-[#4E4543] font-medium">
@@ -669,7 +867,7 @@ export function HomeClient() {
                       onClick={() => handleAddToCart(product)}
                       className="px-4 py-2.5 rounded-full bg-[#1A1615] text-white hover:bg-[#725B38] font-label-uppercase text-xs tracking-widest font-semibold transition-colors flex items-center gap-1.5 shadow-sm"
                     >
-                      <span className="material-symbols-outlined text-[16px]">shopping_bag</span> Add
+                      <ShoppingBag className="w-4 h-4" /> <span>Add</span>
                     </button>
                   </div>
                 </div>
@@ -727,35 +925,48 @@ export function HomeClient() {
                   01
                 </span>
                 <span className="font-label-uppercase text-xs text-[#725B38] font-bold tracking-widest">
-                  Morning & Night
+                  Clarify & Cleanse
                 </span>
               </div>
-              <div className="aspect-square rounded-xl overflow-hidden bg-[#F1EDE8] mb-4 relative">
-                <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUJBFt12xzc1HeDatdsTN9x08omSQKaJCwkubUXPMurn8iGajnXF0tpgSBQvmo3JH0cY6F6Y1TVRTtG3-lZ3GVmu0qCtXfcGd_1cNd5v6RIObdMafVh9z0P17B_YkgoWRmY9iNDsWKwosPTzz3depFHftDvFFMsPnXLenOZzxjoPw9RsR0IgrMazSGmbXCT2_B9CnIMzVwcOEdbVMw_T_w7DwsElMaeeIQxwno7MoaFWh496cZ6R4how"
-                  alt="Gentle botanical cleansing milk face wash pouring softly onto wet skin"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="font-headline-sm text-xl text-[#1C1C19] mb-1">
-                  {ritualTab === 'women' ? 'Step 1: Cleanse & Clarify' : 'Step 1: Deep Charcoal Detox'}
-                </h3>
-                <p className="font-body-sm text-sm text-[#4E4543] mb-3 leading-relaxed">
-                  {ritualTab === 'women'
-                    ? '100ml Clarifying Cleanser removes deep-seated urban particulate matter, sweat salts, and excess sebum without stripping vital ceramides.'
-                    : '100ml Charcoal Oil-Control Cleanser removes heavy automotive pollutants, sweat residue, and stubborn excess sebum for a crisp matte finish.'}
-                </p>
-                <div className="inline-flex items-center gap-1 text-[#725B38] font-label-ui text-xs font-semibold">
-                  <span className="material-symbols-outlined text-[16px]">done</span>
-                  <span>
-                    {ritualTab === 'women'
-                      ? 'pH 5.5 Balanced • Salicylic Acid'
-                      : 'Activated Charcoal + Organic Tea Tree'}
-                  </span>
-                </div>
-              </div>
+              {(() => {
+                const step1Slug = ritualTab === 'women' ? 'women-face-wash-100ml' : 'men-face-wash-100ml';
+                return (
+                  <>
+                    <Link
+                      href={`/product/${step1Slug}`}
+                      className="aspect-square rounded-xl overflow-hidden bg-[#F1EDE8] mb-4 relative block group/step"
+                      title="View Formulation Details"
+                    >
+                      <Image
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUJBFt12xzc1HeDatdsTN9x08omSQKaJCwkubUXPMurn8iGajnXF0tpgSBQvmo3JH0cY6F6Y1TVRTtG3-lZ3GVmu0qCtXfcGd_1cNd5v6RIObdMafVh9z0P17B_YkgoWRmY9iNDsWKwosPTzz3depFHftDvFFMsPnXLenOZzxjoPw9RsR0IgrMazSGmbXCT2_B9CnIMzVwcOEdbVMw_T_w7DwsElMaeeIQxwno7MoaFWh496cZ6R4how"
+                        alt="Gentle botanical cleansing milk face wash pouring softly onto wet skin"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover/step:scale-105"
+                      />
+                    </Link>
+                    <div>
+                      <Link href={`/product/${step1Slug}`}>
+                        <h3 className="font-headline-sm text-xl text-[#1C1C19] mb-1 hover:text-[#725B38] transition-colors">
+                          {ritualTab === 'women' ? 'Step 1: Cleanse & Clarify' : 'Step 1: Deep Charcoal Detox'}
+                        </h3>
+                      </Link>
+                      <p className="font-body-sm text-sm text-[#4E4543] mb-3 leading-relaxed">
+                        {ritualTab === 'women'
+                          ? '100ml Clarifying Cleanser removes deep-seated urban particulate matter, sweat salts, and excess sebum without stripping vital ceramides.'
+                          : '100ml Charcoal Oil-Control Cleanser removes heavy automotive pollutants, sweat residue, and stubborn excess sebum for a crisp matte finish.'}
+                      </p>
+                      <div className="inline-flex items-center gap-1.5 text-[#725B38] font-label-ui text-xs font-semibold">
+                        <Check className="w-3.5 h-3.5 text-[#725B38]" />
+                        <span>
+                          {ritualTab === 'women'
+                            ? 'pH 5.5 Balanced • Salicylic Acid'
+                            : 'Activated Charcoal + Organic Tea Tree'}
+                        </span>
+                      </div>
+                    </div>
+                  </>
+                );
+              })()}
             </div>
 
             {/* Step 2 */}
@@ -768,32 +979,45 @@ export function HomeClient() {
                   Target Treatment
                 </span>
               </div>
-              <div className="aspect-square rounded-xl overflow-hidden bg-[#F1EDE8] mb-4 relative">
-                <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlf-Dtl92XY3VChhT2CtkNI_nerwXuIzKIFzIFMYIznQYvjLUsHj6fPk9raQGSz9gpyES3L4AXowPCPSMnh2j99rMntBYcAPvUpRRsUjuWS7jRrV5-5FCasG2qCXG_OSSeLBdls9s3VKkL7sM9ZDxf3EImkLTihdjfspFY6zpnF-9gXNZ0luDfD-A4C6zr7wdCKPc8Fpf4q5fI7omjCDRaIGf3wgqNcAz0EA-moCn3_g7UkjxU6mTpyA"
-                  alt="High potency skin serum droplet falling from golden pipette into glass dish"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="font-headline-sm text-xl text-[#1C1C19] mb-1">
-                  {ritualTab === 'women' ? 'Step 2: Target & Brighten' : 'Step 2: Active Defense Shield'}
-                </h3>
-                <p className="font-body-sm text-sm text-[#4E4543] mb-3 leading-relaxed">
-                  {ritualTab === 'women'
-                    ? '30ml Concentrated Glow Serum penetrates dermal strata to inhibit tyrosinase activity, fading dark spots and sun damage.'
-                    : '30ml Active Defense Serum energizes fatigued skin cells with 15% Vitamin C and Zinc to prevent oxidation and environmental dullness.'}
-                </p>
-                <div className="inline-flex items-center gap-1 text-[#725B38] font-label-ui text-xs font-semibold">
-                  <span className="material-symbols-outlined text-[16px]">done</span>
-                  <span>
-                    {ritualTab === 'women'
-                      ? 'Niacinamide 10% + Alpha Arbutin'
-                      : 'Vitamin C 15% + Zinc PCA'}
-                  </span>
-                </div>
-              </div>
+              {(() => {
+                const step2Slug = ritualTab === 'women' ? 'beauty-glow-serum-30ml' : 'men-beauty-glow-serum-30ml';
+                return (
+                  <>
+                    <Link
+                      href={`/product/${step2Slug}`}
+                      className="aspect-square rounded-xl overflow-hidden bg-[#F1EDE8] mb-4 relative block group/step"
+                      title="View Formulation Details"
+                    >
+                      <Image
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlf-Dtl92XY3VChhT2CtkNI_nerwXuIzKIFzIFMYIznQYvjLUsHj6fPk9raQGSz9gpyES3L4AXowPCPSMnh2j99rMntBYcAPvUpRRsUjuWS7jRrV5-5FCasG2qCXG_OSSeLBdls9s3VKkL7sM9ZDxf3EImkLTihdjfspFY6zpnF-9gXNZ0luDfD-A4C6zr7wdCKPc8Fpf4q5fI7omjCDRaIGf3wgqNcAz0EA-moCn3_g7UkjxU6mTpyA"
+                        alt="High potency skin serum droplet falling from golden pipette into glass dish"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover/step:scale-105"
+                      />
+                    </Link>
+                    <div>
+                      <Link href={`/product/${step2Slug}`}>
+                        <h3 className="font-headline-sm text-xl text-[#1C1C19] mb-1 hover:text-[#725B38] transition-colors">
+                          {ritualTab === 'women' ? 'Step 2: Target & Brighten' : 'Step 2: Active Defense Shield'}
+                        </h3>
+                      </Link>
+                      <p className="font-body-sm text-sm text-[#4E4543] mb-3 leading-relaxed">
+                        {ritualTab === 'women'
+                          ? '30ml Concentrated Glow Serum penetrates dermal strata to inhibit tyrosinase activity, fading dark spots and sun damage.'
+                          : '30ml Active Defense Serum energizes fatigued skin cells with 15% Vitamin C and Zinc to prevent oxidation and environmental dullness.'}
+                      </p>
+                      <div className="inline-flex items-center gap-1.5 text-[#725B38] font-label-ui text-xs font-semibold">
+                        <Check className="w-3.5 h-3.5 text-[#725B38]" />
+                        <span>
+                          {ritualTab === 'women'
+                            ? 'Niacinamide 10% + Alpha Arbutin'
+                            : 'Vitamin C 15% + Zinc PCA'}
+                        </span>
+                      </div>
+                    </div>
+                  </>
+                );
+              })()}
             </div>
 
             {/* Step 3 */}
@@ -806,32 +1030,45 @@ export function HomeClient() {
                   Overnight Recovery
                 </span>
               </div>
-              <div className="aspect-square rounded-xl overflow-hidden bg-[#F1EDE8] mb-4 relative">
-                <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDswO1GWMYsS3IbdCmZCgwvYYny2woqzrIdvvgDuXgn7gEjRmWlK4_fn3rhomsfL9VjkgUayE4rkBCv5_ROyxmnxyqAeUatXsZxM-R3f8_naN05GQHtdbgytlqwncVVkO2BoEOT3aWOvEk55sRHJRNeA1vwUta3dYLvXso_z9Py_Wylv4oGcEwZfwDyeLgrqYNdxVvokXGT31lQD7ivP-IPEXKM32rEMalFuHTpLPoy7X0QDLLAqPzlOQ"
-                  alt="Luxurious rich restorative whitening night cream texture spread on cool white marble slab"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="font-headline-sm text-xl text-[#1C1C19] mb-1">
-                  {ritualTab === 'women' ? 'Step 3: Hydrate & Rejuvenate' : 'Step 3: Nocturnal Cell Fortitude'}
-                </h3>
-                <p className="font-body-sm text-sm text-[#4E4543] mb-3 leading-relaxed">
-                  {ritualTab === 'women'
-                    ? '50gm Night Whitening Elixir seals nutrients, stimulating collagen synthesis during nocturnal recovery cycles.'
-                    : '50gm Restorative Night Cream reinforces dermal resilience, soothing post-shave irritation with high-potency caffeine and 4D Hyaluronic acid.'}
-                </p>
-                <div className="inline-flex items-center gap-1 text-[#725B38] font-label-ui text-xs font-semibold">
-                  <span className="material-symbols-outlined text-[16px]">done</span>
-                  <span>
-                    {ritualTab === 'women'
-                      ? 'Glutathione + Multi-Peptides'
-                      : 'Hyaluronic 4D + Caffeine Complex'}
-                  </span>
-                </div>
-              </div>
+              {(() => {
+                const step3Slug = ritualTab === 'women' ? 'women-beauty-night-whitening-cream-50gm' : 'men-beauty-night-whitening-cream-50gm';
+                return (
+                  <>
+                    <Link
+                      href={`/product/${step3Slug}`}
+                      className="aspect-square rounded-xl overflow-hidden bg-[#F1EDE8] mb-4 relative block group/step"
+                      title="View Formulation Details"
+                    >
+                      <Image
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDswO1GWMYsS3IbdCmZCgwvYYny2woqzrIdvvgDuXgn7gEjRmWlK4_fn3rhomsfL9VjkgUayE4rkBCv5_ROyxmnxyqAeUatXsZxM-R3f8_naN05GQHtdbgytlqwncVVkO2BoEOT3aWOvEk55sRHJRNeA1vwUta3dYLvXso_z9Py_Wylv4oGcEwZfwDyeLgrqYNdxVvokXGT31lQD7ivP-IPEXKM32rEMalFuHTpLPoy7X0QDLLAqPzlOQ"
+                        alt="Luxurious rich restorative whitening night cream texture spread on cool white marble slab"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover/step:scale-105"
+                      />
+                    </Link>
+                    <div>
+                      <Link href={`/product/${step3Slug}`}>
+                        <h3 className="font-headline-sm text-xl text-[#1C1C19] mb-1 hover:text-[#725B38] transition-colors">
+                          {ritualTab === 'women' ? 'Step 3: Hydrate & Rejuvenate' : 'Step 3: Nocturnal Cell Fortitude'}
+                        </h3>
+                      </Link>
+                      <p className="font-body-sm text-sm text-[#4E4543] mb-3 leading-relaxed">
+                        {ritualTab === 'women'
+                          ? '50gm Night Whitening Elixir seals nutrients, stimulating collagen synthesis during nocturnal recovery cycles.'
+                          : '50gm Restorative Night Cream reinforces dermal resilience, soothing post-shave irritation with high-potency caffeine and 4D Hyaluronic acid.'}
+                      </p>
+                      <div className="inline-flex items-center gap-1.5 text-[#725B38] font-label-ui text-xs font-semibold">
+                        <Check className="w-3.5 h-3.5 text-[#725B38]" />
+                        <span>
+                          {ritualTab === 'women'
+                            ? 'Glutathione + Multi-Peptides'
+                            : 'Hyaluronic 4D + Caffeine Complex'}
+                        </span>
+                      </div>
+                    </div>
+                  </>
+                );
+              })()}
             </div>
           </div>
 
@@ -839,7 +1076,7 @@ export function HomeClient() {
           <div className="mt-10 p-6 sm:p-8 bg-[#EBE8E3] rounded-2xl w-full flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm border border-[#EADECF]">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-[#725B38] text-white flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[24px]">card_giftcard</span>
+                <Gift className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h4 className="font-headline-sm text-lg text-[#1C1C19]">
@@ -882,7 +1119,7 @@ export function HomeClient() {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#FFE088] font-label-uppercase text-xs tracking-widest font-semibold backdrop-blur-sm">
-                <span className="material-symbols-outlined text-[14px]">local_offer</span>
+                <Tag className="w-3.5 h-3.5" />
                 Exclusive Season Privileges
               </div>
 
@@ -898,22 +1135,22 @@ export function HomeClient() {
                   className="px-2 py-0.5 rounded bg-white/20 text-[#FFE088] font-bold tracking-wider hover:bg-white/30 transition-colors inline-flex items-center gap-1"
                 >
                   <span>EBAGLOW</span>
-                  <span className="material-symbols-outlined text-[13px]">content_copy</span>
+                  <Copy className="w-3.5 h-3.5" />
                 </button>{' '}
                 at checkout. Includes complimentary imported velvet travel organizer.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2">
                 <div className="flex items-center gap-2 text-[#FDF9F4] font-body-sm text-xs">
-                  <span className="material-symbols-outlined text-[#FFE088] text-[18px]">verified</span>
+                  <ShieldCheck className="w-4 h-4 text-[#FFE088]" />
                   Complimentary Shipping
                 </div>
                 <div className="flex items-center gap-2 text-[#FDF9F4] font-body-sm text-xs">
-                  <span className="material-symbols-outlined text-[#FFE088] text-[18px]">card_giftcard</span>
+                  <Gift className="w-4 h-4 text-[#FFE088]" />
                   Free Luxury Gift Pouch
                 </div>
                 <div className="flex items-center gap-2 text-[#FDF9F4] font-body-sm text-xs">
-                  <span className="material-symbols-outlined text-[#FFE088] text-[18px]">schedule</span>
+                  <Clock className="w-4 h-4 text-[#FFE088]" />
                   Dispatch within 24 Hours
                 </div>
               </div>
@@ -959,13 +1196,13 @@ export function HomeClient() {
                 aria-label="Previous review"
                 className="w-11 h-11 rounded-full bg-[#EBE8E3] text-[#1C1C19] hover:bg-[#1A1615] hover:text-white transition-all flex items-center justify-center shadow-sm"
               >
-                <span className="material-symbols-outlined text-[20px]">chevron_left</span>
+                <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 aria-label="Next review"
                 className="w-11 h-11 rounded-full bg-[#EBE8E3] text-[#1C1C19] hover:bg-[#1A1615] hover:text-white transition-all flex items-center justify-center shadow-sm"
               >
-                <span className="material-symbols-outlined text-[20px]">chevron_right</span>
+                <ChevronRight className="w-5 h-5" />
               </button>
             </div>
           </div>
@@ -976,15 +1213,9 @@ export function HomeClient() {
             <div className="bg-white p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow border border-[#EADECF]">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center text-[#CCA730]">
+                  <div className="flex items-center text-[#CCA730] gap-0.5">
                     {[...Array(5)].map((_, i) => (
-                      <span
-                        key={i}
-                        className="material-symbols-outlined text-[16px]"
-                        style={{ fontVariationSettings: "'FILL' 1" }}
-                      >
-                        star
-                      </span>
+                      <Star key={i} className="w-4 h-4 fill-[#CCA730] text-[#CCA730]" />
                     ))}
                   </div>
                   <span className="font-label-uppercase text-[11px] text-[#7F7572] font-semibold">
@@ -1003,7 +1234,7 @@ export function HomeClient() {
                 <div>
                   <div className="font-label-ui text-xs font-semibold text-[#1C1C19]">Ayesha Malik</div>
                   <div className="flex items-center gap-1 text-[11px] text-[#725B38] font-medium">
-                    <span className="material-symbols-outlined text-[14px]">verified</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#725B38]" />
                     <span>Verified Buyer • DHA Lahore</span>
                   </div>
                 </div>
@@ -1014,15 +1245,9 @@ export function HomeClient() {
             <div className="bg-white p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow border border-[#EADECF]">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center text-[#CCA730]">
+                  <div className="flex items-center text-[#CCA730] gap-0.5">
                     {[...Array(5)].map((_, i) => (
-                      <span
-                        key={i}
-                        className="material-symbols-outlined text-[16px]"
-                        style={{ fontVariationSettings: "'FILL' 1" }}
-                      >
-                        star
-                      </span>
+                      <Star key={i} className="w-4 h-4 fill-[#CCA730] text-[#CCA730]" />
                     ))}
                   </div>
                   <span className="font-label-uppercase text-[11px] text-[#7F7572] font-semibold">
@@ -1041,7 +1266,7 @@ export function HomeClient() {
                 <div>
                   <div className="font-label-ui text-xs font-semibold text-[#1C1C19]">Fahad Khan</div>
                   <div className="flex items-center gap-1 text-[11px] text-[#725B38] font-medium">
-                    <span className="material-symbols-outlined text-[14px]">verified</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#725B38]" />
                     <span>Verified Buyer • Clifton Karachi</span>
                   </div>
                 </div>
@@ -1052,15 +1277,9 @@ export function HomeClient() {
             <div className="bg-white p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow border border-[#EADECF]">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center text-[#CCA730]">
+                  <div className="flex items-center text-[#CCA730] gap-0.5">
                     {[...Array(5)].map((_, i) => (
-                      <span
-                        key={i}
-                        className="material-symbols-outlined text-[16px]"
-                        style={{ fontVariationSettings: "'FILL' 1" }}
-                      >
-                        star
-                      </span>
+                      <Star key={i} className="w-4 h-4 fill-[#CCA730] text-[#CCA730]" />
                     ))}
                   </div>
                   <span className="font-label-uppercase text-[11px] text-[#7F7572] font-semibold">
@@ -1079,7 +1298,7 @@ export function HomeClient() {
                 <div>
                   <div className="font-label-ui text-xs font-semibold text-[#1C1C19]">Zainab Rehman</div>
                   <div className="flex items-center gap-1 text-[11px] text-[#725B38] font-medium">
-                    <span className="material-symbols-outlined text-[14px]">verified</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#725B38]" />
                     <span>Verified Buyer • F-8 Islamabad</span>
                   </div>
                 </div>
@@ -1093,7 +1312,7 @@ export function HomeClient() {
       <section className="w-full bg-[#EBE8E3] py-16 px-4 sm:px-6 lg:px-12 border-t border-[#EADECF]">
         <div className="max-w-[960px] mx-auto text-center flex flex-col items-center">
           <div className="w-14 h-14 rounded-full bg-white text-[#725B38] flex items-center justify-center mb-4 shadow-sm border border-[#EADECF]">
-            <span className="material-symbols-outlined text-[28px]">mark_email_read</span>
+            <MailCheck className="w-7 h-7 text-[#725B38]" />
           </div>
 
           <span className="font-label-uppercase text-xs tracking-widest text-[#725B38] font-bold">
@@ -1108,7 +1327,7 @@ export function HomeClient() {
 
           {newsletterSubscribed ? (
             <div className="p-4 bg-white rounded-full border border-[#CCA730] text-[#1C1C19] font-medium text-sm flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#CCA730]">check_circle</span>
+              <CheckCircle2 className="w-5 h-5 text-[#CCA730]" />
               Welcome to the EBA Privilege Club. Your 10% voucher code has been dispatched to your email.
             </div>
           ) : (
@@ -1131,11 +1350,11 @@ export function HomeClient() {
           )}
 
           <div className="flex items-center justify-center gap-6 mt-4 text-[#4E4543] font-body-sm text-xs">
-            <span className="flex items-center gap-1">
-              <span className="material-symbols-outlined text-[16px] text-[#735C00]">check_circle</span> Instant Email Voucher
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-[#735C00]" /> Instant Email Voucher
             </span>
-            <span className="flex items-center gap-1">
-              <span className="material-symbols-outlined text-[16px] text-[#735C00]">lock</span> Zero Spam Policy
+            <span className="flex items-center gap-1.5">
+              <Lock className="w-4 h-4 text-[#735C00]" /> Zero Spam Policy
             </span>
           </div>
         </div>
@@ -1156,18 +1375,29 @@ export function HomeClient() {
               onClick={() => setQuickViewProduct(null)}
               className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F1EDE8] flex items-center justify-center text-[#1C1C19] hover:bg-[#1A1615] hover:text-white transition-all"
             >
-              <span className="material-symbols-outlined text-[20px]">close</span>
+              <X className="w-4 h-4" />
             </button>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
-              <div className="aspect-[4/5] rounded-xl overflow-hidden bg-[#F1EDE8] relative">
+              <Link
+                href={`/product/${quickViewProduct.slug}`}
+                onClick={() => setQuickViewProduct(null)}
+                className="aspect-[4/5] rounded-xl overflow-hidden bg-[#F1EDE8] relative block group/modal-img cursor-pointer"
+                title={`Open ${quickViewProduct.name} page`}
+              >
                 <Image
                   src={quickViewProduct.image}
                   alt={quickViewProduct.name}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover/modal-img:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
-              </div>
+                <div className="absolute inset-0 bg-black/25 opacity-0 group-hover/modal-img:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="px-4 py-2 rounded-full bg-white text-[#1C1C19] font-label-uppercase text-xs font-bold tracking-wider shadow-xl">
+                    View Product Page →
+                  </span>
+                </div>
+              </Link>
 
               <div className="space-y-3">
                 <span
@@ -1176,9 +1406,14 @@ export function HomeClient() {
                   {quickViewProduct.badge}
                 </span>
 
-                <h3 className="font-headline-sm text-xl text-[#1C1C19]">
-                  {quickViewProduct.name}
-                </h3>
+                <Link
+                  href={`/product/${quickViewProduct.slug}`}
+                  onClick={() => setQuickViewProduct(null)}
+                >
+                  <h3 className="font-headline-sm text-xl text-[#1C1C19] hover:text-[#725B38] transition-colors cursor-pointer">
+                    {quickViewProduct.name}
+                  </h3>
+                </Link>
 
                 <p className="text-xs text-[#725B38] font-medium">
                   {quickViewProduct.subtitle}
@@ -1195,16 +1430,24 @@ export function HomeClient() {
                   {quickViewProduct.description}
                 </p>
 
-                <div className="pt-2">
+                <div className="pt-2 flex flex-col sm:flex-row gap-2.5">
                   <button
                     onClick={() => {
                       handleAddToCart(quickViewProduct);
                       setQuickViewProduct(null);
                     }}
-                    className="w-full py-3 rounded-full bg-[#1A1615] text-white font-label-uppercase text-xs tracking-widest font-semibold hover:bg-[#725B38] transition-colors shadow-md flex items-center justify-center gap-2"
+                    className="flex-1 py-3 rounded-full bg-[#1A1615] text-white font-label-uppercase text-xs tracking-widest font-semibold hover:bg-[#725B38] transition-colors shadow-md flex items-center justify-center gap-2"
                   >
-                    <span className="material-symbols-outlined text-[18px]">shopping_bag</span> Add to Cart Now
+                    <ShoppingBag className="w-4 h-4" /> Add to Cart Now
                   </button>
+
+                  <Link
+                    href={`/product/${quickViewProduct.slug}`}
+                    onClick={() => setQuickViewProduct(null)}
+                    className="py-3 px-5 rounded-full border border-[#EADECF] text-[#1C1C19] font-label-uppercase text-xs tracking-widest font-semibold hover:bg-[#F7F3EE] transition-colors text-center flex items-center justify-center"
+                  >
+                    Full Details
+                  </Link>
                 </div>
               </div>
             </div>

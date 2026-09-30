@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { BrandLogo } from '@/components/ui/BrandLogo';
+import { getStoredOrders, AdminOrder } from '@/lib/orderStorage';
+import { Lock, CheckCircle2, Mail, Phone, ShieldCheck, LogOut, Check, Package, Truck, Home } from 'lucide-react';
 
 export default function MyAccountPage() {
   const { user, profile, role, isAdmin, signOut, isLoading } = useAuth();
@@ -13,6 +15,24 @@ export default function MyAccountPage() {
   const [activeTab, setActiveTab] = useState<'orders' | 'profile' | 'security'>('orders');
   const [isUpdating, setIsUpdating] = useState(false);
   const [profileSaved, setProfileSaved] = useState(false);
+  const [userOrders, setUserOrders] = useState<AdminOrder[]>([]);
+
+  useEffect(() => {
+    if (!user) return;
+    const userEmail = (user.email || '').toLowerCase();
+    const all = getStoredOrders();
+    setUserOrders(all.filter((o) => (o.customerEmail || '').toLowerCase() === userEmail));
+
+    const handler = () => {
+      const updated = getStoredOrders();
+      setUserOrders(updated.filter((o) => (o.customerEmail || '').toLowerCase() === userEmail));
+    };
+    window.addEventListener('eba_orders_updated', handler);
+    return () => window.removeEventListener('eba_orders_updated', handler);
+  }, [user]);
+
+  const activeOrdersCount = userOrders.filter((o) => o.status !== 'delivered' && o.status !== 'cancelled').length;
+  const userTotalSpent = userOrders.reduce((sum, o) => sum + (o.totalAmount || 0), 0);
 
   // Editable profile state
   const [fullName, setFullName] = useState(profile?.full_name || 'EBA Patron');
@@ -39,7 +59,7 @@ export default function MyAccountPage() {
       <div className="min-h-[70vh] flex items-center justify-center p-6 bg-[#FDF9F4]">
         <div className="max-w-md w-full bg-white border border-[#EADECF] rounded-2xl p-8 text-center shadow-lg">
           <div className="w-12 h-12 rounded-full bg-[#F7F3EE] text-[#725B38] flex items-center justify-center mx-auto mb-4">
-            <span className="material-symbols-outlined text-[24px]">lock</span>
+            <Lock className="w-6 h-6" />
           </div>
           <h2 className="font-display-brand text-2xl text-[#1C1C19] font-semibold mb-2">
             Client Authentication Required
@@ -102,7 +122,7 @@ export default function MyAccountPage() {
             <div className="relative w-20 h-20 rounded-full bg-[#1F1B1A] text-[#FFE088] flex items-center justify-center font-display-brand text-2xl font-semibold shadow-md shrink-0">
               <span>{profile?.full_name?.charAt(0) || user.email?.charAt(0).toUpperCase()}</span>
               <span className="absolute bottom-0 right-0 w-6 h-6 bg-[#725B38] rounded-full flex items-center justify-center text-white text-[12px] shadow-sm">
-                <span className="material-symbols-outlined text-[14px]">verified</span>
+                <CheckCircle2 className="w-3.5 h-3.5" />
               </span>
             </div>
 
@@ -116,13 +136,13 @@ export default function MyAccountPage() {
                 </span>
               </div>
               <p className="font-body-md text-xs sm:text-sm text-[#4E4543] flex flex-wrap items-center gap-x-3 gap-y-1">
-                <span className="inline-flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[15px] text-[#725B38]">mail</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Mail className="w-3.5 h-3.5 text-[#725B38]" />
                   {user.email}
                 </span>
                 <span className="text-[#D1C4C1] hidden sm:inline">•</span>
-                <span className="inline-flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[15px] text-[#725B38]">call</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5 text-[#725B38]" />
                   {phone}
                 </span>
               </p>
@@ -137,14 +157,14 @@ export default function MyAccountPage() {
             <div className="bg-white rounded-xl p-3.5 border border-[#EADECF] shadow-sm flex flex-col justify-between">
               <span className="font-label-uppercase text-[10px] tracking-wider text-[#7F7572]">Orders</span>
               <div className="mt-2 flex items-baseline gap-1">
-                <span className="font-display-brand text-2xl text-[#1C1C19] font-bold">2</span>
-                <span className="font-body-sm text-[11px] text-[#725B38]">Active</span>
+                <span className="font-display-brand text-2xl text-[#1C1C19] font-bold">{userOrders.length}</span>
+                <span className="font-body-sm text-[11px] text-[#725B38]">{activeOrdersCount} Active</span>
               </div>
             </div>
             <div className="bg-white rounded-xl p-3.5 border border-[#EADECF] shadow-sm flex flex-col justify-between">
               <span className="font-label-uppercase text-[10px] tracking-wider text-[#7F7572]">Total Spent</span>
               <div className="mt-2 flex items-baseline gap-1">
-                <span className="font-price-md text-base text-[#1C1C19] font-bold">Rs. 9,450</span>
+                <span className="font-price-md text-base text-[#1C1C19] font-bold">Rs. {userTotalSpent.toLocaleString()}</span>
               </div>
             </div>
             <div className="bg-white rounded-xl p-3.5 border border-[#EADECF] shadow-sm flex flex-col justify-between">
@@ -161,14 +181,14 @@ export default function MyAccountPage() {
         {isAdmin && (
           <div className="mt-6 pt-5 border-t border-[#EADECF] flex items-center justify-between">
             <div className="flex items-center gap-2 text-xs text-[#78603E] font-medium">
-              <span className="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+              <ShieldCheck className="w-4 h-4 text-[#78603E]" />
               <span>You possess administrative permissions for EBA Skin Care.</span>
             </div>
             <Link
               href="/admin"
               className="px-4 py-2 rounded-full bg-[#1F1B1A] text-[#FFE088] font-label-uppercase text-xs tracking-wider font-semibold hover:bg-black transition-colors"
             >
-              Open Admin Dashboard Studio →
+              Open Admin Dashboard Studio
             </Link>
           </div>
         )}
@@ -216,7 +236,7 @@ export default function MyAccountPage() {
           onClick={handleSignOut}
           className="text-xs font-label-ui text-red-600 hover:text-red-700 flex items-center gap-1.5 pb-2"
         >
-          <span className="material-symbols-outlined text-[16px]">logout</span>
+          <LogOut className="w-4 h-4" />
           <span>Sign Out</span>
         </button>
       </div>
@@ -224,141 +244,68 @@ export default function MyAccountPage() {
       {/* Tab 1: Orders and Tracking */}
       {activeTab === 'orders' && (
         <div className="space-y-6">
-          {/* Order 1: In Transit */}
-          <div className="bg-white border border-[#EADECF] rounded-2xl p-6 shadow-sm">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#EADECF] gap-2">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="font-label-uppercase text-xs font-bold text-[#1C1C19] tracking-wider">
-                    Order #EBA-2026-8941
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[10px] font-label-uppercase font-semibold uppercase">
-                    In Transit
-                  </span>
-                </div>
-                <p className="font-body-sm text-xs text-[#7F7572] mt-0.5">
-                  Placed on September 28, 2026 • Payment: Cash on Delivery (COD)
-                </p>
+          {userOrders.length === 0 ? (
+            <div className="bg-white border border-[#EADECF] rounded-2xl p-12 text-center shadow-sm">
+              <div className="w-14 h-14 rounded-full bg-[#F7F3EE] text-[#725B38] flex items-center justify-center mx-auto mb-3 border border-[#EADECF]">
+                <Package className="w-7 h-7 text-[#725B38]" />
               </div>
-              <div className="text-right">
-                <span className="font-price-lg text-lg font-bold text-[#1C1C19]">Rs. 5,200</span>
-                <p className="font-body-sm text-[11px] text-[#725B38]">2 Formulations Included</p>
-              </div>
-            </div>
-
-            {/* Live Tracking Progress Bar */}
-            <div className="py-6">
-              <div className="relative flex items-center justify-between max-w-2xl mx-auto">
-                <div className="absolute top-1/2 left-0 right-0 h-1 bg-[#EADECF] -translate-y-1/2 z-0" />
-                <div className="absolute top-1/2 left-0 w-2/3 h-1 bg-[#725B38] -translate-y-1/2 z-0" />
-
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-8 h-8 rounded-full bg-[#1A1615] text-[#FFE088] flex items-center justify-center text-xs">
-                    <span className="material-symbols-outlined text-[16px]">check</span>
-                  </div>
-                  <span className="font-label-uppercase text-[10px] tracking-wider mt-2 font-semibold text-[#1C1C19]">
-                    Confirmed
-                  </span>
-                </div>
-
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-8 h-8 rounded-full bg-[#1A1615] text-[#FFE088] flex items-center justify-center text-xs">
-                    <span className="material-symbols-outlined text-[16px]">inventory_2</span>
-                  </div>
-                  <span className="font-label-uppercase text-[10px] tracking-wider mt-2 font-semibold text-[#1C1C19]">
-                    Dispatched
-                  </span>
-                </div>
-
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-8 h-8 rounded-full bg-[#725B38] text-white flex items-center justify-center text-xs ring-4 ring-[#FEDEB2]">
-                    <span className="material-symbols-outlined text-[16px] animate-pulse">local_shipping</span>
-                  </div>
-                  <span className="font-label-uppercase text-[10px] tracking-wider mt-2 font-bold text-[#725B38]">
-                    In Transit
-                  </span>
-                </div>
-
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-8 h-8 rounded-full bg-[#EADECF] text-[#7F7572] flex items-center justify-center text-xs">
-                    <span className="material-symbols-outlined text-[16px]">home</span>
-                  </div>
-                  <span className="font-label-uppercase text-[10px] tracking-wider mt-2 text-[#7F7572]">
-                    Delivered
-                  </span>
-                </div>
-              </div>
-
-              <div className="mt-5 p-3 rounded-xl bg-[#F7F3EE] border border-[#EADECF] text-xs text-[#4E4543] flex items-center justify-between max-w-2xl mx-auto">
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-[18px] text-[#725B38]">local_shipping</span>
-                  <span>Courier: <strong>TCS Express Pakistan</strong> • Tracking: <strong>TCS-789218491</strong></span>
-                </div>
-                <span className="font-semibold text-[#725B38]">Est. Delivery: Tomorrow</span>
-              </div>
-            </div>
-
-            {/* Items in this order */}
-            <div className="pt-4 border-t border-[#EADECF] flex flex-wrap gap-4 items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="text-xs text-[#1C1C19]">
-                  <p className="font-semibold">Women Beauty Glow Serum 30ml (x1) • Rs. 2,950</p>
-                  <p className="text-[#7F7572]">Women Beauty Night Whitening Cream 50gm (x1) • Rs. 2,250</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <Link
-                  href="/shop"
-                  className="px-4 py-2 rounded-full border border-[#EADECF] text-xs font-label-ui hover:bg-[#F7F3EE] transition-colors"
-                >
-                  Reorder Formulations
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => alert('Printing official invoice for Order #EBA-2026-8941...')}
-                  className="px-4 py-2 rounded-full bg-[#1A1615] text-[#FDF9F4] text-xs font-label-ui hover:bg-black transition-colors"
-                >
-                  Download Invoice
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Order 2: Delivered */}
-          <div className="bg-white border border-[#EADECF] rounded-2xl p-6 shadow-sm">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#EADECF] gap-2">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="font-label-uppercase text-xs font-bold text-[#1C1C19] tracking-wider">
-                    Order #EBA-2026-7612
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-label-uppercase font-semibold uppercase">
-                    Delivered
-                  </span>
-                </div>
-                <p className="font-body-sm text-xs text-[#7F7572] mt-0.5">
-                  Delivered on August 14, 2026 • Payment: JazzCash Verified
-                </p>
-              </div>
-              <div className="text-right">
-                <span className="font-price-lg text-lg font-bold text-[#1C1C19]">Rs. 4,250</span>
-              </div>
-            </div>
-
-            <div className="pt-4 flex flex-wrap gap-4 items-center justify-between">
-              <div className="text-xs text-[#1C1C19]">
-                <p className="font-semibold">Men Face Wash 100ml (x1) + Men Glow Serum 30ml (x1)</p>
-                <p className="text-[#7F7572]">Delivered to: House 42, Street 8, F-7/2, Islamabad</p>
-              </div>
-              <button
-                type="button"
-                onClick={() => alert('Printing official invoice for Order #EBA-2026-7612...')}
-                className="px-4 py-2 rounded-full border border-[#EADECF] text-xs font-label-ui hover:bg-[#F7F3EE] transition-colors"
+              <h3 className="font-headline-sm text-lg font-semibold text-[#1C1C19] mb-1">
+                No Orders Placed Yet
+              </h3>
+              <p className="font-body-md text-xs text-[#7F7572] max-w-sm mx-auto mb-6">
+                Your order sanctuary is currently empty. Explore our botanical formulations to begin your ritual.
+              </p>
+              <Link
+                href="/shop"
+                className="px-6 py-2.5 rounded-full bg-[#1A1615] text-[#FDF9F4] font-label-uppercase text-xs tracking-wider font-semibold hover:bg-black transition-colors shadow-sm inline-block"
               >
-                Print Receipt
-              </button>
+                Explore Formulations
+              </Link>
             </div>
-          </div>
+          ) : (
+            userOrders.map((ord) => (
+              <div key={ord.id} className="bg-white border border-[#EADECF] rounded-2xl p-6 shadow-sm">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#EADECF] gap-2">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-label-uppercase text-xs font-bold text-[#1C1C19] tracking-wider">
+                        {ord.orderNumber}
+                      </span>
+                      <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[10px] font-label-uppercase font-semibold uppercase">
+                        {ord.status.replace('_', ' ')}
+                      </span>
+                    </div>
+                    <p className="font-body-sm text-xs text-[#7F7572] mt-0.5">
+                      Placed on {ord.date} • Payment: {ord.paymentMethod}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <span className="font-price-lg text-lg font-bold text-[#1C1C19]">
+                      Rs. {ord.totalAmount.toLocaleString()}
+                    </span>
+                    <p className="font-body-sm text-[11px] text-[#725B38]">
+                      {ord.itemsList?.length || 1} Formulations
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-4 flex flex-wrap gap-4 items-center justify-between">
+                  <div className="text-xs text-[#1C1C19]">
+                    <p className="font-semibold">{ord.itemsSummary}</p>
+                    <p className="text-[#7F7572]">Courier: {ord.courier} • Tracking: {ord.trackingNumber}</p>
+                  </div>
+                  <Link
+                    href="/shop"
+                    className="px-4 py-2 rounded-full border border-[#EADECF] text-xs font-label-ui hover:bg-[#F7F3EE] transition-colors"
+                  >
+                    Reorder Formulations
+                  </Link>
+                </div>
+              </div>
+            ))
+          )}
+
+
         </div>
       )}
 
@@ -371,7 +318,7 @@ export default function MyAccountPage() {
 
           {profileSaved && (
             <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2">
-              <span className="material-symbols-outlined text-[18px]">check_circle</span>
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Your profile and delivery coordinates have been updated.</span>
             </div>
           )}

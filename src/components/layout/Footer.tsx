@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { BrandLogo } from '@/components/ui/BrandLogo';
+import { Truck, ShieldCheck } from 'lucide-react';
 
 export function Footer() {
   const pathname = usePathname();
@@ -122,7 +123,7 @@ export function Footer() {
               <li>
                 <Link href="/my-account" className="hover:text-[#1C1C19] transition-colors flex items-center justify-between">
                   <span>Track Your Order (TCS / Leopard)</span>
-                  <span className="material-symbols-outlined text-[15px] text-[#725B38]">local_shipping</span>
+                  <Truck className="w-4 h-4 text-[#725B38]" />
                 </Link>
               </li>
               <li>
@@ -182,7 +183,7 @@ export function Footer() {
               </button>
             </form>
             <div className="flex items-center gap-1.5 pt-1 text-xs text-[#4E4543]">
-              <span className="material-symbols-outlined text-[16px] text-[#725B38]">verified_user</span>
+              <ShieldCheck className="w-4 h-4 text-[#725B38]" />
               <span>Direct Helpline: +92 21 3589 1234</span>
             </div>
           </div>

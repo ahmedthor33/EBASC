@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import { Key, AlertCircle, CheckCircle2, Lock, ArrowLeft } from 'lucide-react';
 
 export default function ResetPasswordPage() {
   const [password, setPassword] = useState('');
@@ -47,7 +48,7 @@ export default function ResetPasswordPage() {
       <div className="w-full max-w-md bg-white border border-[#EADECF] rounded-2xl p-8 sm:p-10 shadow-xl">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#F7F3EE] text-[#725B38] mb-3">
-            <span className="material-symbols-outlined text-[26px]">key</span>
+            <Key className="w-6 h-6 text-[#725B38]" />
           </div>
           <h1 className="font-display-brand text-2xl text-[#1C1C19] uppercase tracking-wider font-semibold">
             Set New Password
@@ -58,15 +59,15 @@ export default function ResetPasswordPage() {
         </div>
 
         {error && (
-          <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
-            <span className="material-symbols-outlined text-[18px]">error</span>
+          <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2.5">
+            <AlertCircle className="w-4 h-4 shrink-0" />
             <span>{error}</span>
           </div>
         )}
 
         {success && (
-          <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2">
-            <span className="material-symbols-outlined text-[18px]">check_circle</span>
+          <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2.5">
+            <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-700" />
             <span>Password successfully updated! Redirecting to account...</span>
           </div>
         )}
@@ -76,17 +77,15 @@ export default function ResetPasswordPage() {
             <label className="block font-label-ui text-xs font-semibold text-[#1C1C19] mb-1.5 uppercase tracking-wider">
               New Password
             </label>
-            <div className="relative">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-[20px] text-[#7F7572]">
-                lock
-              </span>
+            <div className="relative flex items-center">
+              <Lock className="absolute left-3.5 w-4 h-4 text-[#7F7572] pointer-events-none" />
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Minimum 6 characters"
-                className="w-full pl-11 pr-4 py-3 bg-[#FDF9F4] border border-[#EADECF] rounded-lg text-sm text-[#1C1C19] placeholder-[#7F7572] focus:outline-none focus:border-[#C5A880] focus:ring-2 focus:ring-[#C5A880]/20 transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-[#FDF9F4] border border-[#EADECF] rounded-lg text-sm text-[#1C1C19] placeholder-[#7F7572] focus:outline-none focus:border-[#C5A880] focus:ring-2 focus:ring-[#C5A880]/20 transition-all"
               />
             </div>
           </div>
@@ -95,17 +94,15 @@ export default function ResetPasswordPage() {
             <label className="block font-label-ui text-xs font-semibold text-[#1C1C19] mb-1.5 uppercase tracking-wider">
               Confirm New Password
             </label>
-            <div className="relative">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-[20px] text-[#7F7572]">
-                lock_clock
-              </span>
+            <div className="relative flex items-center">
+              <Lock className="absolute left-3.5 w-4 h-4 text-[#7F7572] pointer-events-none" />
               <input
                 type="password"
                 required
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Repeat password"
-                className="w-full pl-11 pr-4 py-3 bg-[#FDF9F4] border border-[#EADECF] rounded-lg text-sm text-[#1C1C19] placeholder-[#7F7572] focus:outline-none focus:border-[#C5A880] focus:ring-2 focus:ring-[#C5A880]/20 transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-[#FDF9F4] border border-[#EADECF] rounded-lg text-sm text-[#1C1C19] placeholder-[#7F7572] focus:outline-none focus:border-[#C5A880] focus:ring-2 focus:ring-[#C5A880]/20 transition-all"
               />
             </div>
           </div>
@@ -131,7 +128,7 @@ export default function ResetPasswordPage() {
             href="/sign-in"
             className="inline-flex items-center gap-1.5 font-label-ui text-xs text-[#725B38] hover:text-[#1A1615] transition-colors"
           >
-            <span className="material-symbols-outlined text-[16px]">arrow_back</span>
+            <ArrowLeft className="w-3.5 h-3.5" />
             <span>Return to Sign In</span>
           </Link>
         </div>

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ProductItem } from '@/lib/products';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
+import { Heart, Star, ShoppingBag, Eye } from 'lucide-react';
 
 interface ProductCardProps {
   product: ProductItem;
@@ -53,14 +54,15 @@ export function ProductCard({ product, theme = 'default' }: ProductCardProps) {
               : 'bg-white/80 text-[#1C1C19] hover:text-[#B76E79]'
           }`}
         >
-          <span
-            className={`material-symbols-outlined text-[19px] ${
-              isLiked ? (isMenTheme ? 'text-[#C9A96E]' : 'text-[#B76E79]') : ''
+          <Heart
+            className={`w-4 h-4 transition-colors ${
+              isLiked
+                ? isMenTheme
+                  ? 'fill-[#C9A96E] text-[#C9A96E]'
+                  : 'fill-[#B76E79] text-[#B76E79]'
+                : ''
             }`}
-            style={{ fontVariationSettings: isLiked ? "'FILL' 1" : "'FILL' 0" }}
-          >
-            favorite
-          </span>
+          />
         </button>
 
         {/* Category / Feature Badge */}
@@ -101,13 +103,10 @@ export function ProductCard({ product, theme = 'default' }: ProductCardProps) {
           <div className="flex items-center gap-1 mb-1.5">
             <div className="flex items-center text-[#D4AF37]">
               {[...Array(5)].map((_, i) => (
-                <span
+                <Star
                   key={i}
-                  className="material-symbols-outlined text-[14px]"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  star
-                </span>
+                  className="w-3.5 h-3.5 fill-[#D4AF37] text-[#D4AF37]"
+                />
               ))}
             </div>
             <span
@@ -180,7 +179,7 @@ export function ProductCard({ product, theme = 'default' }: ProductCardProps) {
                   : 'bg-[#1A1615] text-[#FDF9F4] hover:bg-black'
               }`}
             >
-              <span className="material-symbols-outlined text-[17px]">add_shopping_cart</span>
+              <ShoppingBag className="w-4 h-4" />
               <span>Add to Bag</span>
             </button>
 
@@ -193,7 +192,7 @@ export function ProductCard({ product, theme = 'default' }: ProductCardProps) {
                   : 'border-[#EADECF] bg-[#F7F3EE] text-[#1C1C19] hover:bg-[#EBE8E3]'
               }`}
             >
-              <span className="material-symbols-outlined text-[18px]">visibility</span>
+              <Eye className="w-4 h-4" />
             </Link>
           </div>
         </div>

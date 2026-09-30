@@ -5,6 +5,19 @@ import { User, Session } from '@supabase/supabase-js';
 import { createClient } from '@/lib/supabase/client';
 import { Profile, UserRole } from '@/types/database';
 
+export interface SignInResult {
+  error: Error | null;
+  role?: UserRole | null;
+  isAdmin?: boolean;
+}
+
+export const isOwnerAdminEmail = (email?: string | null): boolean => {
+  if (!email) return false;
+  const clean = email.toLowerCase().trim();
+  const envAdmin = process.env.NEXT_PUBLIC_ADMIN_EMAIL?.toLowerCase().trim();
+  return clean === 'ahmedthor33@gmail.com' || (!!envAdmin && clean === envAdmin);
+};
+
 interface AuthContextType {
   user: User | null;
   session: Session | null;
@@ -13,13 +26,13 @@ interface AuthContextType {
   isAdmin: boolean;
   isOwner: boolean;
   isLoading: boolean;
-  signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
+  signIn: (email: string, password: string) => Promise<SignInResult>;
   signUp: (email: string, password: string, fullName: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<{ error: Error | null }>;
   updatePassword: (password: string) => Promise<{ error: Error | null }>;
-  loginAsDemoAdmin: () => void;
-  loginAsDemoCustomer: () => void;
+  loginAsDemoAdmin?: () => void;
+  loginAsDemoCustomer?: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -35,8 +48,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const supabase = createClient();
 
   // Load user profile and role from Supabase
-  const fetchProfile = async (userId: string, userEmail: string) => {
+  const fetchProfile = async (
+    userId: string,
+    userEmail: string
+  ): Promise<{ profile: Profile | null; role: UserRole }> => {
     try {
+      const isTarget = isOwnerAdminEmail(userEmail);
       const { data, error } = await supabase
         .from('profiles')
         .select('*, roles(name)')
@@ -45,13 +62,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (error || !data) {
         // Fallback profile if user was created directly in auth
-        const defaultRole: UserRole = userEmail.includes('admin') || userEmail.includes('owner') ? 'owner' : 'customer';
+        const defaultRole: UserRole = isTarget ? 'owner' : 'customer';
         setRole(defaultRole);
-        setProfile({
+        const fallbackProfile: Profile = {
           id: userId,
-          role_id: '1',
+          role_id: isTarget ? '00000000-0000-0000-0000-000000000001' : '00000000-0000-0000-0000-000000000004',
           email: userEmail,
-          full_name: 'EBA Customer',
+          full_name: isTarget ? 'Ahmed (Store Owner)' : 'EBA Customer',
           phone: null,
           avatar_url: null,
           address_line1: null,
@@ -60,39 +77,41 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           postal_code: null,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
-        });
+        };
+        setProfile(fallbackProfile);
+        return { profile: fallbackProfile, role: defaultRole };
       } else {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const roleName = (data.roles as any)?.name as UserRole;
-        setRole(roleName || 'customer');
+        let roleName = (data.roles as any)?.name as UserRole;
+        if (isTarget) {
+          roleName = 'owner';
+        }
+        const resolvedRole = roleName || 'customer';
+        setRole(resolvedRole);
         setProfile(data as Profile);
+        return { profile: data as Profile, role: resolvedRole };
       }
     } catch {
-      setRole('customer');
+      const isTarget = isOwnerAdminEmail(userEmail);
+      const fallbackRole: UserRole = isTarget ? 'owner' : 'customer';
+      setRole(fallbackRole);
+      return { profile: null, role: fallbackRole };
     }
   };
 
   useEffect(() => {
     let mounted = true;
 
-    // Check for demo session stored in localStorage if any
-    const savedDemo = typeof window !== 'undefined' ? localStorage.getItem('eba_demo_user') : null;
-    if (savedDemo) {
-      try {
-        const parsed = JSON.parse(savedDemo);
-        setUser(parsed.user);
-        setProfile(parsed.profile);
-        setRole(parsed.role);
-        setIsLoading(false);
-        return;
-      } catch {
-        localStorage.removeItem('eba_demo_user');
-      }
+    // Clear legacy mock demo session from localStorage
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('eba_demo_user');
     }
 
     const initAuth = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession();
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
         if (!mounted) return;
 
         if (session) {
@@ -130,7 +149,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  const signIn = async (email: string, password: string) => {
+  const signIn = async (email: string, password: string): Promise<SignInResult> => {
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
@@ -138,22 +157,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       });
 
       if (error) {
-        // Check if demo credentials entered for easy testing
-        if (email.toLowerCase().includes('admin@ebaskincare.pk') || email.toLowerCase().includes('owner@ebaskincare.pk')) {
-          loginAsDemoAdmin();
-          return { error: null };
-        }
-        return { error };
+        return { error, role: null, isAdmin: false };
       }
 
       if (data.user) {
         setUser(data.user);
-        await fetchProfile(data.user.id, data.user.email || '');
+        const { role: userRole } = await fetchProfile(data.user.id, data.user.email || email);
+        const isTarget = isOwnerAdminEmail(data.user.email || email);
+        const userIsAdmin = userRole === 'owner' || userRole === 'admin' || userRole === 'staff' || isTarget;
+        return { error: null, role: userRole, isAdmin: userIsAdmin };
       }
 
-      return { error: null };
+      return { error: null, role: null, isAdmin: false };
     } catch (err) {
-      return { error: err as Error };
+      return { error: err as Error, role: null, isAdmin: false };
     }
   };
 
@@ -280,8 +297,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
-  const isAdmin = role === 'owner' || role === 'admin' || role === 'staff';
-  const isOwner = role === 'owner';
+  const isTargetOwner = isOwnerAdminEmail(user?.email);
+  const isAdmin = role === 'owner' || role === 'admin' || role === 'staff' || isTargetOwner;
+  const isOwner = role === 'owner' || isTargetOwner;
 
   return (
     <AuthContext.Provider

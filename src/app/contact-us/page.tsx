@@ -1,9 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { CheckCircle2, Phone, Mail, MessageSquare } from 'lucide-react';
+import {
+  getContactConfig,
+  addContactInquiry,
+  DEFAULT_CONTACT_CONFIG,
+  ContactPageConfig,
+} from '@/lib/contactStorage';
 
 export default function ContactUsPage() {
+  const [config, setConfig] = useState<ContactPageConfig>(DEFAULT_CONTACT_CONFIG);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -11,8 +19,22 @@ export default function ContactUsPage() {
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
+  useEffect(() => {
+    setConfig(getContactConfig());
+    const handler = () => setConfig(getContactConfig());
+    window.addEventListener('eba_contact_settings_updated', handler);
+    return () => window.removeEventListener('eba_contact_settings_updated', handler);
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    addContactInquiry({
+      name,
+      email,
+      phone,
+      subject,
+      message,
+    });
     setSubmitted(true);
   };
 
@@ -22,13 +44,13 @@ export default function ContactUsPage() {
       <section className="w-full bg-[#F7F3EE] border-b border-[#EADECF] py-14 px-4 sm:px-6 lg:px-12 text-center">
         <div className="max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#EADECF] text-xs font-label-uppercase tracking-widest text-[#725B38] font-bold">
-            <span>Dermatologie Concierge</span>
+            <span>{config.headerBadge}</span>
           </div>
           <h1 className="font-display-lg text-3xl sm:text-5xl font-semibold">
-            Client Sanctuary & Consultation
+            {config.headerTitle}
           </h1>
           <p className="font-body-md text-sm text-[#4E4543] max-w-xl mx-auto leading-relaxed">
-            Our team of formulation specialists and logistics concierges are available 6 days a week across Pakistan to advise on personalized regimens and track active dispatches.
+            {config.headerSubtitle}
           </p>
         </div>
       </section>
@@ -49,7 +71,7 @@ export default function ContactUsPage() {
             {submitted ? (
               <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm space-y-2">
                 <div className="flex items-center gap-2 font-semibold">
-                  <span className="material-symbols-outlined text-[20px]">check_circle</span>
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                   <span>Inquiry Dispatched Successfully</span>
                 </div>
                 <p className="text-xs leading-relaxed">
@@ -158,39 +180,44 @@ export default function ContactUsPage() {
               <div className="space-y-4 text-xs">
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#725B38] shrink-0 border border-[#EADECF]">
-                    <span className="material-symbols-outlined text-[18px]">phone</span>
+                    <Phone className="w-4 h-4 text-[#725B38]" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm">Direct Telephone Concierge</h4>
-                    <p className="text-[#7F7572]">Mon to Sat, 10:00 AM – 7:00 PM PKT</p>
-                    <a href="tel:+922135891234" className="font-semibold text-[#1C1C19] hover:underline mt-0.5 block">
-                      +92 21 3589 1234
+                    <p className="text-[#7F7572]">{config.phoneHours}</p>
+                    <a href={`tel:${config.phone.replace(/\s+/g, '')}`} className="font-semibold text-[#1C1C19] hover:underline mt-0.5 block font-mono">
+                      {config.phone}
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#725B38] shrink-0 border border-[#EADECF]">
-                    <span className="material-symbols-outlined text-[18px]">mail</span>
+                    <Mail className="w-4 h-4 text-[#725B38]" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm">Electronic Correspondence</h4>
-                    <p className="text-[#7F7572]">Direct client and medical relations</p>
-                    <a href="mailto:care@ebaskincare.pk" className="font-semibold text-[#1C1C19] hover:underline mt-0.5 block">
-                      care@ebaskincare.pk
+                    <p className="text-[#7F7572]">{config.emailSubtitle}</p>
+                    <a href={`mailto:${config.email}`} className="font-semibold text-[#1C1C19] hover:underline mt-0.5 block">
+                      {config.email}
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#725B38] shrink-0 border border-[#EADECF]">
-                    <span className="material-symbols-outlined text-[18px]">chat</span>
+                    <MessageSquare className="w-4 h-4 text-[#725B38]" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm">WhatsApp Priority Assist</h4>
-                    <p className="text-[#7F7572]">Instant order confirmation & courier assistance</p>
-                    <a href="https://wa.me/923001234567" target="_blank" rel="noreferrer" className="font-semibold text-emerald-700 hover:underline mt-0.5 block">
-                      +92 300 1234567
+                    <p className="text-[#7F7572]">{config.whatsappSubtitle}</p>
+                    <a
+                      href={`https://wa.me/${config.whatsapp.replace(/[^0-9]/g, '')}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-semibold text-emerald-700 hover:underline mt-0.5 block font-mono"
+                    >
+                      {config.whatsapp}
                     </a>
                   </div>
                 </div>
@@ -202,18 +229,19 @@ export default function ContactUsPage() {
               <h3 className="font-display-brand text-lg font-semibold">Flagship Cleanrooms & Labs</h3>
               
               <div className="space-y-3 divide-y divide-[#EADECF]">
-                <div className="pt-2">
-                  <p className="font-semibold text-[#1C1C19]">Karachi Head Cleanroom</p>
-                  <p className="text-[#7F7572]">Plot 14-C, Lane 4, Zamzama Commercial, Clifton, Karachi</p>
-                </div>
-                <div className="pt-2">
-                  <p className="font-semibold text-[#1C1C19]">Lahore Apothecary Studio</p>
-                  <p className="text-[#7F7572]">Main Boulevard, Block C-3, Gulberg III, Lahore</p>
-                </div>
-                <div className="pt-2">
-                  <p className="font-semibold text-[#1C1C19]">Islamabad Distribution Hub</p>
-                  <p className="text-[#7F7572]">Executive Center, Jinnah Super, F-7/2, Islamabad</p>
-                </div>
+                {config.locations && config.locations.length > 0 ? (
+                  config.locations.map((loc) => (
+                    <div key={loc.id} className="pt-2 first:pt-0">
+                      <p className="font-semibold text-[#1C1C19]">{loc.name}</p>
+                      <p className="text-[#7F7572] mt-0.5">{loc.address}</p>
+                    </div>
+                  ))
+                ) : (
+                  <div className="pt-2">
+                    <p className="font-semibold text-[#1C1C19]">Karachi Head Cleanroom</p>
+                    <p className="text-[#7F7572]">Zamzama Commercial, Clifton, Karachi</p>
+                  </div>
+                )}
               </div>
             </div>
 

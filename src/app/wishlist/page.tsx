@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useWishlist } from '@/context/WishlistContext';
 import { useCart } from '@/context/CartContext';
+import { Heart, X, ShoppingBag, Eye } from 'lucide-react';
 
 export default function WishlistPage() {
   const { wishlist, removeFromWishlist } = useWishlist();
@@ -14,7 +15,7 @@ export default function WishlistPage() {
     return (
       <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-12 py-20 text-center">
         <div className="w-16 h-16 rounded-full bg-[#F7F3EE] text-[#725B38] flex items-center justify-center mx-auto mb-4 border border-[#EADECF]">
-          <span className="material-symbols-outlined text-[32px]">favorite_border</span>
+          <Heart className="w-8 h-8 text-[#725B38]" />
         </div>
         <h1 className="font-display-brand text-3xl font-semibold mb-2 text-[#1C1C19]">Your Wishlist is Empty</h1>
         <p className="font-body-md text-sm text-[#7F7572] max-w-md mx-auto mb-8 leading-relaxed">
@@ -64,7 +65,7 @@ export default function WishlistPage() {
                   title="Remove from wishlist"
                   className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 text-red-600 flex items-center justify-center shadow-sm hover:bg-red-50"
                 >
-                  <span className="material-symbols-outlined text-[18px]">close</span>
+                  <X className="w-4 h-4" />
                 </button>
                 <span className="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-[#1A1615] text-white text-[10px] font-label-uppercase">
                   {product.size}
@@ -90,14 +91,15 @@ export default function WishlistPage() {
                     onClick={() => addToCart(product, 1)}
                     className="flex-1 py-2.5 rounded-full bg-[#1A1615] text-[#FDF9F4] font-label-uppercase text-[11px] font-semibold tracking-wider hover:bg-black flex items-center justify-center gap-1.5"
                   >
-                    <span className="material-symbols-outlined text-[15px]">add_shopping_cart</span>
+                    <ShoppingBag className="w-3.5 h-3.5" />
                     <span>Add to Bag</span>
                   </button>
                   <Link
                     href={`/product/${product.slug}`}
-                    className="p-2 rounded-full border border-[#EADECF] text-xs hover:bg-[#F7F3EE]"
+                    className="p-2 rounded-full border border-[#EADECF] text-xs hover:bg-[#F7F3EE] flex items-center justify-center"
+                    aria-label="View product details"
                   >
-                    <span className="material-symbols-outlined text-[16px]">visibility</span>
+                    <Eye className="w-4 h-4" />
                   </Link>
                 </div>
               </div>

@@ -70,6 +70,13 @@ export async function updateSession(request: NextRequest) {
 
   const isAdminRoute = request.nextUrl.pathname.startsWith('/admin');
 
+  const isStaffOrAdminEmail = (email?: string | null) => {
+    if (!email) return false;
+    const clean = email.toLowerCase().trim();
+    const envAdmin = process.env.NEXT_PUBLIC_ADMIN_EMAIL?.toLowerCase().trim();
+    return clean === 'ahmedthor33@gmail.com' || (!!envAdmin && clean === envAdmin);
+  };
+
   // If user is accessing /admin
   if (isAdminRoute) {
     if (!user) {
@@ -88,7 +95,11 @@ export async function updateSession(request: NextRequest) {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const roleName = (profile?.roles as any)?.name;
-    const isStaffOrAdmin = roleName === 'owner' || roleName === 'admin' || roleName === 'staff';
+    const isStaffOrAdmin =
+      roleName === 'owner' ||
+      roleName === 'admin' ||
+      roleName === 'staff' ||
+      isStaffOrAdminEmail(user.email);
 
     if (!isStaffOrAdmin) {
       const redirectUrl = request.nextUrl.clone();
@@ -98,12 +109,31 @@ export async function updateSession(request: NextRequest) {
     }
   }
 
-  // If user is already logged in and navigates to sign-in or sign-up, redirect to my-account or admin
+  // If user is already logged in and navigates to sign-in or sign-up, redirect to admin or my-account
   if (user && isAuthPage) {
     const redirectTo = request.nextUrl.searchParams.get('redirectTo');
     if (redirectTo) {
       return NextResponse.redirect(new URL(redirectTo, request.url));
     }
+
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('roles(name)')
+      .eq('id', user.id)
+      .single();
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const roleName = (profile?.roles as any)?.name;
+    const isStaffOrAdmin =
+      roleName === 'owner' ||
+      roleName === 'admin' ||
+      roleName === 'staff' ||
+      isStaffOrAdminEmail(user.email);
+
+    if (isStaffOrAdmin) {
+      return NextResponse.redirect(new URL('/admin', request.url));
+    }
+
     return NextResponse.redirect(new URL('/my-account', request.url));
   }
 
