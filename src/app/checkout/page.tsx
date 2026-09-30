@@ -1,19 +1,20 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
 import { getPaymentSettings, DEFAULT_PAYMENT_SETTINGS, PaymentSettings } from '@/lib/paymentStorage';
-import { AlertCircle, Banknote, Smartphone, Wallet, Building2 } from 'lucide-react';
+import { getShippingSettings, getCalculatedShipping, ShippingSettings, DEFAULT_SHIPPING_SETTINGS } from '@/lib/shippingStorage';
+import { AlertCircle, Banknote, Smartphone, Wallet, Building2, Truck } from 'lucide-react';
 
 type PaymentMethodType = 'cod' | 'jazzcash' | 'easypaisa' | 'bank';
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { items, subtotal, shippingFee, discount, totalAmount, clearCart } = useCart();
+  const { items, subtotal, discount, clearCart } = useCart();
   const { user, profile } = useAuth();
 
   // Dynamic payment gateways from Admin
@@ -39,8 +40,29 @@ export default function CheckoutPage() {
   const [phone, setPhone] = useState(profile?.phone || '');
   const [address, setAddress] = useState(profile?.address_line1 || '');
   const [city, setCity] = useState(profile?.city || 'Karachi');
+  const [isCustomCity, setIsCustomCity] = useState(false);
+  const [customCityText, setCustomCityText] = useState('');
   const [postalCode, setPostalCode] = useState(profile?.postal_code || '');
   const [notes, setNotes] = useState('');
+
+  // Dynamic shipping calculation based on customer's city and active admin regional zones
+  const [shippingSettings, setShippingSettings] = useState<ShippingSettings>(DEFAULT_SHIPPING_SETTINGS);
+
+  useEffect(() => {
+    setShippingSettings(getShippingSettings());
+    const handler = () => setShippingSettings(getShippingSettings());
+    window.addEventListener('eba_shipping_updated', handler);
+    return () => window.removeEventListener('eba_shipping_updated', handler);
+  }, []);
+
+  const effectiveCity = isCustomCity ? customCityText : city;
+
+  const dynamicShipping = useMemo(() => {
+    return getCalculatedShipping(subtotal, effectiveCity, shippingSettings);
+  }, [subtotal, effectiveCity, shippingSettings]);
+
+  const effectiveShippingFee = items.length === 0 ? 0 : dynamicShipping.fee;
+  const effectiveTotal = Math.max(0, subtotal - discount + effectiveShippingFee);
 
   // Payment method selection
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethodType>('cod');
@@ -89,16 +111,18 @@ export default function CheckoutPage() {
         email,
         phone,
         address,
-        city,
+        city: effectiveCity || city,
         postalCode,
         notes,
         paymentMethod,
         transactionId,
         items,
         subtotal,
-        shippingFee,
+        shippingFee: effectiveShippingFee,
         discount,
-        totalAmount,
+        totalAmount: effectiveTotal,
+        shippingZone: dynamicShipping.zoneName,
+        deliveryDays: dynamicShipping.deliveryDays,
         createdAt: new Date().toISOString(),
       };
 
@@ -201,22 +225,61 @@ export default function CheckoutPage() {
                   City (Destination) *
                 </label>
                 <select
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
+                  value={isCustomCity ? '__other__' : city}
+                  onChange={(e) => {
+                    if (e.target.value === '__other__') {
+                      setIsCustomCity(true);
+                      if (!customCityText) setCustomCityText('');
+                    } else {
+                      setIsCustomCity(false);
+                      setCity(e.target.value);
+                    }
+                  }}
                   className="w-full px-3.5 py-2.5 bg-[#FDF9F4] border border-[#EADECF] rounded-lg text-xs text-[#1C1C19] focus:outline-none focus:border-[#C5A880]"
                 >
-                  <option value="Karachi">Karachi (Same/Next Day Express)</option>
-                  <option value="Lahore">Lahore (24-48h Delivery)</option>
-                  <option value="Islamabad">Islamabad (24-48h Delivery)</option>
-                  <option value="Rawalpindi">Rawalpindi</option>
-                  <option value="Faisalabad">Faisalabad</option>
-                  <option value="Multan">Multan</option>
-                  <option value="Peshawar">Peshawar</option>
-                  <option value="Quetta">Quetta</option>
-                  <option value="Sialkot">Sialkot</option>
-                  <option value="Gujranwala">Gujranwala</option>
-                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Karachi">Karachi (Sindh)</option>
+                  <option value="Lahore">Lahore (Punjab)</option>
+                  <option value="Islamabad">Islamabad (ICT)</option>
+                  <option value="Rawalpindi">Rawalpindi (Punjab)</option>
+                  <option value="Faisalabad">Faisalabad (Punjab)</option>
+                  <option value="Multan">Multan (Punjab)</option>
+                  <option value="Peshawar">Peshawar (KPK)</option>
+                  <option value="Quetta">Quetta (Balochistan)</option>
+                  <option value="Sialkot">Sialkot (Punjab)</option>
+                  <option value="Gujranwala">Gujranwala (Punjab)</option>
+                  <option value="Hyderabad">Hyderabad (Sindh)</option>
+                  <option value="Bahawalpur">Bahawalpur (Punjab)</option>
+                  <option value="Sargodha">Sargodha (Punjab)</option>
+                  <option value="Sukkur">Sukkur (Sindh)</option>
+                  <option value="Larkana">Larkana (Sindh)</option>
+                  <option value="Abbottabad">Abbottabad (KPK)</option>
+                  <option value="Mirpur">Mirpur (AJK)</option>
+                  <option value="Gilgit">Gilgit (Gilgit-Baltistan)</option>
+                  <option value="__other__">✦ Other City / Region (Type manually)</option>
                 </select>
+
+                {isCustomCity && (
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      required
+                      value={customCityText}
+                      onChange={(e) => setCustomCityText(e.target.value)}
+                      placeholder="Type your city name (e.g. Swat, Nawabshah, Rahim Yar Khan)..."
+                      className="w-full px-3.5 py-2 bg-white border border-[#C5A880] rounded-lg text-xs text-[#1C1C19] focus:outline-none"
+                    />
+                  </div>
+                )}
+
+                {dynamicShipping.zoneName && (
+                  <div className="mt-2 flex items-center gap-1.5 text-[11px] text-[#725B38] bg-[#FEDEB2]/30 px-3 py-1.5 rounded-lg border border-[#FEDEB2]">
+                    <Truck className="w-3.5 h-3.5 text-[#725B38] shrink-0" />
+                    <span>
+                      <strong>{dynamicShipping.zoneName}:</strong>{' '}
+                      {effectiveShippingFee === 0 ? 'Free Shipping (Complimentary)' : `Rs. ${effectiveShippingFee}`} • {dynamicShipping.deliveryDays}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -360,7 +423,7 @@ export default function CheckoutPage() {
                     `${payments.bankName}: IBAN ${payments.iban} (Account Title: ${payments.accountTitle}${payments.accountNumber ? `, Account No: ${payments.accountNumber}` : ''})`}
                 </div>
                 <p className="text-[#7F7572] leading-relaxed">
-                  Please complete the payment transfer for <strong>Rs. {totalAmount.toLocaleString()}</strong> and provide your Transaction ID (TID) or upload screenshot receipt below:
+                  Please complete the payment transfer for <strong>Rs. {effectiveTotal.toLocaleString()}</strong> and provide your Transaction ID (TID) or upload screenshot receipt below:
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
@@ -430,10 +493,15 @@ export default function CheckoutPage() {
                 <span>Subtotal</span>
                 <span className="font-semibold text-[#1C1C19]">Rs. {subtotal.toLocaleString()}</span>
               </div>
-              <div className="flex justify-between text-[#4E4543]">
-                <span>Shipping</span>
+              <div className="flex justify-between items-center text-[#4E4543]">
+                <div>
+                  <span>Shipping</span>
+                  <span className="block text-[10px] text-[#7F7572]">
+                    {dynamicShipping.zoneName} ({dynamicShipping.deliveryDays})
+                  </span>
+                </div>
                 <span className="font-semibold text-emerald-700">
-                  {shippingFee === 0 ? 'COMPLIMENTARY' : `Rs. ${shippingFee}`}
+                  {effectiveShippingFee === 0 ? 'COMPLIMENTARY' : `Rs. ${effectiveShippingFee}`}
                 </span>
               </div>
               {discount > 0 && (
@@ -444,7 +512,7 @@ export default function CheckoutPage() {
               )}
               <div className="flex justify-between text-base font-bold pt-2 border-t border-[#EADECF] text-[#1C1C19]">
                 <span>Total Due</span>
-                <span>Rs. {totalAmount.toLocaleString()}</span>
+                <span>Rs. {effectiveTotal.toLocaleString()}</span>
               </div>
             </div>
 

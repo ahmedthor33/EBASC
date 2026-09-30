@@ -12,6 +12,7 @@ import {
   getShippingSettings,
   saveShippingSettings,
   ShippingSettings,
+  ShippingZone,
   DEFAULT_SHIPPING_SETTINGS,
 } from '@/lib/shippingStorage';
 import {
@@ -624,12 +625,122 @@ function AdminDashboardContent() {
   // -------------------------------------------------------------
   const [shippingConfig, setShippingConfig] = useState<ShippingSettings>(DEFAULT_SHIPPING_SETTINGS);
 
+  // Custom Regional Shipping Zone Creator & Editor State
+  const [zoneModalOpen, setZoneModalOpen] = useState(false);
+  const [editingZone, setEditingZone] = useState<ShippingZone | null>(null);
+  const [zoneFormName, setZoneFormName] = useState('');
+  const [zoneFormCities, setZoneFormCities] = useState('');
+  const [zoneFormRate, setZoneFormRate] = useState<number | string>(250);
+  const [zoneFormDeliveryDays, setZoneFormDeliveryDays] = useState('2–3 Days');
+  const [zoneFormIsActive, setZoneFormIsActive] = useState(true);
+
   useEffect(() => {
     setShippingConfig(getShippingSettings());
     const handler = () => setShippingConfig(getShippingSettings());
     window.addEventListener('eba_shipping_updated', handler);
     return () => window.removeEventListener('eba_shipping_updated', handler);
   }, []);
+
+  const handleOpenAddZone = () => {
+    setEditingZone(null);
+    setZoneFormName('');
+    setZoneFormCities('');
+    setZoneFormRate(250);
+    setZoneFormDeliveryDays('2–3 Business Days');
+    setZoneFormIsActive(true);
+    setZoneModalOpen(true);
+  };
+
+  const handleOpenEditZone = (zone: ShippingZone) => {
+    setEditingZone(zone);
+    setZoneFormName(zone.name);
+    setZoneFormCities(zone.cities);
+    setZoneFormRate(zone.rate);
+    setZoneFormDeliveryDays(zone.deliveryDays);
+    setZoneFormIsActive(zone.isActive);
+    setZoneModalOpen(true);
+  };
+
+  const handleSaveZone = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!zoneFormName.trim()) {
+      alert('Please enter a zone name/title.');
+      return;
+    }
+    if (!zoneFormCities.trim()) {
+      alert('Please enter the covered cities or regions.');
+      return;
+    }
+
+    let updatedZones: ShippingZone[];
+    if (editingZone) {
+      updatedZones = shippingConfig.zones.map((z) =>
+        z.id === editingZone.id
+          ? {
+              ...z,
+              name: zoneFormName.trim(),
+              cities: zoneFormCities.trim(),
+              rate: Number(zoneFormRate) || 0,
+              deliveryDays: zoneFormDeliveryDays.trim() || '2–4 Days',
+              isActive: zoneFormIsActive,
+            }
+          : z
+      );
+      showToast(`Shipping zone "${zoneFormName}" updated!`);
+    } else {
+      const newZone: ShippingZone = {
+        id: `zone-${Date.now()}`,
+        name: zoneFormName.trim(),
+        cities: zoneFormCities.trim(),
+        rate: Number(zoneFormRate) || 0,
+        deliveryDays: zoneFormDeliveryDays.trim() || '2–4 Days',
+        isActive: zoneFormIsActive,
+      };
+      updatedZones = [...shippingConfig.zones, newZone];
+      showToast(`Created new shipping zone "${zoneFormName}"!`);
+    }
+
+    const updatedConfig = { ...shippingConfig, zones: updatedZones };
+    setShippingConfig(updatedConfig);
+    saveShippingSettings(updatedConfig);
+    setZoneModalOpen(false);
+
+    try {
+      await supabase.from('site_settings').upsert(
+        {
+          key: 'shipping_settings',
+          value: updatedConfig,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'key' }
+      );
+    } catch (err) {
+      console.warn('Supabase shipping zone sync notice:', err);
+    }
+  };
+
+  const handleDeleteZone = async (zoneId: string, zoneName: string) => {
+    if (confirm(`Are you sure you want to delete the shipping zone "${zoneName}"?`)) {
+      const updatedZones = shippingConfig.zones.filter((z) => z.id !== zoneId);
+      const updatedConfig = { ...shippingConfig, zones: updatedZones };
+      setShippingConfig(updatedConfig);
+      saveShippingSettings(updatedConfig);
+      showToast(`Shipping zone "${zoneName}" deleted.`);
+
+      try {
+        await supabase.from('site_settings').upsert(
+          {
+            key: 'shipping_settings',
+            value: updatedConfig,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: 'key' }
+        );
+      } catch (err) {
+        console.warn('Supabase shipping zone delete notice:', err);
+      }
+    }
+  };
 
   const handleSaveShippingConfig = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -2477,68 +2588,110 @@ function AdminDashboardContent() {
 
               {/* Regional Shipping Zones */}
               <div className="bg-white rounded-2xl border border-[#EADECF] shadow-sm overflow-hidden">
-                <div className="p-5 border-b border-[#EADECF] flex items-center justify-between">
+                <div className="p-5 border-b border-[#EADECF] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
                     <h3 className="font-headline-sm text-base font-bold text-[#1C1C19]">
                       Pakistan Regional Shipping Zones
                     </h3>
                     <p className="text-xs text-[#7F7572]">
-                      Tiered delivery tariffs based on regional destination tiers.
+                      Custom delivery tariffs & timelines based on destination cities and regional tiers.
                     </p>
                   </div>
+                  <button
+                    type="button"
+                    onClick={handleOpenAddZone}
+                    className="px-4 py-2 rounded-xl bg-[#725B38] text-white hover:bg-[#1A1615] text-xs font-semibold transition-colors flex items-center gap-1.5 shadow-sm self-start sm:self-auto"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span>Create Shipping Zone</span>
+                  </button>
                 </div>
 
-                <div className="divide-y divide-[#EADECF]/60">
-                  {shippingConfig.zones.map((zone) => (
-                    <div
-                      key={zone.id}
-                      className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#FDF9F4] transition-colors"
+                {shippingConfig.zones.length === 0 ? (
+                  <div className="p-8 text-center text-xs text-[#7F7572] space-y-3">
+                    <Truck className="w-8 h-8 text-[#C5A880] mx-auto opacity-60" />
+                    <p>No regional shipping zones configured yet.</p>
+                    <button
+                      type="button"
+                      onClick={handleOpenAddZone}
+                      className="px-4 py-2 rounded-xl bg-[#1A1615] text-white text-xs font-semibold hover:bg-[#725B38] transition-colors inline-flex items-center gap-1.5"
                     >
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2">
-                          <span className="font-bold text-sm text-[#1C1C19]">{zone.name}</span>
-                          <span
-                            className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                              zone.isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-gray-100 text-gray-500'
+                      <Plus className="w-3.5 h-3.5" />
+                      <span>Create Your First Shipping Zone</span>
+                    </button>
+                  </div>
+                ) : (
+                  <div className="divide-y divide-[#EADECF]/60">
+                    {shippingConfig.zones.map((zone) => (
+                      <div
+                        key={zone.id}
+                        className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[#FDF9F4] transition-colors"
+                      >
+                        <div className="space-y-1.5 flex-1 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="font-bold text-sm text-[#1C1C19]">{zone.name}</span>
+                            <span
+                              className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                                zone.isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-gray-100 text-gray-500'
+                              }`}
+                            >
+                              {zone.isActive ? 'Active' : 'Disabled'}
+                            </span>
+                            <span className="text-xs text-[#4E4543] font-mono bg-[#EBE8E3] px-2.5 py-0.5 rounded-md">
+                              ⏱ {zone.deliveryDays}
+                            </span>
+                          </div>
+                          <p className="text-xs text-[#7F7572] leading-relaxed break-words">
+                            <strong className="text-[#4E4543]">Covered:</strong> {zone.cities}
+                          </p>
+                        </div>
+
+                        <div className="flex items-center gap-2.5 flex-wrap sm:flex-nowrap shrink-0">
+                          <div className="flex items-center gap-1 bg-[#F7F3EE] px-2.5 py-1 rounded-xl border border-[#EADECF]">
+                            <span className="text-xs font-semibold text-[#1C1C19]">Rate:</span>
+                            <input
+                              type="number"
+                              value={zone.rate}
+                              onChange={(e) => handleUpdateZoneRate(zone.id, Number(e.target.value))}
+                              className="w-16 px-1.5 py-0.5 text-xs rounded border border-[#EADECF] bg-white font-bold text-[#725B38] text-right"
+                            />
+                            <span className="text-xs text-[#7F7572]">PKR</span>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => handleOpenEditZone(zone)}
+                            className="p-2 rounded-xl border border-[#EADECF] text-[#4E4543] hover:text-[#725B38] hover:bg-[#F7F3EE] transition-colors"
+                            title="Edit Zone Details"
+                          >
+                            <Edit2 className="w-3.5 h-3.5" />
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => handleToggleZone(zone.id)}
+                            className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
+                              zone.isActive
+                                ? 'border-amber-200 text-amber-700 hover:bg-amber-50'
+                                : 'border-emerald-200 text-emerald-700 hover:bg-emerald-50'
                             }`}
                           >
-                            {zone.isActive ? 'Active' : 'Disabled'}
-                          </span>
+                            {zone.isActive ? 'Disable' : 'Enable'}
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteZone(zone.id, zone.name)}
+                            className="p-2 rounded-xl border border-red-200 text-red-600 hover:bg-red-50 transition-colors"
+                            title="Delete Shipping Zone"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
                         </div>
-                        <p className="text-xs text-[#7F7572]">{zone.cities}</p>
                       </div>
-
-                      <div className="flex items-center gap-3">
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-xs font-semibold text-[#1C1C19]">Rate:</span>
-                          <input
-                            type="number"
-                            value={zone.rate}
-                            onChange={(e) => handleUpdateZoneRate(zone.id, Number(e.target.value))}
-                            className="w-20 px-2 py-1 text-xs rounded-lg border border-[#EADECF] bg-[#F7F3EE] font-bold text-[#725B38]"
-                          />
-                          <span className="text-xs text-[#7F7572]">PKR</span>
-                        </div>
-
-                        <span className="text-xs text-[#4E4543] font-mono bg-[#EBE8E3] px-2.5 py-1 rounded-lg">
-                          {zone.deliveryDays}
-                        </span>
-
-                        <button
-                          type="button"
-                          onClick={() => handleToggleZone(zone.id)}
-                          className={`px-3 py-1 rounded-lg text-xs font-semibold border ${
-                            zone.isActive
-                              ? 'border-red-200 text-red-600 hover:bg-red-50'
-                              : 'border-emerald-200 text-emerald-600 hover:bg-emerald-50'
-                          }`}
-                        >
-                          {zone.isActive ? 'Disable' : 'Enable'}
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Courier Partner Integrations */}
@@ -2578,6 +2731,124 @@ function AdminDashboardContent() {
                   ))}
                 </div>
               </div>
+
+              {/* Regional Shipping Zone Modal */}
+              {zoneModalOpen && (
+                <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+                  <div className="bg-white rounded-3xl border border-[#EADECF] p-6 max-w-lg w-full shadow-2xl space-y-4 animate-fade-in">
+                    <div className="flex items-center justify-between border-b border-[#EADECF] pb-3">
+                      <div>
+                        <h3 className="font-headline-sm text-lg font-bold text-[#1C1C19]">
+                          {editingZone ? 'Edit Shipping Zone' : 'Create Regional Shipping Zone'}
+                        </h3>
+                        <p className="text-xs text-[#7F7572]">
+                          Define destination cities, custom delivery rate, and timeline.
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setZoneModalOpen(false)}
+                        className="p-1.5 rounded-full hover:bg-gray-100 text-gray-500"
+                      >
+                        <X className="w-5 h-5" />
+                      </button>
+                    </div>
+
+                    <form onSubmit={handleSaveZone} className="space-y-4 text-xs">
+                      <div>
+                        <label className="block font-semibold text-[#1C1C19] mb-1">
+                          Zone Title / Region Name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={zoneFormName}
+                          onChange={(e) => setZoneFormName(e.target.value)}
+                          placeholder="e.g. Sindh Interior, KPK & Northern Territories, South Punjab"
+                          className="w-full px-3 py-2 rounded-xl border border-[#EADECF] bg-[#F7F3EE] focus:outline-none focus:border-[#725B38]"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block font-semibold text-[#1C1C19] mb-1">
+                          Covered Cities / Regions / Districts <span className="text-red-500">*</span>
+                        </label>
+                        <textarea
+                          rows={3}
+                          required
+                          value={zoneFormCities}
+                          onChange={(e) => setZoneFormCities(e.target.value)}
+                          placeholder="e.g. Hyderabad, Sukkur, Larkana, Mirpurkhas, Nawabshah, Badin (comma separated)"
+                          className="w-full px-3 py-2 rounded-xl border border-[#EADECF] bg-[#F7F3EE] focus:outline-none focus:border-[#725B38]"
+                        />
+                        <span className="text-[11px] text-[#7F7572] mt-1 block">
+                          Enter cities separated by commas. During checkout, customer cities will match against this list.
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                          <label className="block font-semibold text-[#1C1C19] mb-1">
+                            Delivery Rate (PKR) <span className="text-red-500">*</span>
+                          </label>
+                          <input
+                            type="number"
+                            required
+                            min={0}
+                            value={zoneFormRate}
+                            onChange={(e) => setZoneFormRate(e.target.value)}
+                            placeholder="e.g. 250"
+                            className="w-full px-3 py-2 rounded-xl border border-[#EADECF] bg-[#F7F3EE] focus:outline-none focus:border-[#725B38] font-bold text-sm"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block font-semibold text-[#1C1C19] mb-1">
+                            Estimated Delivery Timeline <span className="text-red-500">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            value={zoneFormDeliveryDays}
+                            onChange={(e) => setZoneFormDeliveryDays(e.target.value)}
+                            placeholder="e.g. 2–3 Business Days"
+                            className="w-full px-3 py-2 rounded-xl border border-[#EADECF] bg-[#F7F3EE] focus:outline-none focus:border-[#725B38]"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-3 pt-2">
+                        <input
+                          type="checkbox"
+                          id="zoneFormIsActive"
+                          checked={zoneFormIsActive}
+                          onChange={(e) => setZoneFormIsActive(e.target.checked)}
+                          className="w-4 h-4 rounded border-[#EADECF] text-[#725B38] focus:ring-[#725B38]"
+                        />
+                        <label htmlFor="zoneFormIsActive" className="text-xs font-semibold text-[#1C1C19] cursor-pointer">
+                          Activate this shipping zone for automatic checkout rate calculation
+                        </label>
+                      </div>
+
+                      <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#EADECF]">
+                        <button
+                          type="button"
+                          onClick={() => setZoneModalOpen(false)}
+                          className="px-4 py-2 rounded-xl bg-[#F7F3EE] text-[#1C1C19] font-medium hover:bg-[#EBE8E3]"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          className="px-5 py-2 rounded-xl bg-[#1A1615] text-white font-semibold hover:bg-[#725B38] transition-colors shadow-sm"
+                        >
+                          {editingZone ? 'Save Zone Changes' : 'Create Shipping Zone'}
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 

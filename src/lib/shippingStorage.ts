@@ -120,3 +120,69 @@ export function saveShippingSettings(settings: ShippingSettings) {
     console.warn('Failed to save shipping settings locally:', err);
   }
 }
+
+export function matchShippingZone(city: string, settings?: ShippingSettings): ShippingZone | null {
+  if (!city) return null;
+  const currentSettings = settings || getShippingSettings();
+  if (!currentSettings.zones || currentSettings.zones.length === 0) return null;
+  
+  const cleanCity = city.trim().toLowerCase();
+  if (!cleanCity) return null;
+
+  for (const zone of currentSettings.zones) {
+    if (!zone.isActive) continue;
+    const cityList = zone.cities
+      .toLowerCase()
+      .split(',')
+      .map((c) => c.trim())
+      .filter(Boolean);
+    const hasMatch = cityList.some((c) => {
+      return c === cleanCity || cleanCity.includes(c) || c.includes(cleanCity);
+    });
+    if (hasMatch) return zone;
+  }
+  return null;
+}
+
+export function getCalculatedShipping(
+  subtotal: number,
+  city?: string,
+  settings?: ShippingSettings
+): {
+  fee: number;
+  isFree: boolean;
+  zoneName: string;
+  deliveryDays: string;
+} {
+  const currentSettings = settings || getShippingSettings();
+  const threshold = currentSettings.freeShippingThreshold || 3500;
+  
+  if (subtotal >= threshold) {
+    return {
+      fee: 0,
+      isFree: true,
+      zoneName: 'Complimentary Free Delivery',
+      deliveryDays: currentSettings.estimatedStandardDays || '2–4 Business Days',
+    };
+  }
+
+  if (city) {
+    const matchedZone = matchShippingZone(city, currentSettings);
+    if (matchedZone) {
+      return {
+        fee: matchedZone.rate,
+        isFree: false,
+        zoneName: matchedZone.name,
+        deliveryDays: matchedZone.deliveryDays,
+      };
+    }
+  }
+
+  return {
+    fee: currentSettings.standardRate ?? 250,
+    isFree: false,
+    zoneName: 'Standard Pakistan Delivery',
+    deliveryDays: currentSettings.estimatedStandardDays || '2–4 Business Days',
+  };
+}
+
