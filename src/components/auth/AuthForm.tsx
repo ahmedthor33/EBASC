@@ -41,12 +41,19 @@ export function AuthForm({ initialTab = 'signin' }: AuthFormProps) {
           return;
         }
 
-        // If the user has administrative privileges, redirect directly to admin panel
-        if (userIsAdmin) {
-          router.push(redirectTo && redirectTo !== '/my-account' ? redirectTo : '/admin');
-        } else {
-          router.push(redirectTo || '/my-account');
-        }
+        setSuccessMessage(
+          userIsAdmin
+            ? 'Administrator verified. Entering Management Studio...'
+            : 'Authenticated successfully! Redirecting...'
+        );
+
+        setTimeout(() => {
+          if (userIsAdmin) {
+            router.push(redirectTo && redirectTo !== '/my-account' ? redirectTo : '/admin');
+          } else {
+            router.push(redirectTo || '/my-account');
+          }
+        }, 400);
       } else {
         if (!fullName.trim()) {
           setErrorMessage('Please enter your full name.');

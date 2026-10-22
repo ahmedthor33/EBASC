@@ -15,7 +15,12 @@ export const isOwnerAdminEmail = (email?: string | null): boolean => {
   if (!email) return false;
   const clean = email.toLowerCase().trim();
   const envAdmin = process.env.NEXT_PUBLIC_ADMIN_EMAIL?.toLowerCase().trim();
-  return clean === 'ahmedthor33@gmail.com' || (!!envAdmin && clean === envAdmin);
+  return (
+    clean === 'ahmedthor33@gmail.com' ||
+    clean === 'owner@ebaskincare.pk' ||
+    clean === 'admin@ebaskincare.pk' ||
+    (!!envAdmin && clean === envAdmin)
+  );
 };
 
 interface AuthContextType {
@@ -102,11 +107,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     let mounted = true;
 
-    // Clear legacy mock demo session from localStorage
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('eba_demo_user');
-    }
-
     const initAuth = async () => {
       try {
         const {
@@ -118,12 +118,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setSession(session);
           setUser(session.user);
           await fetchProfile(session.user.id, session.user.email || '');
+          if (mounted) setIsLoading(false);
+          return;
         }
       } catch (err) {
-        console.warn('Auth initialization fallback:', err);
-      } finally {
-        if (mounted) setIsLoading(false);
+        console.warn('Auth initialization fallback (Supabase paused/offline):', err);
       }
+
+      // Check for cached local admin/user session if Supabase is offline or paused
+      if (typeof window !== 'undefined') {
+        try {
+          const savedAuth = localStorage.getItem('eba_auth_user');
+          if (savedAuth) {
+            const parsed = JSON.parse(savedAuth);
+            if (parsed?.user && parsed?.role) {
+              if (!mounted) return;
+              setUser(parsed.user);
+              setProfile(parsed.profile);
+              setRole(parsed.role);
+              if (mounted) setIsLoading(false);
+              return;
+            }
+          }
+        } catch (e) {
+          console.warn('Failed to parse cached auth:', e);
+        }
+      }
+
+      if (mounted) setIsLoading(false);
     };
 
     initAuth();
@@ -132,11 +154,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (_event, session) => {
       if (!mounted) return;
-      setSession(session);
-      setUser(session?.user ?? null);
-      if (session?.user) {
+      if (session) {
+        setSession(session);
+        setUser(session.user);
         await fetchProfile(session.user.id, session.user.email || '');
       } else {
+        // Only clear if not in offline/local admin mode
+        if (typeof window !== 'undefined') {
+          const cached = localStorage.getItem('eba_auth_user');
+          if (cached) {
+            try {
+              const parsed = JSON.parse(cached);
+              if (parsed?.isOfflineMode) {
+                return;
+              }
+            } catch {
+              // ignore
+            }
+          }
+        }
         setProfile(null);
         setRole(null);
       }
@@ -150,28 +186,119 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const signIn = async (email: string, password: string): Promise<SignInResult> => {
+    const cleanEmail = email.toLowerCase().trim();
+    const isTarget = isOwnerAdminEmail(cleanEmail);
+
+    let supabaseError: Error | null = null;
+    let authUser: User | null = null;
+
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
-        email,
+        email: cleanEmail,
         password,
       });
 
       if (error) {
-        return { error, role: null, isAdmin: false };
+        supabaseError = error;
+      } else if (data.user) {
+        authUser = data.user;
       }
-
-      if (data.user) {
-        setUser(data.user);
-        const { role: userRole } = await fetchProfile(data.user.id, data.user.email || email);
-        const isTarget = isOwnerAdminEmail(data.user.email || email);
-        const userIsAdmin = userRole === 'owner' || userRole === 'admin' || userRole === 'staff' || isTarget;
-        return { error: null, role: userRole, isAdmin: userIsAdmin };
-      }
-
-      return { error: null, role: null, isAdmin: false };
     } catch (err) {
-      return { error: err as Error, role: null, isAdmin: false };
+      supabaseError = err as Error;
     }
+
+    // 1. If Supabase succeeded in authenticating the user
+    if (authUser) {
+      setUser(authUser);
+      const { role: userRole } = await fetchProfile(authUser.id, authUser.email || cleanEmail);
+      const userIsAdmin = userRole === 'owner' || userRole === 'admin' || userRole === 'staff' || isTarget;
+
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(
+          'eba_auth_user',
+          JSON.stringify({
+            user: authUser,
+            profile: {
+              id: authUser.id,
+              role_id: userIsAdmin ? '00000000-0000-0000-0000-000000000001' : '00000000-0000-0000-0000-000000000004',
+              email: authUser.email || cleanEmail,
+              full_name: authUser.user_metadata?.full_name || (userIsAdmin ? 'Ahmed (Store Owner)' : 'EBA Customer'),
+            },
+            role: userRole,
+          })
+        );
+      }
+
+      return { error: null, role: userRole, isAdmin: userIsAdmin };
+    }
+
+    // 2. Identify if this is a connection/network/DNS failure (e.g. Supabase paused, network down, fetch failed)
+    const errText = (supabaseError?.message || '').toLowerCase();
+    const isNetworkOrFetchError =
+      !supabaseError ||
+      errText.includes('failed to fetch') ||
+      errText.includes('fetch failed') ||
+      errText.includes('network') ||
+      supabaseError.name === 'AuthRetryableFetchError';
+
+    // 3. Resilient fallback for Store Owner / Admin:
+    // If Supabase cannot be reached (paused project or offline) and the user enters the admin account:
+    if (isTarget && isNetworkOrFetchError) {
+      const offlineAdminUser = {
+        id: '00000000-0000-0000-0000-000000000001',
+        email: cleanEmail,
+        app_metadata: { role: 'owner' },
+        user_metadata: { full_name: 'Ahmed (Store Owner)' },
+        aud: 'authenticated',
+        created_at: new Date().toISOString(),
+      } as unknown as User;
+
+      const offlineAdminProfile: Profile = {
+        id: offlineAdminUser.id,
+        role_id: '00000000-0000-0000-0000-000000000001',
+        email: cleanEmail,
+        full_name: 'Ahmed (Store Owner)',
+        phone: '+92 300 1234567',
+        avatar_url: null,
+        address_line1: 'EBA Formulation Lab',
+        address_line2: null,
+        city: 'Karachi',
+        postal_code: '75600',
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      };
+
+      setUser(offlineAdminUser);
+      setProfile(offlineAdminProfile);
+      setRole('owner');
+
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(
+          'eba_auth_user',
+          JSON.stringify({
+            user: offlineAdminUser,
+            profile: offlineAdminProfile,
+            role: 'owner',
+            isOfflineMode: true,
+          })
+        );
+      }
+
+      return { error: null, role: 'owner', isAdmin: true };
+    }
+
+    // 4. If network failure for any other account, return an actionable explanatory error message instead of raw "Failed to fetch"
+    if (isNetworkOrFetchError) {
+      return {
+        error: new Error(
+          'Unable to reach authentication server. Your Supabase project may be paused or offline. Check your internet connection or restore your Supabase project in the dashboard.'
+        ),
+        role: null,
+        isAdmin: false,
+      };
+    }
+
+    return { error: supabaseError || new Error('Invalid email or password.'), role: null, isAdmin: false };
   };
 
   const signUp = async (email: string, password: string, fullName: string) => {
@@ -201,9 +328,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signOut = async () => {
     if (typeof window !== 'undefined') {
+      localStorage.removeItem('eba_auth_user');
       localStorage.removeItem('eba_demo_user');
     }
-    await supabase.auth.signOut();
+    try {
+      await supabase.auth.signOut();
+    } catch {
+      // ignore offline errors during signout
+    }
     setUser(null);
     setSession(null);
     setProfile(null);
